@@ -10,62 +10,76 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
 
 <style>
-body { font-family: 'Montserrat', sans-serif; background:#080808; color:white; overflow:hidden; }
-
-.slide {
-display:none;
-min-height:100vh;
-padding:20px;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
+body {
+    font-family: 'Montserrat', sans-serif;
+    background:#080808;
+    color:white;
+    overflow:hidden;
 }
 
-.slide.active { display:flex; }
+.slide {
+    display:none;
+    min-height:100vh;
+    padding:20px;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    opacity:0;
+    transform:translateX(40px);
+    transition: all 0.4s ease;
+}
+
+.slide.active {
+    display:flex;
+    opacity:1;
+    transform:translateX(0);
+}
 
 .card {
-background:#121212;
-border:1px solid #222;
-border-radius:30px;
-padding:20px;
-max-width:420px;
-width:100%;
+    background:#121212;
+    border:1px solid #222;
+    border-radius:30px;
+    padding:20px;
+    max-width:420px;
+    width:100%;
 }
 
 .btn {
-background:#00ff88;
-color:black;
-font-weight:900;
-padding:15px;
-border-radius:50px;
-width:100%;
-margin-top:20px;
+    background:#00ff88;
+    color:black;
+    font-weight:900;
+    padding:15px;
+    border-radius:50px;
+    width:100%;
+    margin-top:20px;
 }
 
 .btn-outline {
-border:1px solid #333;
-color:#888;
-padding:10px;
-border-radius:50px;
-margin-top:10px;
-font-size:12px;
+    border:1px solid #333;
+    color:#888;
+    padding:10px;
+    border-radius:50px;
+    margin-top:10px;
+    font-size:12px;
 }
 
 .gold { color:#ffcc00; }
 .green { color:#00ff88; }
 
 .video {
-width:100%;
-aspect-ratio:16/9;
-border-radius:20px;
-overflow:hidden;
-margin:15px 0;
+    width:100%;
+    aspect-ratio:16/9;
+    border-radius:20px;
+    overflow:hidden;
+    margin:15px 0;
 }
 </style>
 </head>
 
 <body>
+
+<audio id="audio"></audio>
 
 <!-- 1 SAPATARIA -->
 <div class="slide active" id="s1">
@@ -73,7 +87,7 @@ margin:15px 0;
 
 <div class="card">
 <h2 class="text-lg font-bold mb-4">
-O MMN tradicional tenta servir o mesmo sapato para todos.
+O MMN tradicional tenta servir o mesmo número de sapato para todos os tamanhos de pés.
 </h2>
 
 <p class="text-gray-400 text-sm mb-6">
@@ -109,8 +123,7 @@ O ProSFF não é um modelo.
 </h2>
 
 <p class="text-gray-400 text-sm mb-6">
-É uma sapataria.
-<br><br>
+É uma sapataria.<br><br>
 Cada pessoa constrói no seu ritmo.
 </p>
 
@@ -120,10 +133,13 @@ Cada pessoa constrói no seu ritmo.
 
 <!-- 4 VIDEO INDUSTRIA -->
 <div class="slide" id="s4">
-<h2 class="text-sm uppercase text-gray-500">Estrutura real</h2>
+<h2 class="text-xs uppercase text-gray-500">Estrutura real</h2>
 
 <div class="video">
-<iframe width="100%" height="100%" src="https://www.youtube.com/embed/RGw-nxKio-0?start=95&end=115" frameborder="0"></iframe>
+<iframe width="100%" height="100%"
+src="https://www.youtube.com/embed/RGw-nxKio-0?start=95&end=115&controls=1&rel=0&modestbranding=1"
+frameborder="0"
+allowfullscreen></iframe>
 </div>
 
 <div class="card">
@@ -135,12 +151,38 @@ Existe uma estrutura sólida por trás.
 <button class="btn" onclick="go(5)">Continuar</button>
 </div>
 
-<!-- 5 VIDEO CONSUMO -->
+<!-- 5 PRODUTOS -->
 <div class="slide" id="s5">
-<h2 class="text-sm uppercase text-gray-500">O motor</h2>
+<div class="card">
+
+<h2 class="text-lg font-bold mb-4">
+O que você consome importa
+</h2>
+
+<p class="text-sm text-gray-400 mb-6">
+No ProSFF você aprende a entender rótulos e impacto no corpo.
+</p>
+
+<a href="#" target="_blank">
+<button class="btn">
+Acessar curadoria (em breve)
+</button>
+</a>
+
+</div>
+
+<button class="btn-outline" onclick="go(6)">Continuar</button>
+</div>
+
+<!-- 6 VIDEO CONSUMO -->
+<div class="slide" id="s6">
+<h2 class="text-xs uppercase text-gray-500">O motor</h2>
 
 <div class="video">
-<iframe width="100%" height="100%" src="https://www.youtube.com/embed/lGVU6AythoQ" frameborder="0"></iframe>
+<iframe width="100%" height="100%"
+src="https://www.youtube.com/embed/lGVU6AythoQ?controls=1&rel=0&modestbranding=1"
+frameborder="0"
+allowfullscreen></iframe>
 </div>
 
 <div class="card">
@@ -150,11 +192,11 @@ Você redireciona o que já consome.
 </p>
 </div>
 
-<button class="btn" onclick="go(6)">Entendi</button>
+<button class="btn" onclick="go(7)">Entendi</button>
 </div>
 
-<!-- 6 ESTRUTURA -->
-<div class="slide" id="s6">
+<!-- 7 ESTRUTURA -->
+<div class="slide" id="s7">
 <div class="card">
 <h2 class="text-lg font-bold mb-4">
 1 pessoa → 3 pessoas
@@ -165,66 +207,86 @@ Não é multidão.<br>
 É duplicação.
 </p>
 
-<button class="btn" onclick="go(7)">Continuar</button>
+<button class="btn" onclick="go(8)">Continuar</button>
 </div>
 </div>
 
-<!-- 7 TEMPO -->
-<div class="slide" id="s7">
+<!-- 8 TEMPO -->
+<div class="slide" id="s8">
 <div class="card">
 <h2 class="text-lg font-bold mb-4 green">
 O tempo muda tudo
 </h2>
 
 <p class="text-gray-400 text-sm">
-Duas pessoas podem chegar no mesmo resultado.<br><br>
+Duas pessoas chegam no mesmo resultado.<br><br>
 Mas em tempos diferentes.
 </p>
 
-<button class="btn" onclick="go(8)">Simular meu ritmo</button>
+<button class="btn" onclick="go(9)">Simular</button>
 </div>
 </div>
 
-<!-- 8 SIMULADOR SIMPLES -->
-<div class="slide" id="s8">
-<div class="card">
-
-<h2 class="text-lg font-bold mb-4">Simulação básica</h2>
-
-<input type="number" id="ticket" value="300" class="w-full p-3 rounded-xl text-black mb-4">
-
-<p class="text-sm text-gray-400 mb-2">Estimativa simples:</p>
-
-<p id="res" class="text-2xl font-black green">R$ 0</p>
-
-<button class="btn" onclick="calc()">Calcular</button>
-
-</div>
-
-<button class="btn mt-6" onclick="go(9)">Quero entender melhor</button>
-</div>
-
-<!-- 9 CTA -->
+<!-- 9 BONUS -->
 <div class="slide" id="s9">
 <div class="card">
 
 <h2 class="text-lg font-bold mb-4">
-Agora faz sentido?
+Como funciona a bonificação
 </h2>
 
-<p class="text-gray-400 text-sm mb-6">
-Vamos ajustar o modelo ao seu ritmo.
+<p class="text-xs text-gray-400 mb-4">
+Os ganhos dependem da construção da rede e regras oficiais da empresa.
 </p>
 
-<a href="https://wa.me/5522999231211" target="_blank">
-<button class="btn" style="background:#25D366;color:white;">
-Falar no WhatsApp
+<button class="btn-outline">
+Gráficos oficiais (em breve)
+</button>
+
+</div>
+
+<button class="btn mt-6" onclick="go(10)">Continuar</button>
+</div>
+
+<!-- 10 SIMULADOR -->
+<div class="slide" id="s10">
+<div class="card">
+
+<h2 class="text-lg font-bold mb-4">
+Simular sua construção
+</h2>
+
+<p class="text-sm text-gray-400 mb-6">
+Veja sua evolução no seu ritmo.
+</p>
+
+<a href="https://simuladorprosff.vercel.app/" target="_blank">
+<button class="btn">
+Abrir simulador ProSFF
 </button>
 </a>
 
 </div>
 
-<button class="btn-outline mt-6" onclick="go(1)">Reiniciar</button>
+<button class="btn mt-6" onclick="go(11)">Quero meu plano</button>
+</div>
+
+<!-- 11 LEAD -->
+<div class="slide" id="s11">
+<div class="card">
+
+<h2 class="text-lg font-bold mb-4">
+Receber plano personalizado
+</h2>
+
+<input id="nome" placeholder="Seu nome" class="w-full p-3 mb-3 rounded-xl text-black">
+<input id="zap" placeholder="Seu WhatsApp" class="w-full p-3 rounded-xl text-black">
+
+<button class="btn" onclick="lead()">
+Continuar
+</button>
+
+</div>
 </div>
 
 <script>
@@ -232,13 +294,16 @@ Falar no WhatsApp
 function go(n){
 document.querySelectorAll('.slide').forEach(s=>s.classList.remove('active'));
 document.getElementById('s'+n).classList.add('active');
+window.scrollTo(0,0);
 }
 
-function calc(){
-let t = document.getElementById('ticket').value;
-let res = t * 120 * 0.08;
-document.getElementById('res').innerText =
-res.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+function lead(){
+let nome = document.getElementById('nome').value;
+let zap = document.getElementById('zap').value;
+
+let msg = `Nome: ${nome} | WhatsApp: ${zap}`;
+
+window.open(`https://wa.me/5522999231211?text=${encodeURIComponent(msg)}`);
 }
 
 </script>
