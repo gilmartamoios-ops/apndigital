@@ -3,76 +3,65 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ProSFF | Apresentação</title>
+<title>ProSFF</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
-
 <style>
-body {
-    font-family: 'Montserrat', sans-serif;
-    background:#080808;
-    color:white;
-    overflow:hidden;
-}
+body { background:#080808; color:white; font-family:Arial; overflow:hidden;}
 
 .slide {
-    display:none;
-    min-height:100vh;
-    padding:20px;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    opacity:0;
-    transform:translateX(40px);
-    transition: all 0.4s ease;
+display:none;
+min-height:100vh;
+padding:20px;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
 }
 
-.slide.active {
-    display:flex;
-    opacity:1;
-    transform:translateX(0);
-}
+.slide.active { display:flex; }
 
 .card {
-    background:#121212;
-    border:1px solid #222;
-    border-radius:30px;
-    padding:20px;
-    max-width:420px;
-    width:100%;
+background:#121212;
+border:1px solid #222;
+padding:20px;
+border-radius:25px;
+max-width:420px;
+width:100%;
 }
 
 .btn {
-    background:#00ff88;
-    color:black;
-    font-weight:900;
-    padding:15px;
-    border-radius:50px;
-    width:100%;
-    margin-top:20px;
+background:#00ff88;
+color:black;
+padding:15px;
+border-radius:50px;
+margin-top:15px;
+width:100%;
+font-weight:bold;
 }
 
 .btn-outline {
-    border:1px solid #333;
-    color:#888;
-    padding:10px;
-    border-radius:50px;
-    margin-top:10px;
-    font-size:12px;
+border:1px solid #333;
+color:#aaa;
+padding:10px;
+border-radius:50px;
+margin-top:10px;
+width:100%;
 }
 
-.gold { color:#ffcc00; }
-.green { color:#00ff88; }
-
 .video {
-    width:100%;
-    aspect-ratio:16/9;
-    border-radius:20px;
-    overflow:hidden;
-    margin:15px 0;
+width:100%;
+max-width:420px;
+aspect-ratio:16/9;
+overflow:hidden;
+border-radius:20px;
+margin:15px 0;
+}
+
+.carousel img {
+width:100%;
+border-radius:15px;
 }
 </style>
 </head>
@@ -81,33 +70,29 @@ body {
 
 <audio id="audio"></audio>
 
-<!-- 1 SAPATARIA -->
+<!-- SLIDE 1 -->
 <div class="slide active" id="s1">
-<h1 class="text-4xl font-black gold mb-6">ProSFF</h1>
+<h1 class="text-4xl font-bold text-yellow-400">ProSFF</h1>
+<p class="text-sm text-gray-400 mb-4">Consumo Inteligente Bonífica</p>
 
 <div class="card">
-<h2 class="text-lg font-bold mb-4">
-O MMN tradicional tenta servir o mesmo número de sapato para todos os tamanhos de pés.
-</h2>
-
-<p class="text-gray-400 text-sm mb-6">
-Mas pessoas têm ritmos diferentes.
+<p>
+Nosso modelo de negócio não é um calçado de tamanho único.<br><br>
+É uma sapataria que tem um modelo para vários tamanhos de pés.
 </p>
 
-<button class="btn" onclick="go(2)">Entrar na sapataria</button>
+<button class="btn" onclick="go(2)">Conheça o modelo de negócio</button>
 </div>
 </div>
 
-<!-- 2 PROBLEMA -->
+<!-- SLIDE 2 -->
 <div class="slide" id="s2">
 <div class="card">
-<h2 class="text-lg font-bold mb-4">
-Alguns crescem rápido.<br>Outros desistem.
-</h2>
-
-<p class="text-gray-400 text-sm mb-6">
-Não é falta de esforço.<br>
-É falta de encaixe.
+<p>
+Alguns avançam.<br>Outros travam.<br><br>
+Não é falta de esforço,<br>
+é só o calçado que está apertado.<br><br>
+Basta trocar o número.
 </p>
 
 <button class="btn" onclick="go(3)">Entender</button>
@@ -115,176 +100,132 @@ Não é falta de esforço.<br>
 </div>
 </div>
 
-<!-- 3 VIRADA -->
+<!-- SLIDE 3 -->
 <div class="slide" id="s3">
 <div class="card">
-<h2 class="text-lg font-bold mb-4">
-O ProSFF não é um modelo.
-</h2>
-
-<p class="text-gray-400 text-sm mb-6">
-É uma sapataria.<br><br>
-Cada pessoa constrói no seu ritmo.
+<p>
+O ProSFF não é um modelo único.<br><br>
+É uma sapataria.
 </p>
 
-<button class="btn" onclick="go(4)">Ver a base</button>
+<button class="btn" onclick="go(4)">Continuar</button>
+<button class="btn-outline" onclick="go(2)">Voltar</button>
 </div>
 </div>
 
-<!-- 4 VIDEO INDUSTRIA -->
+<!-- SLIDE 4 VIDEO -->
 <div class="slide" id="s4">
-<h2 class="text-xs uppercase text-gray-500">Estrutura real</h2>
-
 <div class="video">
-<iframe width="100%" height="100%"
-src="https://www.youtube.com/embed/RGw-nxKio-0?start=95&end=115&controls=1&rel=0&modestbranding=1"
-frameborder="0"
-allowfullscreen></iframe>
-</div>
-
-<div class="card">
-<p class="text-sm text-gray-400">
-Existe uma estrutura sólida por trás.
-</p>
+<iframe id="v1" width="100%" height="100%"
+src="https://www.youtube.com/embed/RGw-nxKio-0?controls=1"
+frameborder="0" allowfullscreen></iframe>
 </div>
 
 <button class="btn" onclick="go(5)">Continuar</button>
+<button class="btn-outline" onclick="go(3)">Voltar</button>
 </div>
 
-<!-- 5 PRODUTOS -->
+<!-- SLIDE 5 CONSUMIDOR -->
 <div class="slide" id="s5">
 <div class="card">
-
-<h2 class="text-lg font-bold mb-4">
-O que você consome importa
-</h2>
-
-<p class="text-sm text-gray-400 mb-6">
-No ProSFF você aprende a entender rótulos e impacto no corpo.
+<p>
+Consumidor inteligente compra direto da fábrica.<br><br>
+Com até 50% de economia.
 </p>
 
-<a href="#" target="_blank">
-<button class="btn">
-Acessar curadoria (em breve)
-</button>
-</a>
-
+<button class="btn" onclick="go(6)">Continuar</button>
+<button class="btn-outline" onclick="go(4)">Voltar</button>
+</div>
 </div>
 
-<button class="btn-outline" onclick="go(6)">Continuar</button>
-</div>
-
-<!-- 6 VIDEO CONSUMO -->
+<!-- SLIDE 6 PRODUTOS -->
 <div class="slide" id="s6">
-<h2 class="text-xs uppercase text-gray-500">O motor</h2>
-
-<div class="video">
-<iframe width="100%" height="100%"
-src="https://www.youtube.com/embed/lGVU6AythoQ?controls=1&rel=0&modestbranding=1"
-frameborder="0"
-allowfullscreen></iframe>
-</div>
-
 <div class="card">
-<p class="text-sm text-gray-400">
-Você não vende.<br>
-Você redireciona o que já consome.
-</p>
+<p>Linhas de produtos</p>
+
+<div class="carousel">
+<img src="img1.jpg">
 </div>
 
-<button class="btn" onclick="go(7)">Entendi</button>
 </div>
 
-<!-- 7 ESTRUTURA -->
+<button class="btn" onclick="go(7)">Continuar</button>
+<button class="btn-outline" onclick="go(5)">Voltar</button>
+</div>
+
+<!-- SLIDE 7 COMUNIDADE -->
 <div class="slide" id="s7">
 <div class="card">
-<h2 class="text-lg font-bold mb-4">
-1 pessoa → 3 pessoas
-</h2>
-
-<p class="text-gray-400 text-sm">
-Não é multidão.<br>
-É duplicação.
-</p>
+<p>Sociedade de Consumo Inteligente</p>
 
 <button class="btn" onclick="go(8)">Continuar</button>
+<button class="btn-outline" onclick="go(6)">Voltar</button>
 </div>
 </div>
 
-<!-- 8 TEMPO -->
+<!-- SLIDE 8 VIDEO -->
 <div class="slide" id="s8">
-<div class="card">
-<h2 class="text-lg font-bold mb-4 green">
-O tempo muda tudo
-</h2>
-
-<p class="text-gray-400 text-sm">
-Duas pessoas chegam no mesmo resultado.<br><br>
-Mas em tempos diferentes.
-</p>
-
-<button class="btn" onclick="go(9)">Simular</button>
-</div>
+<div class="video">
+<iframe id="v2" width="100%" height="100%"
+src="https://www.youtube.com/embed/lGVU6AythoQ?controls=1"
+frameborder="0" allowfullscreen></iframe>
 </div>
 
-<!-- 9 BONUS -->
+<button class="btn" onclick="go(9)">Continuar</button>
+<button class="btn-outline" onclick="go(7)">Voltar</button>
+</div>
+
+<!-- SLIDE 9 DUPLICAÇÃO -->
 <div class="slide" id="s9">
 <div class="card">
+<h2>Célula de duplicação</h2>
+<p>1 → 3 → 9 → 27</p>
 
-<h2 class="text-lg font-bold mb-4">
-Como funciona a bonificação
-</h2>
-
-<p class="text-xs text-gray-400 mb-4">
-Os ganhos dependem da construção da rede e regras oficiais da empresa.
-</p>
-
-<button class="btn-outline">
-Gráficos oficiais (em breve)
-</button>
-
+<button class="btn" onclick="go(10)">Continuar</button>
+<button class="btn-outline" onclick="go(8)">Voltar</button>
+</div>
 </div>
 
-<button class="btn mt-6" onclick="go(10)">Continuar</button>
-</div>
-
-<!-- 10 SIMULADOR -->
+<!-- SLIDE 10 BONUS -->
 <div class="slide" id="s10">
 <div class="card">
+<p>Bônus oficiais</p>
 
-<h2 class="text-lg font-bold mb-4">
-Simular sua construção
-</h2>
-
-<p class="text-sm text-gray-400 mb-6">
-Veja sua evolução no seu ritmo.
-</p>
-
-<a href="https://simuladorprosff.vercel.app/" target="_blank">
-<button class="btn">
-Abrir simulador ProSFF
-</button>
-</a>
+<div class="carousel">
+<img src="bonus1.jpg">
+</div>
 
 </div>
 
-<button class="btn mt-6" onclick="go(11)">Quero meu plano</button>
+<button class="btn" onclick="go(11)">Continuar</button>
+<button class="btn-outline" onclick="go(9)">Voltar</button>
 </div>
 
-<!-- 11 LEAD -->
+<!-- SLIDE 11 SIMULADOR -->
 <div class="slide" id="s11">
 <div class="card">
+<a href="https://simuladorprosff.vercel.app/" target="_blank">
+<button class="btn">Abrir simulador</button>
+</a>
+</div>
 
-<h2 class="text-lg font-bold mb-4">
-Receber plano personalizado
-</h2>
+<button class="btn" onclick="go(12)">Quero meu plano</button>
+<button class="btn-outline" onclick="go(10)">Voltar</button>
+</div>
 
-<input id="nome" placeholder="Seu nome" class="w-full p-3 mb-3 rounded-xl text-black">
-<input id="zap" placeholder="Seu WhatsApp" class="w-full p-3 rounded-xl text-black">
+<!-- SLIDE 12 LEAD -->
+<div class="slide" id="s12">
+<div class="card">
 
-<button class="btn" onclick="lead()">
-Continuar
-</button>
+<input id="nome" placeholder="Nome" class="w-full p-2 text-black mb-2">
+<input id="zap" placeholder="WhatsApp" class="w-full p-2 text-black mb-2">
+
+<select id="tipo" class="w-full p-2 text-black mb-2">
+<option>Consumidor</option>
+<option>Consultor</option>
+</select>
+
+<button class="btn" onclick="lead()">Enviar</button>
 
 </div>
 </div>
@@ -294,14 +235,18 @@ Continuar
 function go(n){
 document.querySelectorAll('.slide').forEach(s=>s.classList.remove('active'));
 document.getElementById('s'+n).classList.add('active');
-window.scrollTo(0,0);
+
+document.querySelectorAll("iframe").forEach(v=>{
+v.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+});
 }
 
 function lead(){
 let nome = document.getElementById('nome').value;
 let zap = document.getElementById('zap').value;
+let tipo = document.getElementById('tipo').value;
 
-let msg = `Nome: ${nome} | WhatsApp: ${zap}`;
+let msg = `Nome:${nome} | Tipo:${tipo} | Whats:${zap}`;
 
 window.open(`https://wa.me/5522999231211?text=${encodeURIComponent(msg)}`);
 }
