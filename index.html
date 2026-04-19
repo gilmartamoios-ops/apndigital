@@ -3,12 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>ProSFF</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
-body { background:#080808; color:white; font-family:Arial; overflow:hidden;}
+body {
+background:#080808;
+color:white;
+font-family:Arial;
+overflow:hidden;
+}
 
 .slide {
 display:none;
@@ -20,7 +26,9 @@ align-items:center;
 text-align:center;
 }
 
-.slide.active { display:flex; }
+.slide.active {
+display:flex;
+}
 
 .card {
 background:#121212;
@@ -58,22 +66,15 @@ overflow:hidden;
 border-radius:20px;
 margin:15px 0;
 }
-
-.carousel img {
-width:100%;
-border-radius:15px;
-}
 </style>
 </head>
 
 <body>
 
-<audio id="audio"></audio>
-
 <!-- SLIDE 1 -->
 <div class="slide active" id="s1">
-<h1 class="text-4xl font-bold text-yellow-400">ProSFF</h1>
-<p class="text-sm text-gray-400 mb-4">Consumo Inteligente Bonífica</p>
+<h1 class="text-4xl text-yellow-400">ProSFF</h1>
+<p class="text-gray-400 text-sm mb-4">Consumo Inteligente Bonífica</p>
 
 <div class="card">
 <p>
@@ -89,7 +90,7 @@ Nosso modelo de negócio não é um calçado de tamanho único.<br><br>
 <div class="slide" id="s2">
 <div class="card">
 <p>
-Alguns avançam.<br>Outros travam.<br><br>
+Alguns avançam. Outros travam.<br><br>
 Não é falta de esforço,<br>
 é só o calçado que está apertado.<br><br>
 Basta trocar o número.
@@ -116,9 +117,7 @@ O ProSFF não é um modelo único.<br><br>
 <!-- SLIDE 4 VIDEO -->
 <div class="slide" id="s4">
 <div class="video">
-<iframe id="v1" width="100%" height="100%"
-src="https://www.youtube.com/embed/RGw-nxKio-0?controls=1"
-frameborder="0" allowfullscreen></iframe>
+<iframe id="v1" src="https://www.youtube.com/embed/RGw-nxKio-0?controls=1" width="100%" height="100%" frameborder="0"></iframe>
 </div>
 
 <button class="btn" onclick="go(5)">Continuar</button>
@@ -141,11 +140,16 @@ Com até 50% de economia.
 <!-- SLIDE 6 PRODUTOS -->
 <div class="slide" id="s6">
 <div class="card">
-<p>Linhas de produtos</p>
+<h3>Linhas de Produtos</h3>
 
-<div class="carousel">
-<img src="img1.jpg">
+<img id="prodImg" src="img/prod1.jpg" class="rounded-xl">
+
+<div class="flex justify-between mt-3">
+<button onclick="prod(-1)">←</button>
+<button onclick="prod(1)">→</button>
 </div>
+
+<p id="prodIndex" class="text-xs text-gray-400 mt-2">1 / 3</p>
 
 </div>
 
@@ -157,6 +161,7 @@ Com até 50% de economia.
 <div class="slide" id="s7">
 <div class="card">
 <p>Sociedade de Consumo Inteligente</p>
+<p class="text-sm text-gray-400">Ambiente de curadoria e aprendizado.</p>
 
 <button class="btn" onclick="go(8)">Continuar</button>
 <button class="btn-outline" onclick="go(6)">Voltar</button>
@@ -166,9 +171,7 @@ Com até 50% de economia.
 <!-- SLIDE 8 VIDEO -->
 <div class="slide" id="s8">
 <div class="video">
-<iframe id="v2" width="100%" height="100%"
-src="https://www.youtube.com/embed/lGVU6AythoQ?controls=1"
-frameborder="0" allowfullscreen></iframe>
+<iframe id="v2" src="https://www.youtube.com/embed/lGVU6AythoQ?controls=1" width="100%" height="100%" frameborder="0"></iframe>
 </div>
 
 <button class="btn" onclick="go(9)">Continuar</button>
@@ -178,7 +181,7 @@ frameborder="0" allowfullscreen></iframe>
 <!-- SLIDE 9 DUPLICAÇÃO -->
 <div class="slide" id="s9">
 <div class="card">
-<h2>Célula de duplicação</h2>
+<h3>Célula de duplicação</h3>
 <p>1 → 3 → 9 → 27</p>
 
 <button class="btn" onclick="go(10)">Continuar</button>
@@ -189,10 +192,14 @@ frameborder="0" allowfullscreen></iframe>
 <!-- SLIDE 10 BONUS -->
 <div class="slide" id="s10">
 <div class="card">
-<p>Bônus oficiais</p>
 
-<div class="carousel">
-<img src="bonus1.jpg">
+<h3>Plano de ganhos</h3>
+
+<img id="bonusImg" src="img/bonus1.jpg" class="rounded-xl">
+
+<div class="flex justify-between mt-3">
+<button onclick="bonus(-1)">←</button>
+<button onclick="bonus(1)">→</button>
 </div>
 
 </div>
@@ -237,10 +244,36 @@ document.querySelectorAll('.slide').forEach(s=>s.classList.remove('active'));
 document.getElementById('s'+n).classList.add('active');
 
 document.querySelectorAll("iframe").forEach(v=>{
-v.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+v.src = v.src;
 });
 }
 
+// PRODUTOS
+let p = ["img/prod1.jpg","img/prod2.jpg","img/prod3.jpg"];
+let pi = 0;
+
+function prod(d){
+pi += d;
+if(pi<0) pi = p.length-1;
+if(pi>=p.length) pi=0;
+
+document.getElementById("prodImg").src = p[pi];
+document.getElementById("prodIndex").innerText = (pi+1)+" / "+p.length;
+}
+
+// BONUS
+let b = ["img/bonus1.jpg","img/bonus2.jpg","img/bonus3.jpg"];
+let bi = 0;
+
+function bonus(d){
+bi += d;
+if(bi<0) bi = b.length-1;
+if(bi>=b.length) bi=0;
+
+document.getElementById("bonusImg").src = b[bi];
+}
+
+// LEAD
 function lead(){
 let nome = document.getElementById('nome').value;
 let zap = document.getElementById('zap').value;
