@@ -3,20 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>ProSFF</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
-body {
+body{
 background:#080808;
 color:white;
 font-family:Arial;
 overflow:hidden;
 }
 
-.slide {
+.slide{
 display:none;
 min-height:100vh;
 padding:20px;
@@ -28,31 +27,31 @@ opacity:0;
 transition:0.4s;
 }
 
-.slide.active {
+.slide.active{
 display:flex;
 opacity:1;
 }
 
-.card {
+.card{
 background:#121212;
 border:1px solid #222;
 padding:20px;
 border-radius:25px;
-max-width:450px;
+max-width:500px;
 width:100%;
 }
 
-.btn {
+.btn{
 background:#00ff88;
 color:black;
-padding:15px;
+padding:14px;
 border-radius:50px;
 margin-top:10px;
 width:100%;
 font-weight:bold;
 }
 
-.btn-back {
+.btn-back{
 background:#222;
 color:#aaa;
 padding:10px;
@@ -61,7 +60,7 @@ margin-top:10px;
 width:100%;
 }
 
-.progress {
+.progress{
 position:fixed;
 top:0;
 left:0;
@@ -72,10 +71,25 @@ transition:0.4s;
 z-index:999;
 }
 
-iframe {
+iframe{
 width:100%;
-height:220px;
-border-radius:20px;
+height:240px;
+border-radius:15px;
+}
+
+img{
+width:100%;
+border-radius:15px;
+}
+
+.nav-img{
+display:flex;
+gap:10px;
+margin-top:10px;
+}
+
+.nav-img button{
+flex:1;
 }
 </style>
 </head>
@@ -88,7 +102,7 @@ border-radius:20px;
 <source src="audio/intro.mp3" type="audio/mpeg">
 </audio>
 
-<!-- 1 -->
+<!-- SLIDE 1 -->
 <div class="slide active" id="s1">
 <h1 class="text-4xl text-yellow-400">ProSFF</h1>
 <p class="mb-4">Consumo Inteligente Bonífica</p>
@@ -96,16 +110,15 @@ border-radius:20px;
 <div class="card">
 <p>
 Você já consome todos os meses.<br><br>
-A pergunta é:<br>
-você está apenas gastando…<br>
-ou existe uma forma inteligente de transformar isso em renda?
+A diferença não está no que você compra…<br><br>
+mas no modelo por trás desse consumo.
 </p>
 
 <button class="btn" onclick="go(2)">Conheça o modelo de negócio</button>
 </div>
 </div>
 
-<!-- 2 -->
+<!-- SLIDE 2 -->
 <div class="slide" id="s2">
 <div class="card">
 <p>
@@ -119,13 +132,13 @@ Basta trocar o número.
 </div>
 </div>
 
-<!-- 3 -->
+<!-- SLIDE 3 -->
 <div class="slide" id="s3">
 <div class="card">
 <p>
 Nosso modelo de negócio não é um calçado de tamanho único.<br><br>
 É uma sapataria:<br>
-um mesmo modelo com diferentes tamanhos para diferentes perfis.
+um sistema que se adapta ao seu perfil.
 </p>
 
 <button class="btn" onclick="go(4)">Continuar</button>
@@ -133,13 +146,13 @@ um mesmo modelo com diferentes tamanhos para diferentes perfis.
 </div>
 </div>
 
-<!-- 4 -->
+<!-- SLIDE 4 -->
 <div class="slide" id="s4">
 <div class="card">
 <iframe src="https://www.youtube.com/embed/RGw-nxKio-0"></iframe>
 
 <p class="mt-3 text-sm text-gray-400">
-Infraestrutura real garantindo entrega, escala e consistência.
+Estrutura real garantindo entrega, escala e consistência.
 </p>
 
 <button class="btn" onclick="go(5)">Continuar</button>
@@ -147,13 +160,13 @@ Infraestrutura real garantindo entrega, escala e consistência.
 </div>
 </div>
 
-<!-- 5 -->
+<!-- SLIDE 5 -->
 <div class="slide" id="s5">
 <div class="card">
 <p>
-O ProSFF não se baseia em venda.<br><br>
-Se baseia em consumo inteligente:<br>
-pessoas comprando diretamente com vantagem real.
+O ProSFF não depende de venda.<br><br>
+Ele se sustenta no consumo inteligente:
+pessoas comprando melhor e gerando volume real.
 </p>
 
 <button class="btn" onclick="go(6)">Continuar</button>
@@ -161,12 +174,13 @@ pessoas comprando diretamente com vantagem real.
 </div>
 </div>
 
-<!-- 6 -->
+<!-- SLIDE 6 -->
 <div class="slide" id="s6">
 <div class="card">
 <p>
-O consumidor compra direto da fábrica com até 50% de vantagem.<br><br>
-Isso aumenta retenção e estabilidade do sistema.
+O consumidor compra direto da fábrica<br>
+com vantagem real no preço.<br><br>
+Isso cria retenção e previsibilidade.
 </p>
 
 <button class="btn" onclick="go(7)">Continuar</button>
@@ -174,13 +188,15 @@ Isso aumenta retenção e estabilidade do sistema.
 </div>
 </div>
 
-<!-- 7 -->
+<!-- SLIDE 7 -->
 <div class="slide" id="s7">
 <div class="card">
 <p>
 A construção acontece em células simples:<br><br>
-1 consumidor conecta 3 consumidores.<br><br>
-Sem pressão. Sem estoque. Sem venda.
+1 conecta 3<br><br>
+Sem estoque<br>
+Sem pressão<br>
+Sem venda
 </p>
 
 <button class="btn" onclick="go(8)">Continuar</button>
@@ -188,7 +204,7 @@ Sem pressão. Sem estoque. Sem venda.
 </div>
 </div>
 
-<!-- 8 -->
+<!-- SLIDE 8 -->
 <div class="slide" id="s8">
 <div class="card">
 <iframe src="https://www.youtube.com/embed/lGVU6AythoQ"></iframe>
@@ -198,13 +214,13 @@ Sem pressão. Sem estoque. Sem venda.
 </div>
 </div>
 
-<!-- 9 -->
+<!-- SLIDE 9 -->
 <div class="slide" id="s9">
 <div class="card">
 <p>
 A duplicação é matemática:<br><br>
 1 → 3 → 9 → 27 → 81<br><br>
-Mas o ritmo respeita o tamanho do seu passo.
+Mas o ritmo é seu.
 </p>
 
 <button class="btn" onclick="go(10)">Continuar</button>
@@ -212,36 +228,46 @@ Mas o ritmo respeita o tamanho do seu passo.
 </div>
 </div>
 
-<!-- 10 -->
+<!-- SLIDE 10 (BÔNUS) -->
 <div class="slide" id="s10">
 <div class="card">
-<img src="img/bonus1.jpg">
 
-<p class="mt-2 text-sm text-gray-400">
-Sistema de bônus baseado em volume real de consumo.
-</p>
+<img id="bonusImg" src="img/bonus1.jpg">
+
+<div class="nav-img">
+<button class="btn" onclick="trocarBonus(-1)">←</button>
+<button class="btn" onclick="trocarBonus(1)">→</button>
+</div>
 
 <button class="btn" onclick="go(11)">Continuar</button>
 <button class="btn-back" onclick="go(9)">Voltar</button>
+
 </div>
 </div>
 
-<!-- 11 -->
+<!-- SLIDE 11 (GRÁFICOS) -->
 <div class="slide" id="s11">
 <div class="card">
-<img src="img/bonus5.jpg">
+
+<img id="grafImg" src="img/bonus5.jpg">
+
+<div class="nav-img">
+<button class="btn" onclick="trocarGraf(-1)">←</button>
+<button class="btn" onclick="trocarGraf(1)">→</button>
+</div>
 
 <button class="btn" onclick="go(12)">Continuar</button>
 <button class="btn-back" onclick="go(10)">Voltar</button>
+
 </div>
 </div>
 
-<!-- 12 -->
+<!-- SLIDE 12 -->
 <div class="slide" id="s12">
 <div class="card">
 
 <a href="https://simuladorprosff.vercel.app/" target="_blank">
-<button class="btn">Simular meu cenário</button>
+<button class="btn">Simular cenário</button>
 </a>
 
 <input id="nome" placeholder="Seu nome" class="text-black p-2 mt-2">
@@ -255,22 +281,54 @@ Sistema de bônus baseado em volume real de consumo.
 
 <script>
 
-let total = 12;
-let audio = document.getElementById("bgm");
+let total=12;
+let audio=document.getElementById("bgm");
 
 document.body.addEventListener("click", ()=>audio.play(), {once:true});
 
 function go(n){
 
-if(n===5) audio.src="audio/middle.mp3";
-if(n===10) audio.src="audio/final.mp3";
+if(n===5){
+audio.src="audio/middle.mp3";
+audio.load();
+audio.play();
+}
+
+if(n===10){
+audio.src="audio/final.mp3";
+audio.load();
+audio.play();
+}
 
 document.querySelectorAll('.slide').forEach(s=>s.classList.remove('active'));
 document.getElementById('s'+n).classList.add('active');
 
-document.getElementById('progress').style.width = (n/total*100)+"%";
+document.getElementById('progress').style.width=(n/total*100)+"%";
 }
 
+// BONUS
+let bonusImgs=["img/bonus1.jpg","img/bonus2.jpg","img/bonus3.jpg","img/bonus4.jpg","img/bonus5.jpg","img/bonus6.jpg"];
+let b=0;
+
+function trocarBonus(d){
+b+=d;
+if(b<0)b=bonusImgs.length-1;
+if(b>=bonusImgs.length)b=0;
+document.getElementById("bonusImg").src=bonusImgs[b];
+}
+
+// GRAFICOS
+let grafImgs=["img/bonus5.jpg","img/bonus6.jpg","img/bonus7.jpg"];
+let g=0;
+
+function trocarGraf(d){
+g+=d;
+if(g<0)g=grafImgs.length-1;
+if(g>=grafImgs.length)g=0;
+document.getElementById("grafImg").src=grafImgs[g];
+}
+
+// LEAD
 function lead(){
 let nome=document.getElementById('nome').value;
 let zap=document.getElementById('zap').value;
