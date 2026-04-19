@@ -26,6 +26,11 @@ img{width:100%;border-radius:15px;}
 <div class="progress" id="progress"></div>
 
 <audio id="audio"></audio>
+
+<script>
+let perfil = "";
+function setPerfil(p){ perfil = p; }
+</script>
 <div class="slide active" id="s1">
 <h1 class="text-4xl text-yellow-400">ProSFF</h1>
 <p>Consumo Inteligente Bonífica</p>
@@ -33,9 +38,17 @@ img{width:100%;border-radius:15px;}
 <div class="card">
 <p>
 Você já consome todos os meses.<br><br>
-A diferença está no modelo por trás disso.
+Quer apenas economizar ou também gerar renda?
 </p>
-<button class="btn" onclick="go(2)">Conhecer o modelo</button>
+
+<button class="btn" onclick="setPerfil('consumidor'); go(2)">
+Quero economizar
+</button>
+
+<button class="btn" onclick="setPerfil('consultor'); go(2)">
+Quero gerar renda
+</button>
+
 </div>
 </div>
 
@@ -71,10 +84,7 @@ Nosso modelo não é um calçado de tamanho único.<br><br>
 </div>
 <div class="slide" id="s5">
 <div class="card">
-<p>
-Consumo inteligente:<br><br>
-compra direta, vantagem real e recorrência.
-</p>
+<p id="textoConsumo"></p>
 <button class="btn" onclick="go(6)">Continuar</button>
 <button class="btn-back" onclick="go(4)">Voltar</button>
 </div>
@@ -82,7 +92,6 @@ compra direta, vantagem real e recorrência.
 
 <div class="slide" id="s6">
 <div class="card">
-
 <img id="prodImg" src="img/prod1.jpg">
 
 <div class="nav">
@@ -96,7 +105,6 @@ Linhas de produtos com consumo recorrente.
 
 <button class="btn" onclick="go(7)">Continuar</button>
 <button class="btn-back" onclick="go(5)">Voltar</button>
-
 </div>
 </div>
 
@@ -148,6 +156,11 @@ O ritmo depende do seu passo.
 <div class="slide" id="s11">
 <div class="card">
 
+<p>
+A estrutura é simples.<br><br>
+Mas só funciona para quem começa.
+</p>
+
 <a href="https://simuladorprosff.vercel.app/" target="_blank">
 <button class="btn">Simular cenário</button>
 </a>
@@ -194,10 +207,26 @@ audio.load();
 audio.play();
 }
 
+if(n===5){ atualizarTexto(); }
+
 document.querySelectorAll('.slide').forEach(s=>s.classList.remove('active'));
 document.getElementById('s'+n).classList.add('active');
 
 document.getElementById('progress').style.width=(n/11*100)+"%";
+}
+
+function atualizarTexto(){
+
+if(perfil==="consumidor"){
+document.getElementById("textoConsumo").innerHTML =
+"Você já consome.<br><br>Agora pode pagar menos por isso.";
+}
+
+if(perfil==="consultor"){
+document.getElementById("textoConsumo").innerHTML =
+"Você já consome.<br><br>Agora pode transformar isso em renda recorrente.";
+}
+
 }
 
 let prodImgs=["img/prod1.jpg","img/prod2.jpg","img/prod3.jpg"];
@@ -224,7 +253,13 @@ function lead(){
 let nome=document.getElementById('nome').value;
 let zap=document.getElementById('zap').value;
 
-let msg=`Nome:${nome} Whats:${zap}`;
+let msg = 
+`Nome: ${nome}
+Perfil: ${perfil}
+Whats: ${zap}
+
+Quero iniciar na Sociedade de Consumo Inteligente`;
+
 window.open(`https://wa.me/5522999231211?text=${encodeURIComponent(msg)}`);
 }
 
