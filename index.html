@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>ProSFF</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
@@ -61,7 +60,6 @@ width:100%;
 img{
 width:100%;
 border-radius:15px;
-transition:0.2s;
 }
 
 .nav{
@@ -75,40 +73,24 @@ width:100%;
 height:240px;
 border-radius:15px;
 }
-
-.progress{
-position:fixed;
-top:0;
-left:0;
-height:4px;
-background:#00ff88;
-width:0%;
-}
 </style>
 </head>
 
 <body>
 
-<div class="progress" id="progress"></div>
-
 <audio id="audio" loop>
 <source src="audio.mp3" type="audio/mpeg">
 </audio>
+
+<!-- TELA 1 -->
 <div class="slide active" id="s1">
 <div class="card">
 
-<h1 class="text-3xl text-yellow-400">ProSFF</h1>
-<p>Consumo Inteligente Bonífica</p>
-
-<br>
+<h1 class="text-yellow-400 text-3xl">ProSFF</h1>
 
 <p>
 Você gasta com sua saúde todos os meses<br><br>
-
-E se você pudesse cuidar da saúde<br>
-reduzindo esse custo?<br><br>
-
-Ou até gerar uma segunda renda com ele?
+E se pudesse reduzir esse custo ou gerar renda com ele?
 </p>
 
 <button class="btn" onclick="go(2)">Quero saber mais</button>
@@ -116,17 +98,19 @@ Ou até gerar uma segunda renda com ele?
 </div>
 </div>
 
+<!-- TELA 2 -->
 <div class="slide" id="s2">
 <div class="card">
 
 <iframe src="https://www.youtube.com/embed/RGw-nxKio-0"></iframe>
 
-<button class="btn" onclick="go(3)">Produtos que geram saúde</button>
+<button class="btn" onclick="go(3)">Avançar</button>
 <button class="btn-back" onclick="go(1)">Voltar</button>
 
 </div>
 </div>
 
+<!-- TELA 3 -->
 <div class="slide" id="s3">
 <div class="card">
 
@@ -138,54 +122,54 @@ Ou até gerar uma segunda renda com ele?
 </div>
 
 <button class="btn" onclick="go(4)">Avançar</button>
-<button class="btn-back" onclick="go(2)">Voltar</button>
 
 </div>
 </div>
+
+<!-- TELA 4 -->
 <div class="slide" id="s4">
 <div class="card">
 
 <p>
-Ao se cadastrar na Bonífica<br><br>
-
-Você adquire os produtos direto da fábrica com 50% de desconto<br>
-Recebe informações nutricionais e científicas dos produtos<br>
-Pode revender, se quiser, com 100% de lucro gerando uma renda extra
+Ao se cadastrar na Bonífica você recebe produtos com desconto e pode revender com lucro.
 </p>
 
 <button class="btn" onclick="go(5)">Avançar</button>
-<button class="btn-back" onclick="go(3)">Voltar</button>
 
 </div>
 </div>
 
+<!-- TELA 5 -->
 <div class="slide" id="s5">
 <div class="card">
 
 <p>
-Para se tornar um consumidor inteligente cuidando da sua saúde e economizando clique no botão “consumidor”<br><br>
-
-Se quiser obter uma microfranquia Bonífica e iniciar seu negócio próprio, clique em “consultor”
+Escolha seu perfil:
 </p>
 
-<button class="btn" onclick="setPerfil('consumidor'); goLead()">Consumidor</button>
-<button class="btn" onclick="setPerfil('consultor'); go(6)">Consultor</button>
-<button class="btn-back" onclick="go(4)">Voltar</button>
+<button class="btn" onclick="setPerfil('consumidor'); enviarConsumidor()">
+Consumidor
+</button>
+
+<button class="btn" onclick="setPerfil('consultor'); go(6)">
+Consultor
+</button>
 
 </div>
 </div>
 
+<!-- TELA 6 -->
 <div class="slide" id="s6">
 <div class="card">
 
 <iframe src="https://www.youtube.com/embed/lGVU6AythoQ"></iframe>
 
-<button class="btn" onclick="go(7)">Bonificação</button>
-<button class="btn-back" onclick="go(5)">Voltar</button>
+<button class="btn" onclick="go(7)">Avançar</button>
 
 </div>
 </div>
 
+<!-- TELA 7 -->
 <div class="slide" id="s7">
 <div class="card">
 
@@ -196,57 +180,53 @@ Se quiser obter uma microfranquia Bonífica e iniciar seu negócio próprio, cli
 <button class="btn" onclick="trocarBonus(1)">→</button>
 </div>
 
-<button class="btn" onclick="go(8)">Protocolo ProSFF</button>
-<button class="btn-back" onclick="go(6)">Voltar</button>
+<button class="btn" onclick="go(8)">Avançar</button>
 
 </div>
 </div>
+
+<!-- TELA 8 -->
 <div class="slide" id="s8">
 <div class="card">
 
 <p>
-<b>Franquia de Consumo Inteligente Bonífica</b><br><br>
-
-O negócio tradicional é como um sapato apertado.<br>
-O consumo inteligente entende limites e necessidades individuais.<br><br>
-
-O método ProSFF funciona como uma sapataria onde o mesmo calçado atende tamanhos diferentes.<br><br>
-
-Calçar o sapato certo é libertador.
+O método ProSFF funciona como um sistema de consumo inteligente.
 </p>
 
-<button class="btn" onclick="go(9)">Simulador de bônus</button>
-<button class="btn-back" onclick="go(7)">Voltar</button>
+<button class="btn" onclick="go(9)">Simulador</button>
 
 </div>
 </div>
 
+<!-- TELA 9 -->
 <div class="slide" id="s9">
 <div class="card">
 
 <p>
-Simulador de Bônus<br><br>
-
-A sustentabilidade da sua franquia virá de metas alcançáveis.<br>
-O sucesso virá da duplicação de consumidores inteligentes.<br><br>
-
-1 consumidor conecta mais 3 consumidores por mês.
+Simulador de crescimento de rede
 </p>
 
-<button class="btn" onclick="go(10)">É aqui que tudo acontece</button>
+<button class="btn" onclick="window.open('https://simuladorprosff.vercel.app/','_blank')">
+É aqui que tudo acontece
+</button>
+
 <button class="btn-back" onclick="go(8)">Voltar</button>
 
 </div>
 </div>
 
+<!-- TELA FINAL -->
 <div class="slide" id="s10">
 <div class="card">
 
 <p>
-Fechamento do negócio
+Agora é sua decisão final.
 </p>
 
-<button class="btn" onclick="go(1)">Voltar para apresentação</button>
+<input id="nome" placeholder="Nome" class="text-black p-2 mt-2">
+<input id="zap" placeholder="WhatsApp" class="text-black p-2 mt-2">
+
+<button class="btn" onclick="finalizar()">Enviar e falar comigo</button>
 
 </div>
 </div>
@@ -254,37 +234,60 @@ Fechamento do negócio
 <script>
 
 let perfil="";
-let interacoes=0;
 
-/* áudio */
+/* ÁUDIO */
 function iniciarAudio(){
 let audio=document.getElementById("audio");
 audio.volume=0.3;
-audio.play().catch(()=>{document.addEventListener("click",()=>audio.play(),{once:true});});
+
+audio.play().catch(()=>{
+document.addEventListener("click",()=>audio.play(),{once:true});
+});
 }
 
-/* navegação */
+/* NAVEGAÇÃO */
 function go(n){
 document.querySelectorAll(".slide").forEach(s=>s.classList.remove("active"));
 document.getElementById("s"+n).classList.add("active");
 }
 
-/* perfil */
+/* PERFIL */
 function setPerfil(p){
 perfil=p;
 }
 
-/* lead consumidor */
-function goLead(){
-let nome=prompt("Nome:");
-let zap=prompt("WhatsApp:");
+/* CONSUMIDOR WHATSAPP */
+function enviarConsumidor(){
 
-window.open(`https://wa.me/5522999231211?text=${encodeURIComponent(
-"Nome:"+nome+" Perfil:"+perfil+" Whats:"+zap
-)}`);
+let nome = prompt("Seu nome:");
+let zap = prompt("Seu WhatsApp:");
+
+let msg =
+`RELATÓRIO PROSFF
+Nome: ${nome}
+Perfil: CONSUMIDOR
+Whats: ${zap}`;
+
+window.open(`https://wa.me/552299231211?text=${encodeURIComponent(msg)}`);
 }
 
-/* imagens */
+/* FINALIZAÇÃO COMPLETA */
+function finalizar(){
+
+let nome=document.getElementById("nome").value;
+let zap=document.getElementById("zap").value;
+
+let msg=
+`FECHAMENTO PROSFF
+Nome:${nome}
+Perfil:${perfil}
+Whats:${zap}`;
+
+window.open(`https://wa.me/552299231211?text=${encodeURIComponent(msg)}`);
+
+}
+
+/* PRODUTOS */
 let prodImgs=["img/prod1.jpg","img/prod2.jpg","img/prod3.jpg"];
 let p=0;
 
@@ -295,6 +298,7 @@ if(p>=prodImgs.length)p=0;
 document.getElementById("prodImg").src=prodImgs[p];
 }
 
+/* BONUS */
 let bonusImgs=["img/bonus1.jpg","img/bonus2.jpg","img/bonus3.jpg","img/bonus4.jpg","img/bonus5.jpg","img/bonus6.jpg","img/bonus7.jpg"];
 let b=0;
 
@@ -305,7 +309,7 @@ if(b>=bonusImgs.length)b=0;
 document.getElementById("bonusImg").src=bonusImgs[b];
 }
 
-/* init */
+/* INIT */
 window.onload=()=>{
 iniciarAudio();
 go(1);
