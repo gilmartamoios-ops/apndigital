@@ -3,19 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>ProSFF</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
-body{
+body {
 background:#080808;
 color:white;
 font-family:Arial;
 overflow:hidden;
 }
 
-.slide{
+/* TRANSIÇÃO */
+.slide {
 display:none;
 min-height:100vh;
 padding:20px;
@@ -24,15 +26,16 @@ justify-content:center;
 align-items:center;
 text-align:center;
 opacity:0;
-transition:0.4s;
+transition: opacity 0.4s ease;
 }
 
-.slide.active{
+.slide.active {
 display:flex;
 opacity:1;
 }
 
-.card{
+/* CARD */
+.card {
 background:#121212;
 border:1px solid #222;
 padding:20px;
@@ -41,34 +44,32 @@ max-width:420px;
 width:100%;
 }
 
-.btn{
+/* BOTÕES */
+.btn {
 background:#00ff88;
 color:black;
 padding:15px;
 border-radius:50px;
-margin-top:10px;
+margin-top:15px;
 width:100%;
 font-weight:bold;
+transition:0.3s;
 }
 
-.btn-back{
-background:#222;
-color:#aaa;
-padding:10px;
-border-radius:50px;
-margin-top:10px;
-width:100%;
+.btn:hover {
+transform:scale(1.05);
 }
 
-.progress{
+/* BARRA PROGRESSO */
+.progress {
 position:fixed;
 top:0;
 left:0;
 height:4px;
 background:#00ff88;
 width:0%;
-transition:0.4s;
-z-index:999;
+transition: width 0.4s ease;
+z-index:1000;
 }
 </style>
 </head>
@@ -77,12 +78,7 @@ z-index:999;
 
 <div class="progress" id="progress"></div>
 
-<audio id="bgm" loop>
-<source src="audio/intro.mp3" type="audio/mpeg">
-</audio>
-
 <!-- SLIDES -->
-
 <div class="slide active" id="s1">
 <h1 class="text-4xl text-yellow-400">ProSFF</h1>
 <p>Consumo Inteligente Bonífica</p>
@@ -90,7 +86,7 @@ z-index:999;
 <div class="card">
 <p>
 Nosso modelo de negócio não é um calçado de tamanho único.<br><br>
-É uma sapataria para diferentes perfis.
+É uma sapataria feita para diferentes perfis.
 </p>
 
 <button class="btn" onclick="go(2)">Conhecer</button>
@@ -99,9 +95,12 @@ Nosso modelo de negócio não é um calçado de tamanho único.<br><br>
 
 <div class="slide" id="s2">
 <div class="card">
-<p>Não é falta de esforço.<br>É só o calçado errado.</p>
+<p>
+Não é falta de esforço.<br>
+É só o calçado errado.
+</p>
+
 <button class="btn" onclick="go(3)">Continuar</button>
-<button class="btn-back" onclick="go(1)">Voltar</button>
 </div>
 </div>
 
@@ -109,7 +108,6 @@ Nosso modelo de negócio não é um calçado de tamanho único.<br><br>
 <div class="card">
 <p>O ProSFF é uma sapataria.</p>
 <button class="btn" onclick="go(4)">Continuar</button>
-<button class="btn-back" onclick="go(2)">Voltar</button>
 </div>
 </div>
 
@@ -117,7 +115,6 @@ Nosso modelo de negócio não é um calçado de tamanho único.<br><br>
 <div class="card">
 <iframe width="100%" height="200" src="https://www.youtube.com/embed/RGw-nxKio-0"></iframe>
 <button class="btn" onclick="go(5)">Continuar</button>
-<button class="btn-back" onclick="go(3)">Voltar</button>
 </div>
 </div>
 
@@ -125,23 +122,20 @@ Nosso modelo de negócio não é um calçado de tamanho único.<br><br>
 <div class="card">
 <p>Você já consome. Aqui você ganha com isso.</p>
 <button class="btn" onclick="go(6)">Continuar</button>
-<button class="btn-back" onclick="go(4)">Voltar</button>
 </div>
 </div>
 
 <div class="slide" id="s6">
 <div class="card">
-<img src="img/prod1.jpg">
+<img id="prodImg" src="img/prod1.jpg">
 <button class="btn" onclick="go(7)">Continuar</button>
-<button class="btn-back" onclick="go(5)">Voltar</button>
 </div>
 </div>
 
 <div class="slide" id="s7">
 <div class="card">
-<p>Sociedade de Consumo Inteligente</p>
+<p>Ambiente de construção silenciosa.</p>
 <button class="btn" onclick="go(8)">Continuar</button>
-<button class="btn-back" onclick="go(6)">Voltar</button>
 </div>
 </div>
 
@@ -149,7 +143,6 @@ Nosso modelo de negócio não é um calçado de tamanho único.<br><br>
 <div class="card">
 <iframe width="100%" height="200" src="https://www.youtube.com/embed/lGVU6AythoQ"></iframe>
 <button class="btn" onclick="go(9)">Continuar</button>
-<button class="btn-back" onclick="go(7)">Voltar</button>
 </div>
 </div>
 
@@ -157,62 +150,65 @@ Nosso modelo de negócio não é um calçado de tamanho único.<br><br>
 <div class="card">
 <p>1 → 3 → 9 → 27</p>
 <button class="btn" onclick="go(10)">Continuar</button>
-<button class="btn-back" onclick="go(8)">Voltar</button>
 </div>
 </div>
 
 <div class="slide" id="s10">
 <div class="card">
-<img src="img/bonus1.jpg">
+<img id="bonusImg" src="img/bonus1.jpg">
+<button class="btn" onclick="go(101)">Continuar</button>
+</div>
+</div>
+
+<div class="slide" id="s101">
+<div class="card">
+<img id="grafImg" src="img/bonus5.jpg">
 <button class="btn" onclick="go(11)">Continuar</button>
-<button class="btn-back" onclick="go(9)">Voltar</button>
 </div>
 </div>
 
 <div class="slide" id="s11">
 <div class="card">
-<img src="img/bonus5.jpg">
-<button class="btn" onclick="go(12)">Continuar</button>
-<button class="btn-back" onclick="go(10)">Voltar</button>
+<a href="https://simuladorprosff.vercel.app/" target="_blank">
+<button class="btn">Abrir simulador</button>
+</a>
+<button class="btn" onclick="go(12)">Quero começar</button>
 </div>
 </div>
 
 <div class="slide" id="s12">
 <div class="card">
-<input id="nome" placeholder="Nome" class="text-black p-2 mt-2">
-<input id="zap" placeholder="WhatsApp" class="text-black p-2 mt-2">
+<input id="nome" placeholder="Nome" class="text-black p-2 mb-2">
+<input id="zap" placeholder="WhatsApp" class="text-black p-2 mb-2">
+
+<select id="tipo" class="text-black p-2 mb-2">
+<option>Consumidor</option>
+<option>Consultor</option>
+</select>
 
 <button class="btn" onclick="lead()">Enviar</button>
-<button class="btn-back" onclick="go(11)">Voltar</button>
 </div>
 </div>
 
 <script>
 
-let total = 12;
-let audio = document.getElementById("bgm");
-
-// iniciar áudio no clique
-document.body.addEventListener("click", ()=>audio.play(), {once:true});
+let totalSlides = 12;
 
 function go(n){
-
-// troca música
-if(n===5) audio.src="audio/middle.mp3";
-if(n===10) audio.src="audio/final.mp3";
-
 document.querySelectorAll('.slide').forEach(s=>s.classList.remove('active'));
 document.getElementById('s'+n).classList.add('active');
 
-document.getElementById('progress').style.width = (n/total*100)+"%";
+let progress = (n / totalSlides) * 100;
+document.getElementById('progress').style.width = progress + "%";
 }
 
-// lead
+// LEAD
 function lead(){
 let nome=document.getElementById('nome').value;
 let zap=document.getElementById('zap').value;
+let tipo=document.getElementById('tipo').value;
 
-let msg=`Nome:${nome} Whats:${zap}`;
+let msg=`Nome:${nome} | Tipo:${tipo} | Whats:${zap}`;
 window.open(`https://wa.me/5522999231211?text=${encodeURIComponent(msg)}`);
 }
 
