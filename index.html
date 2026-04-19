@@ -71,7 +71,7 @@ margin:15px 0;
 
 <body>
 
-<!-- SLIDE 1 -->
+<!-- 1 -->
 <div class="slide active" id="s1">
 <h1 class="text-4xl text-yellow-400">ProSFF</h1>
 <p class="text-gray-400 text-sm mb-4">Consumo Inteligente Bonífica</p>
@@ -86,50 +86,47 @@ Nosso modelo de negócio não é um calçado de tamanho único.<br><br>
 </div>
 </div>
 
-<!-- SLIDE 2 -->
+<!-- 2 -->
 <div class="slide" id="s2">
 <div class="card">
 <p>
-Alguns avançam. Outros travam.<br><br>
 Não é falta de esforço,<br>
 é só o calçado que está apertado.<br><br>
 Basta trocar o número.
 </p>
 
-<button class="btn" onclick="go(3)">Entender</button>
+<button class="btn" onclick="go(3)">Continuar</button>
 <button class="btn-outline" onclick="go(1)">Voltar</button>
 </div>
 </div>
 
-<!-- SLIDE 3 -->
+<!-- 3 -->
 <div class="slide" id="s3">
 <div class="card">
-<p>
-O ProSFF não é um modelo único.<br><br>
-É uma sapataria.
-</p>
+<p>O ProSFF não é um modelo único.<br><br>É uma sapataria.</p>
 
 <button class="btn" onclick="go(4)">Continuar</button>
 <button class="btn-outline" onclick="go(2)">Voltar</button>
 </div>
 </div>
 
-<!-- SLIDE 4 VIDEO -->
+<!-- 4 -->
 <div class="slide" id="s4">
 <div class="video">
-<iframe id="v1" src="https://www.youtube.com/embed/RGw-nxKio-0?controls=1" width="100%" height="100%" frameborder="0"></iframe>
+<iframe src="https://www.youtube.com/embed/RGw-nxKio-0"></iframe>
 </div>
 
 <button class="btn" onclick="go(5)">Continuar</button>
 <button class="btn-outline" onclick="go(3)">Voltar</button>
 </div>
 
-<!-- SLIDE 5 CONSUMIDOR -->
+<!-- 5 -->
 <div class="slide" id="s5">
 <div class="card">
 <p>
-Consumidor inteligente compra direto da fábrica.<br><br>
-Com até 50% de economia.
+Você já consome.<br><br>
+Aqui você consome com inteligência.<br><br>
+Direto da fábrica, com mais valor.
 </p>
 
 <button class="btn" onclick="go(6)">Continuar</button>
@@ -137,7 +134,7 @@ Com até 50% de economia.
 </div>
 </div>
 
-<!-- SLIDE 6 PRODUTOS -->
+<!-- 6 PRODUTOS -->
 <div class="slide" id="s6">
 <div class="card">
 <h3>Linhas de Produtos</h3>
@@ -149,36 +146,35 @@ Com até 50% de economia.
 <button onclick="prod(1)">→</button>
 </div>
 
-<p id="prodIndex" class="text-xs text-gray-400 mt-2">1 / 3</p>
-
+<p id="prodIndex">1 / 5</p>
 </div>
 
 <button class="btn" onclick="go(7)">Continuar</button>
 <button class="btn-outline" onclick="go(5)">Voltar</button>
 </div>
 
-<!-- SLIDE 7 COMUNIDADE -->
+<!-- 7 -->
 <div class="slide" id="s7">
 <div class="card">
 <p>Sociedade de Consumo Inteligente</p>
-<p class="text-sm text-gray-400">Ambiente de curadoria e aprendizado.</p>
+<p class="text-gray-400">Ambiente silencioso de construção real</p>
 
 <button class="btn" onclick="go(8)">Continuar</button>
 <button class="btn-outline" onclick="go(6)">Voltar</button>
 </div>
 </div>
 
-<!-- SLIDE 8 VIDEO -->
+<!-- 8 -->
 <div class="slide" id="s8">
 <div class="video">
-<iframe id="v2" src="https://www.youtube.com/embed/lGVU6AythoQ?controls=1" width="100%" height="100%" frameborder="0"></iframe>
+<iframe src="https://www.youtube.com/embed/lGVU6AythoQ"></iframe>
 </div>
 
 <button class="btn" onclick="go(9)">Continuar</button>
 <button class="btn-outline" onclick="go(7)">Voltar</button>
 </div>
 
-<!-- SLIDE 9 DUPLICAÇÃO -->
+<!-- 9 -->
 <div class="slide" id="s9">
 <div class="card">
 <h3>Célula de duplicação</h3>
@@ -189,26 +185,50 @@ Com até 50% de economia.
 </div>
 </div>
 
-<!-- SLIDE 10 BONUS -->
+<!-- 10 BONUS -->
 <div class="slide" id="s10">
 <div class="card">
+<h3>Construção de renda</h3>
 
-<h3>Plano de ganhos</h3>
-
-<img id="bonusImg" src="img/bonus1.jpg" class="rounded-xl">
+<img id="bonusImg" src="img/bonus1.jpg">
 
 <div class="flex justify-between mt-3">
 <button onclick="bonus(-1)">←</button>
 <button onclick="bonus(1)">→</button>
 </div>
+</div>
+
+<button class="btn" onclick="go(101)">Continuar</button>
+<button class="btn-outline" onclick="go(9)">Voltar</button>
+</div>
+
+<!-- 10B GRAFICOS -->
+<div class="slide" id="s101">
+<div class="card">
+
+<h3>Como o modelo gera renda</h3>
+
+<p class="text-sm text-gray-400">
+Aqui está o plano oficial.<br><br>
+Os ganhos são consequência do consumo.
+</p>
+
+<img id="grafImg" src="img/bonus5.jpg">
+
+<div class="flex justify-between mt-3">
+<button onclick="graf(-1)">←</button>
+<button onclick="graf(1)">→</button>
+</div>
+
+<p id="grafIndex">1 / 3</p>
 
 </div>
 
 <button class="btn" onclick="go(11)">Continuar</button>
-<button class="btn-outline" onclick="go(9)">Voltar</button>
+<button class="btn-outline" onclick="go(10)">Voltar</button>
 </div>
 
-<!-- SLIDE 11 SIMULADOR -->
+<!-- 11 -->
 <div class="slide" id="s11">
 <div class="card">
 <a href="https://simuladorprosff.vercel.app/" target="_blank">
@@ -217,10 +237,10 @@ Com até 50% de economia.
 </div>
 
 <button class="btn" onclick="go(12)">Quero meu plano</button>
-<button class="btn-outline" onclick="go(10)">Voltar</button>
+<button class="btn-outline" onclick="go(101)">Voltar</button>
 </div>
 
-<!-- SLIDE 12 LEAD -->
+<!-- 12 -->
 <div class="slide" id="s12">
 <div class="card">
 
@@ -242,44 +262,41 @@ Com até 50% de economia.
 function go(n){
 document.querySelectorAll('.slide').forEach(s=>s.classList.remove('active'));
 document.getElementById('s'+n).classList.add('active');
-
-document.querySelectorAll("iframe").forEach(v=>{
-v.src = v.src;
-});
 }
 
 // PRODUTOS
-let p = ["img/prod1.jpg","img/prod2.jpg","img/prod3.jpg"];
-let pi = 0;
-
+let p=["img/prod1.jpg","img/prod2.jpg","img/prod3.jpg","img/prod4.jpg","img/prod5.jpg"];
+let pi=0;
 function prod(d){
-pi += d;
-if(pi<0) pi = p.length-1;
-if(pi>=p.length) pi=0;
-
-document.getElementById("prodImg").src = p[pi];
-document.getElementById("prodIndex").innerText = (pi+1)+" / "+p.length;
+pi=(pi+d+p.length)%p.length;
+document.getElementById("prodImg").src=p[pi];
+document.getElementById("prodIndex").innerText=(pi+1)+" / "+p.length;
 }
 
 // BONUS
-let b = ["img/bonus1.jpg","img/bonus2.jpg","img/bonus3.jpg"];
-let bi = 0;
-
+let b=["img/bonus1.jpg","img/bonus2.jpg","img/bonus3.jpg"];
+let bi=0;
 function bonus(d){
-bi += d;
-if(bi<0) bi = b.length-1;
-if(bi>=b.length) bi=0;
+bi=(bi+d+b.length)%b.length;
+document.getElementById("bonusImg").src=b[bi];
+}
 
-document.getElementById("bonusImg").src = b[bi];
+// GRAFICOS
+let g=["img/bonus5.jpg","img/bonus6.jpg","img/bonus7.jpg"];
+let gi=0;
+function graf(d){
+gi=(gi+d+g.length)%g.length;
+document.getElementById("grafImg").src=g[gi];
+document.getElementById("grafIndex").innerText=(gi+1)+" / "+g.length;
 }
 
 // LEAD
 function lead(){
-let nome = document.getElementById('nome').value;
-let zap = document.getElementById('zap').value;
-let tipo = document.getElementById('tipo').value;
+let nome=document.getElementById('nome').value;
+let zap=document.getElementById('zap').value;
+let tipo=document.getElementById('tipo').value;
 
-let msg = `Nome:${nome} | Tipo:${tipo} | Whats:${zap}`;
+let msg=`Nome:${nome} | Tipo:${tipo} | Whats:${zap}`;
 
 window.open(`https://wa.me/5522999231211?text=${encodeURIComponent(msg)}`);
 }
