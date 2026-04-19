@@ -101,7 +101,6 @@ margin-top:10px;
 <audio id="audio" loop>
   <source src="audio.mp3" type="audio/mpeg">
 </audio>
-
 <div class="slide active" id="s1">
 <h1 class="text-4xl text-yellow-400">ProSFF</h1>
 <p>Consumo Inteligente Bonífica</p>
@@ -187,6 +186,7 @@ Na Sociedade de Consumo Inteligente:<br><br>
 <button class="btn-back" onclick="go(7)">Voltar</button>
 </div>
 </div>
+
 <div class="slide" id="s9">
 <div class="card">
 <p>1 → 3 → 9 → 27 → 81</p>
@@ -210,7 +210,6 @@ Na Sociedade de Consumo Inteligente:<br><br>
 
 </div>
 </div>
-
 <div class="slide" id="s11">
 <div class="card">
 
@@ -222,17 +221,26 @@ Agora é decidir agir.
 <input id="nome" placeholder="Nome" class="text-black p-2 mt-2">
 <input id="zap" placeholder="WhatsApp" class="text-black p-2 mt-2">
 
+<!-- 🔥 NOVA FUNÇÃO: AJUSTE DE PERFIL FINAL -->
+<div style="margin-top:15px;">
+<p>Quer ajustar sua decisão?</p>
+
+<button class="btn" onclick="perfil='consumidor'">Continuar como Consumidor</button>
+<button class="btn" onclick="perfil='consultor'">Ativar modo Consultor</button>
+</div>
+
 <button class="btn" onclick="lead()">Quero começar</button>
 
 </div>
 </div>
+
 <script>
 
 let perfil="";
 let interacoes=0;
 let intencaoFinal="";
 
-/* tempo invisível */
+/* tempo */
 let tempoInicio = Date.now();
 let tempoTotal = 0;
 
@@ -243,16 +251,19 @@ setInterval(()=>{
 /* interação */
 document.addEventListener("click",()=>interacoes++);
 
-/* 🎧 ÁUDIO CORRIGIDO */
+/* 🔊 ÁUDIO REALMENTE FUNCIONAL */
 function iniciarAudio(){
   let audio = document.getElementById("audio");
   audio.volume = 0.3;
 
-  audio.play().catch(()=>{
-    document.addEventListener("click", ()=>{
-      audio.play();
-    }, {once:true});
-  });
+  const playAudio = () => {
+    audio.play().catch(()=>{});
+  };
+
+  playAudio();
+
+  document.body.addEventListener("click", playAudio, { once:true });
+  document.body.addEventListener("touchstart", playAudio, { once:true });
 }
 
 function pararAudio(){
@@ -261,20 +272,13 @@ function pararAudio(){
   audio.currentTime = 0;
 }
 
-/* PERFIL */
-function setPerfil(tipo){
-  perfil = tipo;
-  go(2);
-}
-
-/* NAVEGAÇÃO SEGURA (NUNCA COMEÇA NO FINAL) */
+/* navegação */
 function go(n){
 
 pararAudio();
 
-/* bloqueia salto direto pro final */
 if(n===11 && !perfil){
-  n = 1;
+  n=1;
 }
 
 if(n===5){
@@ -290,7 +294,13 @@ document.getElementById('s'+n).classList.add('active');
 document.getElementById('progress').style.width=(n/11*100)+"%";
 }
 
-/* PRODUTOS */
+/* perfil inicial */
+function setPerfil(tipo){
+  perfil = tipo;
+  go(2);
+}
+
+/* imagens */
 let prodImgs=["img/prod1.jpg","img/prod2.jpg","img/prod3.jpg"];
 let p=0;
 
@@ -308,7 +318,6 @@ el.style.opacity=1;
 },100);
 }
 
-/* BÔNUS */
 let bonusImgs=["img/bonus1.jpg","img/bonus2.jpg","img/bonus3.jpg","img/bonus4.jpg","img/bonus5.jpg","img/bonus6.jpg","img/bonus7.jpg"];
 let b=0;
 
@@ -326,28 +335,13 @@ el.style.opacity=1;
 },100);
 }
 
-/* RECUPERAÇÃO CORRIGIDA */
+/* init */
 window.onload=()=>{
   iniciarAudio();
-
-  let estado = localStorage.getItem("prosff_estado");
-
-  if(estado){
-    let data = JSON.parse(estado);
-
-    if(data.slide && data.slide < 11){
-      go(data.slide);
-    } else {
-      go(1);
-    }
-
-    if(data.perfil) perfil = data.perfil;
-  } else {
-    go(1);
-  }
+  go(1);
 };
 
-/* LEAD FINAL CORRIGIDO */
+/* lead */
 function lead(){
 
 let nome=document.getElementById("nome").value;
@@ -363,20 +357,17 @@ perfil==="consultor"
 if(perfil==="consumidor" && interacoes>12){
   intencaoFinal="CONSULTOR (convertido no funil)";
 } else {
-  intencaoFinal=tipoInicial;
+  intencaoFinal=perfil;
 }
 
-/* nível */
 let nivel = interacoes>10 ? "alto interesse" : "curioso";
 
-/* tempo */
 let tempoDecisao =
 tempoTotal<20 ? "muito rápido" :
 tempoTotal<60 ? "rápido" :
 tempoTotal<180 ? "moderado" :
 "demorado";
 
-/* mensagem */
 let msg=
 `Nome:${nome}
 Inicio:${tipoInicial}
@@ -385,23 +376,9 @@ Nivel:${nivel}
 Tempo:${tempoDecisao} (${tempoTotal}s)
 Whats:${zap}`;
 
-/* reset estado ao finalizar */
-localStorage.removeItem("prosff_estado");
-
-/* envio */
 window.open(`https://wa.me/5522999231211?text=${encodeURIComponent(msg)}`);
 
 }
-
-/* ABANDONO */
-window.addEventListener("beforeunload",()=>{
-  navigator.sendBeacon("https://seu-servidor.com/log",JSON.stringify({
-    evento:"abandono",
-    tempo:tempoTotal,
-    interacoes:interacoes,
-    perfil:perfil
-  }));
-});
 
 </script>
 
