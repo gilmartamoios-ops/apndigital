@@ -1,4 +1,5 @@
-<!-- versão nova -->
+<!-- versão final estável -->
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -13,8 +14,8 @@
 body{background:#080808;color:white;font-family:Arial;overflow:hidden;}
 .slide{display:none;min-height:100vh;padding:20px;flex-direction:column;justify-content:center;align-items:center;text-align:center;opacity:0;transform: translateX(30px);transition: all 0.5s ease;}
 .slide.active{display:flex;opacity:1;transform: translateX(0);}
-.card{background:#121212;border:1px solid #222;padding:22px;border-radius:25px;max-width:520px;width:100%;}
-.btn{background:#00ff88;color:black;padding:14px;border-radius:50px;margin-top:10px;width:100%;font-weight:bold;}
+.card{background:#121212;border:1px solid #222;padding:24px;border-radius:25px;max-width:520px;width:100%;}
+.btn{background:#00ff88;color:black;padding:14px;border-radius:50px;margin-top:12px;width:100%;font-weight:bold;}
 .btn-back{background:#222;color:#aaa;padding:10px;border-radius:50px;margin-top:10px;width:100%;}
 .progress{position:fixed;top:0;left:0;height:4px;background:#00ff88;width:0%;z-index:999;}
 iframe{width:100%;height:240px;border-radius:15px;}
@@ -28,105 +29,213 @@ img{width:100%;border-radius:15px;transition: all 0.2s ease;}
 <div class="progress" id="progress"></div>
 <audio id="audio"></audio>
 
+<!-- TELA 1 -->
+<div class="slide active" id="s1">
+
+<h1 class="text-4xl text-yellow-400 mb-2">ProSFF</h1>
+<p class="mb-6">Consumo Inteligente Bonífica</p>
+
+<div class="card">
+
+<p>
+Nada aqui é novo…<br><br>
+só está organizado de uma forma diferente.
+</p>
+
+<button class="btn" onclick="go(2)">
+Entender como funciona
+</button>
+
+</div>
+</div>
+<!-- TELA 2 -->
+<div class="slide" id="s2">
+<div class="card">
+<p>
+Você já participa disso todos os dias.<br><br>
+A diferença é que até hoje você só esteve de um lado.
+</p>
+<button class="btn" onclick="go(3)">Continuar</button>
+<button class="btn-back" onclick="go(1)">Voltar</button>
+</div>
+</div>
+
+<!-- TELA 3 -->
+<div class="slide" id="s3">
+<div class="card">
+<p>
+Toda vez que você consome… alguém ganha.<br><br>
+A pergunta nunca foi se isso funciona.<br>
+A pergunta é: pra quem está funcionando?
+</p>
+<button class="btn" onclick="go(4)">Continuar</button>
+<button class="btn-back" onclick="go(2)">Voltar</button>
+</div>
+</div>
+
+<!-- TELA 4 -->
+<div class="slide" id="s4">
+<div class="card">
+<iframe src="https://www.youtube.com/embed/RGw-nxKio-0"></iframe>
+<button class="btn" onclick="go(5)">Continuar</button>
+<button class="btn-back" onclick="go(3)">Voltar</button>
+</div>
+</div>
+<!-- TELA 5 -->
+<div class="slide" id="s5">
+<div class="card">
+<p id="textoConsumo">
+Você já consome.<br><br>
+Agora precisa decidir o que quer fazer com isso.
+</p>
+
+<button class="btn" onclick="perfil='consumidor'; go(6)">
+Só consumir melhor
+</button>
+
+<button class="btn" onclick="perfil='consultor'; go(7)">
+Transformar em renda
+</button>
+
+<button class="btn-back" onclick="go(4)">Voltar</button>
+</div>
+</div>
+
+<!-- TELA 6 -->
+<div class="slide" id="s6">
+<div class="card">
+<p>
+Você continua fazendo o que já faz…<br><br>
+mas agora dentro de um ambiente mais inteligente.
+</p>
+<button class="btn" onclick="go(12)">Entrar como consumidor</button>
+<button class="btn-back" onclick="go(5)">Voltar</button>
+</div>
+</div>
+
+<!-- TELA 7 -->
+<div class="slide" id="s7">
+<div class="card">
+<p>
+Na Sociedade de Consumo Inteligente:<br><br>
+1 consumidor conecta 3 consumidores.<br><br>
+Simples. Duplicável. Sustentável.
+</p>
+<button class="btn" onclick="go(8)">Continuar</button>
+<button class="btn-back" onclick="go(5)">Voltar</button>
+</div>
+</div>
+
+<!-- TELA 8 -->
+<div class="slide" id="s8">
+<div class="card">
+<iframe src="https://www.youtube.com/embed/lGVU6AythoQ"></iframe>
+<button class="btn" onclick="go(9)">Continuar</button>
+<button class="btn-back" onclick="go(7)">Voltar</button>
+</div>
+</div>
+<!-- TELA 9 -->
+<div class="slide" id="s9">
+<div class="card">
+
+<img id="bonusImg" src="img/bonus1.jpg">
+
+<div class="nav">
+<button class="btn" onclick="trocarBonus(-1)">←</button>
+<button class="btn" onclick="trocarBonus(1)">→</button>
+</div>
+
+<button class="btn" onclick="go(10)">Continuar</button>
+<button class="btn-back" onclick="go(8)">Voltar</button>
+
+</div>
+</div>
+
+<!-- TELA 10 -->
+<div class="slide" id="s10">
+<div class="card">
+<p>
+Não é um modelo único.<br><br>
+É um sistema que se adapta a diferentes perfis.
+</p>
+<button class="btn" onclick="go(11)">Continuar</button>
+<button class="btn-back" onclick="go(9)">Voltar</button>
+</div>
+</div>
+
+<!-- TELA 11 -->
+<div class="slide" id="s11">
+<div class="card">
+
+<a href="https://simuladorprosff.vercel.app/" target="_blank">
+<button class="btn">Simular resultado</button>
+</a>
+
+<button class="btn" onclick="go(12)">Avançar</button>
+<button class="btn-back" onclick="go(10)">Voltar</button>
+
+</div>
+</div>
+
+<!-- TELA 12 -->
+<div class="slide" id="s12">
+<div class="card">
+
+<input id="nome" placeholder="Seu nome" class="text-black p-2 w-full mb-2">
+<input id="zap" placeholder="Seu WhatsApp" class="text-black p-2 w-full mb-2">
+
+<button class="btn" onclick="enviarLead()">Quero entender melhor</button>
+
+<button class="btn-back" onclick="go(11)">Voltar</button>
+
+</div>
+</div>
+
 <script>
+document.addEventListener("DOMContentLoaded", function(){
+
 let perfil="", interacoes=0;
 document.addEventListener("click",()=>interacoes++);
 
 let audio=document.getElementById("audio");
 let trilha=["audio/intro.mp3","audio/middle.mp3","audio/final.mp3"];
-let etapaAudio=0;
+let etapa=0;
 
 document.body.addEventListener("click",()=>{
+if(!audio.src){
 audio.src=trilha[0];
-audio.play();
+audio.play().catch(()=>{});
+}
 },{once:true});
 
-function go(n){
-if(n>=4 && etapaAudio===0){etapaAudio=1;audio.src=trilha[1];audio.play();}
-if(n>=9 && etapaAudio===1){etapaAudio=2;audio.src=trilha[2];audio.play();}
+window.go=function(n){
+
+if(n>=4 && etapa===0){etapa=1;audio.src=trilha[1];audio.play().catch(()=>{});}
+if(n>=9 && etapa===1){etapa=2;audio.src=trilha[2];audio.play().catch(()=>{});}
 
 document.querySelectorAll('.slide').forEach(s=>s.classList.remove('active'));
 document.getElementById('s'+n).classList.add('active');
 
 document.getElementById('progress').style.width=(n/12*100)+"%";
-
-if(n===5){
-document.getElementById("textoConsumo").innerHTML =
-perfil==="consultor"
-? "Você já consome.<br><br>Agora pode transformar isso em renda recorrente."
-: "Você já consome.<br><br>Agora pode pagar menos por isso.";
-}
 }
 
-/* PRELOAD COMPLETO */
-let imagens=[
-"img/prod1.jpg","img/prod2.jpg","img/prod3.jpg","img/prod4.jpg","img/prod5.jpg",
-"img/prod6.jpg","img/prod7.jpg","img/prod8.jpg","img/prod9.jpg","img/prod10.jpg",
-"img/prod11.jpg","img/prod12.jpg","img/prod13.jpg",
-"img/bonus1.jpg","img/bonus2.jpg","img/bonus3.jpg","img/bonus4.jpg",
-"img/bonus5.jpg","img/bonus6.jpg","img/bonus7.jpg"
-];
-imagens.forEach(src=>{let i=new Image();i.src=src;});
-
-/* PRODUTOS */
-let prodImgs=[
-"img/prod1.jpg","img/prod2.jpg","img/prod3.jpg","img/prod4.jpg","img/prod5.jpg",
-"img/prod6.jpg","img/prod7.jpg","img/prod8.jpg","img/prod9.jpg","img/prod10.jpg",
-"img/prod11.jpg","img/prod12.jpg","img/prod13.jpg"
-];
-let p=0;
-
-function trocarProd(d){
-p+=d;
-if(p<0)p=prodImgs.length-1;
-if(p>=prodImgs.length)p=0;
-
-let el=document.getElementById("prodImg");
-el.style.opacity=0.3;
-el.style.transform="scale(0.97)";
-
-setTimeout(()=>{
-el.src=prodImgs[p];
-el.style.opacity=1;
-el.style.transform="scale(1)";
-},120);
-}
-
-/* BONUS */
-let bonusImgs=[
-"img/bonus1.jpg","img/bonus2.jpg","img/bonus3.jpg",
-"img/bonus4.jpg","img/bonus5.jpg","img/bonus6.jpg","img/bonus7.jpg"
-];
+let bonusImgs=[...Array(7)].map((_,i)=>`img/bonus${i+1}.jpg`);
 let b=0;
 
-function trocarBonus(d){
-b+=d;
-if(b<0)b=bonusImgs.length-1;
-if(b>=bonusImgs.length)b=0;
-
-let el=document.getElementById("bonusImg");
-el.style.opacity=0.3;
-el.style.transform="scale(0.97)";
-
-setTimeout(()=>{
-el.src=bonusImgs[b];
-el.style.opacity=1;
-el.style.transform="scale(1)";
-},120);
+window.trocarBonus=function(d){
+b=(b+d+bonusImgs.length)%bonusImgs.length;
+document.getElementById("bonusImg").src=bonusImgs[b];
 }
 
-function enviarLead(){
+window.enviarLead=function(){
 let nome=document.getElementById('nome').value;
 let zap=document.getElementById('zap').value;
-let nivel=interacoes>12?"alto interesse":"curioso";
-
-let msg=`Nome:${nome} | Perfil:${perfil} | Nivel:${nivel} | Whats:${zap}`;
+let msg=`Nome:${nome} | Perfil:${perfil} | Whats:${zap}`;
 window.open(`https://wa.me/5522999231211?text=${encodeURIComponent(msg)}`);
 }
-</script>
 
-<!-- (SEU HTML DAS TELAS PERMANECE EXATAMENTE IGUAL — NÃO ALTEREI) -->
+});
+</script>
 
 </body>
 </html>
- 
