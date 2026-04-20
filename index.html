@@ -227,6 +227,20 @@ document.querySelectorAll('.slide').forEach(s=>s.classList.remove('active'));
 document.getElementById('s'+n).classList.add('active');
 
 document.getElementById('progress').style.width=(n/12*100)+"%";
+if(n === 12){
+ let fade = setInterval(()=>{
+        if(audio.volume > 0.05){
+            audio.volume -= 0.05;
+        } else {
+            audio.pause();
+            audio.currentTime = 0;
+            audio.volume = 1;
+            clearInterval(fade);
+        }
+    }, 100);
+
+}
+
 }
 
 let bonusImgs=[...Array(7)].map((_,i)=>`img/bonus${i+1}.jpg`);
