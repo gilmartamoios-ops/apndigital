@@ -252,9 +252,29 @@ document.getElementById("bonusImg").src=bonusImgs[b];
 }
 
 window.enviarLead=function(){
+
+// 🚫 BLOQUEIO SE NÃO ESCOLHER PERFIL
+if(!perfil){
+    alert("Escolha uma opção antes de continuar.");
+    return;
+}
+
 let nome=document.getElementById('nome').value;
 let zap=document.getElementById('zap').value;
-let msg=`Nome:${nome} | Perfil:${perfil} | Whats:${zap}`;
+
+// nome mais humano da tribo
+let triboNome = perfil === "consultor"
+? "Consultor (Construção de renda)"
+: "Consumidor (Uso inteligente)";
+
+let msg =
+`Novo contato ProSFF
+
+Nome: ${nome}
+WhatsApp: ${zap}
+
+Tribo: ${triboNome}`;
+
 window.open(`https://wa.me/5522999231211?text=${encodeURIComponent(msg)}`);
 }
 
