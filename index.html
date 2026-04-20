@@ -118,7 +118,9 @@ Além disso, você não entra sozinho.<br>
 Existe uma comunidade que troca experiências,<br>
 orienta escolhas e ajuda você a consumir melhor.
 </p>
-<button class="btn" onclick="go(12)">Entrar como consumidor</button>
+<button class="btn" onclick="perfil='consumidor'; go(12)">
+Entrar como consumidor
+</button>
 <button class="btn-back" onclick="go(5)">Voltar</button>
 </div>
 </div>
@@ -253,10 +255,25 @@ document.getElementById("bonusImg").src=bonusImgs[b];
 
 window.enviarLead=function(){
 
-// 🚫 BLOQUEIO SE NÃO ESCOLHER PERFIL
-if(!perfil){
-    alert("Escolha uma opção antes de continuar.");
-    return;
+let nome=document.getElementById('nome').value;
+let zap=document.getElementById('zap').value;
+
+// fallback inteligente
+let tipo = perfil ? perfil : "consumidor";
+
+let triboNome = tipo === "consultor"
+? "Consultor (Construção de renda)"
+: "Consumidor (Uso inteligente)";
+
+let msg =
+`Novo contato ProSFF
+
+Nome: ${nome}
+WhatsApp: ${zap}
+
+Tribo: ${triboNome}`;
+
+window.open(`https://wa.me/5522999231211?text=${encodeURIComponent(msg)}`);
 }
 
 let nome=document.getElementById('nome').value;
