@@ -83,6 +83,7 @@ A pergunta é: pra quem está funcionando?
 <button class="btn-back" onclick="go(3)">Voltar</button>
 </div>
 </div>
+
 <!-- TELA 5 -->
 <div class="slide" id="s5">
 <div class="card">
@@ -103,7 +104,6 @@ Quero participar construindo renda
 <button class="btn-back" onclick="go(4)">Voltar</button>
 </div>
 </div>
-
 <!-- TELA 6 -->
 <div class="slide" id="s6">
 <div class="card">
@@ -149,6 +149,7 @@ Simples. Duplicável. Sustentável.
 <button class="btn-back" onclick="go(7)">Voltar</button>
 </div>
 </div>
+
 <!-- TELA 9 -->
 <div class="slide" id="s9">
 <div class="card">
@@ -177,14 +178,13 @@ Não é um modelo único.<br><br>
 <button class="btn-back" onclick="go(9)">Voltar</button>
 </div>
 </div>
-
 <!-- TELA 11 -->
 <div class="slide" id="s11">
 <div class="card">
 
-<a href="https://simuladorprosff.vercel.app/" target="_blank">
-<button class="btn">Simular resultado</button>
-</a>
+<button class="btn" onclick="go(12)">
+Simular resultado
+</button>
 
 <button class="btn-back" onclick="go(10)">Voltar</button>
 
@@ -211,9 +211,10 @@ No final, é só clicar em "Quero começar minha primeira célula" que a gente c
 
 </div>
 </div>
+
 <script>
 let perfil = "";
- document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function(){
 
 let interacoes=0;
 document.addEventListener("click",()=>interacoes++);
@@ -249,9 +250,7 @@ if(n === 12){
             clearInterval(fade);
         }
     }, 100);
-
 }
-
 }
 
 let bonusImgs=[...Array(7)].map((_,i)=>`img/bonus${i+1}.jpg`);
@@ -263,11 +262,9 @@ document.getElementById("bonusImg").src=bonusImgs[b];
 }
 
 window.enviarLead=function(){
-
 let nome=document.getElementById('nome').value;
 let zap=document.getElementById('zap').value;
 
-// fallback inteligente
 let tipo = perfil ? perfil : "consumidor";
 
 let triboNome = tipo === "consultor"
