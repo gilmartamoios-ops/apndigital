@@ -53,7 +53,6 @@ Entender como funciona
 <div class="card">
 <p>
 Você já participa disso todos os dias.<br><br>
-
 Isso aqui não foi feito para te vender nada.<br>
 Só para te mostrar algo que talvez você ainda não tenha observado.
 </p>
@@ -83,13 +82,13 @@ A pergunta é: pra quem está funcionando?
 <button class="btn-back" onclick="go(3)">Voltar</button>
 </div>
 </div>
+
 <!-- TELA 4B -->
 <div class="slide" id="s4b">
 <div class="card">
 
 <p>
 Tudo isso acontece em cima de consumo real.<br><br>
-
 Essas são algumas das linhas que fazem parte disso:
 </p>
 
@@ -105,14 +104,16 @@ Essas são algumas das linhas que fazem parte disso:
 
 </div>
 </div>
-
 <!-- TELA 5 -->
 <div class="slide" id="s5">
 <div class="card">
 <p id="textoConsumo">
-Você já é um consumidor.<br><br>
+Você já consome todos os meses.<br><br>
 
-Agora precisa decidir o quanto quer participar disso.
+A diferença é que até hoje isso sempre funcionou para outras pessoas.<br><br>
+
+Agora você pode simplesmente continuar como está…<br>
+ou começar a usar isso a seu favor.
 </p>
 
 <button class="btn" onclick="perfil='consumidor'; go(6)">
@@ -131,18 +132,17 @@ Quero participar construindo renda
 <div class="slide" id="s6">
 <div class="card">
 <p>
-Você continua consumindo como sempre…<br><br>
+Você não precisa mudar o que consome.<br><br>
 
-mas agora com acesso direto ao fabricante,<br>
-em condições bem diferentes do caminho tradicional.<br><br>
+A única diferença é o caminho que você escolhe.<br><br>
 
-E isso começa a refletir no que você paga.
+Consumindo direto do fabricante, você começa a ter acesso a condições que não existem no modelo tradicional.
 </p>
 
 <p class="mt-4 text-sm text-gray-400">
-Além disso, você não entra sozinho.<br>
-Existe uma comunidade que troca experiências,<br>
-orienta escolhas e ajuda você a consumir melhor.
+E não é só sobre comprar melhor.<br><br>
+
+Você passa a fazer parte de um grupo que troca experiências, orienta escolhas e acelera esse processo com você.
 </p>
 
 <button class="btn" onclick="perfil='consumidor'; abrirComunidade()">
@@ -153,7 +153,6 @@ Entrar como consumidor
 </div>
 </div>
 <script>
-
 let perfil = "";
 document.addEventListener("DOMContentLoaded", function(){
 
@@ -203,7 +202,7 @@ b=(b+d+bonusImgs.length)%bonusImgs.length;
 document.getElementById("bonusImg").src=bonusImgs[b];
 }
 
-/* ALTERAÇÃO */
+/* CORREÇÃO */
 let prodImgs=[...Array(13)].map((_,i)=>`img/prod${i+1}.jpg`);
 let p=0;
 
