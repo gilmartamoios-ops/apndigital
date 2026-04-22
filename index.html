@@ -79,11 +79,33 @@ A pergunta é: pra quem está funcionando?
 <div class="slide" id="s4">
 <div class="card">
 <iframe src="https://www.youtube.com/embed/RGw-nxKio-0"></iframe>
-<button class="btn" onclick="go(5)">Continuar</button>
+<button class="btn" onclick="go('4b')">Continuar</button>
 <button class="btn-back" onclick="go(3)">Voltar</button>
 </div>
 </div>
 
+<!-- TELA 4B (PRODUTOS) -->
+<div class="slide" id="s4b">
+<div class="card">
+
+<p>
+Tudo isso acontece em cima de consumo real.<br><br>
+
+Essas são algumas das linhas que fazem parte disso:
+</p>
+
+<img id="prodImg" src="img/bonus1.jpg">
+
+<div class="nav">
+<button class="btn" onclick="trocarProduto(-1)">←</button>
+<button class="btn" onclick="trocarProduto(1)">→</button>
+</div>
+
+<button class="btn" onclick="go(5)">Continuar</button>
+<button class="btn-back" onclick="go(4)">Voltar</button>
+
+</div>
+</div>
 <!-- TELA 5 -->
 <div class="slide" id="s5">
 <div class="card">
@@ -101,9 +123,10 @@ Quero consumir de forma inteligente
 Quero participar construindo renda
 </button>
 
-<button class="btn-back" onclick="go(4)">Voltar</button>
+<button class="btn-back" onclick="go('4b')">Voltar</button>
 </div>
 </div>
+
 <!-- TELA 6 -->
 <div class="slide" id="s6">
 <div class="card">
@@ -121,7 +144,7 @@ Além disso, você não entra sozinho.<br>
 Existe uma comunidade que troca experiências,<br>
 orienta escolhas e ajuda você a consumir melhor.
 </p>
-<button class="btn" onclick="perfil='consumidor'; go(12)">
+<button class="btn" onclick="perfil='consumidor'; go(11)">
 Entrar como consumidor
 </button>
 <button class="btn-back" onclick="go(5)">Voltar</button>
@@ -140,7 +163,6 @@ Simples. Duplicável. Sustentável.
 <button class="btn-back" onclick="go(5)">Voltar</button>
 </div>
 </div>
-
 <!-- TELA 8 -->
 <div class="slide" id="s8">
 <div class="card">
@@ -178,6 +200,7 @@ Não é um modelo único.<br><br>
 <button class="btn-back" onclick="go(9)">Voltar</button>
 </div>
 </div>
+
 <!-- TELA 11 -->
 <div class="slide" id="s11">
 <div class="card">
@@ -270,25 +293,12 @@ b=(b+d+bonusImgs.length)%bonusImgs.length;
 document.getElementById("bonusImg").src=bonusImgs[b];
 }
 
-window.enviarLead=function(){
-let nome=document.getElementById('nome').value;
-let zap=document.getElementById('zap').value;
+let prodImgs=[...Array(7)].map((_,i)=>`img/bonus${i+1}.jpg`);
+let p=0;
 
-let tipo = perfil ? perfil : "consumidor";
-
-let triboNome = tipo === "consultor"
-? "Consultor (Construção de renda)"
-: "Consumidor (Uso inteligente)";
-
-let msg =
-`Novo contato ProSFF
-
-Nome: ${nome}
-WhatsApp: ${zap}
-
-Tribo: ${triboNome}`;
-
-window.open(`https://wa.me/5522999231211?text=${encodeURIComponent(msg)}`);
+window.trocarProduto=function(d){
+p=(p+d+prodImgs.length)%prodImgs.length;
+document.getElementById("prodImg").src=prodImgs[p];
 }
 
 });
