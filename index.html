@@ -17,7 +17,7 @@ body{background:#080808;color:white;font-family:Arial;overflow:hidden;}
 .btn-back{background:#222;color:#aaa;padding:10px;border-radius:50px;margin-top:10px;width:100%;}
 .progress{position:fixed;top:0;left:0;height:4px;background:#00ff88;width:0%;z-index:999;}
 iframe{width:100%;height:240px;border-radius:15px;}
-img{width:100%;border-radius:15px;transition: all 0.2s ease;}
+img{width:100%;border-radius:15px;}
 .nav{display:flex;gap:10px;margin-top:10px;}
 </style>
 </head>
@@ -31,12 +31,16 @@ img{width:100%;border-radius:15px;transition: all 0.2s ease;}
 <div class="slide active" id="s1">
 <h1 class="text-4xl text-yellow-400 mb-2">ProSFF</h1>
 <p class="mb-6">Consumo Inteligente Bonífica</p>
+
 <div class="card">
 <p>
 Nada aqui é novo…<br><br>
-só está organizado de uma forma diferente.
+Mas a forma como isso está organizado pode mudar a forma como você consome para sempre.
 </p>
-<button class="btn" onclick="go(2)">Entender como funciona</button>
+
+<button class="btn" onclick="go(2)">
+Quero entender isso melhor
+</button>
 </div>
 </div>
 
@@ -45,27 +49,31 @@ só está organizado de uma forma diferente.
 <div class="card">
 <p>
 Você já participa disso todos os dias.<br><br>
-Isso aqui não foi feito para te vender nada.<br>
-Só para te mostrar algo que talvez você ainda não tenha observado.
+
+A diferença é que até hoje…<br>
+isso nunca foi estruturado a seu favor.
 </p>
-<button class="btn" onclick="go(3)">Continuar</button>
+
+<button class="btn" onclick="go(3)">Faz sentido, continuar</button>
 <button class="btn-back" onclick="go(1)">Voltar</button>
 </div>
 </div>
 
-<!-- TELA 3 (AJUSTADA) -->
+<!-- TELA 3 -->
 <div class="slide" id="s3">
 <div class="card">
 <p>
 Toda vez que você consome… alguém ganha.<br><br>
 
 A pergunta nunca foi se isso funciona.<br>
-A pergunta é: pra quem está funcionando?<br><br>
+A pergunta é:<br><br>
 
-E mais importante:<br>
-quanto isso poderia estar funcionando pra você ao longo do tempo?
+pra quem está funcionando hoje?<br><br>
+
+E quanto disso poderia estar voltando pra você?
 </p>
-<button class="btn" onclick="go(4)">Continuar</button>
+
+<button class="btn" onclick="go(4)">Quero ver isso na prática</button>
 <button class="btn-back" onclick="go(2)">Voltar</button>
 </div>
 </div>
@@ -73,6 +81,11 @@ quanto isso poderia estar funcionando pra você ao longo do tempo?
 <div class="slide" id="s4">
 <div class="card">
 <iframe src="https://www.youtube.com/embed/RGw-nxKio-0"></iframe>
+
+<p class="mt-4 text-sm text-gray-400">
+Presta atenção nisso — é mais simples do que parece.
+</p>
+
 <button class="btn" onclick="go('4b')">Continuar</button>
 <button class="btn-back" onclick="go(3)">Voltar</button>
 </div>
@@ -81,10 +94,14 @@ quanto isso poderia estar funcionando pra você ao longo do tempo?
 <!-- TELA 4B -->
 <div class="slide" id="s4b">
 <div class="card">
+
 <p>
-Isso não é teoria.<br><br>
 Tudo isso acontece em cima de consumo real.<br><br>
-Essas são algumas das linhas:
+
+Produtos que você já compra…<br>
+mas que aqui podem ser acessados de outra forma.<br><br>
+
+Em muitos casos, com custo menor do que no modelo tradicional.
 </p>
 
 <img id="prodImg" src="img/prod1.jpg">
@@ -94,52 +111,54 @@ Essas são algumas das linhas:
 <button class="btn" onclick="trocarProduto(1)">→</button>
 </div>
 
-<button class="btn" onclick="go(5)">Continuar</button>
+<button class="btn" onclick="go(5)">Faz sentido até aqui</button>
 <button class="btn-back" onclick="go(4)">Voltar</button>
 </div>
 </div>
 
-<!-- TELA 5 -->
+<!-- TELA 5 (DECISÃO MELHORADA) -->
 <div class="slide" id="s5">
 <div class="card">
+
 <p>
 Você já consome todos os meses.<br><br>
 
-Hoje isso gera resultado para outras pessoas.<br>
-Aqui, pode começar a gerar para você.<br><br>
+Aqui, você pode fazer isso de forma mais inteligente:<br><br>
 
-E isso cresce com o tempo.
+✔ pagando melhor<br>
+✔ tendo acesso direto<br>
+✔ e ainda podendo gerar benefício com o tempo<br><br>
+
+Agora a pergunta é simples:
 </p>
 
-<button class="btn" onclick="go('5b')">Continuar</button>
+<button class="btn" onclick="perfil='consumidor'; go(6)">
+Quero começar consumindo melhor
+</button>
+
+<button class="btn" onclick="perfil='consultor'; go(7)">
+Quero consumir e construir renda com isso
+</button>
+
 <button class="btn-back" onclick="go('4b')">Voltar</button>
-</div>
-</div>
-
-<!-- NOVA TELA 5B -->
-<div class="slide" id="s5b">
-<div class="card">
-<p>
-Antes de decidir qualquer coisa…<br><br>
-
-faz sentido ver como isso funciona na prática.<br><br>
-
-Sem suposição. Sem promessa.
-</p>
-
-<button class="btn" onclick="go(11)">Ver como funciona</button>
-<button class="btn-back" onclick="go(5)">Voltar</button>
 </div>
 </div>
 <!-- TELA 6 -->
 <div class="slide" id="s6">
 <div class="card">
+
 <p>
 Você não precisa mudar o que consome.<br><br>
-Só o caminho.
+
+Só o caminho.<br><br>
+
+E isso, ao longo do tempo, já muda muita coisa.
 </p>
 
-<button class="btn" onclick="abrirComunidade()">Entrar como consumidor</button>
+<button class="btn" onclick="abrirComunidade()">
+Entrar na comunidade
+</button>
+
 <button class="btn-back" onclick="go(5)">Voltar</button>
 </div>
 </div>
@@ -147,11 +166,18 @@ Só o caminho.
 <!-- TELA 7 -->
 <div class="slide" id="s7">
 <div class="card">
+
 <p>
-1 consumidor conecta 3 consumidores.<br><br>
-Simples. Duplicável.
+Aqui, o crescimento acontece de forma simples:<br><br>
+
+1 pessoa → conecta 3<br><br>
+
+E isso se repete.<br><br>
+
+Sem complexidade.
 </p>
-<button class="btn" onclick="go(8)">Continuar</button>
+
+<button class="btn" onclick="go(8)">Quero entender melhor</button>
 <button class="btn-back" onclick="go(5)">Voltar</button>
 </div>
 </div>
@@ -160,6 +186,7 @@ Simples. Duplicável.
 <div class="slide" id="s8">
 <div class="card">
 <iframe src="https://www.youtube.com/embed/lGVU6AythoQ"></iframe>
+
 <button class="btn" onclick="go(9)">Continuar</button>
 <button class="btn-back" onclick="go(7)">Voltar</button>
 </div>
@@ -168,33 +195,46 @@ Simples. Duplicável.
 <!-- TELA 9 -->
 <div class="slide" id="s9">
 <div class="card">
+
 <img id="bonusImg" src="img/bonus1.jpg">
+
 <div class="nav">
 <button class="btn" onclick="trocarBonus(-1)">←</button>
 <button class="btn" onclick="trocarBonus(1)">→</button>
 </div>
+
 <button class="btn" onclick="go(10)">Continuar</button>
 <button class="btn-back" onclick="go(8)">Voltar</button>
 </div>
 </div>
-
 <!-- TELA 10 -->
 <div class="slide" id="s10">
 <div class="card">
 <p>
-É um sistema que se adapta a você.
+Isso não depende de sorte.<br><br>
+Depende de consistência.
 </p>
-<button class="btn" onclick="go(11)">Continuar</button>
+
+<button class="btn" onclick="go(11)">
+Quero ver como isso cresce
+</button>
+
 <button class="btn-back" onclick="go(9)">Voltar</button>
 </div>
 </div>
+
 <!-- TELA 11 -->
 <div class="slide" id="s11">
 <div class="card">
+
 <p>
-Agora você pode ver isso funcionando na prática.
+Agora você pode visualizar isso acontecendo ao longo do tempo.
 </p>
-<button class="btn" onclick="go(12)">Ver simulação</button>
+
+<button class="btn" onclick="go(12)">
+Ver simulação
+</button>
+
 <button class="btn-back" onclick="go(10)">Voltar</button>
 </div>
 </div>
@@ -202,8 +242,11 @@ Agora você pode ver isso funcionando na prática.
 <!-- TELA 12 -->
 <div class="slide" id="s12">
 <div class="card">
+
 <p>
-Abra o simulador e acompanhe o crescimento.
+Não precisa decidir nada agora.<br><br>
+
+Só entender já muda tudo.
 </p>
 
 <a href="https://simuladorprosff.vercel.app/" target="_blank">
@@ -211,11 +254,12 @@ Abra o simulador e acompanhe o crescimento.
 </a>
 
 <button class="btn-back" onclick="go(11)">Voltar</button>
+
 </div>
 </div>
 
 <script>
-let perfil = "";
+let perfil="";
 
 document.addEventListener("DOMContentLoaded", function(){
 
@@ -258,7 +302,7 @@ document.getElementById("prodImg").src=prodImgs[p];
 }
 
 window.abrirComunidade=function(){
-let msg="Vim pela apresentação ProSFF.\n\nQuero entender como consumir de forma inteligente.";
+let msg="Vim pela apresentação ProSFF.\n\nQuero começar consumindo melhor.";
 window.open("https://wa.me/5522999231211?text="+encodeURIComponent(msg));
 }
 
