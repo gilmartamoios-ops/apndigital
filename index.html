@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ProCS</title>
+<title>ProsCS</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 
@@ -29,18 +29,16 @@ img{width:100%;border-radius:15px;}
 
 <!-- TELA 1 -->
 <div class="slide active" id="s1">
-<h1 class="text-4xl text-yellow-400 mb-2">ProCS</h1>
+<h1 class="text-4xl text-yellow-400 mb-2">ProsCS</h1>
 <p class="mb-6">Consumo Sustentável Bonífica</p>
 
 <div class="card">
 <p>
 Nada aqui é novo…<br><br>
-Mas a forma como isso está organizado pode mudar a forma como você consome para sempre.
+Mas a forma como isso está organizado pode mudar a forma como você constrói renda.
 </p>
 
-<button class="btn" onclick="go(2)">
-Quero entender isso melhor
-</button>
+<button class="btn" onclick="go(2)">Quero entender</button>
 </div>
 </div>
 
@@ -48,13 +46,12 @@ Quero entender isso melhor
 <div class="slide" id="s2">
 <div class="card">
 <p>
-Você já participa disso todos os dias.<br><br>
+Você já consome todos os meses.<br><br>
 
-A diferença é que até hoje…<br>
-isso nunca foi estruturado a seu favor.
+A diferença é que isso nunca foi estruturado a seu favor.
 </p>
 
-<button class="btn" onclick="go(3)">Faz sentido, continuar</button>
+<button class="btn" onclick="go(3)">Faz sentido</button>
 <button class="btn-back" onclick="go(1)">Voltar</button>
 </div>
 </div>
@@ -65,15 +62,12 @@ isso nunca foi estruturado a seu favor.
 <p>
 Toda vez que você consome… alguém ganha.<br><br>
 
-A pergunta nunca foi se isso funciona.<br>
 A pergunta é:<br><br>
 
-pra quem está funcionando hoje?<br><br>
-
-E quanto disso poderia estar voltando pra você?
+quanto disso poderia estar voltando pra você?
 </p>
 
-<button class="btn" onclick="go(4)">Quero ver isso na prática</button>
+<button class="btn" onclick="go(4)">Quero ver</button>
 <button class="btn-back" onclick="go(2)">Voltar</button>
 </div>
 </div>
@@ -83,7 +77,7 @@ E quanto disso poderia estar voltando pra você?
 <iframe src="https://www.youtube.com/embed/RGw-nxKio-0"></iframe>
 
 <p class="mt-4 text-sm text-gray-400">
-Presta atenção nisso — é mais simples do que parece.
+Presta atenção — é mais simples do que parece.
 </p>
 
 <button class="btn" onclick="go('4b')">Continuar</button>
@@ -96,12 +90,10 @@ Presta atenção nisso — é mais simples do que parece.
 <div class="card">
 
 <p>
-Tudo isso acontece em cima de consumo real.<br><br>
+Isso começa com consumo.<br><br>
 
-Produtos que você já compra…<br>
-mas que aqui podem ser acessados de outra forma.<br><br>
-
-Em muitos casos, com custo menor do que no modelo tradicional.
+Mas quando isso é organizado…<br>
+vira uma estrutura que cresce com o tempo.
 </p>
 
 <img id="prodImg" src="img/prod1.jpg">
@@ -111,33 +103,26 @@ Em muitos casos, com custo menor do que no modelo tradicional.
 <button class="btn" onclick="trocarProduto(1)">→</button>
 </div>
 
-<button class="btn" onclick="go(5)">Faz sentido até aqui</button>
+<button class="btn" onclick="go(5)">Entendi</button>
 <button class="btn-back" onclick="go(4)">Voltar</button>
 </div>
 </div>
 
-<!-- TELA 5 (DECISÃO MELHORADA) -->
+<!-- TELA 5 -->
 <div class="slide" id="s5">
 <div class="card">
 
 <p>
-Você já consome todos os meses.<br><br>
+Você pode continuar consumindo normalmente…<br><br>
 
-Aqui, você pode fazer isso de forma mais inteligente:<br><br>
+Ou usar isso como base para construir algo.<br><br>
 
-✔ pagando melhor<br>
-✔ tendo acesso direto<br>
-✔ e ainda podendo gerar benefício com o tempo<br><br>
-
-Agora a pergunta é simples:
+Não é sobre vender.<br>
+É sobre organizar um comportamento que já existe.
 </p>
 
-<button class="btn" onclick="perfil='consumidor'; go(6)">
-Quero começar consumindo melhor
-</button>
-
-<button class="btn" onclick="perfil='consultor'; go(7)">
-Quero consumir e construir renda com isso
+<button class="btn" onclick="go(6)">
+Quero construir isso
 </button>
 
 <button class="btn-back" onclick="go('4b')">Voltar</button>
@@ -148,17 +133,16 @@ Quero consumir e construir renda com isso
 <div class="card">
 
 <p>
-Você não precisa mudar o que consome.<br><br>
+Você começa.<br><br>
 
-Só o caminho.<br><br>
+Depois conecta algumas pessoas.<br><br>
 
-E isso, ao longo do tempo, já muda muita coisa.
+Cada uma faz o mesmo.<br><br>
+
+E isso cresce de forma previsível.
 </p>
 
-<button class="btn" onclick="abrirComunidade()">
-Entrar na comunidade
-</button>
-
+<button class="btn" onclick="go(7)">Ver crescimento</button>
 <button class="btn-back" onclick="go(5)">Voltar</button>
 </div>
 </div>
@@ -166,34 +150,15 @@ Entrar na comunidade
 <!-- TELA 7 -->
 <div class="slide" id="s7">
 <div class="card">
+<iframe src="https://www.youtube.com/embed/lGVU6AythoQ"></iframe>
 
-<p>
-Aqui, o crescimento acontece de forma simples:<br><br>
-
-1 pessoa → conecta 3<br><br>
-
-E isso se repete.<br><br>
-
-Sem complexidade.
-</p>
-
-<button class="btn" onclick="go(8)">Quero entender melhor</button>
-<button class="btn-back" onclick="go(5)">Voltar</button>
+<button class="btn" onclick="go(8)">Continuar</button>
+<button class="btn-back" onclick="go(6)">Voltar</button>
 </div>
 </div>
 
 <!-- TELA 8 -->
 <div class="slide" id="s8">
-<div class="card">
-<iframe src="https://www.youtube.com/embed/lGVU6AythoQ"></iframe>
-
-<button class="btn" onclick="go(9)">Continuar</button>
-<button class="btn-back" onclick="go(7)">Voltar</button>
-</div>
-</div>
-
-<!-- TELA 9 -->
-<div class="slide" id="s9">
 <div class="card">
 
 <img id="bonusImg" src="img/bonus1.jpg">
@@ -203,20 +168,34 @@ Sem complexidade.
 <button class="btn" onclick="trocarBonus(1)">→</button>
 </div>
 
-<button class="btn" onclick="go(10)">Continuar</button>
+<button class="btn" onclick="go(9)">Continuar</button>
+<button class="btn-back" onclick="go(7)">Voltar</button>
+</div>
+</div>
+
+<!-- TELA 9 -->
+<div class="slide" id="s9">
+<div class="card">
+<p>
+Isso não depende de sorte.<br><br>
+
+Depende de consistência e execução.
+</p>
+
+<button class="btn" onclick="go(10)">Faz sentido</button>
 <button class="btn-back" onclick="go(8)">Voltar</button>
 </div>
 </div>
 <!-- TELA 10 -->
 <div class="slide" id="s10">
 <div class="card">
+
 <p>
-Isso não depende de sorte.<br><br>
-Depende de consistência.
+Agora você pode ver como isso cresce ao longo do tempo.
 </p>
 
 <button class="btn" onclick="go(11)">
-Quero ver como isso cresce
+Ver simulação
 </button>
 
 <button class="btn-back" onclick="go(9)">Voltar</button>
@@ -228,12 +207,14 @@ Quero ver como isso cresce
 <div class="card">
 
 <p>
-Agora você pode visualizar isso acontecendo ao longo do tempo.
+Abra o simulador e entenda a lógica funcionando.
 </p>
 
-<button class="btn" onclick="go(12)">
-Ver simulação
-</button>
+<a href="https://simuladorprosff.vercel.app/" target="_blank">
+<button class="btn">Abrir simulador</button>
+</a>
+
+<button class="btn" onclick="go(12)">Continuar</button>
 
 <button class="btn-back" onclick="go(10)">Voltar</button>
 </div>
@@ -244,23 +225,20 @@ Ver simulação
 <div class="card">
 
 <p>
-Não precisa decidir nada agora.<br><br>
+Se isso fez sentido…<br><br>
 
-Só entender já muda tudo.
+o próximo passo é entender como começar.
 </p>
 
-<a href="https://simuladorprosff.vercel.app/" target="_blank">
-<button class="btn">Abrir simulador</button>
-</a>
+<button class="btn" onclick="abrirComunidade()">
+Quero começar como consultor
+</button>
 
 <button class="btn-back" onclick="go(11)">Voltar</button>
-
 </div>
 </div>
 
 <script>
-let perfil="";
-
 document.addEventListener("DOMContentLoaded", function(){
 
 let audio=document.getElementById("audio");
@@ -302,7 +280,7 @@ document.getElementById("prodImg").src=prodImgs[p];
 }
 
 window.abrirComunidade=function(){
-let msg="Vim pela apresentação ProSFF.\n\nQuero começar consumindo melhor.";
+let msg="Vim pela apresentação ProsCS.\n\nQuero começar como consultor.";
 window.open("https://wa.me/5522999231211?text="+encodeURIComponent(msg));
 }
 
