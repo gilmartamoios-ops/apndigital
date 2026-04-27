@@ -47,7 +47,6 @@ Mas a forma como isso está organizado pode mudar a forma como você constrói r
 <div class="card">
 <p>
 Você já consome todos os meses.<br><br>
-
 A diferença é que isso nunca foi estruturado a seu favor.
 </p>
 
@@ -61,9 +60,7 @@ A diferença é que isso nunca foi estruturado a seu favor.
 <div class="card">
 <p>
 Toda vez que você consome… alguém ganha.<br><br>
-
 A pergunta é:<br><br>
-
 quanto disso poderia estar voltando pra você?
 </p>
 
@@ -88,10 +85,8 @@ Presta atenção — é mais simples do que parece.
 <!-- TELA 4B -->
 <div class="slide" id="s4b">
 <div class="card">
-
 <p>
 Isso começa com consumo.<br><br>
-
 Mas quando isso é organizado…<br>
 vira uma estrutura que cresce com o tempo.
 </p>
@@ -111,34 +106,24 @@ vira uma estrutura que cresce com o tempo.
 <!-- TELA 5 -->
 <div class="slide" id="s5">
 <div class="card">
-
 <p>
 Você pode continuar consumindo normalmente…<br><br>
-
 Ou usar isso como base para construir algo.<br><br>
-
 Não é sobre vender.<br>
 É sobre organizar um comportamento que já existe.
 </p>
 
-<button class="btn" onclick="go(6)">
-Quero construir isso
-</button>
-
+<button class="btn" onclick="go(6)">Quero construir isso</button>
 <button class="btn-back" onclick="go('4b')">Voltar</button>
 </div>
 </div>
 <!-- TELA 6 -->
 <div class="slide" id="s6">
 <div class="card">
-
 <p>
 Você começa.<br><br>
-
 Depois conecta algumas pessoas.<br><br>
-
 Cada uma faz o mesmo.<br><br>
-
 E isso cresce de forma previsível.
 </p>
 
@@ -178,7 +163,6 @@ E isso cresce de forma previsível.
 <div class="card">
 <p>
 Isso não depende de sorte.<br><br>
-
 Depende de consistência e execução.
 </p>
 
@@ -189,15 +173,11 @@ Depende de consistência e execução.
 <!-- TELA 10 -->
 <div class="slide" id="s10">
 <div class="card">
-
 <p>
 Agora você pode ver como isso cresce ao longo do tempo.
 </p>
 
-<button class="btn" onclick="go(11)">
-Ver simulação
-</button>
-
+<button class="btn" onclick="go(11)">Ver simulação</button>
 <button class="btn-back" onclick="go(9)">Voltar</button>
 </div>
 </div>
@@ -205,17 +185,13 @@ Ver simulação
 <!-- TELA 11 -->
 <div class="slide" id="s11">
 <div class="card">
-
-<p>
-Abra o simulador e entenda a lógica funcionando.
-</p>
+<p>Abra o simulador e entenda a lógica funcionando.</p>
 
 <a href="https://simuladorprosff.vercel.app/" target="_blank">
 <button class="btn">Abrir simulador</button>
 </a>
 
 <button class="btn" onclick="go(12)">Continuar</button>
-
 <button class="btn-back" onclick="go(10)">Voltar</button>
 </div>
 </div>
@@ -223,14 +199,12 @@ Abra o simulador e entenda a lógica funcionando.
 <!-- TELA 12 -->
 <div class="slide" id="s12">
 <div class="card">
-
 <p>
 Se isso fez sentido…<br><br>
-
 o próximo passo é entender como começar.
 </p>
 
-<button class="btn" onclick="abrirComunidade()">
+<button class="btn" onclick="abrirWhats()">
 Quero começar como consultor
 </button>
 
@@ -263,6 +237,22 @@ document.getElementById('s'+n).classList.add('active');
 document.getElementById('progress').style.width=(n/12*100)+"%";
 }
 
+// 🔥 PERSONALIZAÇÃO POR LINK
+function getParams(){
+const params = new URLSearchParams(window.location.search);
+return {
+numero: params.get("wpp") || "5522999231211",
+ref: params.get("ref") || "indicação direta"
+};
+}
+
+window.abrirWhats=function(){
+let {numero, ref} = getParams();
+let msg = `Vim pela apresentação (${ref}).\n\nQuero começar como consultor.`;
+window.open("https://wa.me/"+numero+"?text="+encodeURIComponent(msg));
+}
+
+// IMAGENS
 let bonusImgs=[...Array(7)].map((_,i)=>`img/bonus${i+1}.jpg`);
 let b=0;
 
@@ -277,11 +267,6 @@ let p=0;
 window.trocarProduto=function(d){
 p=(p+d+prodImgs.length)%prodImgs.length;
 document.getElementById("prodImg").src=prodImgs[p];
-}
-
-window.abrirComunidade=function(){
-let msg="Vim pela apresentação ProsCS.\n\nQuero começar como consultor.";
-window.open("https://wa.me/5522999231211?text="+encodeURIComponent(msg));
 }
 
 });
