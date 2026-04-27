@@ -41,7 +41,6 @@ Mas a forma como isso está organizado pode mudar a forma como você constrói r
 <button class="btn" onclick="go(2)">Quero entender</button>
 </div>
 </div>
-
 <!-- TELA 2 -->
 <div class="slide" id="s2">
 <div class="card">
@@ -55,6 +54,7 @@ A diferença é que isso nunca foi estruturado a seu favor.
 <button class="btn-back" onclick="go(1)">Voltar</button>
 </div>
 </div>
+
 <!-- TELA 3 -->
 <div class="slide" id="s3">
 <div class="card">
@@ -84,7 +84,6 @@ Presta atenção — é mais simples do que parece.
 <button class="btn-back" onclick="go(3)">Voltar</button>
 </div>
 </div>
-
 <!-- TELA 4B -->
 <div class="slide" id="s4b">
 <div class="card">
@@ -107,6 +106,7 @@ vira uma estrutura que cresce com o tempo.
 <button class="btn-back" onclick="go(4)">Voltar</button>
 </div>
 </div>
+
 <!-- TELA 5 -->
 <div class="slide" id="s5">
 <div class="card">
@@ -146,98 +146,6 @@ E isso cresce de forma previsível.
 <button class="btn-back" onclick="go(5)">Voltar</button>
 </div>
 </div>
-
-<!-- TELA 7 -->
-<div class="slide" id="s7">
-<div class="card">
-<iframe src="https://www.youtube.com/embed/lGVU6AythoQ"></iframe>
-
-<button class="btn" onclick="go(8)">Continuar</button>
-<button class="btn-back" onclick="go(6)">Voltar</button>
-</div>
-</div>
-
-<!-- TELA 8 -->
-<div class="slide" id="s8">
-<div class="card">
-
-<img id="bonusImg" src="img/bonus1.jpg">
-
-<div class="nav">
-<button class="btn" onclick="trocarBonus(-1)">←</button>
-<button class="btn" onclick="trocarBonus(1)">→</button>
-</div>
-
-<button class="btn" onclick="go(9)">Continuar</button>
-<button class="btn-back" onclick="go(7)">Voltar</button>
-</div>
-</div>
-<!-- TELA 9 -->
-<div class="slide" id="s9">
-<div class="card">
-<p>
-Isso não depende de sorte.<br><br>
-
-Depende de consistência e execução.
-</p>
-
-<button class="btn" onclick="go(10)">Faz sentido</button>
-<button class="btn-back" onclick="go(8)">Voltar</button>
-</div>
-</div>
-
-<!-- TELA 10 -->
-<div class="slide" id="s10">
-<div class="card">
-
-<p>
-Agora você pode ver como isso cresce ao longo do tempo.
-</p>
-
-<button class="btn" onclick="go(11)">
-Ver simulação
-</button>
-
-<button class="btn-back" onclick="go(9)">Voltar</button>
-</div>
-</div>
-
-<!-- TELA 11 -->
-<div class="slide" id="s11">
-<div class="card">
-
-<p>
-Abra o simulador e entenda a lógica funcionando.
-</p>
-
-<a href="https://simuladorprosff.vercel.app/" target="_blank">
-<button class="btn">Abrir simulador</button>
-</a>
-
-<button class="btn" onclick="go(12)">Continuar</button>
-
-<button class="btn-back" onclick="go(10)">Voltar</button>
-</div>
-</div>
-
-<!-- TELA 12 -->
-<div class="slide" id="s12">
-<div class="card">
-
-<p>
-Se isso fez sentido…<br><br>
-
-o próximo passo é entender como começar.
-</p>
-
-<button class="btn" onclick="abrirComunidade()">
-Quero começar como consultor
-</button>
-
-<button class="btn-back" onclick="go(11)">Voltar</button>
-</div>
-</div>
-
 <script>
 document.addEventListener("DOMContentLoaded", function(){
 
@@ -279,7 +187,7 @@ p=(p+d+prodImgs.length)%prodImgs.length;
 document.getElementById("prodImg").src=prodImgs[p];
 }
 
-// 🔥 NOVO: PERSONALIZAÇÃO DO LINK
+// 🔥 PERSONALIZAÇÃO
 function getParams(){
 const params = new URLSearchParams(window.location.search);
 return {
@@ -294,6 +202,16 @@ let {numero, ref} = getParams();
 let msg = `Vim pela apresentação (${ref}).\n\nQuero começar como consultor.`;
 
 window.open("https://wa.me/"+numero+"?text="+encodeURIComponent(msg));
+}
+
+// 🔥 ALTERAÇÃO ÚNICA (STEP)
+const params = new URLSearchParams(window.location.search);
+const step = params.get("step");
+
+if(step){
+setTimeout(()=>{
+go(parseInt(step));
+}, 500);
 }
 
 });
