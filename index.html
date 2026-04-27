@@ -55,7 +55,6 @@ A diferença é que isso nunca foi estruturado a seu favor.
 <button class="btn-back" onclick="go(1)">Voltar</button>
 </div>
 </div>
-
 <!-- TELA 3 -->
 <div class="slide" id="s3">
 <div class="card">
@@ -71,6 +70,7 @@ quanto disso poderia estar voltando pra você?
 <button class="btn-back" onclick="go(2)">Voltar</button>
 </div>
 </div>
+
 <!-- TELA 4 -->
 <div class="slide" id="s4">
 <div class="card">
@@ -107,7 +107,6 @@ vira uma estrutura que cresce com o tempo.
 <button class="btn-back" onclick="go(4)">Voltar</button>
 </div>
 </div>
-
 <!-- TELA 5 -->
 <div class="slide" id="s5">
 <div class="card">
@@ -128,6 +127,7 @@ Quero construir isso
 <button class="btn-back" onclick="go('4b')">Voltar</button>
 </div>
 </div>
+
 <!-- TELA 6 -->
 <div class="slide" id="s6">
 <div class="card">
@@ -172,7 +172,6 @@ E isso cresce de forma previsível.
 <button class="btn-back" onclick="go(7)">Voltar</button>
 </div>
 </div>
-
 <!-- TELA 9 -->
 <div class="slide" id="s9">
 <div class="card">
@@ -186,6 +185,7 @@ Depende de consistência e execução.
 <button class="btn-back" onclick="go(8)">Voltar</button>
 </div>
 </div>
+
 <!-- TELA 10 -->
 <div class="slide" id="s10">
 <div class="card">
@@ -279,9 +279,21 @@ p=(p+d+prodImgs.length)%prodImgs.length;
 document.getElementById("prodImg").src=prodImgs[p];
 }
 
+// 🔥 NOVO: PERSONALIZAÇÃO DO LINK
+function getParams(){
+const params = new URLSearchParams(window.location.search);
+return {
+numero: params.get("wpp") || "5522999231211",
+ref: params.get("ref") || "indicação direta"
+};
+}
+
 window.abrirComunidade=function(){
-let msg="Vim pela apresentação ProsCS.\n\nQuero começar como consultor.";
-window.open("https://wa.me/5522999231211?text="+encodeURIComponent(msg));
+let {numero, ref} = getParams();
+
+let msg = `Vim pela apresentação (${ref}).\n\nQuero começar como consultor.`;
+
+window.open("https://wa.me/"+numero+"?text="+encodeURIComponent(msg));
 }
 
 });
