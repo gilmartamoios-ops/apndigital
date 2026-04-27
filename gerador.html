@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Gerador ProsCS</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+
+<style>
+body{
+background:#080808;
+color:white;
+font-family:Arial;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+}
+
+.container{
+background:#121212;
+border:1px solid #222;
+padding:30px;
+border-radius:25px;
+width:100%;
+max-width:420px;
+box-shadow:0 0 30px rgba(0,255,136,0.1);
+}
+
+input{
+width:100%;
+padding:12px;
+margin-top:10px;
+border-radius:10px;
+background:#1a1a1a;
+border:1px solid #333;
+color:white;
+}
+
+button{
+width:100%;
+padding:14px;
+margin-top:12px;
+border-radius:50px;
+background:#00ff88;
+color:black;
+font-weight:bold;
+}
+
+.secondary{
+background:#222;
+color:#aaa;
+}
+
+.result{
+margin-top:15px;
+background:#000;
+padding:10px;
+border-radius:10px;
+word-break:break-all;
+font-size:12px;
+}
+
+#qrcode{
+margin-top:15px;
+display:flex;
+justify-content:center;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1 class="text-xl text-yellow-400 text-center mb-2">
+Gerador de Link
+</h1>
+
+<p class="text-xs text-gray-400 text-center mb-4">
+Crie seu link personalizado ProsCS
+</p>
+
+<input id="nome" placeholder="Seu nome (ex: joao)">
+<input id="numero" placeholder="WhatsApp com DDD (5511999999999)">
+
+<button onclick="gerar()">Gerar Link</button>
+
+<div id="resultado" class="result hidden"></div>
+
+<button onclick="copiar()" id="copiar" class="secondary hidden">
+Copiar Link
+</button>
+
+<button onclick="abrirWhats()" id="abrir" class="secondary hidden">
+Abrir WhatsApp com Link
+</button>
+
+<button onclick="gerarQR()" id="qrbtn" class="secondary hidden">
+Gerar QR Code
+</button>
+
+<div id="qrcode"></div>
+
+</div>
+
+<script>
+
+let linkGerado = "";
+
+function gerar(){
+
+let nome = document.getElementById("nome").value.trim();
+let numero = document.getElementById("numero").value.trim();
+
+if(!nome || !numero){
+alert("Preencha os campos");
+return;
+}
+
+// limpa nome
+nome = nome.toLowerCase().replace(/\s+/g, "");
+
+linkGerado = window.location.origin + "/?wpp=" + numero + "&ref=" + nome;
+
+document.getElementById("resultado").innerText = linkGerado;
+document.getElementById("resultado").classList.remove("hidden");
+
+document.getElementById("copiar").classList.remove("hidden");
+document.getElementById("abrir").classList.remove("hidden");
+document.getElementById("qrbtn").classList.remove("hidden");
+
+// salva no navegador
+localStorage.setItem("meulink", linkGerado);
+localStorage.setItem("meunome", nome);
+localStorage.setItem("meunumero", numero);
+
+}
+
+function copiar(){
+navigator.clipboard.writeText(linkGerado);
+alert("Link copiado!");
+}
+
+function abrirWhats(){
+
+let texto = "Olha isso aqui, depois me fala o que achou:\n\n" + linkGerado;
+
+window.open("https://wa.me/?text=" + encodeURIComponent(texto));
+
+}
+
+function gerarQR(){
+
+document.getElementById("qrcode").innerHTML = "";
+
+QRCode.toCanvas(linkGerado, {width:200}, function (err, canvas) {
+if(!err){
+document.getElementById("qrcode").appendChild(canvas);
+}
+});
+
+}
+
+// auto carregar dados salvos
+window.onload = function(){
+
+let link = localStorage.getItem("meulink");
+let nome = localStorage.getItem("meunome");
+let numero = localStorage.getItem("meunumero");
+
+if(link){
+
+linkGerado = link;
+
+document.getElementById("resultado").innerText = link;
+document.getElementById("resultado").classList.remove("hidden");
+
+document.getElementById("copiar").classList.remove("hidden");
+document.getElementById("abrir").classList.remove("hidden");
+document.getElementById("qrbtn").classList.remove("hidden");
+
+if(nome) document.getElementById("nome").value = nome;
+if(numero) document.getElementById("numero").value = numero;
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
