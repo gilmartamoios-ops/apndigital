@@ -4,189 +4,288 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Gerador ProsCS</title>
+<title>ProsCS</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 
 <style>
-body{
-background:#080808;
-color:white;
-font-family:Arial;
-display:flex;
-justify-content:center;
-align-items:center;
-min-height:100vh;
-}
-
-.container{
-background:#121212;
-border:1px solid #222;
-padding:30px;
-border-radius:25px;
-width:100%;
-max-width:420px;
-box-shadow:0 0 30px rgba(0,255,136,0.1);
-}
-
-input{
-width:100%;
-padding:12px;
-margin-top:10px;
-border-radius:10px;
-background:#1a1a1a;
-border:1px solid #333;
-color:white;
-}
-
-button{
-width:100%;
-padding:14px;
-margin-top:12px;
-border-radius:50px;
-background:#00ff88;
-color:black;
-font-weight:bold;
-}
-
-.secondary{
-background:#222;
-color:#aaa;
-}
-
-.result{
-margin-top:15px;
-background:#000;
-padding:10px;
-border-radius:10px;
-word-break:break-all;
-font-size:12px;
-}
-
-#qrcode{
-margin-top:15px;
-display:flex;
-justify-content:center;
-}
+body{background:#080808;color:white;font-family:Arial;overflow:hidden;}
+.slide{display:none;min-height:100vh;padding:20px;flex-direction:column;justify-content:center;align-items:center;text-align:center;opacity:0;transform: translateX(30px);transition: all 0.5s ease;}
+.slide.active{display:flex;opacity:1;transform: translateX(0);}
+.card{background:#121212;border:1px solid #222;padding:24px;border-radius:25px;max-width:520px;width:100%;}
+.btn{background:#00ff88;color:black;padding:14px;border-radius:50px;margin-top:12px;width:100%;font-weight:bold;}
+.btn-back{background:#222;color:#aaa;padding:10px;border-radius:50px;margin-top:10px;width:100%;}
+.progress{position:fixed;top:0;left:0;height:4px;background:#00ff88;width:0%;z-index:999;}
+iframe{width:100%;height:240px;border-radius:15px;}
+img{width:100%;border-radius:15px;}
+.nav{display:flex;gap:10px;margin-top:10px;}
 </style>
-
 </head>
+
 <body>
 
-<div class="container">
+<div class="progress" id="progress"></div>
+<audio id="audio"></audio>
 
-<h1 class="text-xl text-yellow-400 text-center mb-2">
-Gerador de Link
-</h1>
+<!-- TELA 1 -->
+<div class="slide active" id="s1">
+<h1 class="text-4xl text-yellow-400 mb-2">ProsCS</h1>
+<p class="mb-6">Consumo Sustentável Bonífica</p>
 
-<p class="text-xs text-gray-400 text-center mb-4">
-Crie seu link personalizado ProsCS
+<div class="card">
+<p>
+Nada aqui é novo…<br><br>
+Mas a forma como isso está organizado pode mudar a forma como você constrói renda.
 </p>
-<input id="nome" placeholder="Seu nome (ex: joao)">
-<input id="numero" placeholder="WhatsApp com DDD (5511999999999)">
 
-<button onclick="gerar()">Gerar Link</button>
-
-<div id="resultado" class="result hidden"></div>
-
-<button onclick="copiar()" id="copiar" class="secondary hidden">
-Copiar Link
-</button>
-
-<button onclick="abrirWhats()" id="abrir" class="secondary hidden">
-Abrir WhatsApp com Link
-</button>
-
-<button onclick="gerarQR()" id="qrbtn" class="secondary hidden">
-Gerar QR Code
-</button>
-
-<div id="qrcode"></div>
-
+<button class="btn" onclick="go(2)">Quero entender</button>
 </div>
+</div>
+
+<!-- TELA 2 -->
+<div class="slide" id="s2">
+<div class="card">
+<p>
+Você já consome todos os meses.<br><br>
+
+A diferença é que isso nunca foi estruturado a seu favor.
+</p>
+
+<button class="btn" onclick="go(3)">Faz sentido</button>
+<button class="btn-back" onclick="go(1)">Voltar</button>
+</div>
+</div>
+
+<!-- TELA 3 -->
+<div class="slide" id="s3">
+<div class="card">
+<p>
+Toda vez que você consome… alguém ganha.<br><br>
+
+A pergunta é:<br><br>
+
+quanto disso poderia estar voltando pra você?
+</p>
+
+<button class="btn" onclick="go(4)">Quero ver</button>
+<button class="btn-back" onclick="go(2)">Voltar</button>
+</div>
+</div>
+<!-- TELA 4 -->
+<div class="slide" id="s4">
+<div class="card">
+<iframe src="https://www.youtube.com/embed/RGw-nxKio-0"></iframe>
+
+<p class="mt-4 text-sm text-gray-400">
+Presta atenção — é mais simples do que parece.
+</p>
+
+<button class="btn" onclick="go('4b')">Continuar</button>
+<button class="btn-back" onclick="go(3)">Voltar</button>
+</div>
+</div>
+
+<!-- TELA 4B -->
+<div class="slide" id="s4b">
+<div class="card">
+
+<p>
+Isso começa com consumo.<br><br>
+
+Mas quando isso é organizado…<br>
+vira uma estrutura que cresce com o tempo.
+</p>
+
+<img id="prodImg" src="img/prod1.jpg">
+
+<div class="nav">
+<button class="btn" onclick="trocarProduto(-1)">←</button>
+<button class="btn" onclick="trocarProduto(1)">→</button>
+</div>
+
+<button class="btn" onclick="go(5)">Entendi</button>
+<button class="btn-back" onclick="go(4)">Voltar</button>
+</div>
+</div>
+
+<!-- TELA 5 -->
+<div class="slide" id="s5">
+<div class="card">
+
+<p>
+Você pode continuar consumindo normalmente…<br><br>
+
+Ou usar isso como base para construir algo.<br><br>
+
+Não é sobre vender.<br>
+É sobre organizar um comportamento que já existe.
+</p>
+
+<button class="btn" onclick="go(6)">
+Quero construir isso
+</button>
+
+<button class="btn-back" onclick="go('4b')">Voltar</button>
+</div>
+</div>
+<!-- TELA 6 -->
+<div class="slide" id="s6">
+<div class="card">
+
+<p>
+Você começa.<br><br>
+
+Depois conecta algumas pessoas.<br><br>
+
+Cada uma faz o mesmo.<br><br>
+
+E isso cresce de forma previsível.
+</p>
+
+<button class="btn" onclick="go(7)">Ver crescimento</button>
+<button class="btn-back" onclick="go(5)">Voltar</button>
+</div>
+</div>
+
+<!-- TELA 7 -->
+<div class="slide" id="s7">
+<div class="card">
+<iframe src="https://www.youtube.com/embed/lGVU6AythoQ"></iframe>
+
+<button class="btn" onclick="go(8)">Continuar</button>
+<button class="btn-back" onclick="go(6)">Voltar</button>
+</div>
+</div>
+
+<!-- TELA 8 -->
+<div class="slide" id="s8">
+<div class="card">
+
+<img id="bonusImg" src="img/bonus1.jpg">
+
+<div class="nav">
+<button class="btn" onclick="trocarBonus(-1)">←</button>
+<button class="btn" onclick="trocarBonus(1)">→</button>
+</div>
+
+<button class="btn" onclick="go(9)">Continuar</button>
+<button class="btn-back" onclick="go(7)">Voltar</button>
+</div>
+</div>
+
+<!-- TELA 9 -->
+<div class="slide" id="s9">
+<div class="card">
+<p>
+Isso não depende de sorte.<br><br>
+
+Depende de consistência e execução.
+</p>
+
+<button class="btn" onclick="go(10)">Faz sentido</button>
+<button class="btn-back" onclick="go(8)">Voltar</button>
+</div>
+</div>
+<!-- TELA 10 -->
+<div class="slide" id="s10">
+<div class="card">
+
+<p>
+Agora você pode ver como isso cresce ao longo do tempo.
+</p>
+
+<button class="btn" onclick="go(11)">
+Ver simulação
+</button>
+
+<button class="btn-back" onclick="go(9)">Voltar</button>
+</div>
+</div>
+
+<!-- TELA 11 -->
+<div class="slide" id="s11">
+<div class="card">
+
+<p>
+Abra o simulador e entenda a lógica funcionando.
+</p>
+
+<a href="https://simuladorprosff.vercel.app/" target="_blank">
+<button class="btn">Abrir simulador</button>
+</a>
+
+<button class="btn" onclick="go(12)">Continuar</button>
+
+<button class="btn-back" onclick="go(10)">Voltar</button>
+</div>
+</div>
+
+<!-- TELA 12 -->
+<div class="slide" id="s12">
+<div class="card">
+
+<p>
+Se isso fez sentido…<br><br>
+
+o próximo passo é entender como começar.
+</p>
+
+<button class="btn" onclick="abrirComunidade()">
+Quero começar como consultor
+</button>
+
+<button class="btn-back" onclick="go(11)">Voltar</button>
+</div>
+</div>
+
 <script>
+document.addEventListener("DOMContentLoaded", function(){
 
-let linkGerado = "";
+let audio=document.getElementById("audio");
+let trilha=["audio/intro.mp3","audio/middle.mp3","audio/final.mp3"];
+let etapa=0;
 
-function gerar(){
+document.body.addEventListener("click",()=>{
+if(!audio.src){
+audio.src=trilha[0];
+audio.play().catch(()=>{});
+}
+},{once:true});
 
-let nome = document.getElementById("nome").value.trim();
-let numero = document.getElementById("numero").value.trim();
+window.go=function(n){
 
-if(!nome || !numero){
-alert("Preencha os campos");
-return;
+if(n>=4 && etapa===0){etapa=1;audio.src=trilha[1];audio.play().catch(()=>{});}
+if(n>=9 && etapa===1){etapa=2;audio.src=trilha[2];audio.play().catch(()=>{});}
+
+document.querySelectorAll('.slide').forEach(s=>s.classList.remove('active'));
+document.getElementById('s'+n).classList.add('active');
+
+document.getElementById('progress').style.width=(n/12*100)+"%";
 }
 
-nome = nome.toLowerCase().replace(/\s+/g, "");
+let bonusImgs=[...Array(7)].map((_,i)=>`img/bonus${i+1}.jpg`);
+let b=0;
 
-linkGerado = window.location.origin + "/?wpp=" + numero + "&ref=" + nome;
-
-document.getElementById("resultado").innerText = linkGerado;
-document.getElementById("resultado").classList.remove("hidden");
-
-document.getElementById("copiar").classList.remove("hidden");
-document.getElementById("abrir").classList.remove("hidden");
-document.getElementById("qrbtn").classList.remove("hidden");
-
-// salvar automaticamente
-localStorage.setItem("meulink", linkGerado);
-localStorage.setItem("meunome", nome);
-localStorage.setItem("meunumero", numero);
-
+window.trocarBonus=function(d){
+b=(b+d+bonusImgs.length)%bonusImgs.length;
+document.getElementById("bonusImg").src=bonusImgs[b];
 }
 
-function copiar(){
-navigator.clipboard.writeText(linkGerado);
-alert("Link copiado!");
+let prodImgs=[...Array(13)].map((_,i)=>`img/prod${i+1}.jpg`);
+let p=0;
+
+window.trocarProduto=function(d){
+p=(p+d+prodImgs.length)%prodImgs.length;
+document.getElementById("prodImg").src=prodImgs[p];
 }
 
-function abrirWhats(){
-
-let texto = "Olha isso aqui, depois me fala o que achou:\n\n" + linkGerado;
-
-window.open("https://wa.me/?text=" + encodeURIComponent(texto));
-
+window.abrirComunidade=function(){
+let msg="Vim pela apresentação ProsCS.\n\nQuero começar como consultor.";
+window.open("https://wa.me/5522999231211?text="+encodeURIComponent(msg));
 }
 
-function gerarQR(){
-
-document.getElementById("qrcode").innerHTML = "";
-
-QRCode.toCanvas(linkGerado, {width:200}, function (err, canvas) {
-if(!err){
-document.getElementById("qrcode").appendChild(canvas);
-}
 });
-
-}
-// carregar automático se já tiver link salvo
-window.onload = function(){
-
-let link = localStorage.getItem("meulink");
-let nome = localStorage.getItem("meunome");
-let numero = localStorage.getItem("meunumero");
-
-if(link){
-
-linkGerado = link;
-
-document.getElementById("resultado").innerText = link;
-document.getElementById("resultado").classList.remove("hidden");
-
-document.getElementById("copiar").classList.remove("hidden");
-document.getElementById("abrir").classList.remove("hidden");
-document.getElementById("qrbtn").classList.remove("hidden");
-
-if(nome) document.getElementById("nome").value = nome;
-if(numero) document.getElementById("numero").value = numero;
-
-}
-
-}
-
 </script>
 
 </body>
-</html>  
+</html>
