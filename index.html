@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ProsCS</title>
+<title>C3</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 
@@ -29,13 +29,13 @@ img{width:100%;border-radius:15px;}
 
 <!-- TELA 1 -->
 <div class="slide active" id="s1">
-<h1 class="text-4xl text-yellow-400 mb-2">ProsCS</h1>
-<p class="mb-6">Consumo Sustentável Bonífica</p>
+<h1 class="text-4xl text-yellow-400 mb-2">C3</h1>
+<p class="mb-6">Comunidade de Empreendedores de Consumo</p>
 
 <div class="card">
 <p>
 Nada aqui é novo…<br><br>
-Mas a forma como isso está organizado pode mudar a forma como você constrói renda.
+Mas a forma como isso está organizado pode mudar a forma como você consome e constrói resultado.
 </p>
 
 <button class="btn" onclick="go(2)">Quero entender</button>
@@ -48,13 +48,14 @@ Mas a forma como isso está organizado pode mudar a forma como você constrói r
 <p>
 Você já consome todos os meses.<br><br>
 
-A diferença é que isso nunca foi estruturado a seu favor.
+A diferença é que isso nunca foi organizado de forma inteligente.
 </p>
 
 <button class="btn" onclick="go(3)">Faz sentido</button>
 <button class="btn-back" onclick="go(1)">Voltar</button>
 </div>
 </div>
+
 <!-- TELA 3 -->
 <div class="slide" id="s3">
 <div class="card">
@@ -70,7 +71,6 @@ quanto disso poderia estar voltando pra você?
 <button class="btn-back" onclick="go(2)">Voltar</button>
 </div>
 </div>
-
 <!-- TELA 4 -->
 <div class="slide" id="s4">
 <div class="card">
@@ -90,10 +90,10 @@ Presta atenção — é mais simples do que parece.
 <div class="card">
 
 <p>
-Isso começa com consumo.<br><br>
+Tudo começa com consumo.<br><br>
 
 Mas quando isso é organizado…<br>
-vira uma estrutura que cresce com o tempo.
+vira um ativo que cresce com o tempo.
 </p>
 
 <img id="prodImg" src="img/prod1.jpg">
@@ -107,17 +107,18 @@ vira uma estrutura que cresce com o tempo.
 <button class="btn-back" onclick="go(4)">Voltar</button>
 </div>
 </div>
+
 <!-- TELA 5 -->
 <div class="slide" id="s5">
 <div class="card">
 
 <p>
-Você pode continuar consumindo normalmente…<br><br>
+Você pode continuar consumindo como sempre…<br><br>
 
-Ou usar isso como base para construir algo.<br><br>
+Ou transformar isso em algo organizado e inteligente.<br><br>
 
 Não é sobre vender.<br>
-É sobre organizar um comportamento que já existe.
+É sobre estruturar o que você já faz.
 </p>
 
 <button class="btn" onclick="go(6)">
@@ -133,16 +134,14 @@ Quero construir isso
 <div class="card">
 
 <p>
-Você começa.<br><br>
+Você começa organizando o seu consumo.<br><br>
 
-Depois conecta algumas pessoas.<br><br>
+Depois conecta pessoas com o mesmo objetivo.<br><br>
 
-Cada uma faz o mesmo.<br><br>
-
-E isso cresce de forma previsível.
+E isso forma uma comunidade que cresce com consistência.
 </p>
 
-<button class="btn" onclick="go(7)">Ver crescimento</button>
+<button class="btn" onclick="go(7)">Ver como funciona</button>
 <button class="btn-back" onclick="go(5)">Voltar</button>
 </div>
 </div>
@@ -156,7 +155,6 @@ E isso cresce de forma previsível.
 <button class="btn-back" onclick="go(6)">Voltar</button>
 </div>
 </div>
-
 <!-- TELA 8 -->
 <div class="slide" id="s8">
 <div class="card">
@@ -172,13 +170,14 @@ E isso cresce de forma previsível.
 <button class="btn-back" onclick="go(7)">Voltar</button>
 </div>
 </div>
+
 <!-- TELA 9 -->
 <div class="slide" id="s9">
 <div class="card">
 <p>
 Isso não depende de sorte.<br><br>
 
-Depende de consistência e execução.
+Depende de consistência e construção.
 </p>
 
 <button class="btn" onclick="go(10)">Faz sentido</button>
@@ -191,7 +190,7 @@ Depende de consistência e execução.
 <div class="card">
 
 <p>
-Agora você pode ver como isso cresce ao longo do tempo.
+Agora você pode ver como isso evolui ao longo do tempo.
 </p>
 
 <button class="btn" onclick="go(11)">
@@ -214,7 +213,6 @@ Abra o simulador e entenda a lógica funcionando.
 <button class="btn">Abrir simulador</button>
 </a>
 
-
 <button class="btn-back" onclick="go(10)">Voltar</button>
 </div>
 </div>
@@ -226,17 +224,16 @@ Abra o simulador e entenda a lógica funcionando.
 <p>
 Se isso fez sentido…<br><br>
 
-o próximo passo é entender como começar.
+o próximo passo é conhecer como começar.
 </p>
 
 <button class="btn" onclick="abrirComunidade()">
-Quero começar como consultor
+Quero fazer parte da comunidade
 </button>
 
 <button class="btn-back" onclick="go(11)">Voltar</button>
 </div>
 </div>
-
 <script>
 document.addEventListener("DOMContentLoaded", function(){
 
@@ -278,7 +275,6 @@ p=(p+d+prodImgs.length)%prodImgs.length;
 document.getElementById("prodImg").src=prodImgs[p];
 }
 
-// 🔥 NOVO: PERSONALIZAÇÃO DO LINK
 function getParams(){
 const params = new URLSearchParams(window.location.search);
 return {
@@ -290,10 +286,11 @@ ref: params.get("ref") || "indicação direta"
 window.abrirComunidade=function(){
 let {numero, ref} = getParams();
 
-let msg = `Vim pela apresentação (${ref}).\n\nQuero começar como consultor.`;
+let msg = `Vim pela apresentação (${ref}).\n\nQuero entender como participar da comunidade C3.`;
 
 window.open("https://wa.me/"+numero+"?text="+encodeURIComponent(msg));
 }
+
 const paramsStep = new URLSearchParams(window.location.search);
 const step = paramsStep.get("step");
 
@@ -302,6 +299,7 @@ setTimeout(()=>{
 go(parseInt(step));
 }, 500);
 }
+
 });
 </script>
 
