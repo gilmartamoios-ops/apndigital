@@ -19,13 +19,10 @@ background:#000;
 font-family:Arial, sans-serif;
 overflow:hidden;
 height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
 color:white;
 }
 
-/* VÍDEO */
+/* VIDEO */
 
 .video-container{
 position:relative;
@@ -48,63 +45,60 @@ top:0;
 left:0;
 width:100%;
 height:100%;
+
 background:linear-gradient(
 to top,
-rgba(0,0,0,0.82),
-rgba(0,0,0,0.18)
+rgba(0,0,0,0.85),
+rgba(0,0,0,0.15)
 );
 
 display:flex;
 flex-direction:column;
-justify-content:flex-end;
+justify-content:center;
 align-items:center;
 
-padding:40px 25px;
+padding:30px;
 text-align:center;
 }
 
-/* LOGO */
+/* FRASE SUPERIOR */
 
-.logo{
-font-size:54px;
-font-weight:bold;
-color:#d4af37;
-margin-bottom:10px;
+.top-text{
+position:absolute;
+top:35px;
+left:50%;
+transform:translateX(-50%);
+
+font-size:13px;
 letter-spacing:2px;
-opacity:0;
-animation:fadeLogo 2s forwards;
-animation-delay:1s;
+text-transform:uppercase;
+color:rgba(255,255,255,0.72);
 }
 
-.sub{
-font-size:15px;
-color:#ccc;
-margin-bottom:28px;
-max-width:400px;
-line-height:1.5;
-opacity:0;
-animation:fadeLogo 2s forwards;
-animation-delay:2s;
+/* FRASE CENTRAL */
+
+.main-text{
+max-width:700px;
+font-size:34px;
+line-height:1.4;
+font-weight:300;
+margin-bottom:40px;
+
+text-shadow:0 2px 15px rgba(0,0,0,0.5);
 }
 
-/* BOTÃO */
+/* BOTÕES */
 
 .btn{
-display:inline-block;
 background:#00ff88;
 color:#000;
-padding:16px 34px;
-border-radius:50px;
+padding:18px 34px;
+border-radius:60px;
 font-weight:bold;
-text-decoration:none;
 font-size:16px;
+border:none;
+cursor:pointer;
 transition:0.3s;
-
-opacity:0;
-transform:translateY(20px);
-
-animation:fadeBtn 1.8s forwards;
-animation-delay:4s;
 }
 
 .btn:hover{
@@ -112,53 +106,58 @@ transform:scale(1.04);
 background:#00e67a;
 }
 
-/* FRASE */
+.secondary-btn{
+margin-top:16px;
 
-.frase{
+background:transparent;
+border:1px solid rgba(255,255,255,0.25);
+
+color:white;
+
+padding:12px 28px;
+border-radius:50px;
+
+font-size:14px;
+cursor:pointer;
+
+backdrop-filter:blur(10px);
+}
+
+/* ESCONDER */
+
+.hidden{
+display:none !important;
+}
+
+/* CTA FINAL */
+
+.final-cta{
 position:absolute;
-top:30px;
+bottom:50px;
 left:50%;
 transform:translateX(-50%);
-font-size:14px;
-letter-spacing:2px;
-color:rgba(255,255,255,0.7);
-text-transform:uppercase;
 
-opacity:0;
-animation:fadeLogo 2s forwards;
-animation-delay:2.5s;
-}
-
-/* ANIMAÇÕES */
-
-@keyframes fadeLogo{
-to{
-opacity:1;
-}
-}
-
-@keyframes fadeBtn{
-to{
-opacity:1;
-transform:translateY(0);
-}
+display:flex;
+flex-direction:column;
+align-items:center;
 }
 
 /* MOBILE */
 
 @media(max-width:768px){
 
-.logo{
-font-size:42px;
-}
-
-.sub{
-font-size:14px;
+.main-text{
+font-size:26px;
 }
 
 .btn{
 width:100%;
 max-width:320px;
+}
+
+.final-cta{
+width:100%;
+padding:0 25px;
 }
 
 }
@@ -170,33 +169,49 @@ max-width:320px;
 
 <div class="video-container">
 
-<!-- VÍDEO -->
-<video autoplay muted playsinline id="video">
+<!-- VIDEO -->
+<video
+id="video"
+playsinline
+preload="auto"
+poster="img/bonus1.jpg"
+>
 
 <source src="video/manifesto.mp4" type="video/mp4">
 
-Seu navegador não suporta vídeo.
-
 </video>
 
-<!-- OVERLAY -->
-<div class="overlay">
+<!-- OVERLAY INICIAL -->
+<div class="overlay" id="introOverlay">
 
-<div class="frase">
+<div class="top-text">
 Consumo inteligente • pertencimento • construção
 </div>
 
-<div class="sub">
+<div class="main-text">
 Talvez prosperar nunca tenha sido uma jornada individual.
 </div>
 
-<div class="sub">
-Uma comunidade construída para transformar consumo em organização, tranquilidade e crescimento coletivo.
+<button class="btn" onclick="iniciarExperiencia()">
+▶ Entrar na experiência
+</button>
+
 </div>
 
-<a href="jornada.html" class="btn">
+<!-- CTA FINAL -->
+<div class="final-cta hidden" id="finalCTA">
+
+<a href="jornada.html">
+
+<button class="btn">
 Conhecer a Jornada
+</button>
+
 </a>
+
+<button class="secondary-btn" onclick="reiniciarVideo()">
+Assistir novamente
+</button>
 
 </div>
 
@@ -204,16 +219,41 @@ Conhecer a Jornada
 
 <script>
 
-/* LOOP SUAVE */
+const video = document.getElementById("video");
+const introOverlay = document.getElementById("introOverlay");
+const finalCTA = document.getElementById("finalCTA");
 
-const video = document.getElementById('video');
+/* INICIAR EXPERIÊNCIA */
 
-video.addEventListener('ended', ()=>{
+function iniciarExperiencia(){
 
-video.currentTime = 0;
+introOverlay.classList.add("hidden");
+
+video.volume = 1;
+
 video.play();
 
+}
+
+/* FIM DO VIDEO */
+
+video.addEventListener("ended", ()=>{
+
+finalCTA.classList.remove("hidden");
+
 });
+
+/* REINICIAR */
+
+function reiniciarVideo(){
+
+finalCTA.classList.add("hidden");
+
+video.currentTime = 0;
+
+video.play();
+
+}
 
 </script>
 
