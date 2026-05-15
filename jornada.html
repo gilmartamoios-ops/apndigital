@@ -90,12 +90,7 @@ background:black;
 img{
 width:100%;
 border-radius:15px;
-}
-
-.nav{
-display:flex;
-gap:10px;
-margin-top:10px;
+transition:opacity .4s ease;
 }
 
 .soft{
@@ -141,7 +136,7 @@ Você chegou até aqui porque alguma coisa fez sentido.
 </p>
 
 <p class="soft mt-6">
-Talvez você também esteja cansado de construir tudo sozinho.
+Talvez prosperar nunca tenha sido uma jornada individual.
 </p>
 
 <button class="btn" onclick="go(2)">
@@ -201,6 +196,7 @@ Voltar
 </div>
 
 </div>
+
 <!-- TELA 4 -->
 
 <div class="slide" id="s4">
@@ -237,7 +233,6 @@ Voltar
 </div>
 
 </div>
-
 <!-- TELA 5 -->
 
 <div class="slide" id="s5">
@@ -277,6 +272,7 @@ id="video2"
 controls
 playsinline
 preload="metadata"
+style="object-fit:cover; max-height:420px;"
 >
 
 <source src="video/bonifica.mp4" type="video/mp4">
@@ -311,15 +307,15 @@ Voltar
 O crescimento acontece com consistência, não com pressão.
 </p>
 
-<div class="nav">
+<div class="flex justify-center gap-2 mt-4 mb-2">
 
-<button class="btn" onclick="trocarBonus(-1)">
-←
-</button>
-
-<button class="btn" onclick="trocarBonus(1)">
-→
-</button>
+<span onclick="trocarBonus(0)" class="w-3 h-3 bg-green-400 rounded-full cursor-pointer"></span>
+<span onclick="trocarBonus(1)" class="w-3 h-3 bg-gray-600 rounded-full cursor-pointer"></span>
+<span onclick="trocarBonus(2)" class="w-3 h-3 bg-gray-600 rounded-full cursor-pointer"></span>
+<span onclick="trocarBonus(3)" class="w-3 h-3 bg-gray-600 rounded-full cursor-pointer"></span>
+<span onclick="trocarBonus(4)" class="w-3 h-3 bg-gray-600 rounded-full cursor-pointer"></span>
+<span onclick="trocarBonus(5)" class="w-3 h-3 bg-gray-600 rounded-full cursor-pointer"></span>
+<span onclick="trocarBonus(6)" class="w-3 h-3 bg-gray-600 rounded-full cursor-pointer"></span>
 
 </div>
 
@@ -334,6 +330,7 @@ Voltar
 </div>
 
 </div>
+
 <!-- TELA 8 -->
 
 <div class="slide" id="s8">
@@ -355,7 +352,6 @@ Voltar
 </div>
 
 </div>
-
 <!-- TELA 9 -->
 
 <div class="slide" id="s9">
@@ -378,7 +374,7 @@ onchange="simular()"
 
 <option value="300">R$ 300</option>
 <option value="350">R$ 350</option>
-<option value="400">R$ 400</option>
+<option value="400" selected>R$ 400</option>
 <option value="450">R$ 450</option>
 <option value="500">R$ 500</option>
 
@@ -408,7 +404,7 @@ oninput="simular()"
 
 <div id="resultado"></div>
 
-<canvas id="grafico"></canvas>
+<canvas id="grafico" height="220"></canvas>
 
 <button class="btn mt-5" onclick="go(10)">
 Continuar
@@ -497,13 +493,21 @@ etapa=2;
 
 audio.src=trilha[2];
 
-audio.volume=0.30;
+audio.volume=0.28;
 
 audio.play().catch(()=>{});
 
 }
 
-/* PAUSAR TODOS OS VÍDEOS */
+/* PARAR MUSICA NO FINAL */
+
+if(n===10){
+
+audio.pause();
+
+}
+
+/* PAUSAR TODOS OS VIDEOS */
 
 document.querySelectorAll("video").forEach(v=>{
 
@@ -527,19 +531,47 @@ document.getElementById("progress").style.width=(n/10*100)+"%";
 
 }
 
-/* BONUS */
+/* CARROSSEL AUTOMATICO */
 
 let bonusImgs=[...Array(7)].map((_,i)=>`img/bonus${i+1}.jpg`);
 
 let b=0;
 
-window.trocarBonus=function(d){
+window.trocarBonus=function(index){
 
-b=(b+d+bonusImgs.length)%bonusImgs.length;
+b=index;
+
+document.getElementById("bonusImg").style.opacity=0;
+
+setTimeout(()=>{
 
 document.getElementById("bonusImg").src=bonusImgs[b];
 
+document.getElementById("bonusImg").style.opacity=1;
+
+},200);
+
 }
+
+setInterval(()=>{
+
+if(document.getElementById("s7").classList.contains("active")){
+
+b=(b+1)%bonusImgs.length;
+
+document.getElementById("bonusImg").style.opacity=0;
+
+setTimeout(()=>{
+
+document.getElementById("bonusImg").src=bonusImgs[b];
+
+document.getElementById("bonusImg").style.opacity=1;
+
+},200);
+
+}
+
+},2500);
 
 /* SIMULADOR */
 
@@ -559,7 +591,9 @@ let ganhos=[];
 
 let resultado='';
 
-for(let e=1;e<=12;e++){
+/* LIMITAR A 6 ETAPAS */
+
+for(let e=1;e<=6;e++){
 
 let novos=Math.pow(DUPLICACAO,e);
 
@@ -567,7 +601,7 @@ rede+=novos;
 
 let ganho=Math.floor((rede*VALOR_FIXO)*0.18);
 
-labels.push("M"+e);
+labels.push("E"+e);
 
 ganhos.push(ganho);
 
@@ -611,9 +645,18 @@ labels:labels,
 
 datasets:[{
 
-label:'Evolução mensal',
+data:ganhos,
 
-data:ganhos
+backgroundColor:[
+'#163020',
+'#1d4428',
+'#255830',
+'#00ff88',
+'#1d4428',
+'#163020'
+],
+
+borderRadius:10
 
 }]
 
@@ -621,10 +664,16 @@ data:ganhos
 
 options:{
 
+responsive:true,
+
 plugins:{
 
 legend:{
 display:false
+},
+
+tooltip:{
+enabled:true
 }
 
 },
@@ -632,15 +681,38 @@ display:false
 scales:{
 
 y:{
+
 ticks:{
-color:'#999'
+color:'#888',
+callback:function(value){
+
+if(value>=1000){
+
+return 'R$ '+(value/1000).toFixed(0)+'k';
+
+}
+
+return value;
+
 }
 },
 
-x:{
-ticks:{
-color:'#999'
+grid:{
+color:'rgba(255,255,255,0.04)'
 }
+
+},
+
+x:{
+
+ticks:{
+color:'#888'
+},
+
+grid:{
+display:false
+}
+
 }
 
 }
