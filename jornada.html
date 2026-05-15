@@ -4,303 +4,703 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>C3</title>
+<title>Jornada C3</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style>
-body{background:#080808;color:white;font-family:Arial;overflow:hidden;}
-.slide{display:none;min-height:100vh;padding:20px;flex-direction:column;justify-content:center;align-items:center;text-align:center;opacity:0;transform: translateX(30px);transition: all 0.5s ease;}
-.slide.active{display:flex;opacity:1;transform: translateX(0);}
-.card{background:#121212;border:1px solid #222;padding:24px;border-radius:25px;max-width:520px;width:100%;}
-.btn{background:#00ff88;color:black;padding:14px;border-radius:50px;margin-top:12px;width:100%;font-weight:bold;}
-.btn-back{background:#222;color:#aaa;padding:10px;border-radius:50px;margin-top:10px;width:100%;}
-.progress{position:fixed;top:0;left:0;height:4px;background:#00ff88;width:0%;z-index:999;}
-iframe{width:100%;height:240px;border-radius:15px;}
-img{width:100%;border-radius:15px;}
-.nav{display:flex;gap:10px;margin-top:10px;}
+
+body{
+background:#080808;
+color:white;
+font-family:Arial;
+overflow-x:hidden;
+-webkit-overflow-scrolling:touch;
+}
+
+.slide{
+display:none;
+min-height:100vh;
+padding:24px;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+opacity:0;
+transform:translateY(20px);
+transition:all .5s ease;
+}
+
+.slide.active{
+display:flex;
+opacity:1;
+transform:translateY(0);
+}
+
+.card{
+background:#121212;
+border:1px solid #222;
+padding:24px;
+border-radius:25px;
+max-width:560px;
+width:100%;
+}
+
+.btn{
+background:#00ff88;
+color:black;
+padding:14px;
+border-radius:50px;
+margin-top:12px;
+width:100%;
+font-weight:bold;
+transition:.3s;
+}
+
+.btn:hover{
+transform:scale(1.02);
+}
+
+.btn-back{
+background:#222;
+color:#aaa;
+padding:10px;
+border-radius:50px;
+margin-top:10px;
+width:100%;
+}
+
+.progress{
+position:fixed;
+top:0;
+left:0;
+height:4px;
+background:#00ff88;
+width:0%;
+z-index:999;
+}
+
+video{
+width:100%;
+border-radius:15px;
+background:black;
+}
+
+img{
+width:100%;
+border-radius:15px;
+}
+
+.nav{
+display:flex;
+gap:10px;
+margin-top:10px;
+}
+
+.soft{
+color:#aaa;
+line-height:1.7;
+}
+
+.main-title{
+font-size:30px;
+line-height:1.4;
+font-weight:300;
+}
+
+canvas{
+margin-top:20px;
+}
+
+@media(max-width:768px){
+
+.main-title{
+font-size:24px;
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
 <div class="progress" id="progress"></div>
+
 <audio id="audio"></audio>
 
 <!-- TELA 1 -->
+
 <div class="slide active" id="s1">
-<h1 class="text-4xl text-yellow-400 mb-2">C3</h1>
-<p class="mb-6">Comunidade de Empreendedores de Consumo</p>
 
 <div class="card">
-<p>
-Nada aqui é novo…<br><br>
-Mas a forma como isso está organizado pode mudar a forma como você consome e constrói resultado.
+
+<p class="main-title">
+Você chegou até aqui porque alguma coisa fez sentido.
 </p>
 
-<button class="btn" onclick="go(2)">Quero entender</button>
+<p class="soft mt-6">
+Talvez você também esteja cansado de construir tudo sozinho.
+</p>
+
+<button class="btn" onclick="go(2)">
+Continuar
+</button>
+
 </div>
+
 </div>
 
 <!-- TELA 2 -->
+
 <div class="slide" id="s2">
+
 <div class="card">
-<p>
+
+<p class="soft">
 Você já consome todos os meses.<br><br>
 
-A diferença é que isso nunca foi organizado de forma inteligente.
+A diferença é que isso quase nunca foi organizado de forma inteligente.
 </p>
 
-<button class="btn" onclick="go(3)">Faz sentido</button>
-<button class="btn-back" onclick="go(1)">Voltar</button>
+<button class="btn" onclick="go(3)">
+Faz sentido
+</button>
+
+<button class="btn-back" onclick="go(1)">
+Voltar
+</button>
+
 </div>
+
 </div>
 
 <!-- TELA 3 -->
+
 <div class="slide" id="s3">
+
 <div class="card">
-<p>
+
+<p class="soft">
 Toda vez que você consome… alguém ganha.<br><br>
 
 A pergunta é:<br><br>
 
-quanto disso poderia estar voltando pra você?
+quanto disso poderia voltar para você e para as pessoas ao seu redor?
 </p>
 
-<button class="btn" onclick="go(4)">Quero ver</button>
-<button class="btn-back" onclick="go(2)">Voltar</button>
+<button class="btn" onclick="go(4)">
+Quero entender
+</button>
+
+<button class="btn-back" onclick="go(2)">
+Voltar
+</button>
+
 </div>
+
 </div>
 <!-- TELA 4 -->
+
 <div class="slide" id="s4">
-<div class="card">
-<iframe src="https://www.youtube.com/embed/RGw-nxKio-0"></iframe>
 
-<p class="mt-4 text-sm text-gray-400">
-Presta atenção — é mais simples do que parece.
-</p>
-
-<button class="btn" onclick="go('4b')">Continuar</button>
-<button class="btn-back" onclick="go(3)">Voltar</button>
-</div>
-</div>
-
-<!-- TELA 4B -->
-<div class="slide" id="s4b">
 <div class="card">
 
-<p>
-Tudo começa com consumo.<br><br>
+<h2 class="text-xl mb-4">
+C3 — Comunidade de Consumo Consistente
+</h2>
 
-Mas quando isso é organizado…<br>
-vira um ativo que cresce com o tempo.
+<video
+id="video1"
+controls
+playsinline
+preload="metadata"
+>
+
+<source src="video/comunidade.mp4" type="video/mp4">
+
+</video>
+
+<p class="soft mt-4">
+Consumo organizado. Construção consistente. Pessoas reais.
 </p>
 
-<img id="prodImg" src="img/prod1.jpg">
+<button class="btn" onclick="go(5)">
+Continuar
+</button>
 
-<div class="nav">
-<button class="btn" onclick="trocarProduto(-1)">←</button>
-<button class="btn" onclick="trocarProduto(1)">→</button>
+<button class="btn-back" onclick="go(3)">
+Voltar
+</button>
+
 </div>
 
-<button class="btn" onclick="go(5)">Entendi</button>
-<button class="btn-back" onclick="go(4)">Voltar</button>
-</div>
 </div>
 
 <!-- TELA 5 -->
+
 <div class="slide" id="s5">
+
 <div class="card">
 
-<p>
+<p class="soft">
 Você pode continuar consumindo como sempre…<br><br>
 
-Ou transformar isso em algo organizado e inteligente.<br><br>
-
-Não é sobre vender.<br>
-É sobre estruturar o que você já faz.
+Ou transformar isso em algo mais inteligente, coletivo e sustentável.
 </p>
 
 <button class="btn" onclick="go(6)">
-Quero construir isso
+Continuar
 </button>
 
-<button class="btn-back" onclick="go('4b')">Voltar</button>
+<button class="btn-back" onclick="go(4)">
+Voltar
+</button>
+
 </div>
+
 </div>
 
 <!-- TELA 6 -->
+
 <div class="slide" id="s6">
+
 <div class="card">
 
-<p>
-Você começa organizando o seu consumo.<br><br>
+<h2 class="text-xl mb-4">
+Bonífica — Saúde no corpo e no bolso
+</h2>
 
-Depois conecta pessoas com o mesmo objetivo.<br><br>
+<video
+id="video2"
+controls
+playsinline
+preload="metadata"
+>
 
-E isso forma uma comunidade que cresce com consistência.
+<source src="video/bonifica.mp4" type="video/mp4">
+
+</video>
+
+<p class="soft mt-4">
+Uma estrutura de consumo baseada em produtos reais e recorrentes.
 </p>
 
-<button class="btn" onclick="go(7)">Ver como funciona</button>
-<button class="btn-back" onclick="go(5)">Voltar</button>
+<button class="btn" onclick="go(7)">
+Continuar
+</button>
+
+<button class="btn-back" onclick="go(5)">
+Voltar
+</button>
+
 </div>
+
 </div>
 
 <!-- TELA 7 -->
-<div class="slide" id="s7">
-<div class="card">
-<iframe src="https://www.youtube.com/embed/lGVU6AythoQ"></iframe>
 
-<button class="btn" onclick="go(8)">Continuar</button>
-<button class="btn-back" onclick="go(6)">Voltar</button>
-</div>
-</div>
-<!-- TELA 8 -->
-<div class="slide" id="s8">
+<div class="slide" id="s7">
+
 <div class="card">
 
 <img id="bonusImg" src="img/bonus1.jpg">
 
+<p class="soft mt-4">
+O crescimento acontece com consistência, não com pressão.
+</p>
+
 <div class="nav">
-<button class="btn" onclick="trocarBonus(-1)">←</button>
-<button class="btn" onclick="trocarBonus(1)">→</button>
+
+<button class="btn" onclick="trocarBonus(-1)">
+←
+</button>
+
+<button class="btn" onclick="trocarBonus(1)">
+→
+</button>
+
 </div>
 
-<button class="btn" onclick="go(9)">Continuar</button>
-<button class="btn-back" onclick="go(7)">Voltar</button>
-</div>
+<button class="btn" onclick="go(8)">
+Continuar
+</button>
+
+<button class="btn-back" onclick="go(6)">
+Voltar
+</button>
+
 </div>
 
-<!-- TELA 9 -->
-<div class="slide" id="s9">
+</div>
+<!-- TELA 8 -->
+
+<div class="slide" id="s8">
+
 <div class="card">
-<p>
-Isso não depende de sorte.<br><br>
 
-Depende de consistência e construção.
+<p class="soft">
+Agora veja como uma comunidade organizada pode evoluir ao longo do tempo.
 </p>
 
-<button class="btn" onclick="go(10)">Faz sentido</button>
-<button class="btn-back" onclick="go(8)">Voltar</button>
-</div>
-</div>
-
-<!-- TELA 10 -->
-<div class="slide" id="s10">
-<div class="card">
-
-<p>
-Agora você pode ver como isso evolui ao longo do tempo.
-</p>
-
-<button class="btn" onclick="go(11)">
+<button class="btn" onclick="go(9)">
 Ver simulação
 </button>
 
-<button class="btn-back" onclick="go(9)">Voltar</button>
-</div>
+<button class="btn-back" onclick="go(7)">
+Voltar
+</button>
+
 </div>
 
-<!-- TELA 11 -->
-<div class="slide" id="s11">
+</div>
+
+<!-- TELA 9 -->
+
+<div class="slide" id="s9">
+
 <div class="card">
 
-<p>
-Abra o simulador e entenda a lógica funcionando.
-</p>
+<div class="grid grid-cols-2 gap-3 mb-5">
 
-<a href="https://simuladorprosff.vercel.app/" target="_blank">
-<button class="btn">Abrir simulador</button>
-</a>
+<div>
 
-<button class="btn-back" onclick="go(10)">Voltar</button>
+<label class="text-xs text-gray-500 block mb-1">
+Consumo individual mensal
+</label>
+
+<select
+id="consumo"
+class="w-full bg-black border border-gray-700 rounded-xl p-3 text-green-400 font-bold"
+onchange="simular()"
+>
+
+<option value="300">R$ 300</option>
+<option value="350">R$ 350</option>
+<option value="400">R$ 400</option>
+<option value="450">R$ 450</option>
+<option value="500">R$ 500</option>
+
+</select>
+
 </div>
+
+<div>
+
+<label class="text-xs text-gray-500 block mb-1">
+Membros por etapa
+</label>
+
+<input
+id="duplicacao"
+type="number"
+value="3"
+
+class="w-full bg-black border border-gray-700 rounded-xl p-3 text-green-400 font-bold text-center"
+
+oninput="simular()"
+>
+
 </div>
 
-<!-- TELA 12 -->
-<div class="slide" id="s12">
+</div>
+
+<div id="resultado"></div>
+
+<canvas id="grafico"></canvas>
+
+<button class="btn mt-5" onclick="go(10)">
+Continuar
+</button>
+
+<button class="btn-back" onclick="go(8)">
+Voltar
+</button>
+
+</div>
+
+</div>
+
+<!-- TELA 10 -->
+
+<div class="slide" id="s10">
+
 <div class="card">
 
-<p>
-Se isso fez sentido…<br><br>
-
-o próximo passo é conhecer como começar.
+<p class="soft">
+Se isso fez sentido para você, talvez faça sentido conversar com alguém da comunidade.
 </p>
 
 <button class="btn" onclick="abrirComunidade()">
-Quero fazer parte da comunidade
+Quero conhecer a comunidade
 </button>
 
-<button class="btn-back" onclick="go(11)">Voltar</button>
+<button class="btn-back" onclick="go(9)">
+Voltar
+</button>
+
 </div>
+
 </div>
 <script>
+
 document.addEventListener("DOMContentLoaded", function(){
 
 let audio=document.getElementById("audio");
-let trilha=["audio/intro.mp3","audio/middle.mp3","audio/final.mp3"];
+
+let trilha=[
+"audio/intro.mp3",
+"audio/middle.mp3",
+"audio/final.mp3"
+];
+
 let etapa=0;
 
+/* INICIAR AUDIO */
+
 document.body.addEventListener("click",()=>{
+
 if(!audio.src){
+
 audio.src=trilha[0];
+
+audio.volume=0.45;
+
 audio.play().catch(()=>{});
+
 }
+
 },{once:true});
+
+/* NAVEGAÇÃO */
 
 window.go=function(n){
 
-if(n>=4 && etapa===0){etapa=1;audio.src=trilha[1];audio.play().catch(()=>{});}
-if(n>=9 && etapa===1){etapa=2;audio.src=trilha[2];audio.play().catch(()=>{});}
+/* TROCA DE TRILHA */
 
-document.querySelectorAll('.slide').forEach(s=>s.classList.remove('active'));
-document.getElementById('s'+n).classList.add('active');
+if(n>=4 && etapa===0){
 
-document.getElementById('progress').style.width=(n/12*100)+"%";
+etapa=1;
+
+audio.src=trilha[1];
+
+audio.volume=0.35;
+
+audio.play().catch(()=>{});
+
 }
 
+if(n>=8 && etapa===1){
+
+etapa=2;
+
+audio.src=trilha[2];
+
+audio.volume=0.30;
+
+audio.play().catch(()=>{});
+
+}
+
+/* PAUSAR TODOS OS VÍDEOS */
+
+document.querySelectorAll("video").forEach(v=>{
+
+v.pause();
+
+});
+
+/* TROCAR TELAS */
+
+document.querySelectorAll(".slide").forEach(s=>{
+
+s.classList.remove("active");
+
+});
+
+document.getElementById("s"+n).classList.add("active");
+
+/* PROGRESSO */
+
+document.getElementById("progress").style.width=(n/10*100)+"%";
+
+}
+
+/* BONUS */
+
 let bonusImgs=[...Array(7)].map((_,i)=>`img/bonus${i+1}.jpg`);
+
 let b=0;
 
 window.trocarBonus=function(d){
+
 b=(b+d+bonusImgs.length)%bonusImgs.length;
+
 document.getElementById("bonusImg").src=bonusImgs[b];
+
 }
 
-let prodImgs=[...Array(13)].map((_,i)=>`img/prod${i+1}.jpg`);
-let p=0;
+/* SIMULADOR */
 
-window.trocarProduto=function(d){
-p=(p+d+prodImgs.length)%prodImgs.length;
-document.getElementById("prodImg").src=prodImgs[p];
+let chart;
+
+function simular(){
+
+let VALOR_FIXO=parseFloat(document.getElementById("consumo").value);
+
+let DUPLICACAO=parseFloat(document.getElementById("duplicacao").value)||3;
+
+let rede=0;
+
+let labels=[];
+
+let ganhos=[];
+
+let resultado='';
+
+for(let e=1;e<=12;e++){
+
+let novos=Math.pow(DUPLICACAO,e);
+
+rede+=novos;
+
+let ganho=Math.floor((rede*VALOR_FIXO)*0.18);
+
+labels.push("M"+e);
+
+ganhos.push(ganho);
+
+if(e===4){
+
+resultado=`
+
+<p class="soft mb-3">
+Na 4ª etapa a comunidade já pode gerar uma renda complementar relevante.
+</p>
+
+<h2 class="text-3xl text-green-400 font-black">
+R$ ${ganho.toLocaleString('pt-BR')}
+</h2>
+
+`;
+
 }
 
-function getParams(){
-const params = new URLSearchParams(window.location.search);
-return {
-numero: params.get("wpp") || "5522999231211",
-ref: params.get("ref") || "indicação direta"
-};
 }
 
-window.abrirComunidade=function(){
-let {numero, ref} = getParams();
+document.getElementById("resultado").innerHTML=resultado;
 
-let msg = `Vim pela apresentação (${ref}).\n\nQuero entender como participar da comunidade C3.`;
+/* DESTRUIR GRAFICO */
 
-window.open("https://wa.me/"+numero+"?text="+encodeURIComponent(msg));
+if(chart){
+
+chart.destroy();
+
 }
 
-const paramsStep = new URLSearchParams(window.location.search);
-const step = paramsStep.get("step");
+/* CRIAR GRAFICO */
 
-if(step){
-setTimeout(()=>{
-go(parseInt(step));
-}, 500);
+chart=new Chart(document.getElementById('grafico'),{
+
+type:'bar',
+
+data:{
+
+labels:labels,
+
+datasets:[{
+
+label:'Evolução mensal',
+
+data:ganhos
+
+}]
+
+},
+
+options:{
+
+plugins:{
+
+legend:{
+display:false
+}
+
+},
+
+scales:{
+
+y:{
+ticks:{
+color:'#999'
+}
+},
+
+x:{
+ticks:{
+color:'#999'
+}
+}
+
+}
+
 }
 
 });
+
+}
+
+/* INICIAR */
+
+simular();
+
+/* PARAMETROS */
+
+function getParams(){
+
+const params = new URLSearchParams(window.location.search);
+
+return {
+
+numero: params.get("wpp") || "5522999231211",
+
+ref: params.get("ref") || "jornada c3"
+
+};
+
+}
+
+/* WHATSAPP */
+
+window.abrirComunidade=function(){
+
+let {numero, ref}=getParams();
+
+let msg=`Vim pela jornada (${ref}). Quero entender melhor como funciona a comunidade C3.`;
+
+window.open("https://wa.me/"+numero+"?text="+encodeURIComponent(msg));
+
+}
+
+/* STEP */
+
+const paramsStep = new URLSearchParams(window.location.search);
+
+const step = paramsStep.get("step");
+
+if(step){
+
+setTimeout(()=>{
+
+go(parseInt(step));
+
+},500);
+
+}
+
+});
+
 </script>
 
 </body>
