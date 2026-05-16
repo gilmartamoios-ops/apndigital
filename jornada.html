@@ -295,27 +295,57 @@ Voltar
 
 </div>
 
+
 <!-- TELA 7 -->
 
 <div class="slide" id="s7">
 
-<div class="card">
+<div class="card overflow-hidden">
 
-<img id="bonusImg" src="img/bonus1.jpg">
+<div class="relative">
 
-<p class="soft mt-4">
-O crescimento acontece com consistência, não com pressão.
+<img
+id="storyImg"
+src="img/comunidade_origem.jpg"
+class="w-full rounded-2xl transition duration-700 ease-in-out scale-100"
+>
+
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent rounded-2xl"></div>
+
+<div class="absolute bottom-0 left-0 p-6 w-full">
+
+<p
+id="storyText"
+class="text-white text-xl leading-relaxed font-light"
+>
+
+Tudo começa com algo simples:<br>
+pessoas que acreditam nas mesmas coisas.
+
 </p>
 
-<div class="flex justify-center gap-2 mt-4 mb-2">
+</div>
 
-<span onclick="trocarBonus(0)" class="w-3 h-3 bg-green-400 rounded-full cursor-pointer"></span>
-<span onclick="trocarBonus(1)" class="w-3 h-3 bg-gray-600 rounded-full cursor-pointer"></span>
-<span onclick="trocarBonus(2)" class="w-3 h-3 bg-gray-600 rounded-full cursor-pointer"></span>
-<span onclick="trocarBonus(3)" class="w-3 h-3 bg-gray-600 rounded-full cursor-pointer"></span>
-<span onclick="trocarBonus(4)" class="w-3 h-3 bg-gray-600 rounded-full cursor-pointer"></span>
-<span onclick="trocarBonus(5)" class="w-3 h-3 bg-gray-600 rounded-full cursor-pointer"></span>
-<span onclick="trocarBonus(6)" class="w-3 h-3 bg-gray-600 rounded-full cursor-pointer"></span>
+</div>
+
+<p class="soft mt-5">
+
+Uma comunidade consistente tende a construir
+resultados mais consistentes.
+
+</p>
+
+<button class="btn" onclick="go(8)">
+Continuar
+</button>
+
+<button class="btn-back" onclick="go(6)">
+Voltar
+</button>
+
+</div>
+
+</div>
 
 </div>
 
