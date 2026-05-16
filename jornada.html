@@ -634,45 +634,57 @@ setInterval(trocarStory,6000);
 
 let chart;
 
+/* SIMULADOR COMUNIDADE */
+
+let chart;
+
 function simular(){
 
-let VALOR_FIXO=parseFloat(document.getElementById("consumo").value);
+let VALOR_FIXO=parseFloat(
+document.getElementById("consumo").value
+);
 
-let DUPLICACAO=parseFloat(document.getElementById("duplicacao").value)||3;
+let DUPLICACAO=parseFloat(
+document.getElementById("duplicacao").value
+)||3;
 
-let rede=0;
+let comunidade=1;
 
 let labels=[];
-
 let ganhos=[];
-
 let resultado='';
 
-/* LIMITAR A 6 ETAPAS */
+for(let etapa=1; etapa<=6; etapa++){
 
-for(let e=1;e<=6;e++){
+comunidade += Math.pow(
+DUPLICACAO,
+etapa
+);
 
-let novos=Math.pow(DUPLICACAO,e);
+let ganho=Math.floor(
+(comunidade * VALOR_FIXO) * 0.18
+);
 
-rede+=novos;
-
-let ganho=Math.floor((rede*VALOR_FIXO)*0.18);
-
-labels.push("E"+e);
+labels.push("Etapa "+etapa);
 
 ganhos.push(ganho);
 
-if(e===4){
+if(etapa===4){
 
 resultado=`
 
 <p class="soft mb-3">
-Na 4ª etapa a comunidade já pode gerar uma renda complementar relevante.
+Uma comunidade consistente pode gerar
+resultados progressivos ao longo do tempo.
 </p>
 
 <h2 class="text-3xl text-green-400 font-black">
 R$ ${ganho.toLocaleString('pt-BR')}
 </h2>
+
+<p class="text-xs text-gray-500 mt-2">
+estimativa de construção na 4ª etapa
+</p>
 
 `;
 
@@ -680,9 +692,9 @@ R$ ${ganho.toLocaleString('pt-BR')}
 
 }
 
-document.getElementById("resultado").innerHTML=resultado;
-
-/* DESTRUIR GRAFICO */
+document.getElementById(
+"resultado"
+).innerHTML=resultado;
 
 if(chart){
 
@@ -690,11 +702,11 @@ chart.destroy();
 
 }
 
-/* CRIAR GRAFICO */
+chart=new Chart(
+document.getElementById("grafico"),
+{
 
-chart=new Chart(document.getElementById('grafico'),{
-
-type:'bar',
+type:"bar",
 
 data:{
 
@@ -704,16 +716,16 @@ datasets:[{
 
 data:ganhos,
 
-backgroundColor:[
-'#163020',
-'#1d4428',
-'#255830',
-'#00ff88',
-'#1d4428',
-'#163020'
-],
+borderRadius:12,
 
-borderRadius:10
+backgroundColor:[
+'#18392b',
+'#225137',
+'#2d6945',
+'#00ff88',
+'#2d6945',
+'#18392b'
+]
 
 }]
 
@@ -723,6 +735,8 @@ options:{
 
 responsive:true,
 
+maintainAspectRatio:false,
+
 plugins:{
 
 legend:{
@@ -730,56 +744,69 @@ display:false
 },
 
 tooltip:{
-enabled:true
+
+callbacks:{
+
+label:function(context){
+
+return "R$ "+
+context.raw.toLocaleString(
+'pt-BR'
+);
+
+}
+
+}
+
 }
 
 },
 
 scales:{
 
-y:{
-
-ticks:{
-color:'#888',
-callback:function(value){
-
-if(value>=1000){
-
-return 'R$ '+(value/1000).toFixed(0)+'k';
-
-}
-
-return value;
-
-}
-},
-
-grid:{
-color:'rgba(255,255,255,0.04)'
-}
-
-},
-
 x:{
 
 ticks:{
-color:'#888'
+color:"#999"
 },
 
 grid:{
 display:false
 }
 
+},
+
+y:{
+
+ticks:{
+
+color:"#999",
+
+callback:function(value){
+
+return "R$ "+
+value.toLocaleString(
+'pt-BR'
+);
+
+}
+
+},
+
+grid:{
+color:'rgba(255,255,255,0.05)'
 }
 
 }
 
 }
 
-});
+}
 
 }
 
+);
+}
 /* INICIAR */
 
 simular();
