@@ -304,7 +304,6 @@ Voltar
 
 </div>
 
-
 <!-- TELA 7 -->
 
 <div class="slide" id="s7">
@@ -393,7 +392,7 @@ Voltar
 <div>
 
 <label class="text-xs text-gray-500 block mb-1">
-Consumo individual mensal
+Investimento mensal em bem-estar
 </label>
 
 <select
@@ -422,7 +421,9 @@ Novas pessoas da comunidade
 id="duplicacao"
 type="number"
 value="3"
-
+min="1"
+max="10"
+  
 class="w-full bg-black border border-gray-700 rounded-xl p-3 text-green-400 font-bold text-center"
 
 oninput="simular()"
@@ -864,6 +865,12 @@ const paramsStep = new URLSearchParams(window.location.search);
 
 const step = paramsStep.get("step");
 
+/* STEP */
+
+const paramsStep = new URLSearchParams(window.location.search);
+
+const step = paramsStep.get("step");
+
 if(step){
 
 setTimeout(()=>{
@@ -874,7 +881,7 @@ go(parseInt(step));
 
 }
 
-});
+}); // fecha DOMContentLoaded
 
 </script>
 
