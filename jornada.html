@@ -511,9 +511,68 @@ etapa=1;
 
 audio.src=trilha[1];
 
-audio.volume=0.35;
+audio.volume=0.28;
 
 audio.play().catch(()=>{});
+
+}
+
+if(n>=8 && etapa===1){
+
+etapa=2;
+
+audio.src=trilha[2];
+
+audio.volume=0.22;
+
+audio.play().catch(()=>{});
+
+}
+
+/* PARAR MUSICA FINAL */
+
+if(n===10){
+
+audio.pause();
+
+audio.currentTime=0;
+
+}
+
+/* RETOMAR SE VOLTAR */
+
+if(n<10 && audio.paused){
+
+audio.play().catch(()=>{});
+
+}
+
+/* PAUSAR TODOS OS VIDEOS */
+
+document.querySelectorAll("video").forEach(v=>{
+
+v.pause();
+
+v.currentTime=v.currentTime;
+
+});
+
+/* TROCAR TELAS */
+
+document.querySelectorAll(".slide").forEach(s=>{
+
+s.classList.remove("active");
+
+});
+
+document.getElementById("s"+n)
+.classList.add("active");
+
+/* PROGRESSO */
+
+document.getElementById(
+"progress"
+).style.width=(n/10*100)+"%";
 
 }
 
