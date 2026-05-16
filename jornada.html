@@ -547,7 +547,7 @@ audio.currentTime=0;
 
 /* RETOMAR SE VOLTAR */
 
-if(n<10 && audio.paused){
+if(n < 10 && audio.paused && audio.src){
 
 audio.play().catch(()=>{});
 
