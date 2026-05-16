@@ -281,6 +281,8 @@ object-fit:cover;
 max-height:420px;
 aspect-ratio:9/16;
 border-radius:20px;
+width:min(100%,320px);
+margin:auto;
 "
 >
 
@@ -875,12 +877,17 @@ if(step){
 
 setTimeout(()=>{
 
-go(parseInt(step));
+const targetStep = parseInt(step);
+
+if(targetStep >= 1 && targetStep <= 10){
+
+go(targetStep);
+
+}
 
 },500);
 
 }
-
 }); // fecha DOMContentLoaded
 
 </script>
