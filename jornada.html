@@ -646,6 +646,74 @@ document.getElementById(
 
 const storyScenes=[
 
+const produtos=[
+
+{
+img:"img/prod1.jpg",
+text:"Cuidar da saúde pode começar com pequenas escolhas consistentes."
+},
+
+{
+img:"img/prod2.jpg",
+text:"Alguns hábitos parecem simples… até acumularem resultado."
+},
+
+{
+img:"img/prod3.jpg",
+text:"Bem-estar costuma funcionar melhor quando existe constância."
+},
+
+{
+img:"img/prod4.jpg",
+text:"Quando algo faz sentido, muitas pessoas acabam compartilhando."
+},
+
+{
+img:"img/prod5.jpg",
+text:"O cuidado com o corpo pode caminhar junto com tranquilidade."
+},
+
+{
+img:"img/prod6.jpg",
+text:"Pequenas mudanças repetidas ao longo do tempo podem construir algo maior."
+}
+
+];
+
+let produtoIndex=0;
+
+function trocarProduto(){
+
+if(!document.getElementById("s8")
+.classList.contains("active")) return;
+
+produtoIndex=
+(produtoIndex+1)%produtos.length;
+
+const img=
+document.getElementById("produtoImg");
+
+const texto=
+document.getElementById("produtoTexto");
+
+img.style.opacity=0;
+
+setTimeout(()=>{
+
+img.src=
+produtos[produtoIndex].img;
+
+texto.innerHTML=
+produtos[produtoIndex].text;
+
+img.style.opacity=1;
+
+},350);
+
+}
+
+setInterval(trocarProduto,4000);
+  
 {
 img:"img/comunidade_origem.jpg",
 text:"Tudo começa com algo simples:<br>pessoas que acreditam nas mesmas coisas."
