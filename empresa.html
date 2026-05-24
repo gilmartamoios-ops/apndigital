@@ -1,463 +1,580 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+>
 
-<title>TESTE GILMARTAMOIOS 888</title>
+<title>C3 | Comunidade Consistente de Consumo</title>
 
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<meta
+name="description"
+content="Descubra como pequenas decisões de consumo podem gerar ganhos consistentes."
+>
 
 <style>
 
-body{
-background:#080808;
-color:white;
-font-family:Arial;
-overflow-x:hidden;
-overflow-y:auto;
--webkit-overflow-scrolling:touch;
-}
+/* RESET */
 
-.slide{
-display:none;
-min-height:100vh;
-padding:40px 24px;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-opacity:0;
-transition:opacity .4s ease;
+*{
+margin:0;
+padding:0;
 box-sizing:border-box;
-overflow-y:auto;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+
+background:#050505;
+font-family:Arial, sans-serif;
+color:white;
+
 overflow-x:hidden;
+overflow-y:auto;
+
+min-height:100vh;
+
+-webkit-font-smoothing:antialiased;
+-moz-osx-font-smoothing:grayscale;
 }
 
-.slide.active{
+/* CONTAINER GERAL */
+
+.page{
+
+width:100%;
+min-height:100vh;
+background:#050505;
+
+}
+
+/* HERO */
+
+.hero{
+
+position:relative;
+width:100%;
+height:100dvh;
+
 display:flex;
-opacity:1;
-}
+align-items:center;
+justify-content:center;
 
-.card{
-background:#121212;
-border:1px solid #222;
-padding:20px;
-border-radius:25px;
-max-width:560px;
-width:100%;
-margin:auto;
-}
-
-.btn{
-background:#00ff88;
-color:black;
-padding:14px;
-border-radius:50px;
-margin-top:12px;
-width:100%;
-font-weight:bold;
-transition:.3s;
-}
-
-.btn:hover{
-transform:scale(1.02);
-}
-
-.btn-back{
-background:#222;
-color:#aaa;
-padding:10px;
-border-radius:50px;
-margin-top:10px;
-width:100%;
-}
-
-.progress{
-position:fixed;
-top:0;
-left:0;
-height:4px;
-background:#00ff88;
-width:0%;
-z-index:999;
-}
-
-video{
-width:100%;
-display:block;
-border-radius:18px;
+overflow:hidden;
 background:black;
-object-fit:contain;
-max-height:42vh;
+}
+
+/* IMAGEM DE FUNDO */
+
+.hero-bg{
+
+position:absolute;
+inset:0;
+
+width:100%;
+height:100%;
+
+object-fit:cover;
+object-position:center;
+
+transform:scale(1.04);
+
+filter:
+brightness(.48)
+contrast(1.05);
+
+}
+
+/* OVERLAY */
+
+.hero-overlay{
+
+position:absolute;
+inset:0;
+
+background:
+linear-gradient(
+to top,
+rgba(0,0,0,.92) 8%,
+rgba(0,0,0,.55) 45%,
+rgba(0,0,0,.22) 100%
+);
+
+}
+
+/* CONTEÚDO HERO */
+
+.hero-content{
+
+position:relative;
+z-index:3;
+
+width:100%;
+max-width:860px;
+
+padding:32px 28px;
+
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+
+text-align:center;
+}
+
+/* LOGO */
+
+.logo{
+
+width:120px;
+max-width:35vw;
+
+margin-bottom:26px;
+
+filter:drop-shadow(
+0 8px 24px rgba(0,0,0,.45)
+);
+
+}
+
+/* MICRO TEXTO */
+
+.eyebrow{
+
+font-size:12px;
+letter-spacing:2.4px;
+text-transform:uppercase;
+
+color:rgba(255,255,255,.62);
+
 margin-bottom:18px;
 }
 
-img{
-width:100%;
-border-radius:20px;
-transition:
-opacity .6s ease,
-transform 6s ease;
-}
+/* TÍTULO */
 
-.soft{
-color:#aaa;
-line-height:1.7;
-}
+.hero-title{
 
-.main-title{
-font-size:30px;
-line-height:1.4;
+font-size:clamp(
+34px,
+5vw,
+56px
+);
+
+line-height:1.18;
 font-weight:300;
+
+max-width:820px;
+
+margin-bottom:20px;
+
+text-shadow:
+0 4px 24px rgba(0,0,0,.45);
 }
 
-canvas{
-margin-top:20px;
+/* SUBTÍTULO */
+
+.hero-subtitle{
+
+font-size:clamp(
+17px,
+2vw,
+22px
+);
+
+line-height:1.7;
+
+max-width:720px;
+
+color:rgba(255,255,255,.84);
+
+margin-bottom:36px;
 }
+
+/* BOTÃO */
+
+.btn{
+
+border:none;
+outline:none;
+
+cursor:pointer;
+
+background:#00ff88;
+color:#07120d;
+
+font-weight:700;
+font-size:16px;
+
+padding:18px 34px;
+
+border-radius:999px;
+
+transition:
+transform .25s ease,
+box-shadow .25s ease,
+background .25s ease;
+
+box-shadow:
+0 12px 34px rgba(0,255,136,.18);
+}
+
+.btn:hover{
+
+transform:translateY(-2px);
+
+background:#00eb7c;
+
+box-shadow:
+0 18px 38px rgba(0,255,136,.28);
+}
+
+/* SEÇÕES */
+
+.section{
+
+width:100%;
+padding:80px 22px;
+
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.container{
+
+width:100%;
+max-width:980px;
+}
+
+/* CARD VÍDEO */
+
+.video-card{
+
+background:#0d0d0d;
+
+border:1px solid rgba(255,255,255,.06);
+
+border-radius:34px;
+
+padding:22px;
+
+overflow:hidden;
+
+box-shadow:
+0 10px 50px rgba(0,0,0,.28);
+}
+
+/* TITULOS DAS SEÇÕES */
+
+.section-title{
+
+font-size:clamp(
+28px,
+4vw,
+42px
+);
+
+font-weight:300;
+
+line-height:1.3;
+
+text-align:center;
+
+margin-bottom:18px;
+}
+
+.section-subtitle{
+
+max-width:760px;
+
+margin:0 auto 36px auto;
+
+text-align:center;
+
+line-height:1.8;
+
+color:#a8a8a8;
+}
+
+/* VIDEO */
+
+video{
+
+width:100%;
+display:block;
+
+border-radius:24px;
+background:black;
+
+object-fit:contain;
+}
+
+/* RESPONSIVO */
 
 @media(max-width:768px){
 
-.main-title{
-font-size:24px;
+.hero{
+padding-top:20px;
+}
+
+.logo{
+width:92px;
+}
+
+.hero-title{
+line-height:1.24;
+}
+
+.hero-subtitle{
+font-size:17px;
+line-height:1.65;
+}
+
+.btn{
+
+width:100%;
+max-width:330px;
+}
+
+.video-card{
+padding:14px;
+border-radius:28px;
+}
+
+.section{
+padding:64px 18px;
 }
 
 }
 
 </style>
-</head>
-
 <body>
 
-<div class="progress" id="progress"></div>
+<div class="page">
 
-<audio id="audio"></audio>
+<!-- HERO / PRÉ-CAPA -->
 
-<!-- TELA 1 -->
+<section class="hero">
 
-<div class="slide active" id="s1">
+<img
+src="img/pré_capa.jpg"
+alt="Comunidade Consistente de Consumo"
+class="hero-bg"
+>
 
-<div class="card" style="padding-bottom:40px;">
-<p class="main-title">
-você chegou até aqui porque alguma coisa fez sentido.
-</p>
+<div class="hero-overlay"></div>
 
-<p class="soft mt-6">
+<div class="hero-content">
+
+<img
+src="img/logo_c3.jpg"
+alt="Logo C3"
+class="logo"
+>
+
+<div class="eyebrow">
+Comunidade Consistente de Consumo
+</div>
+
+<h1 class="hero-title">
 Talvez prosperar nunca tenha sido uma jornada individual.
+</h1>
+
+<p class="hero-subtitle">
+Descubra como pequenas decisões de consumo podem gerar ganhos consistentes ao longo do tempo.
 </p>
 
-<button class="btn" onclick="go(2)">
-Continuar
+<button
+class="btn"
+onclick="document.getElementById('manifesto').scrollIntoView({behavior:'smooth'})"
+>
+▶ Ver como a C3 funciona
 </button>
 
 </div>
 
-</div>
+</section>
 
-<!-- TELA 2 -->
+<!-- MANIFESTO -->
 
-<div class="slide" id="s2">
+<section
+class="section"
+id="manifesto"
+>
 
-<div class="card">
+<div class="container">
 
-<p class="soft">
-Você já consome todos os meses.<br><br>
-
-A diferença é que isso quase nunca foi organizado de forma inteligente.
-</p>
-
-<button class="btn" onclick="go(3)">
-Faz sentido
-</button>
-
-<button class="btn-back" onclick="go(1)">
-Voltar
-</button>
-
-</div>
-
-</div>
-
-<!-- TELA 3 -->
-
-<div class="slide" id="s3">
-
-<div class="card">
-
-<p class="soft">
-Toda vez que você consome… alguém ganha.<br><br>
-
-A pergunta é:<br><br>
-
-quanto disso poderia voltar para você e para as pessoas ao seu redor?
-</p>
-
-<button class="btn" onclick="go(4)">
-Quero entender
-</button>
-
-<button class="btn-back" onclick="go(2)">
-Voltar
-</button>
-
-</div>
-
-</div>
-
-<!-- TELA 4 -->
-
-<div class="slide" id="s4">
-
-<div class="card">
-
-<h2 class="text-xl mb-4">
-C3 — Comunidade de Consumo Consistente
+<h2 class="section-title">
+Antes de ganhar mais, talvez seja hora de parar de perder.
 </h2>
 
-<div style="
-width:100%;
-height:38vh;
-overflow:hidden;
-border-radius:18px;
-background:black;
-margin-bottom:18px;
-position:relative;
-">
+<p class="section-subtitle">
+O problema nem sempre é renda.<br>
+Muitas vezes, são pequenas decisões repetidas sem direção.<br><br>
+
+A C3 nasce da ideia de que consumo inteligente,
+consistência e comunidade podem construir algo maior.
+</p>
+
+<div class="video-card">
 
 <video
-id="video1"
-controls
+id="manifestoVideo"
+
 playsinline
 webkit-playsinline
-x5-playsinline
-x5-video-player-type="h5"
-x5-video-player-fullscreen="false"
-x5-video-orientation="portrait"
+
 preload="metadata"
-poster="img/thumb-comunidade.jpg"
-style="
-width:100%;
-max-width:100%;
-max-height:38vh;
-display:block;
-margin:0 auto 18px auto;
-background:black;
-border-radius:18px;
-object-fit:contain;
-"
+
+poster="img/capa.jpg"
+
+controlslist="nodownload nofullscreen noremoteplayback"
+disablepictureinpicture
 >
 
-<source src="video/comunidade.mp4?v=10" type="video/mp4">
+<source
+src="video/manifesto.mp4?v=2"
+type="video/mp4"
+>
 
 </video>
 
 </div>
 
-<p class="soft mt-2">
-Consumo organizado. Construção consistente. Pessoas reais.
-</p>
-
-<button class="btn" onclick="go(5)">
-Continuar
-</button>
-
-<button class="btn-back" onclick="go(3)">
-Voltar
-</button>
-
 </div>
 
-</div>
-<!-- TELA 5 -->
+</section>
+<!-- VÍDEO DE GANHOS -->
 
-<div class="slide" id="s5">
+<section class="section">
 
-<div class="card">
+<div class="container">
 
-<p class="soft">
-Você pode continuar consumindo como sempre…<br><br>
-
-Ou transformar isso em algo mais inteligente, coletivo e sustentável.
-</p>
-
-<button class="btn" onclick="go(6)">
-Continuar
-</button>
-
-<button class="btn-back" onclick="go(4)">
-Voltar
-</button>
-
-</div>
-
-</div>
-
-<!-- TELA 6 -->
-
-<div class="slide" id="s6">
-
-<div class="card">
-
-<h2 class="text-xl mb-4">
-Bonífica — Saúde no corpo e no bolso
+<h2 class="section-title">
+Como pequenas decisões podem construir ganhos consistentes
 </h2>
+
+<p class="section-subtitle">
+Você já consome todos os meses.<br>
+A diferença é quando isso passa a ter direção.
+</p>
+
+<div class="video-card">
 
 <video
-id="video2"
-controls
+id="ganhosVideo"
+
 playsinline
+webkit-playsinline
+
 preload="metadata"
-style="
-object-fit:cover;
-max-height:420px;
-aspect-ratio:9/16;
-border-radius:20px;
-width:min(100%,320px);
-margin:auto;
-"
+
+poster="img/capa.jpg"
+
+controlslist="nodownload nofullscreen noremoteplayback"
+disablepictureinpicture
 >
 
-<source src="video/bonifica.mp4?v=9" type="video/mp4">
+<source
+src="video/video_ganhos.mp4?v=1"
+type="video/mp4"
+>
 
 </video>
 
-<p class="soft mt-4">
-Uma estrutura de consumo baseada em produtos reais e recorrentes.
-</p>
-
-<button class="btn" onclick="go(7)">
-Continuar
-</button>
-
-<button class="btn-back" onclick="go(5)">
-Voltar
-</button>
-
 </div>
 
 </div>
 
-<!-- TELA 7 -->
+</section>
 
-<div class="slide" id="s7">
+<!-- SIMULADOR -->
 
-<div class="card">
+<section class="section" id="simulador">
 
-<div class="relative">
+<div class="container">
 
-<img
-id="storyImg"
-src="img/comunidade_origem.jpg"
-class="w-full rounded-2xl transition duration-700 ease-in-out scale-100"
->
-
-<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent rounded-2xl"></div>
-
-<div class="absolute bottom-0 left-0 p-6 w-full">
-
-<p
-id="storyText"
-class="text-white text-xl leading-relaxed font-light"
->
-
-Tudo começa com algo simples:<br>
-pessoas que acreditam nas mesmas coisas.
-
-</p>
-
-</div>
-
-</div>
-
-<p class="soft mt-5">
-
-Uma comunidade consistente tende a construir
-resultados mais consistentes.
-
-</p>
-
-<button class="btn" onclick="go(8)">
-Continuar
-</button>
-
-<button class="btn-back" onclick="go(6)">
-Voltar
-</button>
-
-</div>
-
-</div>
-
-<!-- TELA 8 -->
-
-<div class="slide" id="s8">
-
-<div class="card">
-
-<h2 class="text-xl mb-4">
-Bem-estar que faz parte da rotina
+<h2 class="section-title">
+Veja um cenário possível
 </h2>
 
-<div class="produto-box">
-
-<img
-id="produtoImg"
-src="img/prod1.jpg"
-style="
-width:100%;
-border-radius:18px;
-display:block;
-"
->
-
-</div>
-
-<p
-id="produtoTexto"
-class="soft mt-4"
->
-Pequenas escolhas consistentes podem
-fazer parte de algo maior.
+<p class="section-subtitle">
+Pequenas mudanças consistentes podem gerar resultados progressivos ao longo do tempo.
 </p>
 
-<button class="btn" onclick="go(9)">
-Continuar
-</button>
+<div class="video-card">
 
-<button class="btn-back" onclick="go(7)">
-Voltar
-</button>
-
-</div>
-
-</div>
-
-<!-- TELA 9 -->
-
-<div class="slide" id="s9">
-
-<div class="card">
-
-<div class="grid grid-cols-2 gap-3 mb-5">
+<div
+style="
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:16px;
+margin-bottom:22px;
+"
+id="simuladorGrid"
+>
 
 <div>
 
-<label class="text-xs text-gray-500 block mb-1">
-Investimento mensal em bem-estar
+<label
+style="
+font-size:13px;
+color:#8d8d8d;
+display:block;
+margin-bottom:8px;
+"
+>
+
+Consumo mensal
+
 </label>
 
 <select
 id="consumo"
-class="w-full bg-black border border-gray-700 rounded-xl p-3 text-green-400 font-bold"
+
 onchange="simular()"
+
+style="
+width:100%;
+background:#080808;
+border:1px solid #1f1f1f;
+border-radius:18px;
+padding:16px;
+color:#00ff88;
+font-weight:bold;
+font-size:16px;
+"
 >
 
-<option value="300">R$ 300</option>
-<option value="350">R$ 350</option>
-<option value="400" selected>R$ 400</option>
-<option value="450">R$ 450</option>
-<option value="500">R$ 500</option>
+<option value="300">
+R$ 300
+</option>
+
+<option value="350">
+R$ 350
+</option>
+
+<option
+value="400"
+selected
+>
+R$ 400
+</option>
+
+<option value="450">
+R$ 450
+</option>
+
+<option value="500">
+R$ 500
+</option>
 
 </select>
 
@@ -465,551 +582,268 @@ onchange="simular()"
 
 <div>
 
-<label class="text-xs text-gray-500 block mb-1">
-Novas pessoas da comunidade
+<label
+style="
+font-size:13px;
+color:#8d8d8d;
+display:block;
+margin-bottom:8px;
+"
+>
+
+Novas pessoas
+
 </label>
 
 <input
 id="duplicacao"
 type="number"
+
 value="3"
 min="1"
 max="10"
-  
-class="w-full bg-black border border-gray-700 rounded-xl p-3 text-green-400 font-bold text-center"
 
-oninput="if(this.value < 1) this.value = 1; simular()"
+oninput="simular()"
+
+style="
+width:100%;
+background:#080808;
+border:1px solid #1f1f1f;
+border-radius:18px;
+padding:16px;
+color:#00ff88;
+font-weight:bold;
+font-size:16px;
+text-align:center;
+"
 >
 
 </div>
 
 </div>
 
-<div id="resultado"></div>
+<div
+id="resultado"
 
-<div style="
-width:100%;
-height:260px;
-margin-top:18px;
-position:relative;
-overflow:hidden;
-">
-<canvas id="grafico"></canvas>
-</div>
-
-<button class="btn mt-5" onclick="go(10)">
-Continuar
-</button>
-
-<button class="btn-back" onclick="go(8)">
-Voltar
-</button>
+style="
+text-align:center;
+padding:20px 10px;
+"
+>
 
 </div>
 
-</div>
+<div
+style="
+display:flex;
+justify-content:center;
+margin-top:20px;
+"
+>
 
-<!-- TELA 10 -->
-
-<div class="slide" id="s10">
-
-<div class="card">
-
-<p class="soft leading-8">
-Talvez prosperar nunca tenha sido
-uma jornada individual.<br><br>
-
-Se isso fez sentido para você,
-o próximo passo é conhecer
-a comunidade C3.
-</p>
-
-<button class="btn" onclick="abrirComunidade()">
-Quero construir minha comunidade
-</button>
-
-<button class="btn-back" onclick="go(9)">
-Voltar
+<button
+class="btn"
+onclick="window.location.href='empresa.html'"
+>
+Quero entender como funciona
 </button>
 
 </div>
 
 </div>
+
+</div>
+
+</section>
+</div>
+
 <script>
 
-document.addEventListener("DOMContentLoaded", function(){
+/* AUTO PLAY SUAVE DOS VÍDEOS */
 
-let audio=document.getElementById("audio");
+function ativarVideo(id){
 
-let trilha=[
-"audio/intro.mp3",
-"audio/middle.mp3",
-"audio/final.mp3"
-];
+const video =
+document.getElementById(id);
 
-let etapa=0;
+if(!video) return;
 
-/* INICIAR AUDIO */
+/* CLICK PLAY/PAUSE */
 
-document.body.addEventListener("click",()=>{
+video.addEventListener(
+'click',
+()=>{
 
-if(!audio.src){
+if(video.paused){
 
-audio.src=trilha[0];
+video.play().catch(()=>{});
 
-audio.volume=0.45;
+}else{
 
-audio.play().catch(()=>{});
-
-}
-
-},{once:true});
-
-/* NAVEGAÇÃO */
-
-window.go=function(n){
-
-/* TROCA DE TRILHA */
-
-if(n>=4 && etapa===0){
-
-etapa=1;
-
-audio.src=trilha[1];
-
-audio.volume=0.28;
-
-audio.play().catch(()=>{});
+video.pause();
 
 }
 
-if(n>=8 && etapa===1){
+}
+);
 
-etapa=2;
+/* AUTO PLAY AO ENTRAR NA TELA */
 
-audio.src=trilha[2];
+const observer =
+new IntersectionObserver((entries)=>{
 
-audio.volume=0.22;
+entries.forEach(entry=>{
 
-audio.play().catch(()=>{});
+if(entry.isIntersecting){
+
+video.play().catch(()=>{});
+
+}else{
+
+video.pause();
 
 }
-
-/* PARAR MUSICA FINAL */
-
-if(n===10){
-
-audio.pause();
-
-audio.currentTime=0;
-
-}
-
-/* RETOMAR SE VOLTAR */
-
-if(n < 10 && audio.paused && audio.src){
-
-audio.play().catch(()=>{});
-
-}
-
-/* PAUSAR TODOS OS VIDEOS */
-
-document.querySelectorAll("video").forEach(v=>{
-
-v.pause();
-
-v.currentTime = 0;
 
 });
 
-/* TROCAR TELAS */
-
-document.querySelectorAll(".slide").forEach(s=>{
-
-s.classList.remove("active");
-
+},
+{
+threshold:.45
 });
 
-document.getElementById("s"+n)
-.classList.add("active");
+observer.observe(video);
 
-/* PROGRESSO */
+}
 
+/* ATIVAR */
+
+ativarVideo("manifestoVideo");
+ativarVideo("ganhosVideo");
+
+/* RESPONSIVO SIMULADOR */
+
+function ajustarMobile(){
+
+const grid =
 document.getElementById(
-"progress"
-).style.width=(n/10*100)+"%";
+"simuladorGrid"
+);
+
+if(window.innerWidth < 768){
+
+grid.style.gridTemplateColumns =
+"1fr";
+
+}else{
+
+grid.style.gridTemplateColumns =
+"1fr 1fr";
 
 }
 
-/* STORYTELLING CINEMATOGRAFICO C3 */
-
-const storyScenes=[
-
-const produtos=[
-
-{
-img:"img/prod1.jpg",
-text:"Cuidar da saúde pode começar com pequenas escolhas consistentes."
-},
-
-{
-img:"img/prod2.jpg",
-text:"Alguns hábitos parecem simples… até acumularem resultado."
-},
-
-{
-img:"img/prod3.jpg",
-text:"Bem-estar costuma funcionar melhor quando existe constância."
-},
-
-{
-img:"img/prod4.jpg",
-text:"Quando algo faz sentido, muitas pessoas acabam compartilhando."
-},
-
-{
-img:"img/prod5.jpg",
-text:"O cuidado com o corpo pode caminhar junto com tranquilidade."
-},
-
-{
-img:"img/prod6.jpg",
-text:"Pequenas mudanças repetidas ao longo do tempo podem construir algo maior."
 }
 
-];
+window.addEventListener(
+'resize',
+ajustarMobile
+);
 
-let produtoIndex=0;
-
-function trocarProduto(){
-
-if(!document.getElementById("s8")
-.classList.contains("active")) return;
-
-produtoIndex=
-(produtoIndex+1)%produtos.length;
-
-const img=
-document.getElementById("produtoImg");
-
-const texto=
-document.getElementById("produtoTexto");
-
-img.style.opacity=0;
-
-setTimeout(()=>{
-
-img.src=
-produtos[produtoIndex].img;
-
-texto.innerHTML=
-produtos[produtoIndex].text;
-
-img.style.opacity=1;
-
-},350);
-
-}
-
-setInterval(trocarProduto,4000);
-  
-{
-img:"img/comunidade_origem.jpg",
-text:"Tudo começa com algo simples:<br>pessoas que acreditam nas mesmas coisas."
-},
-
-{
-img:"img/consumo_inteligente.jpg",
-text:"Você já cuida da sua saúde.<br>A diferença é quando isso ganha direção."
-},
-
-{
-img:"img/compartilhar_valor.jpg",
-text:"Algumas coisas…<br>a gente compartilha porque fizeram sentido."
-},
-
-{
-img:"img/comunidade_cresce.jpg",
-text:"Quando pessoas caminham juntas…<br>a consistência costuma durar mais."
-},
-
-{
-img:"img/consistencia_compartilhada.jpg",
-text:"Pequenas escolhas.<br>Repetidas ao longo do tempo."
-},
-
-{
-img:"img/crescimento_compartilhado.jpg",
-text:"Algumas construções crescem…<br>quando ninguém precisa caminhar sozinho."
-},
-
-{
-img:"img/saude_corpo_bolso.jpg",
-text:"Saúde no corpo.<br>Mais tranquilidade no bolso."
-}
-
-];
-
-let storyIndex=0;
-
-function trocarStory(){
-
-if(!document.getElementById("s7").classList.contains("active")) return;
-
-storyIndex=(storyIndex+1)%storyScenes.length;
-
-const img=document.getElementById("storyImg");
-const text=document.getElementById("storyText");
-
-img.style.opacity=0;
-img.style.transform="scale(1.03)";
-
-setTimeout(()=>{
-
-img.src=storyScenes[storyIndex].img;
-text.innerHTML=storyScenes[storyIndex].text;
-
-img.style.opacity=1;
-img.style.transform="scale(1.04)";
-
-},400);
-
-}
-
-setInterval(trocarStory,6000);
+ajustarMobile();
 
 /* SIMULADOR */
 
-
-/* SIMULADOR COMUNIDADE */
-
-let chart;
-
 function simular(){
 
-let VALOR_FIXO=parseFloat(
-document.getElementById("consumo").value
+let consumo =
+parseFloat(
+document.getElementById(
+"consumo"
+).value
 );
 
-let DUPLICACAO=parseFloat(
-document.getElementById("duplicacao").value
-)||3;
+let duplicacao =
+parseFloat(
+document.getElementById(
+"duplicacao"
+).value
+) || 3;
 
-let comunidade=1;
+/* PROTEÇÃO */
 
-let labels=[];
-let ganhos=[];
-let resultado='';
+if(duplicacao < 1){
+duplicacao = 1;
+}
 
-for(let etapa=1; etapa<=6; etapa++){
+if(duplicacao > 10){
+duplicacao = 10;
+}
 
-comunidade += Math.pow(
-DUPLICACAO,
+let comunidade = 1;
+
+for(
+let etapa=1;
+etapa<=4;
+etapa++
+){
+
+comunidade +=
+Math.pow(
+duplicacao,
 etapa
 );
 
-let ganho=Math.floor(
-(comunidade * VALOR_FIXO) * 0.18
+}
+
+let ganho =
+Math.floor(
+(comunidade * consumo)
+* 0.18
 );
 
-labels.push("Etapa "+etapa);
+document.getElementById(
+"resultado"
+).innerHTML = `
 
-ganhos.push(ganho);
+<p style="
+color:#9d9d9d;
+line-height:1.8;
+margin-bottom:16px;
+">
 
-if(etapa===4){
-
-resultado=`
-
-<p class="soft mb-3">
 Uma comunidade consistente pode gerar
 resultados progressivos ao longo do tempo.
+
 </p>
 
-<h2 class="text-3xl text-green-400 font-black">
-R$ ${ganho.toLocaleString('pt-BR')}
+<h2 style="
+font-size:44px;
+font-weight:900;
+color:#00ff88;
+margin-bottom:8px;
+">
+
+R$
+${ganho.toLocaleString('pt-BR')}
+
 </h2>
 
-<p class="text-xs text-gray-500 mt-2">
-estimativa de construção na 4ª etapa
+<p style="
+font-size:13px;
+color:#7d7d7d;
+">
+
+estimativa de construção
+na 4ª etapa
+
 </p>
 
 `;
 
 }
 
-}
-
-document.getElementById(
-"resultado"
-).innerHTML=resultado;
-
-if(chart){
-
-chart.destroy();
-
-}
-
-chart=new Chart(
-document.getElementById("grafico"),
-{
-
-type:"bar",
-
-data:{
-
-labels:labels,
-
-datasets:[{
-
-data:ganhos,
-
-borderRadius:12,
-
-backgroundColor:[
-'#18392b',
-'#225137',
-'#2d6945',
-'#00ff88',
-'#2d6945',
-'#18392b'
-]
-
-}]
-
-},
-
-options:{
-
-responsive:true,
-
-maintainAspectRatio:false,
-aspectRatio:1.4,
-  
-plugins:{
-
-legend:{
-display:false
-},
-
-tooltip:{
-
-callbacks:{
-
-label:function(context){
-
-return "R$ "+
-context.raw.toLocaleString(
-'pt-BR'
-);
-
-}
-
-}
-
-}
-
-},
-
-scales:{
-
-x:{
-
-ticks:{
-color:"#999"
-},
-
-grid:{
-display:false
-}
-
-},
-
-y:{
-
-ticks:{
-
-color:"#999",
-
-callback:function(value){
-
-return "R$ "+
-value.toLocaleString(
-'pt-BR'
-);
-
-}
-
-},
-
-grid:{
-color:'rgba(255,255,255,0.05)'
-}
-
-}
-
-}
-
-}
-
-}
-
-);
-}
 /* INICIAR */
 
 simular();
-
-/* PARAMETROS */
-
-function getParams(){
-
-const params = new URLSearchParams(window.location.search);
-
-return {
-
-numero: params.get("wpp") || "5522999231211",
-
-ref: params.get("ref") || "jornada c3"
-
-};
-
-}
-
-/* WHATSAPP */
-
-window.abrirComunidade=function(){
-
-let {numero, ref}=getParams();
-
-let msg=`Vim pela jornada (${ref}). Quero entender melhor como posso construir minha comunidade C3.`;
-
-window.open("https://wa.me/"+numero+"?text="+encodeURIComponent(msg));
-
-}
-
-/* STEP */
-
-const paramsStep = new URLSearchParams(window.location.search);
-
-const step = paramsStep.get("step");
-
-if(step){
-
-setTimeout(()=>{
-
-const targetStep = parseInt(step);
-
-if(targetStep >= 1 && targetStep <= 10){
-
-go(targetStep);
-
-}
-
-},500);
-
-}
-}); // fecha DOMContentLoaded
 
 </script>
 
