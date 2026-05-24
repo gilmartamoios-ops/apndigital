@@ -133,15 +133,29 @@ text-align:center;
 
 .logo{
 
-width:120px;
-max-width:35vw;
+position:absolute;
 
-margin-bottom:26px;
+bottom:26px;
+right:24px;
 
-filter:drop-shadow(
-0 8px 24px rgba(0,0,0,.45)
+width:52px;
+height:52px;
+
+border-radius:50%;
+
+object-fit:cover;
+
+opacity:.46;
+
+filter:
+brightness(1.08)
+drop-shadow(
+0 0 8px rgba(255,255,255,.10)
 );
 
+z-index:2;
+
+pointer-events:none;
 }
 
 /* MICRO TEXTO */
@@ -591,20 +605,38 @@ margin-bottom:8px;
 "
 >
 
-Novas pessoas
+Novas consumidores por mês
 
 </label>
 
-<input
+<select
 id="duplicacao"
-type="number"
+onchange="simular()"
 
-value="3"
-min="1"
-max="10"
+style="
+width:100%;
+background:#080808;
+border:1px solid #222;
+border-radius:18px;
+padding:16px;
+color:#00ff88;
+font-weight:bold;
+font-size:16px;
+"
+>
 
-oninput="simular()"
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3" selected>3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
 
+</select>
 style="
 width:100%;
 background:#080808;
@@ -768,17 +800,11 @@ document.getElementById(
 ).value
 ) || 3;
 
-/* PROTEÇÃO */
+let etapas = [];
 
-if(duplicacao < 1){
-duplicacao = 1;
-}
+let total = 1;
 
-if(duplicacao > 10){
-duplicacao = 10;
-}
-
-let comunidade = 1;
+/* ETAPAS */
 
 for(
 let etapa=1;
@@ -786,23 +812,99 @@ etapa<=4;
 etapa++
 ){
 
-comunidade +=
+total +=
 Math.pow(
 duplicacao,
 etapa
 );
 
+etapas.push(total);
+
 }
+
+/* GANHO */
 
 let ganho =
 Math.floor(
-(comunidade * consumo)
+(total * consumo)
 * 0.18
 );
+
+/* RENDER */
 
 document.getElementById(
 "resultado"
 ).innerHTML = `
+
+<div style="
+margin-bottom:22px;
+">
+
+${etapas.map((valor,index)=>`
+
+<div style="
+margin-bottom:14px;
+text-align:left;
+">
+
+<div style="
+display:flex;
+justify-content:space-between;
+font-size:13px;
+color:#9d9d9d;
+margin-bottom:6px;
+">
+
+<span>
+Etapa ${index+1}
+</span>
+
+<span>
+${valor.toLocaleString('pt-BR')}
+ consumidores
+</span>
+
+</div>
+
+<div style="
+width:100%;
+height:12px;
+background:#101010;
+border-radius:999px;
+overflow:hidden;
+">
+
+<div style="
+height:100%;
+width:${
+Math.min(
+(valor/etapas[3])*100,
+100
+)
+}%;
+
+background:
+linear-gradient(
+90deg,
+#00ff88,
+#00c96b
+);
+
+border-radius:999px;
+
+transition:
+width .7s ease;
+">
+
+</div>
+
+</div>
+
+</div>
+
+`).join('')}
+
+</div>
 
 <p style="
 color:#9d9d9d;
@@ -810,20 +912,23 @@ line-height:1.8;
 margin-bottom:16px;
 ">
 
-Uma comunidade consistente pode gerar
-resultados progressivos ao longo do tempo.
+Um cenário possível
+de crescimento ao longo
+das etapas.
 
 </p>
 
 <h2 style="
-font-size:44px;
+font-size:52px;
 font-weight:900;
 color:#00ff88;
-margin-bottom:8px;
+margin-bottom:10px;
 ">
 
 R$
-${ganho.toLocaleString('pt-BR')}
+${ganho.toLocaleString(
+'pt-BR'
+)}
 
 </h2>
 
@@ -832,7 +937,7 @@ font-size:13px;
 color:#7d7d7d;
 ">
 
-estimativa de construção
+estimativa de ganhos
 na 4ª etapa
 
 </p>
@@ -840,12 +945,3 @@ na 4ª etapa
 `;
 
 }
-
-/* INICIAR */
-
-simular();
-
-</script>
-
-</body>
-</html>
