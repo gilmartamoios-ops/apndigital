@@ -740,6 +740,55 @@ document
 'active'
 );
 
+/* PLAY DOS VÍDEOS */
+
+if(n===2){
+
+const v =
+document.getElementById(
+'manifestoVideo'
+);
+
+if(v){
+
+v.currentTime = 0;
+
+v.muted = false;
+
+v.play().catch(()=>{
+console.log(
+"play bloqueado"
+);
+});
+
+}
+
+}
+
+if(n===3){
+
+const v =
+document.getElementById(
+'ganhosVideo'
+);
+
+if(v){
+
+v.currentTime = 0;
+
+v.muted = false;
+
+v.play().catch(()=>{
+console.log(
+"play bloqueado"
+);
+});
+
+}
+
+}
+
+}
 /* MANIFESTO */
 
 const manifestoVideo =
