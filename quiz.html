@@ -1,1 +1,504 @@
 
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+>
+
+<title>
+C3 | Descobrir Meu Perfil
+</title>
+
+<style>
+
+/* RESET */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html,
+body{
+
+width:100%;
+min-height:100%;
+
+font-family:Arial,sans-serif;
+
+background:#050505;
+color:white;
+
+overflow-x:hidden;
+}
+
+/* APP */
+
+.page{
+
+min-height:100dvh;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+padding:20px;
+
+background:
+linear-gradient(
+180deg,
+#050505,
+#0b0b0b
+);
+}
+
+/* CARD */
+
+.card{
+
+width:100%;
+max-width:760px;
+
+background:
+rgba(255,255,255,.04);
+
+backdrop-filter:
+blur(18px);
+
+border:
+1px solid
+rgba(255,255,255,.08);
+
+border-radius:34px;
+
+padding:34px 28px;
+
+box-shadow:
+0 12px 40px
+rgba(0,0,0,.32);
+
+text-align:center;
+}
+
+/* LOGO */
+
+.logo{
+
+width:54px;
+height:54px;
+
+border-radius:50%;
+
+opacity:.58;
+
+margin-bottom:20px;
+
+filter:
+brightness(1.1)
+drop-shadow(
+0 0 10px rgba(255,255,255,.10)
+);
+}
+
+/* TEXTO */
+
+.eyebrow{
+
+font-size:12px;
+
+letter-spacing:2px;
+text-transform:uppercase;
+
+color:
+rgba(255,255,255,.62);
+
+margin-bottom:16px;
+}
+
+.title{
+
+font-size:
+clamp(28px,5vw,48px);
+
+font-weight:300;
+
+line-height:1.2;
+
+margin-bottom:18px;
+}
+
+.subtitle{
+
+font-size:18px;
+
+line-height:1.7;
+
+color:
+rgba(255,255,255,.82);
+
+margin-bottom:34px;
+}
+
+/* QUIZ */
+
+.question{
+
+display:none;
+animation:fade .35s ease;
+}
+
+.question.active{
+display:block;
+}
+
+.question-title{
+
+font-size:28px;
+font-weight:300;
+
+margin-bottom:28px;
+
+line-height:1.35;
+}
+
+/* OPÇÕES */
+
+.option{
+
+width:100%;
+
+border:none;
+cursor:pointer;
+
+background:#101010;
+color:white;
+
+padding:18px;
+
+font-size:16px;
+
+border-radius:18px;
+
+margin-bottom:14px;
+
+transition:.22s ease;
+
+border:
+1px solid
+rgba(255,255,255,.08);
+}
+
+.option:hover{
+
+background:#181818;
+
+transform:
+translateY(-2px);
+}
+
+/* CTA */
+
+.btn{
+
+margin-top:26px;
+
+border:none;
+cursor:pointer;
+
+background:#00ff88;
+color:#07120d;
+
+padding:18px 34px;
+
+font-size:16px;
+font-weight:700;
+
+border-radius:999px;
+
+transition:.25s ease;
+}
+
+.btn:hover{
+
+background:#00ea7d;
+
+transform:
+translateY(-2px);
+}
+
+/* FINAL */
+
+#final{
+display:none;
+}
+
+/* ANIMAÇÃO */
+
+@keyframes fade{
+
+from{
+opacity:0;
+transform:translateY(8px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.card{
+
+padding:28px 20px;
+border-radius:28px;
+}
+
+.question-title{
+font-size:24px;
+}
+
+.subtitle{
+font-size:16px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="page">
+
+<div class="card">
+
+<img
+src="img/logo_c3.jpg"
+class="logo"
+alt="C3"
+>
+
+<div class="eyebrow">
+Descobrir meu perfil
+</div>
+
+<div
+class="question active"
+id="q1"
+>
+
+<h2 class="question-title">
+
+O que mais chamou
+sua atenção até aqui?
+
+</h2>
+
+<button class="option" onclick="next(2)">
+Construção de renda
+</button>
+
+<button class="option" onclick="next(2)">
+Consumo inteligente
+</button>
+
+<button class="option" onclick="next(2)">
+Empreendedorismo
+</button>
+
+<button class="option" onclick="next(2)">
+Saúde e bem-estar
+</button>
+
+</div>
+
+<div
+class="question"
+id="q2"
+>
+
+<h2 class="question-title">
+
+Você já teve contato
+com modelos de comunidade
+ou rede?
+
+</h2>
+
+<button class="option" onclick="next(3)">
+Nunca
+</button>
+
+<button class="option" onclick="next(3)">
+Já conheci
+</button>
+
+<button class="option" onclick="next(3)">
+Já participei
+</button>
+
+<button class="option" onclick="next(3)">
+Já liderei equipe
+</button>
+
+</div>
+
+<div
+class="question"
+id="q3"
+>
+
+<h2 class="question-title">
+
+Hoje, o que mais faria
+diferença para você?
+
+</h2>
+
+<button class="option" onclick="next(4)">
+Aliviar pressão financeira
+</button>
+
+<button class="option" onclick="next(4)">
+Criar uma renda extra
+</button>
+
+<button class="option" onclick="next(4)">
+Construir algo maior
+</button>
+
+<button class="option" onclick="next(4)">
+Aprender um novo modelo
+</button>
+
+</div>
+
+<div
+class="question"
+id="q4"
+>
+
+<h2 class="question-title">
+
+Como prefere receber
+sua análise personalizada?
+
+</h2>
+
+<button
+class="option"
+onclick="finish()"
+>
+WhatsApp
+</button>
+
+<button
+class="option"
+onclick="finish()"
+>
+Videochamada
+</button>
+
+<button
+class="option"
+onclick="finish()"
+>
+Ligação
+</button>
+
+</div>
+
+<div id="final">
+
+<h2 class="title">
+
+Sua análise está sendo
+preparada.
+
+</h2>
+
+<p class="subtitle">
+
+Com base nas suas respostas,
+vamos entender melhor qual
+caminho faz mais sentido
+para o seu perfil.
+
+</p>
+
+<button
+class="btn"
+onclick="window.location.href='empresa.html'"
+>
+
+Continuar
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function next(n){
+
+document
+.querySelectorAll('.question')
+.forEach(q=>{
+
+q.classList.remove(
+'active'
+);
+
+});
+
+document
+.getElementById(
+'q'+n
+)
+.classList.add(
+'active'
+);
+
+}
+
+function finish(){
+
+document
+.querySelectorAll('.question')
+.forEach(q=>{
+
+q.style.display =
+'none';
+
+});
+
+document
+.getElementById(
+'final'
+).style.display =
+'block';
+
+}
+
+</script>
+
+</body>
+
+</html>
