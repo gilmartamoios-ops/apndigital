@@ -1,3 +1,516 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+>
+
+<title>
+C3 | Comunidade Consistente de Consumo
+</title>
+
+<meta
+name="description"
+content="Descubra como pequenas decisões de consumo podem gerar ganhos consistentes."
+>
+
+<style>
+
+/* RESET */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html,
+body{
+
+width:100%;
+height:100%;
+
+font-family:Arial,sans-serif;
+
+background:#050505;
+color:white;
+
+overflow:hidden;
+}
+
+/* APP */
+
+.app{
+
+position:relative;
+width:100%;
+height:100dvh;
+
+overflow:hidden;
+}
+
+/* SLIDES */
+
+.slide{
+
+position:absolute;
+inset:0;
+
+display:none;
+
+flex-direction:column;
+justify-content:center;
+align-items:center;
+
+padding:16px;
+
+text-align:center;
+
+background:#050505;
+
+overflow-y:auto;
+
+opacity:0;
+
+transition:
+opacity .45s ease;
+}
+
+.slide.active{
+display:flex;
+opacity:1;
+}
+
+/* BACKGROUND */
+
+.bg{
+
+position:absolute;
+inset:0;
+
+width:100%;
+height:100%;
+
+object-fit:cover;
+
+object-position:center;
+
+filter:
+brightness(.45)
+contrast(1.04);
+
+transform:scale(1.04);
+}
+
+/* OVERLAY */
+
+.overlay{
+
+position:absolute;
+inset:0;
+
+background:
+linear-gradient(
+to top,
+rgba(0,0,0,.92),
+rgba(0,0,0,.35)
+);
+}
+
+/* CARD */
+
+.card{
+
+position:relative;
+z-index:2;
+
+width:100%;
+max-width:820px;
+
+background:
+rgba(0,0,0,.16);
+
+backdrop-filter:
+blur(16px);
+
+border:
+1px solid
+rgba(255,255,255,.08);
+
+border-radius:34px;
+
+padding:24px;
+
+box-shadow:
+0 12px 40px
+rgba(0,0,0,.28);
+}
+
+/* LOGO */
+
+.logo{
+
+position:absolute;
+
+bottom:12px;
+right:12px;
+
+width:44px;
+height:44px;
+
+border-radius:50%;
+
+object-fit:cover;
+
+opacity:.56;
+
+filter:
+brightness(1.15)
+drop-shadow(
+0 0 8px rgba(255,255,255,.14)
+);
+
+z-index:5;
+
+pointer-events:none;
+}
+
+/* TEXTO */
+
+.eyebrow{
+
+font-size:12px;
+
+letter-spacing:2px;
+text-transform:uppercase;
+
+color:
+rgba(255,255,255,.64);
+
+margin-bottom:18px;
+}
+
+.title{
+
+font-size:
+clamp(30px,5vw,52px);
+
+line-height:1.18;
+font-weight:300;
+
+margin-bottom:18px;
+}
+
+.subtitle{
+
+font-size:
+clamp(16px,2vw,22px);
+
+line-height:1.7;
+
+max-width:720px;
+
+color:
+rgba(255,255,255,.84);
+
+margin:auto;
+}
+
+/* BOTÃO */
+
+.btn{
+
+margin-top:28px;
+
+border:none;
+cursor:pointer;
+
+background:#00ff88;
+color:#07120d;
+
+padding:18px 34px;
+
+font-size:16px;
+font-weight:700;
+
+border-radius:999px;
+
+transition:.25s ease;
+
+box-shadow:
+0 12px 34px
+rgba(0,255,136,.20);
+}
+
+.btn:hover{
+
+transform:
+translateY(-2px);
+
+background:#00eb7c;
+}
+
+/* VIDEO */
+
+.video-box{
+
+width:100%;
+max-width:420px;
+
+margin:0 auto;
+
+border-radius:28px;
+
+overflow:hidden;
+
+background:black;
+
+box-shadow:
+0 10px 30px
+rgba(0,0,0,.28);
+}
+
+video{
+
+width:100%;
+height:auto;
+
+display:block;
+
+background:black;
+
+object-fit:contain;
+
+max-height:72vh;
+}
+
+/* HIDDEN */
+
+.hidden{
+display:none !important;
+}
+
+/* RESULTADO */
+
+#resultado{
+margin-top:12px;
+}
+
+/* DESKTOP */
+
+@media(min-width:769px){
+
+.video-box{
+max-width:400px;
+}
+
+video{
+max-height:66vh;
+}
+
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.slide{
+padding:10px;
+}
+
+.card{
+
+padding:20px;
+border-radius:28px;
+}
+
+.logo{
+
+bottom:8px;
+right:8px;
+
+width:38px;
+height:38px;
+
+opacity:.52;
+}
+
+.title{
+line-height:1.22;
+}
+
+.video-box{
+max-width:100%;
+}
+
+video{
+max-height:62vh;
+}
+
+.btn{
+
+width:100%;
+max-width:320px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="app">
+
+<!-- TELA 1 / PRÉ CAPA -->
+
+<section
+class="slide active"
+id="s1"
+>
+
+<img
+src="img/pré_capa.jpg"
+class="bg"
+alt="Pré capa"
+>
+
+<div class="overlay"></div>
+
+<div class="card">
+
+<img
+src="img/logo_c3.jpg"
+class="logo"
+alt="C3"
+>
+
+<div class="eyebrow">
+Comunidade Consistente de Consumo
+</div>
+
+<h1 class="title">
+
+Talvez prosperar nunca
+tenha sido uma jornada
+individual.
+
+</h1>
+
+<p class="subtitle">
+
+Descubra como pequenas
+decisões de consumo
+podem gerar ganhos
+consistentes ao longo
+do tempo.
+
+</p>
+
+<button
+class="btn"
+onclick="go(2)"
+>
+
+▶ Entrar na experiência
+
+</button>
+
+</div>
+
+</section>
+
+<!-- TELA 2 / MANIFESTO -->
+
+<section
+class="slide"
+id="s2"
+>
+
+<div class="card">
+
+<div class="video-box">
+
+<video
+id="manifestoVideo"
+controls
+playsinline
+webkit-playsinline
+preload="metadata"
+poster="img/capa.jpg"
+>
+
+<source
+src="video/manifesto.mp4?v=2"
+type="video/mp4"
+>
+
+</video>
+
+</div>
+
+<button
+class="btn hidden"
+id="btnManifesto"
+onclick="go(3)"
+>
+
+Quero entender melhor
+
+</button>
+
+</div>
+
+</section>
+
+<!-- TELA 3 / GANHOS -->
+
+<section
+class="slide"
+id="s3"
+>
+
+<div class="card">
+
+<div class="video-box">
+
+<video
+id="ganhosVideo"
+controls
+playsinline
+webkit-playsinline
+preload="metadata"
+poster="img/capa.jpg"
+>
+
+<source
+src="video/video_ganhos.mp4?v=1"
+type="video/mp4"
+>
+
+</video>
+
+</div>
+
+<button
+class="btn hidden"
+id="btnGanhos"
+onclick="go(4)"
+>
+
+Ver próximo passo
+
+</button>
+
+</div>
+
+</section>
 <!-- TELA 4 / CAPACITAÇÃO -->
 
 <section
@@ -177,11 +690,28 @@ font-size:16px;
 "
 >
 
-<option value="300">R$ 300</option>
-<option value="350">R$ 350</option>
-<option value="400" selected>R$ 400</option>
-<option value="450">R$ 450</option>
-<option value="500">R$ 500</option>
+<option value="300">
+R$ 300
+</option>
+
+<option value="350">
+R$ 350
+</option>
+
+<option
+value="400"
+selected
+>
+R$ 400
+</option>
+
+<option value="450">
+R$ 450
+</option>
+
+<option value="500">
+R$ 500
+</option>
 
 </select>
 
@@ -198,7 +728,8 @@ margin-bottom:8px;
 "
 >
 
-Novos consumidores por mês
+Novos consumidores
+por mês
 
 </label>
 
@@ -218,16 +749,48 @@ font-size:16px;
 "
 >
 
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3" selected>3</option>
-<option value="4">4</option>
-<option value="5">5</option>
-<option value="6">6</option>
-<option value="7">7</option>
-<option value="8">8</option>
-<option value="9">9</option>
-<option value="10">10</option>
+<option value="1">
+1
+</option>
+
+<option value="2">
+2
+</option>
+
+<option
+value="3"
+selected
+>
+3
+</option>
+
+<option value="4">
+4
+</option>
+
+<option value="5">
+5
+</option>
+
+<option value="6">
+6
+</option>
+
+<option value="7">
+7
+</option>
+
+<option value="8">
+8
+</option>
+
+<option value="9">
+9
+</option>
+
+<option value="10">
+10
+</option>
 
 </select>
 
@@ -256,12 +819,13 @@ Descobrir meu perfil
 </div>
 
 </section>
-
 <script>
 
 /* NAVEGAÇÃO */
 
 function go(n){
+
+/* PAUSAR TODOS */
 
 document
 .querySelectorAll('video')
@@ -271,6 +835,8 @@ video.pause();
 video.currentTime = 0;
 
 });
+
+/* ESCONDER TELAS */
 
 document
 .querySelectorAll('.slide')
@@ -282,6 +848,8 @@ slide.classList.remove(
 
 });
 
+/* MOSTRAR TELA */
+
 document
 .getElementById(
 's'+n
@@ -292,7 +860,7 @@ document
 
 }
 
-/* VÍDEOS */
+/* CONTROLE DOS VÍDEOS */
 
 [
 {
@@ -316,6 +884,8 @@ item.video
 
 if(video){
 
+/* MOSTRAR CTA */
+
 video.addEventListener(
 'ended',
 ()=>{
@@ -331,13 +901,15 @@ item.btn
 }
 );
 
+/* PLAY / PAUSE */
+
 video.addEventListener(
 'click',
 ()=>{
 
 if(video.paused){
 
-video.play();
+video.play().catch(()=>{});
 
 }else{
 
@@ -352,7 +924,7 @@ video.pause();
 
 });
 
-/* GRID */
+/* RESPONSIVO */
 
 function ajustarGrid(){
 
@@ -363,13 +935,19 @@ document.getElementById(
 
 if(!grid) return;
 
-grid.style.gridTemplateColumns =
-
+if(
 window.innerWidth < 768
+){
 
-? '1fr'
+grid.style.gridTemplateColumns =
+'1fr';
 
-: '1fr 1fr';
+}else{
+
+grid.style.gridTemplateColumns =
+'1fr 1fr';
+
+}
 
 }
 
@@ -399,7 +977,10 @@ document.getElementById(
 )||3;
 
 let etapas = [];
+
 let total = 1;
+
+/* ETAPAS */
 
 for(
 let etapa=1;
@@ -417,11 +998,15 @@ etapas.push(total);
 
 }
 
+/* GANHO */
+
 let ganho =
 Math.floor(
 (total * consumo)
 * 0.18
 );
+
+/* RENDER */
 
 document
 .getElementById(
@@ -540,8 +1125,8 @@ na 4ª etapa
 }
 
 simular();
-
-</script>
+ </script>
 
 </body>
+
 </html>
