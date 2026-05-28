@@ -97,7 +97,6 @@ width:100%;
 height:100%;
 
 object-fit:cover;
-
 object-position:center;
 
 filter:
@@ -331,8 +330,8 @@ border-radius:28px;
 
 .logo{
 
-bottom:8px;
-right:8px;
+bottom:10px;
+right:10px;
 
 width:38px;
 height:38px;
@@ -354,8 +353,10 @@ max-height:62vh;
 
 .btn{
 
-width:100%;
-max-width:320px;
+width:92%;
+max-width:300px;
+
+margin-right:48px;
 }
 
 }
@@ -749,48 +750,16 @@ font-size:16px;
 "
 >
 
-<option value="1">
-1
-</option>
-
-<option value="2">
-2
-</option>
-
-<option
-value="3"
-selected
->
-3
-</option>
-
-<option value="4">
-4
-</option>
-
-<option value="5">
-5
-</option>
-
-<option value="6">
-6
-</option>
-
-<option value="7">
-7
-</option>
-
-<option value="8">
-8
-</option>
-
-<option value="9">
-9
-</option>
-
-<option value="10">
-10
-</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3" selected>3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
 
 </select>
 
@@ -825,7 +794,7 @@ Descobrir meu perfil
 
 function go(n){
 
-/* PAUSAR TODOS */
+/* PAUSAR TODOS OS VÍDEOS */
 
 document
 .querySelectorAll('video')
@@ -836,7 +805,7 @@ video.currentTime = 0;
 
 });
 
-/* ESCONDER TELAS */
+/* ESCONDER TODAS AS TELAS */
 
 document
 .querySelectorAll('.slide')
@@ -884,7 +853,7 @@ item.video
 
 if(video){
 
-/* MOSTRAR CTA */
+/* CTA APÓS VÍDEO */
 
 video.addEventListener(
 'ended',
@@ -977,14 +946,13 @@ document.getElementById(
 )||3;
 
 let etapas = [];
-
 let total = 1;
 
-/* ETAPAS */
+/* 6 ETAPAS */
 
 for(
 let etapa=1;
-etapa<=4;
+etapa<=6;
 etapa++
 ){
 
@@ -994,17 +962,18 @@ duplicacao,
 etapa
 );
 
-etapas.push(total);
-
-}
-
-/* GANHO */
-
-let ganho =
+let ganhoEtapa =
 Math.floor(
 (total * consumo)
 * 0.18
 );
+
+etapas.push({
+consumidores:total,
+ganho:ganhoEtapa
+});
+
+}
 
 /* RENDER */
 
@@ -1018,10 +987,10 @@ document
 margin-bottom:24px;
 ">
 
-${etapas.map((valor,index)=>`
+${etapas.map((item,index)=>`
 
 <div style="
-margin-bottom:14px;
+margin-bottom:16px;
 text-align:left;
 ">
 
@@ -1038,7 +1007,7 @@ Etapa ${index+1}
 </span>
 
 <span>
-${valor.toLocaleString('pt-BR')}
+${item.consumidores.toLocaleString('pt-BR')}
  consumidores
 </span>
 
@@ -1050,13 +1019,15 @@ height:12px;
 background:#111;
 border-radius:999px;
 overflow:hidden;
+margin-bottom:8px;
 ">
 
 <div style="
 height:100%;
 width:${
 Math.min(
-(valor/etapas[3])*100,
+(item.consumidores / etapas[5].consumidores)
+*100,
 100
 )
 }%;
@@ -1078,47 +1049,24 @@ width .7s ease;
 
 </div>
 
+<div style="
+font-size:14px;
+font-weight:700;
+color:#00ff88;
+">
+
+R$
+${item.ganho.toLocaleString(
+'pt-BR'
+)}
+
+</div>
+
 </div>
 
 `).join('')}
 
 </div>
-
-<p style="
-color:#9f9f9f;
-line-height:1.8;
-margin-bottom:16px;
-">
-
-Um cenário possível
-de crescimento ao longo
-das etapas.
-
-</p>
-
-<h2 style="
-font-size:54px;
-font-weight:900;
-color:#00ff88;
-margin-bottom:10px;
-">
-
-R$
-${ganho.toLocaleString(
-'pt-BR'
-)}
-
-</h2>
-
-<p style="
-font-size:13px;
-color:#777;
-">
-
-estimativa de ganhos
-na 4ª etapa
-
-</p>
 
 `;
 
