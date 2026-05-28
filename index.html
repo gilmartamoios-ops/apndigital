@@ -1,504 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-
-<meta charset="UTF-8">
-
-<meta
-name="viewport"
-content="width=device-width, initial-scale=1.0, viewport-fit=cover"
->
-
-<title>
-C3 | Comunidade Consistente de Consumo
-</title>
-
-<meta
-name="description"
-content="Descubra como pequenas decisões de consumo podem gerar ganhos consistentes."
->
-
-<style>
-
-/* RESET */
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-html,
-body{
-
-width:100%;
-height:100%;
-
-font-family:Arial,sans-serif;
-
-background:#050505;
-color:white;
-
-overflow-x:hidden;
-overflow-y:hidden;
-}
-
-/* APP */
-
-.app{
-
-position:relative;
-width:100%;
-height:100dvh;
-
-overflow:hidden;
-}
-
-/* SLIDES */
-
-.slide{
-
-position:absolute;
-inset:0;
-
-display:none;
-
-flex-direction:column;
-justify-content:center;
-align-items:center;
-
-padding:20px;
-
-text-align:center;
-
-background:#050505;
-
-overflow-y:auto;
-
-opacity:0;
-
-transition:
-opacity .45s ease;
-}
-
-.slide.active{
-display:flex;
-opacity:1;
-}
-
-/* BACKGROUND */
-
-.bg{
-
-position:absolute;
-inset:0;
-
-width:100%;
-height:100%;
-
-object-fit:cover;
-
-filter:
-brightness(.45)
-contrast(1.04);
-
-transform:scale(1.04);
-}
-
-/* OVERLAY */
-
-.overlay{
-
-position:absolute;
-inset:0;
-
-background:
-linear-gradient(
-to top,
-rgba(0,0,0,.92),
-rgba(0,0,0,.35)
-);
-}
-
-/* CARD */
-
-.card{
-
-position:relative;
-z-index:2;
-
-width:100%;
-max-width:820px;
-
-background:
-rgba(0,0,0,.18);
-
-backdrop-filter:
-blur(16px);
-
-border:
-1px solid
-rgba(255,255,255,.08);
-
-border-radius:34px;
-
-padding:28px;
-
-box-shadow:
-0 12px 40px
-rgba(0,0,0,.28);
-}
-
-/* LOGO */
-
-.logo{
-
-position:absolute;
-
-top:18px;
-right:18px;
-
-width:56px;
-height:56px;
-
-border-radius:50%;
-
-object-fit:cover;
-
-opacity:.62;
-
-filter:
-brightness(1.2)
-drop-shadow(
-0 0 10px rgba(255,255,255,.20)
-);
-
-z-index:5;
-}
-
-/* TEXTO */
-
-.eyebrow{
-
-font-size:12px;
-
-letter-spacing:2px;
-text-transform:uppercase;
-
-color:
-rgba(255,255,255,.64);
-
-margin-bottom:18px;
-}
-
-.title{
-
-font-size:
-clamp(30px,5vw,52px);
-
-line-height:1.18;
-font-weight:300;
-
-margin-bottom:18px;
-}
-
-.subtitle{
-
-font-size:
-clamp(16px,2vw,22px);
-
-line-height:1.75;
-
-max-width:720px;
-
-color:
-rgba(255,255,255,.84);
-
-margin:auto;
-}
-
-/* BOTÃO */
-
-.btn{
-
-margin-top:28px;
-
-border:none;
-cursor:pointer;
-
-background:#00ff88;
-color:#07120d;
-
-padding:18px 34px;
-
-font-size:16px;
-font-weight:700;
-
-border-radius:999px;
-
-transition:.25s ease;
-
-box-shadow:
-0 12px 34px
-rgba(0,255,136,.20);
-}
-
-.btn:hover{
-
-transform:
-translateY(-2px);
-
-background:#00eb7c;
-}
-
-/* VIDEO */
-
-.video-box{
-
-width:100%;
-max-width:420px;
-
-margin:0 auto;
-
-border-radius:28px;
-
-overflow:hidden;
-
-background:black;
-
-box-shadow:
-0 10px 30px
-rgba(0,0,0,.28);
-}
-
-video{
-
-width:100%;
-height:auto;
-
-display:block;
-
-background:black;
-
-object-fit:contain;
-
-max-height:72vh;
-}
-
-/* ESCONDER */
-
-.hidden{
-display:none !important;
-}
-
-/* DESKTOP */
-
-@media(min-width:769px){
-
-.video-box{
-max-width:400px;
-}
-
-video{
-max-height:66vh;
-}
-
-}
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-.card{
-
-padding:22px;
-border-radius:28px;
-}
-
-.logo{
-
-top:14px;
-right:14px;
-
-width:50px;
-height:50px;
-
-opacity:.58;
-}
-
-.title{
-line-height:1.24;
-}
-
-.video-box{
-max-width:100%;
-}
-
-video{
-max-height:64vh;
-}
-
-.btn{
-
-width:100%;
-max-width:320px;
-}
-
-}
-
-</style>
-
-</head>
-
-<body>
-
-<div class="app">
-
-<!-- TELA 1 / PRÉ-CAPA -->
-
-<section
-class="slide active"
-id="s1"
->
-
-<img
-src="img/pré_capa.jpg"
-class="bg"
-alt="Pré capa"
->
-
-<div class="overlay"></div>
-
-<div class="card">
-
-<img
-src="img/logo_c3.jpg"
-class="logo"
-alt="C3"
->
-
-<div class="eyebrow">
-Comunidade Consistente de Consumo
-</div>
-
-<h1 class="title">
-
-Talvez prosperar nunca
-tenha sido uma jornada
-individual.
-
-</h1>
-
-<p class="subtitle">
-
-Descubra como pequenas
-decisões de consumo
-podem gerar ganhos
-consistentes ao longo
-do tempo.
-
-</p>
-
-<button
-class="btn"
-onclick="go(2)"
->
-
-▶ Entrar na experiência
-
-</button>
-
-</div>
-
-</section>
-
-<!-- TELA 2 / MANIFESTO -->
-
-<section
-class="slide"
-id="s2"
->
-
-<div class="card">
-
-<div class="video-box">
-
-<video
-id="manifestoVideo"
-controls
-playsinline
-webkit-playsinline
-preload="metadata"
-poster="img/capa.jpg"
->
-
-<source
-src="video/manifesto.mp4?v=2"
-type="video/mp4"
->
-
-</video>
-
-</div>
-
-<button
-class="btn hidden"
-id="btnManifesto"
-onclick="go(3)"
->
-
-Quero entender melhor
-
-</button>
-
-</div>
-
-</section>
-<!-- TELA 3 / GANHOS -->
-
-<section
-class="slide"
-id="s3"
->
-
-<div class="card">
-
-<div class="video-box">
-
-<video
-id="ganhosVideo"
-controls
-playsinline
-webkit-playsinline
-preload="metadata"
-poster="img/capa.jpg"
->
-
-<source
-src="video/video_ganhos.mp4?v=1"
-type="video/mp4"
->
-
-</video>
-
-</div>
-
-<button
-class="btn hidden"
-id="btnGanhos"
-onclick="go(4)"
->
-
-Ver próximo passo
-
-</button>
-
-</div>
-
-</section>
-
-<!-- TELA 4 / CURADORIA -->
+<!-- TELA 4 / CAPACITAÇÃO -->
 
 <section
 class="slide"
@@ -508,9 +8,7 @@ id="s4"
 <div class="card">
 
 <div class="eyebrow">
-
 Capacitação
-
 </div>
 
 <h2
@@ -556,7 +54,7 @@ Continuar
 
 </section>
 
-<!-- TELA 4.1 / VÍDEO CURADORIA -->
+<!-- TELA 4.1 / CURADORIA -->
 
 <section
 class="slide"
@@ -598,6 +96,7 @@ Ver um cenário possível
 </div>
 
 </section>
+
 <!-- TELA 5 / SIMULADOR -->
 
 <section
@@ -678,28 +177,11 @@ font-size:16px;
 "
 >
 
-<option value="300">
-R$ 300
-</option>
-
-<option value="350">
-R$ 350
-</option>
-
-<option
-value="400"
-selected
->
-R$ 400
-</option>
-
-<option value="450">
-R$ 450
-</option>
-
-<option value="500">
-R$ 500
-</option>
+<option value="300">R$ 300</option>
+<option value="350">R$ 350</option>
+<option value="400" selected>R$ 400</option>
+<option value="450">R$ 450</option>
+<option value="500">R$ 500</option>
 
 </select>
 
@@ -716,19 +198,13 @@ margin-bottom:8px;
 "
 >
 
-Novas pessoas
+Novos consumidores por mês
 
 </label>
 
-<input
+<select
 id="duplicacao"
-type="number"
-
-value="3"
-min="1"
-max="10"
-
-oninput="simular()"
+onchange="simular()"
 
 style="
 width:100%;
@@ -739,9 +215,21 @@ padding:16px;
 color:#00ff88;
 font-weight:bold;
 font-size:16px;
-text-align:center;
 "
 >
+
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3" selected>3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+
+</select>
 
 </div>
 
@@ -758,10 +246,10 @@ margin-top:10px;
 
 <button
 class="btn"
-onclick="go(6)"
+onclick="window.location.href='quiz.html'"
 >
 
-Quero entender isso melhor
+Descobrir meu perfil
 
 </button>
 
@@ -769,61 +257,11 @@ Quero entender isso melhor
 
 </section>
 
-<!-- TELA 6 / CTA FINAL -->
-
-<section
-class="slide"
-id="s6"
->
-
-<div class="card">
-
-<div class="eyebrow">
-Próximo passo
-</div>
-
-<h2
-class="title"
-style="
-font-size:clamp(26px,4vw,42px);
-margin-bottom:18px;
-"
->
-
-Vamos conversar.
-
-</h2>
-
-<p class="subtitle">
-
-Agora faz sentido
-entender melhor como isso
-pode funcionar para você
-e tirar suas dúvidas.
-
-</p>
-
-<button
-class="btn"
-onclick="abrirWhatsApp()"
->
-
-Quero entender melhor
-
-</button>
-
-</div>
-
-</section>
-
-</div>
 <script>
 
 /* NAVEGAÇÃO */
 
 function go(n){
-
-/* PAUSAR TODOS OS VÍDEOS */
 
 document
 .querySelectorAll('video')
@@ -833,8 +271,6 @@ video.pause();
 video.currentTime = 0;
 
 });
-
-/* ESCONDER TODOS OS SLIDES */
 
 document
 .querySelectorAll('.slide')
@@ -846,8 +282,6 @@ slide.classList.remove(
 
 });
 
-/* MOSTRAR SLIDE */
-
 document
 .getElementById(
 's'+n
@@ -856,91 +290,39 @@ document
 'active'
 );
 
-/* RESET BOTÕES */
+}
+
+/* VÍDEOS */
 
 [
-'btnManifesto',
-'btnGanhos',
-'btnCuradoria'
-].forEach(id=>{
-
-const el =
-document.getElementById(id);
-
-if(el){
-
-el.classList.add(
-'hidden'
-);
-
+{
+video:'manifestoVideo',
+btn:'btnManifesto'
+},
+{
+video:'ganhosVideo',
+btn:'btnGanhos'
+},
+{
+video:'curadoriaVideo',
+btn:'btnCuradoria'
 }
+].forEach(item=>{
 
-});
-
-/* AUTO PLAY */
-
-if(n===2){
-
-const v =
+const video =
 document.getElementById(
-'manifestoVideo'
+item.video
 );
 
-if(v){
+if(video){
 
-v.play().catch(()=>{});
-
-}
-
-}
-
-if(n===3){
-
-const v =
-document.getElementById(
-'ganhosVideo'
-);
-
-if(v){
-
-v.play().catch(()=>{});
-
-}
-
-}
-
-if(n===41){
-
-const v =
-document.getElementById(
-'curadoriaVideo'
-);
-
-if(v){
-
-v.play().catch(()=>{});
-
-}
-
-}
-
-}
-
-/* MANIFESTO */
-
-const manifestoVideo =
-document.getElementById(
-'manifestoVideo'
-);
-
-manifestoVideo
-.addEventListener(
+video.addEventListener(
 'ended',
 ()=>{
 
 document
 .getElementById(
-'btnManifesto'
+item.btn
 )
 .classList.remove(
 'hidden'
@@ -948,60 +330,6 @@ document
 
 }
 );
-
-/* GANHOS */
-
-const ganhosVideo =
-document.getElementById(
-'ganhosVideo'
-);
-
-ganhosVideo
-.addEventListener(
-'ended',
-()=>{
-
-document
-.getElementById(
-'btnGanhos'
-)
-.classList.remove(
-'hidden'
-);
-
-}
-);
-
-/* CURADORIA */
-
-const curadoriaVideo =
-document.getElementById(
-'curadoriaVideo'
-);
-
-curadoriaVideo
-.addEventListener(
-'ended',
-()=>{
-
-document
-.getElementById(
-'btnCuradoria'
-)
-.classList.remove(
-'hidden'
-);
-
-}
-);
-
-/* PLAY / PAUSE CLICK */
-
-[
-manifestoVideo,
-ganhosVideo,
-curadoriaVideo
-].forEach(video=>{
 
 video.addEventListener(
 'click',
@@ -1009,7 +337,7 @@ video.addEventListener(
 
 if(video.paused){
 
-video.play().catch(()=>{});
+video.play();
 
 }else{
 
@@ -1020,9 +348,11 @@ video.pause();
 }
 );
 
+}
+
 });
 
-/* GRID RESPONSIVO */
+/* GRID */
 
 function ajustarGrid(){
 
@@ -1033,26 +363,17 @@ document.getElementById(
 
 if(!grid) return;
 
-if(
+grid.style.gridTemplateColumns =
+
 window.innerWidth < 768
-){
 
-grid.style
-.gridTemplateColumns =
-'1fr';
+? '1fr'
 
-}else{
-
-grid.style
-.gridTemplateColumns =
-'1fr 1fr';
+: '1fr 1fr';
 
 }
 
-}
-
-window
-.addEventListener(
+window.addEventListener(
 'resize',
 ajustarGrid
 );
@@ -1077,15 +398,8 @@ document.getElementById(
 ).value
 )||3;
 
-if(duplicacao < 1){
-duplicacao = 1;
-}
-
-if(duplicacao > 10){
-duplicacao = 10;
-}
-
-let comunidade = 1;
+let etapas = [];
+let total = 1;
 
 for(
 let etapa=1;
@@ -1093,17 +407,19 @@ etapa<=4;
 etapa++
 ){
 
-comunidade +=
+total +=
 Math.pow(
 duplicacao,
 etapa
 );
 
+etapas.push(total);
+
 }
 
 let ganho =
 Math.floor(
-(comunidade * consumo)
+(total * consumo)
 * 0.18
 );
 
@@ -1113,21 +429,90 @@ document
 )
 .innerHTML = `
 
+<div style="
+margin-bottom:24px;
+">
+
+${etapas.map((valor,index)=>`
+
+<div style="
+margin-bottom:14px;
+text-align:left;
+">
+
+<div style="
+display:flex;
+justify-content:space-between;
+font-size:13px;
+color:#9d9d9d;
+margin-bottom:6px;
+">
+
+<span>
+Etapa ${index+1}
+</span>
+
+<span>
+${valor.toLocaleString('pt-BR')}
+ consumidores
+</span>
+
+</div>
+
+<div style="
+width:100%;
+height:12px;
+background:#111;
+border-radius:999px;
+overflow:hidden;
+">
+
+<div style="
+height:100%;
+width:${
+Math.min(
+(valor/etapas[3])*100,
+100
+)
+}%;
+
+background:
+linear-gradient(
+90deg,
+#00ff88,
+#00c96b
+);
+
+border-radius:999px;
+
+transition:
+width .7s ease;
+">
+
+</div>
+
+</div>
+
+</div>
+
+`).join('')}
+
+</div>
+
 <p style="
 color:#9f9f9f;
 line-height:1.8;
 margin-bottom:16px;
 ">
 
-Uma comunidade consistente
-pode gerar resultados
-progressivos ao longo
-do tempo.
+Um cenário possível
+de crescimento ao longo
+das etapas.
 
 </p>
 
 <h2 style="
-font-size:44px;
+font-size:54px;
 font-weight:900;
 color:#00ff88;
 margin-bottom:10px;
@@ -1145,7 +530,7 @@ font-size:13px;
 color:#777;
 ">
 
-estimativa de construção
+estimativa de ganhos
 na 4ª etapa
 
 </p>
@@ -1153,34 +538,6 @@ na 4ª etapa
 `;
 
 }
-
-/* WHATSAPP */
-
-function abrirWhatsApp(){
-
-const numero =
-"5522999231211";
-
-const mensagem =
-
-"Vi a apresentação da C3 e quero entender melhor como isso funciona.";
-
-window.open(
-
-"https://wa.me/" +
-numero +
-"?text=" +
-encodeURIComponent(
-mensagem
-),
-
-'_blank'
-
-);
-
-}
-
-/* START */
 
 simular();
 
