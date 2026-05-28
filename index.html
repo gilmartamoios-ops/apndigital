@@ -81,11 +81,6 @@ transition:
 opacity .45s ease;
 }
 
-.slide.active{
-display:flex;
-opacity:1;
-}
-
 /* BACKGROUND */
 
 .bg{
@@ -297,7 +292,14 @@ display:none !important;
 /* RESULTADO */
 
 #resultado{
-margin-top:12px;
+
+margin-top:8px;
+
+max-height:38vh;
+
+overflow-y:auto;
+
+padding-right:6px;
 }
 
 /* DESKTOP */
@@ -353,10 +355,14 @@ max-height:62vh;
 
 .btn{
 
-width:92%;
-max-width:300px;
+width:88%;
+max-width:280px;
 
-margin-right:48px;
+margin-right:58px;
+
+padding:15px 26px;
+
+font-size:15px;
 }
 
 }
@@ -945,9 +951,70 @@ document.getElementById(
 ).value
 )||3;
 
-/* BASE DE COMUNIDADE */
+/* PONTUAÇÃO */
+
+const pontosPorPessoa =
+consumo / 3;
+
+/* CARREIRAS */
+
+const carreiras = [
+
+{
+nome:'Empreendedor',
+pontos:950,
+pin:100
+},
+
+{
+nome:'Senior',
+pontos:2450,
+pin:200
+},
+
+{
+nome:'Expert',
+pontos:7250,
+pin:700
+},
+
+{
+nome:'Enterprise',
+pontos:14750,
+pin:1300
+},
+
+{
+nome:'Diamond',
+pontos:27500,
+pin:4000
+}
+
+];
+
+/* UNILEVEL */
+
+const percentuais = [
+
+0.05,
+0.05,
+0.045,
+0.04,
+0.0275,
+0.02,
+0.005,
+0.005,
+0.0025,
+0.001,
+0.0005,
+0.0005,
+0.0003,
+0.0002
+
+];
 
 let etapas = [];
+
 let total = 1;
 
 /* 6 ETAPAS */
@@ -964,31 +1031,109 @@ duplicacao,
 etapa
 );
 
-/* CÁLCULO REALISTA */
+/* PONTOS DO MÊS */
 
-let fatorRede =
+let pontosMes =
 
-etapa === 1 ? 0.35 :
-etapa === 2 ? 0.9 :
-etapa === 3 ? 2.2 :
-etapa === 4 ? 5 :
-etapa === 5 ? 11 :
-18.5;
+total *
+pontosPorPessoa;
 
-/* GANHO */
+/* CICLO 2 MESES */
 
-let ganhoEtapa =
-Math.floor(
-consumo *
-duplicacao *
-fatorRede *
-etapa
+let pontosMes2 =
+
+pontosMes * 1.5;
+
+let pontosCiclo =
+
+pontosMes +
+pontosMes2;
+
+/* CARREIRA */
+
+let carreiraAtual =
+
+carreiras[0];
+
+for(
+let carreira of carreiras
+){
+
+if(
+pontosMes >=
+carreira.pontos
+){
+
+carreiraAtual =
+carreira;
+
+}
+
+}
+
+/* BONUS 30D */
+
+let bonus30D = 0;
+
+if(
+carreiraAtual.nome !==
+'Diamond'
+){
+
+bonus30D =
+pontosMes;
+
+}
+
+/* UNILEVEL */
+
+let bonusUnilevel = 0;
+
+percentuais.forEach(
+p=>{
+
+bonusUnilevel +=
+(
+pontosMes *
+3
+) * p;
+
+}
 );
+
+/* TOTAL MENSAL */
+
+let ganhoMensal =
+
+Math.floor(
+
+bonusUnilevel
+
++
+
+carreiraAtual.pin
+
++
+
+(
+
+bonus30D
+* 3
+/ 2
+
+)
+
+);
+
+/* GUARDAR */
 
 etapas.push({
 
-consumidores:total,
-ganho:ganhoEtapa
+consumidores:
+total,
+
+ganho:
+ganhoMensal
 
 });
 
@@ -1026,7 +1171,10 @@ Etapa ${index+1}
 </span>
 
 <span>
-${item.consumidores.toLocaleString('pt-BR')}
+${item.consumidores
+.toLocaleString(
+'pt-BR'
+)}
  consumidores
 </span>
 
@@ -1046,7 +1194,8 @@ height:100%;
 width:${
 Math.min(
 (item.consumidores /
-etapas[5].consumidores)
+etapas[5]
+.consumidores)
 *100,
 100
 )
@@ -1070,20 +1219,16 @@ width .7s ease;
 </div>
 
 <div style="
-display:flex;
-justify-content:space-between;
-align-items:center;
 font-size:14px;
 font-weight:700;
 color:#00ff88;
 ">
 
-<span>
 R$
-${item.ganho.toLocaleString(
+${item.ganho
+.toLocaleString(
 'pt-BR'
 )}
-</span>
 
 </div>
 
