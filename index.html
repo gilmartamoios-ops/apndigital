@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -16,11 +17,13 @@ C3 | Comunidade Consistente de Consumo
 
 <meta
 name="description"
-content="Descubra como pequenas decisões de consumo podem gerar ganhos consistentes."
+content="Construa uma comunidade de consumo consistente."
 >
 
 <style>
+```
 
+ ```css id="v9c2ph"
 /* RESET */
 
 *{
@@ -41,6 +44,7 @@ background:#050505;
 color:white;
 
 overflow:hidden;
+
 }
 
 /* APP */
@@ -52,6 +56,7 @@ width:100%;
 height:100dvh;
 
 overflow:hidden;
+
 }
 
 /* SLIDES */
@@ -79,6 +84,7 @@ opacity:0;
 
 transition:
 opacity .45s ease;
+
 }
 
 .slide.active{
@@ -105,7 +111,9 @@ filter:
 brightness(.45)
 contrast(1.04);
 
-transform:scale(1.04);
+transform:
+scale(1.04);
+
 }
 
 /* OVERLAY */
@@ -121,6 +129,7 @@ to top,
 rgba(0,0,0,.92),
 rgba(0,0,0,.35)
 );
+
 }
 
 /* CARD */
@@ -150,6 +159,7 @@ padding:24px;
 box-shadow:
 0 12px 40px
 rgba(0,0,0,.28);
+
 }
 
 /* LOGO */
@@ -179,6 +189,7 @@ drop-shadow(
 z-index:5;
 
 pointer-events:none;
+
 }
 
 /* TEXTO */
@@ -194,6 +205,7 @@ color:
 rgba(255,255,255,.64);
 
 margin-bottom:18px;
+
 }
 
 .title{
@@ -205,6 +217,7 @@ line-height:1.18;
 font-weight:300;
 
 margin-bottom:18px;
+
 }
 
 .subtitle{
@@ -220,6 +233,7 @@ color:
 rgba(255,255,255,.84);
 
 margin:auto;
+
 }
 
 /* BOTÃO */
@@ -246,6 +260,7 @@ transition:.25s ease;
 box-shadow:
 0 12px 34px
 rgba(0,255,136,.20);
+
 }
 
 .btn:hover{
@@ -254,6 +269,7 @@ transform:
 translateY(-2px);
 
 background:#00eb7c;
+
 }
 
 /* VIDEO */
@@ -274,6 +290,7 @@ background:black;
 box-shadow:
 0 10px 30px
 rgba(0,0,0,.28);
+
 }
 
 video{
@@ -288,6 +305,7 @@ background:black;
 object-fit:contain;
 
 max-height:72vh;
+
 }
 
 /* HIDDEN */
@@ -296,30 +314,63 @@ max-height:72vh;
 display:none !important;
 }
 
-/* RESULTADO */
+/* SIMULADOR */
 
-#resultado{
+.sim-grid{
 
-margin-top:8px;
+display:grid;
+grid-template-columns:1fr 1fr;
+
+gap:14px;
+
+margin-bottom:22px;
+
+}
+
+.sim-label{
+
+display:block;
+
+font-size:13px;
+color:#999;
+
+margin-bottom:10px;
+
+text-align:left;
+
+line-height:1.5;
+
+}
+
+.sim-select{
+
+width:100%;
+
+background:#080808;
+
+border:
+1px solid #222;
+
+border-radius:18px;
+
+padding:16px;
+
+color:#00ff88;
+
+font-weight:bold;
+font-size:16px;
+
+}
+
+.resultado{
+
+margin-top:10px;
 
 max-height:38vh;
 
 overflow-y:auto;
 
 padding-right:6px;
-}
-
-/* DESKTOP */
-
-@media(min-width:769px){
-
-.video-box{
-max-width:400px;
-}
-
-video{
-max-height:66vh;
-}
 
 }
 
@@ -335,6 +386,7 @@ padding:10px;
 
 padding:20px;
 border-radius:28px;
+
 }
 
 .logo{
@@ -346,6 +398,7 @@ width:38px;
 height:38px;
 
 opacity:.52;
+
 }
 
 .title{
@@ -365,15 +418,22 @@ max-height:62vh;
 width:88%;
 max-width:280px;
 
-margin-right:58px;
-
 padding:15px 26px;
 
 font-size:15px;
-}
 
 }
 
+.sim-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+```
+
+ ```javascript id="b1m4ps"
 </style>
 
 </head>
@@ -382,7 +442,7 @@ font-size:15px;
 
 <div class="app">
 
-<!-- TELA 1 / PRÉ CAPA -->
+<!-- TELA 1 -->
 
 <section
 class="slide active"
@@ -390,7 +450,7 @@ id="s1"
 >
 
 <img
-src="img/pré_capa.jpg"
+src="img/pre_capa.jpg"
 class="bg"
 alt="Pré capa"
 >
@@ -421,8 +481,8 @@ individual.
 
 Descubra como pequenas
 decisões de consumo
-podem gerar ganhos
-consistentes ao longo
+podem fortalecer uma
+comunidade ao longo
 do tempo.
 
 </p>
@@ -440,7 +500,7 @@ onclick="go(2)"
 
 </section>
 
-<!-- TELA 2 / MANIFESTO -->
+<!-- TELA 2 -->
 
 <section
 class="slide"
@@ -457,11 +517,10 @@ controls
 playsinline
 webkit-playsinline
 preload="metadata"
-poster="img/capa.jpg"
 >
 
 <source
-src="video/manifesto.mp4?v=2"
+src="video/manifesto.mp4?v=3"
 type="video/mp4"
 >
 
@@ -483,7 +542,7 @@ Quero entender melhor
 
 </section>
 
-<!-- TELA 3 / GANHOS -->
+<!-- TELA 3 -->
 
 <section
 class="slide"
@@ -495,16 +554,15 @@ id="s3"
 <div class="video-box">
 
 <video
-id="ganhosVideo"
+id="modeloVideo"
 controls
 playsinline
 webkit-playsinline
 preload="metadata"
-poster="img/capa.jpg"
 >
 
 <source
-src="video/video_ganhos.mp4?v=1"
+src="video/modelo_negocio.mp4?v=2"
 type="video/mp4"
 >
 
@@ -514,11 +572,11 @@ type="video/mp4"
 
 <button
 class="btn hidden"
-id="btnGanhos"
+id="btnModelo"
 onclick="go(4)"
 >
 
-Ver próximo passo
+Construir minha comunidade
 
 </button>
 
@@ -526,7 +584,7 @@ Ver próximo passo
 
 </section>
 
-<!-- TELA 5 / SIMULADOR -->
+<!-- TELA 4 -->
 
 <section
 class="slide"
@@ -536,98 +594,56 @@ id="s4"
 <div class="card">
 
 <div class="eyebrow">
-Simulação
+Simulador de Comunidade
 </div>
 
-<h2
-class="title"
-style="
-font-size:clamp(26px,4vw,42px);
-margin-bottom:16px;
-"
->
+<h2 class="title">
 
-Veja um cenário possível
+Construa sua comunidade
 
 </h2>
 
 <p
 class="subtitle"
-style="
-margin-bottom:28px;
-"
+style="margin-bottom:28px;"
 >
 
-Pequenas mudanças
-consistentes podem gerar
-resultados progressivos
-ao longo do tempo.
+Explore um cenário
+possível de crescimento
+da sua comunidade
+de consumo consistente.
 
 </p>
 
 <div
-style="
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:14px;
-margin-bottom:20px;
-"
+class="sim-grid"
 id="simGrid"
 >
 
 <div>
 
-<label
-style="
-display:block;
-font-size:13px;
-color:#999;
-margin-bottom:8px;
-"
->
+<label class="sim-label">
 
-Consumo mensal
+Defina o tamanho inicial
+da sua comunidade
+de gestores
 
 </label>
 
 <select
-id="consumo"
+id="gestores"
 onchange="simular()"
-
-style="
-width:100%;
-background:#080808;
-border:1px solid #222;
-border-radius:18px;
-padding:16px;
-color:#00ff88;
-font-weight:bold;
-font-size:16px;
-"
+class="sim-select"
 >
 
-<option value="300">
-R$ 300
-</option>
-
-<option value="350">
-R$ 350
-</option>
-
-<option
-value="400"
-selected
->
-R$ 400
-</option>
-
-<option value="450">
-R$ 450
-</option>
-
-<option value="500">
-R$ 500
-</option>
+<option value="3">3 gestores</option>
+<option value="4">4 gestores</option>
+<option value="5" selected>5 gestores</option>
+<option value="6">6 gestores</option>
+<option value="7">7 gestores</option>
+<option value="8">8 gestores</option>
+<option value="9">9 gestores</option>
+<option value="10">10 gestores</option>
 
 </select>
 
@@ -635,46 +651,27 @@ R$ 500
 
 <div>
 
-<label
-style="
-display:block;
-font-size:13px;
-color:#999;
-margin-bottom:8px;
-"
->
+<label class="sim-label">
 
-Novos consumidores
-por mês
+Escolha o consumo
+mínimo mensal
+da comunidade
 
 </label>
 
 <select
-id="duplicacao"
+id="consumo"
 onchange="simular()"
-
-style="
-width:100%;
-background:#080808;
-border:1px solid #222;
-border-radius:18px;
-padding:16px;
-color:#00ff88;
-font-weight:bold;
-font-size:16px;
-"
+class="sim-select"
 >
 
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3" selected>3</option>
-<option value="4">4</option>
-<option value="5">5</option>
-<option value="6">6</option>
-<option value="7">7</option>
-<option value="8">8</option>
-<option value="9">9</option>
-<option value="10">10</option>
+<option value="300">R$ 300</option>
+<option value="350">R$ 350</option>
+<option value="400" selected>R$ 400</option>
+<option value="450">R$ 450</option>
+<option value="500">R$ 500</option>
+<option value="550">R$ 550</option>
+<option value="600">R$ 600</option>
 
 </select>
 
@@ -684,16 +681,17 @@ font-size:16px;
 
 <div
 id="resultado"
-style="
-margin-top:10px;
-"
+class="resultado"
 >
 
 </div>
 
 <button
 class="btn"
-onclick="window.location.href='quiz.html'"
+onclick="
+window.location.href=
+'quiz.html'
+"
 >
 
 Descobrir meu perfil
@@ -703,13 +701,12 @@ Descobrir meu perfil
 </div>
 
 </section>
+
 <script>
 
 /* NAVEGAÇÃO */
 
 function go(n){
-
-/* PAUSAR TODOS OS VÍDEOS */
 
 document
 .querySelectorAll('video')
@@ -719,8 +716,6 @@ video.pause();
 video.currentTime = 0;
 
 });
-
-/* ESCONDER TODAS AS TELAS */
 
 document
 .querySelectorAll('.slide')
@@ -732,8 +727,6 @@ slide.classList.remove(
 
 });
 
-/* MOSTRAR TELA */
-
 document
 .getElementById(
 's'+n
@@ -744,7 +737,7 @@ document
 
 }
 
-/* CONTROLE DOS VÍDEOS */
+/* VÍDEOS */
 
 [
 {
@@ -752,12 +745,8 @@ video:'manifestoVideo',
 btn:'btnManifesto'
 },
 {
-video:'ganhosVideo',
-btn:'btnGanhos'
-},
-{
-video:'curadoriaVideo',
-btn:'btnCuradoria'
+video:'modeloVideo',
+btn:'btnModelo'
 }
 ].forEach(item=>{
 
@@ -767,8 +756,6 @@ item.video
 );
 
 if(video){
-
-/* CTA APÓS VÍDEO */
 
 video.addEventListener(
 'ended',
@@ -784,8 +771,6 @@ item.btn
 
 }
 );
-
-/* PLAY / PAUSE */
 
 video.addEventListener(
 'click',
@@ -807,63 +792,53 @@ video.pause();
 }
 
 });
+```
 
-/* RESPONSIVO */
+```javascript id="e7kp4v"
 
-function ajustarGrid(){
-
-const grid =
-document.getElementById(
-'simGrid'
-);
-
-if(!grid) return;
-
-if(
-window.innerWidth < 768
-){
-
-grid.style.gridTemplateColumns =
-'1fr';
-
-}else{
-
-grid.style.gridTemplateColumns =
-'1fr 1fr';
-
-}
-
-}
-
-window.addEventListener(
-'resize',
-ajustarGrid
-);
-
-ajustarGrid();
-
-/* SIMULADOR */
+/* SIMULADOR DE COMUNIDADE */
 
 function simular(){
 
-let consumo =
-parseFloat(
+const gestores =
+parseInt(
+document.getElementById(
+'gestores'
+).value
+);
+
+const consumo =
+parseInt(
 document.getElementById(
 'consumo'
 ).value
 );
 
-let duplicacao =
-parseFloat(
-document.getElementById(
-'duplicacao'
-).value
-)||3;
+/* R$300 = 1 ponto */
 
-/* PONTUAÇÃO */
+const pontosPorGestor =
+consumo / 300;
 
-const pontosPorPessoa =
-consumo / 3;
+/* UNILEVEL */
+
+const percentuais = [
+
+0.05,
+0.05,
+0.045,
+0.04,
+0.0275,
+0.02,
+0.005,
+0.005,
+0.0025,
+0.001,
+0.0005,
+0.0005,
+0.0003,
+0.0002
+
+];
 
 /* CARREIRAS */
 
@@ -901,96 +876,82 @@ pin:4000
 
 ];
 
-/* UNILEVEL */
+let html = '';
 
-const percentuais = [
-
-0.05,
-0.05,
-0.045,
-0.04,
-0.0275,
-0.02,
-0.005,
-0.005,
-0.0025,
-0.001,
-0.0005,
-0.0005,
-0.0003,
-0.0002
-
-];
-
-let etapas = [];
-
-let total = 1;
-
-/* 6 ETAPAS */
+let saldoPontos = 0;
 
 for(
 let etapa=1;
-etapa<=6;
+etapa<=7;
 etapa++
 ){
 
-total +=
+/* MODELO CONSERVADOR */
+
+const totalGestores =
+
 Math.pow(
-duplicacao,
+gestores,
 etapa
 );
 
-/* PONTOS DO MÊS */
+/* PONTOS MÊS */
 
-let pontosMes =
+const pontosMes =
 
-total *
-pontosPorPessoa;
+totalGestores *
+pontosPorGestor;
 
 /* CICLO 2 MESES */
 
-let pontosMes2 =
-
-pontosMes * 1.5;
-
 let pontosCiclo =
 
-pontosMes +
-pontosMes2;
-
-/* CARREIRA */
-
-let carreiraAtual =
-
-carreiras[0];
-
-for(
-let carreira of carreiras
-){
-
-if(
-pontosMes >=
-carreira.pontos
-){
-
-carreiraAtual =
-carreira;
-
-}
-
-}
+pontosMes * 2;
 
 /* BONUS 30D */
 
-let bonus30D = 0;
-
 if(
-carreiraAtual.nome !==
-'Diamond'
+pontosMes <
+27500
 ){
 
-bonus30D =
+pontosCiclo +=
 pontosMes;
+
+}
+
+/* ACUMULAR */
+
+saldoPontos +=
+pontosCiclo;
+
+/* PIN */
+
+let bonusPin = 0;
+let nivel = 'Inicial';
+
+for(
+let carreira
+of carreiras
+){
+
+if(
+saldoPontos >=
+carreira.pontos
+){
+
+nivel =
+carreira.nome;
+
+bonusPin +=
+carreira.pin;
+
+/* ABATE PONTOS */
+
+saldoPontos -=
+carreira.pontos;
+
+}
 
 }
 
@@ -1004,66 +965,29 @@ p=>{
 bonusUnilevel +=
 (
 pontosMes *
-3
+300
 ) * p;
 
 }
 );
 
-/* TOTAL MENSAL */
-
-let ganhoMensal =
-
+const bonusEstimado =
 Math.floor(
 
 bonusUnilevel
 
 +
 
-carreiraAtual.pin
-
-+
-
-(
-
-bonus30D
-* 3
-/ 2
-
-)
+bonusPin
 
 );
 
-/* GUARDAR */
-
-etapas.push({
-
-consumidores:
-total,
-
-ganho:
-ganhoMensal
-
-});
-
-}
-
 /* RENDER */
 
-document
-.getElementById(
-'resultado'
-)
-.innerHTML = `
+html += `
 
 <div style="
-margin-bottom:24px;
-">
-
-${etapas.map((item,index)=>`
-
-<div style="
-margin-bottom:16px;
+margin-bottom:18px;
 text-align:left;
 ">
 
@@ -1076,15 +1000,15 @@ margin-bottom:6px;
 ">
 
 <span>
-Etapa ${index+1}
+Etapa ${etapa}
 </span>
 
 <span>
-${item.consumidores
+${totalGestores
 .toLocaleString(
 'pt-BR'
 )}
- consumidores
+ gestores
 </span>
 
 </div>
@@ -1095,19 +1019,13 @@ height:12px;
 background:#111;
 border-radius:999px;
 overflow:hidden;
-margin-bottom:8px;
+margin-bottom:10px;
 ">
 
 <div style="
 height:100%;
 width:${
-Math.min(
-(item.consumidores /
-etapas[5]
-.consumidores)
-*100,
-100
-)
+(etapa/7)*100
 }%;
 
 background:
@@ -1118,9 +1036,6 @@ linear-gradient(
 );
 
 border-radius:999px;
-
-transition:
-width .7s ease;
 ">
 
 </div>
@@ -1128,31 +1043,51 @@ width .7s ease;
 </div>
 
 <div style="
-font-size:14px;
+font-size:15px;
 font-weight:700;
 color:#00ff88;
+margin-bottom:4px;
 ">
 
 R$
-${item.ganho
+${bonusEstimado
 .toLocaleString(
 'pt-BR'
 )}
 
-</div>
+estimados em bônus
 
 </div>
 
-`).join('')}
+<div style="
+font-size:13px;
+color:#999;
+">
+
+Nível:
+${nivel}
+
+</div>
 
 </div>
 
 `;
 
 }
+
+document
+.getElementById(
+'resultado'
+)
+.innerHTML =
+html;
+
+}
+
 simular();
- </script>
+
+</script>
 
 </body>
-
 </html>
+```
