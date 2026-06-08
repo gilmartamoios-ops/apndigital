@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -11,16 +12,15 @@ content="width=device-width, initial-scale=1.0, viewport-fit=cover"
 >
 
 <title>
-C3 | COMUNIDADE DE RELACIONAMENTO DE CONSUMO
+CRC | COMUNIDADE DE RELACIONAMENTO DE CONSUMO
 </title>
 
 <meta
 name="description"
-content="Construa uma comunidade de consumo consistente."
+content="Construa uma comunidade de relacionamento e consumo consistente."
 >
 
 <style>
-
 
 /* RESET */
 
@@ -183,6 +183,7 @@ z-index:1;
 pointer-events:none;
 
 }
+
 /* TEXTO */
 
 .eyebrow{
@@ -317,6 +318,10 @@ gap:14px;
 margin-bottom:22px;
 
 }
+```
+
+ ```html id="xyruao"
+/* LABELS */
 
 .sim-label{
 
@@ -353,15 +358,139 @@ font-size:16px;
 
 }
 
+/* RESULTADO */
+
 .resultado{
 
 margin-top:10px;
 
-max-height:28vh;
+max-height:36vh;
 
 overflow-y:auto;
 
 padding-right:6px;
+
+text-align:left;
+
+}
+
+.resultado::-webkit-scrollbar{
+width:6px;
+}
+
+.resultado::-webkit-scrollbar-thumb{
+
+background:#1e1e1e;
+border-radius:999px;
+
+}
+
+/* CARD RESULTADO */
+
+.etapa-card{
+
+background:
+rgba(255,255,255,.03);
+
+border:
+1px solid
+rgba(255,255,255,.06);
+
+border-radius:22px;
+
+padding:18px;
+
+margin-bottom:16px;
+
+backdrop-filter:
+blur(10px);
+
+}
+
+.etapa-topo{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+font-size:13px;
+color:#9d9d9d;
+
+margin-bottom:12px;
+
+}
+
+.etapa-pessoas{
+
+font-size:18px;
+font-weight:700;
+
+color:#fff;
+
+margin-bottom:8px;
+
+line-height:1.5;
+
+}
+
+.etapa-pessoas span{
+
+color:#00ff88;
+
+}
+
+.etapa-sub{
+
+font-size:13px;
+line-height:1.6;
+
+color:#8c8c8c;
+
+margin-bottom:16px;
+
+}
+
+.economia{
+
+background:
+rgba(0,255,136,.06);
+
+border:
+1px solid
+rgba(0,255,136,.12);
+
+padding:14px;
+
+border-radius:18px;
+
+margin-bottom:12px;
+
+}
+
+.economia-titulo{
+
+font-size:13px;
+color:#9d9d9d;
+
+line-height:1.5;
+
+margin-bottom:10px;
+
+}
+
+.economia-valor{
+
+font-size:26px;
+font-weight:700;
+
+color:#00ff88;
+
+}
+
+.qualificacao{
+
+font-size:13px;
+color:#8f8f8f;
 
 }
 
@@ -423,8 +552,6 @@ grid-template-columns:1fr;
 
 }
 
-
-
 </style>
 
 </head>
@@ -440,8 +567,7 @@ class="slide active"
 id="s1"
 >
 
-<!-- fundo preto intencional -->
- <div class="overlay"></div>
+<div class="overlay"></div>
 
 <div class="card">
 
@@ -521,7 +647,9 @@ Quero entender melhor
 </div>
 
 </section>
+```
 
+ ```html id="hquxzm"
 <!-- TELA 3 -->
 
 <section
@@ -574,12 +702,13 @@ id="s4"
 <div class="card">
 
 <div class="eyebrow">
-Simulador de Comunidade
+Simulador de Construção de Comunidade
 </div>
 
 <h2 class="title">
 
-Construa sua comunidade
+Explore o crescimento
+da sua comunidade
 
 </h2>
 
@@ -588,10 +717,12 @@ class="subtitle"
 style="margin-bottom:28px;"
 >
 
-Explore um cenário
-possível de crescimento
-da sua comunidade
-de consumo consistente.
+Visualize um cenário
+estimado de crescimento
+da sua comunidade de
+relacionamento e consumo,
+baseado em participação
+ativa e consumo recorrente.
 
 </p>
 
@@ -606,7 +737,7 @@ id="simGrid"
 
 Defina o tamanho inicial
 da sua comunidade
-de gestores
+ativa
 
 </label>
 
@@ -616,14 +747,37 @@ onchange="simular()"
 class="sim-select"
 >
 
-<option value="3">3 gestores</option>
-<option value="4">4 gestores</option>
-<option value="5" selected>5 gestores</option>
-<option value="6">6 gestores</option>
-<option value="7">7 gestores</option>
-<option value="8">8 gestores</option>
-<option value="9">9 gestores</option>
-<option value="10">10 gestores</option>
+<option value="3">
+3 pessoas
+</option>
+
+<option value="4">
+4 pessoas
+</option>
+
+<option value="5" selected>
+5 pessoas
+</option>
+
+<option value="6">
+6 pessoas
+</option>
+
+<option value="7">
+7 pessoas
+</option>
+
+<option value="8">
+8 pessoas
+</option>
+
+<option value="9">
+9 pessoas
+</option>
+
+<option value="10">
+10 pessoas
+</option>
 
 </select>
 
@@ -645,13 +799,33 @@ onchange="simular()"
 class="sim-select"
 >
 
-<option value="300">R$ 300</option>
-<option value="350">R$ 350</option>
-<option value="400" selected>R$ 400</option>
-<option value="450">R$ 450</option>
-<option value="500">R$ 500</option>
-<option value="550">R$ 550</option>
-<option value="600">R$ 600</option>
+<option value="300">
+R$ 300
+</option>
+
+<option value="350">
+R$ 350
+</option>
+
+<option value="400" selected>
+R$ 400
+</option>
+
+<option value="450">
+R$ 450
+</option>
+
+<option value="500">
+R$ 500
+</option>
+
+<option value="550">
+R$ 550
+</option>
+
+<option value="600">
+R$ 600
+</option>
 
 </select>
 
@@ -772,15 +946,14 @@ video.pause();
 }
 
 });
+```
 
-
-
-
-/* SIMULADOR DE COMUNIDADE */
+```html id="mztvkg"
+/* SIMULADOR CRC */
 
 function simular(){
 
-const gestores =
+const pessoasBase =
 parseInt(
 document.getElementById(
 'gestores'
@@ -794,12 +967,10 @@ document.getElementById(
 ).value
 );
 
-/* R$300 = 1 ponto */
-
-const pontosPorGestor =
+const pontosPorPessoa =
 consumo / 300;
 
-/* UNILEVEL */
+/* PERCENTUAIS UNILEVEL */
 
 const percentuais = [
 
@@ -809,14 +980,7 @@ const percentuais = [
 0.04,
 0.0275,
 0.02,
-0.005,
-0.005,
-0.0025,
-0.001,
-0.0005,
-0.0005,
-0.0003,
-0.0002
+0.005
 
 ];
 
@@ -860,39 +1024,56 @@ let html = '';
 
 let saldoPontos = 0;
 
+let comunidadeAcumulada = 0;
+
+let camadas = [];
+
+/* 7 ETAPAS */
+
 for(
-let etapa=1;
-etapa<=7;
+let etapa = 1;
+etapa <= 7;
 etapa++
 ){
 
-/* MODELO CONSERVADOR */
+/* MODELO CONSERVADOR:
+APENAS A ÚLTIMA CAMADA CRESCE */
 
-const totalGestores =
+const novaCamada =
 
 Math.pow(
-gestores,
+pessoasBase,
 etapa
 );
 
-/* PONTOS MÊS */
+camadas.push(
+novaCamada
+);
+
+/* COMUNIDADE ACUMULADA */
+
+comunidadeAcumulada +=
+novaCamada;
+
+/* PONTOS DO MÊS */
 
 const pontosMes =
 
-totalGestores *
-pontosPorGestor;
+comunidadeAcumulada *
+pontosPorPessoa;
 
 /* CICLO 2 MESES */
 
 let pontosCiclo =
-
 pontosMes * 2;
 
-/* BONUS 30D */
+/* BONUS 30D APÓS
+SEGUNDO CICLO */
 
 if(
-pontosMes <
-27500
+etapa >= 2
+&&
+pontosMes < 27500
 ){
 
 pontosCiclo +=
@@ -900,15 +1081,16 @@ pontosMes;
 
 }
 
-/* ACUMULAR */
+/* SALDO */
 
 saldoPontos +=
 pontosCiclo;
 
-/* PIN */
+/* QUALIFICAÇÃO */
 
 let bonusPin = 0;
-let nivel = 'Inicial';
+let qualificacao =
+'Inicial';
 
 for(
 let carreira
@@ -920,7 +1102,7 @@ saldoPontos >=
 carreira.pontos
 ){
 
-nivel =
+qualificacao =
 carreira.nome;
 
 bonusPin +=
@@ -935,29 +1117,43 @@ carreira.pontos;
 
 }
 
-/* UNILEVEL */
+/* UNILEVEL CORRETO
+POR CAMADA */
 
 let bonusUnilevel = 0;
 
-percentuais.forEach(
-p=>{
+camadas.forEach(
+(
+camada,
+index
+)=>{
+
+if(
+percentuais[index]
+){
 
 bonusUnilevel +=
+
 (
-pontosMes *
-300
-) * p;
+camada
+*
+consumo
+)
+*
+percentuais[index];
+
+}
 
 }
 );
+
+/* TOTAL */
 
 const bonusEstimado =
 Math.floor(
 
 bonusUnilevel
-
 +
-
 bonusPin
 
 );
@@ -966,86 +1162,75 @@ bonusPin
 
 html += `
 
-<div style="
-margin-bottom:18px;
-text-align:left;
-">
+<div class="etapa-card">
 
-<div style="
-display:flex;
-justify-content:space-between;
-font-size:13px;
-color:#9d9d9d;
-margin-bottom:6px;
-">
+<div class="etapa-topo">
 
 <span>
 Etapa ${etapa}
 </span>
 
 <span>
-${totalGestores
+${comunidadeAcumulada
 .toLocaleString(
 'pt-BR'
 )}
- gestores
+ pessoas
 </span>
 
 </div>
 
-<div style="
-width:100%;
-height:12px;
-background:#111;
-border-radius:999px;
-overflow:hidden;
-margin-bottom:10px;
-">
+<div class="etapa-pessoas">
 
-<div style="
-height:100%;
-width:${
-(etapa/7)*100
-}%;
+<span>
+${comunidadeAcumulada
+.toLocaleString(
+'pt-BR'
+)}
+</span>
 
-background:
-linear-gradient(
-90deg,
-#00ff88,
-#00c96b
-);
-
-border-radius:999px;
-">
+pessoas conectadas
+ATIVAS
 
 </div>
 
+<div class="etapa-sub">
+
+Crescimento estimado
+baseado em participação
+ativa e consumo recorrente.
+
 </div>
 
-<div style="
-font-size:15px;
-font-weight:700;
-color:#00ff88;
-margin-bottom:4px;
-">
+<div class="economia">
+
+<div class="economia-titulo">
+
+Potencial econômico
+estimado
+
+<br>
+
+com a sua comunidade
+
+</div>
+
+<div class="economia-valor">
 
 R$
 ${bonusEstimado
 .toLocaleString(
 'pt-BR'
-)}
-
-estimados em bônus
+)}/mês
 
 </div>
 
-<div style="
-font-size:13px;
-color:#999;
-">
+</div>
 
-Nível:
-${nivel}
+<div class="qualificacao">
+
+Qualificação estimada:
+${qualificacao}
 
 </div>
 
