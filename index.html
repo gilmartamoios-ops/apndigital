@@ -947,7 +947,7 @@ document.getElementById(
 ).value
 );
 
-/* PERCENTUAIS UNILEVEL */
+/* UNILEVEL */
 
 const percentuais = [
 
@@ -1010,7 +1010,19 @@ pin:24000
 {
 nome:'Empresarial Diamond',
 pontos:247500,
-pin:50000
+pin:34000
+},
+
+{
+nome:'Imperial Bonific',
+pontos:495000,
+pin:60000
+},
+
+{
+nome:'Majestic Bonific',
+pontos:1475000,
+pin:130000
 },
 
 {
@@ -1029,9 +1041,7 @@ let consumidoresAtivos = 0;
 
 let saldoPontos = 0;
 
-/* DÉBITO PARA O MÊS SEGUINTE */
-
-let debitosPendentes = 0;
+let debitoMesSeguinte = 0;
 
 /* SOMENTE 6 ETAPAS */
 
@@ -1042,10 +1052,10 @@ etapa++
 ){
 
 /* APLICA DÉBITO
-DO CICLO ANTERIOR */
+DO MÊS ANTERIOR */
 
 saldoPontos -=
-debitosPendentes;
+debitoMesSeguinte;
 
 if(
 saldoPontos < 0
@@ -1053,7 +1063,7 @@ saldoPontos < 0
 saldoPontos = 0;
 }
 
-debitosPendentes = 0;
+debitoMesSeguinte = 0;
 
 /* DUPLICAÇÃO */
 
@@ -1065,8 +1075,7 @@ etapa
 );
 
 camadas.push(
-novaCamada
-);
+novaCamada);
 
 consumidoresAtivos +=
 novaCamada;
@@ -1075,30 +1084,49 @@ novaCamada;
 
 const pontosMes =
 
-novaCamada *
+novaCamada
+*
 (
 consumo / 300
 )
 *
 100;
 
-/* 30D */
+/* 30D FLEXÍVEL */
 
 let bonus30D = 0;
 
 if(
-etapa === 2
+etapa > 1
 ){
 
-bonus30D =
+const pontosMesAnterior =
 
-camadas[0]
+camadas[
+etapa - 2
+]
 *
 (
 consumo / 300
 )
 *
 100;
+
+const metadeMesAnterior =
+
+pontosMesAnterior
+*
+0.5;
+
+if(
+pontosMes >=
+metadeMesAnterior
+){
+
+bonus30D =
+pontosMesAnterior;
+
+}
 
 }
 
@@ -1109,7 +1137,10 @@ pontosMes
 +
 bonus30D;
 
-/* PIN */
+/* PIN
+SOMENTE DA
+QUALIFICAÇÃO
+DO MÊS */
 
 let bonusPin = 0;
 
@@ -1125,11 +1156,7 @@ nivel.pontos
 bonusPin =
 nivel.pin;
 
-/* DÉBITO
-SÓ NO MÊS
-SEGUINTE */
-
-debitosPendentes =
+debitoMesSeguinte =
 nivel.pontos;
 
 }
@@ -1190,16 +1217,18 @@ html += `
 
 <div style="
 display:flex;
-gap:14px;
+gap:16px;
 align-items:center;
 ">
 
 <img
 src="${imagemComunidade}"
 style="
-width:140px;
-height:54px;
+width:180px;
+height:96px;
 object-fit:contain;
+display:block;
+border-radius:18px;
 flex-shrink:0;
 "
 >
