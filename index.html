@@ -929,11 +929,13 @@ video.pause();
 
 });
 
+```javascript
+
 /* SIMULADOR CRC */
 
 function simular(){
 
-const pessoasBase =
+const consumidoresBase =
 parseInt(
 document.getElementById(
 'gestores'
@@ -947,10 +949,7 @@ document.getElementById(
 ).value
 );
 
-const pontosPorPessoa =
-consumo / 300;
-
-/* PERCENTUAIS UNILEVEL */
+/* UNILEVEL */
 
 const percentuais = [
 
@@ -959,43 +958,42 @@ const percentuais = [
 0.045,
 0.04,
 0.0275,
-0.02,
-0.005
+0.02
 
 ];
 
-/* CARREIRAS */
+/* MARCOS INSTITUCIONAIS */
 
-const carreiras = [
+const marcos = [
 
 {
-nome:'Empreendedor',
 pontos:950,
-pin:100
+bonus:100
 },
 
 {
-nome:'Senior',
 pontos:2450,
-pin:200
+bonus:200
 },
 
 {
-nome:'Expert',
 pontos:7250,
-pin:700
+bonus:700
 },
 
 {
-nome:'Enterprise',
 pontos:14750,
-pin:1300
+bonus:1300
 },
 
 {
-nome:'Diamond',
 pontos:27500,
-pin:4000
+bonus:4000
+},
+
+{
+pontos:60000,
+bonus:12000
 }
 
 ];
@@ -1004,25 +1002,26 @@ let html = '';
 
 let saldoPontos = 0;
 
-let comunidadeAcumulada = 0;
+let proximoMarco = 0;
 
 let camadas = [];
 
-/* 7 ETAPAS */
+let consumidoresAtivos = 0;
+
+/* SOMENTE 6 ETAPAS */
 
 for(
 let etapa = 1;
-etapa <= 7;
+etapa <= 6;
 etapa++
 ){
 
-/* MODELO CONSERVADOR:
-APENAS A ÚLTIMA CAMADA CRESCE */
+/* DUPLICAÇÃO */
 
 const novaCamada =
 
 Math.pow(
-pessoasBase,
+consumidoresBase,
 etapa
 );
 
@@ -1030,75 +1029,96 @@ camadas.push(
 novaCamada
 );
 
-/* COMUNIDADE ACUMULADA */
-
-comunidadeAcumulada +=
+consumidoresAtivos +=
 novaCamada;
 
-/* PONTOS DO MÊS */
+/* PONTOS MENSAIS */
 
 const pontosMes =
 
-comunidadeAcumulada *
-pontosPorPessoa;
+consumidoresAtivos *
+(
+consumo / 300
+);
 
-/* CICLO 2 MESES */
+/* 30D */
 
-let pontosCiclo =
+let pontos30D =
+
 pontosMes * 2;
-
-/* BONUS 30D APÓS
-SEGUNDO CICLO */
 
 if(
 etapa >= 2
+){
+
+const metadeMes1 =
+
+(
+camadas
+[etapa - 2]
+*
+(consumo / 300)
+) * 0.5;
+
+const mesAtual =
+
+novaCamada *
+(
+consumo / 300
+);
+
+if(
+mesAtual >=
+metadeMes1
 &&
 pontosMes < 27500
 ){
 
-pontosCiclo +=
+pontos30D +=
 pontosMes;
+
+}
 
 }
 
 /* SALDO */
 
 saldoPontos +=
-pontosCiclo;
+pontos30D;
 
-/* QUALIFICAÇÃO */
+/* PIN */
 
 let bonusPin = 0;
-let qualificacao =
-'Inicial';
 
-for(
-let carreira
-of carreiras
-){
+while(
 
-if(
+proximoMarco <
+marcos.length
+
+&&
+
 saldoPontos >=
-carreira.pontos
-){
+marcos[
+proximoMarco
+].pontos
 
-qualificacao =
-carreira.nome;
+){
 
 bonusPin +=
-carreira.pin;
-
-/* ABATE PONTOS */
+marcos[
+proximoMarco
+].bonus;
 
 saldoPontos -=
-carreira.pontos;
+marcos[
+proximoMarco
+].pontos;
+
+proximoMarco++;
 
 }
 
-}
-
-/* UNILEVEL CORRETO
-POR CAMADA */
+/* UNILEVEL */
 
 let bonusUnilevel = 0;
 
@@ -1130,13 +1150,18 @@ percentuais[index];
 /* TOTAL */
 
 const bonusEstimado =
-Math.floor(
 
+Math.floor(
 bonusUnilevel
 +
 bonusPin
-
 );
+
+/* IMAGEM CRC */
+
+const imagemComunidade =
+
+`img/comunidade_${etapa}.jpg`;
 
 /* RENDER */
 
@@ -1144,73 +1169,71 @@ html += `
 
 <div class="etapa-card">
 
-<div class="etapa-topo">
+<div style="
+display:flex;
+gap:14px;
+align-items:center;
+">
 
-<span>
+<img
+src="${imagemComunidade}"
+style="
+width:92px;
+height:72px;
+object-fit:cover;
+border-radius:18px;
+flex-shrink:0;
+"
+>
+
+<div
+style="
+flex:1;
+min-width:0;
+"
+>
+
+<div style="
+font-size:14px;
+color:#9d9d9d;
+margin-bottom:6px;
+">
+
 Etapa ${etapa}
-</span>
 
-<span>
-${comunidadeAcumulada
+</div>
+
+<div style="
+font-size:18px;
+font-weight:700;
+line-height:1.35;
+margin-bottom:8px;
+">
+
+${consumidoresAtivos
 .toLocaleString(
 'pt-BR'
 )}
- pessoas
-</span>
+ consumidores ativos
 
 </div>
 
-<div class="etapa-pessoas">
-
-<span>
-${comunidadeAcumulada
-.toLocaleString(
-'pt-BR'
-)}
-</span>
-
-pessoas conectadas
-ATIVAS
-
-</div>
-
-<div class="etapa-sub">
-
-Crescimento estimado
-baseado em participação
-ativa e consumo recorrente.
-
-</div>
-
-<div class="economia">
-
-<div class="economia-titulo">
-
-Potencial econômico
-estimado
-
-<br>
-
-com a sua comunidade
-
-</div>
-
-<div class="economia-valor">
+<div style="
+font-size:28px;
+font-weight:700;
+color:#00ff88;
+line-height:1;
+">
 
 R$
 ${bonusEstimado
 .toLocaleString(
 'pt-BR'
-)}/mês
+)}
 
 </div>
 
 </div>
-
-<div class="qualificacao">
-
-Qualificação estimada:
-${qualificacao}
 
 </div>
 
@@ -1230,6 +1253,7 @@ html;
 }
 
 simular();
+
 
 </script>
 
