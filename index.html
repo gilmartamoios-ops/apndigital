@@ -947,7 +947,7 @@ document.getElementById(
 ).value
 );
 
-/* UNILEVEL */
+/* PERCENTUAIS UNILEVEL */
 
 const percentuais = [
 
@@ -956,55 +956,82 @@ const percentuais = [
 0.045,
 0.04,
 0.0275,
-0.02
+0.02,
+0.005
 
 ];
 
-/* MARCOS INSTITUCIONAIS */
+/* NÍVEIS COMPLETOS */
 
-const marcos = [
+const niveis = [
 
 {
+nome:'Empreendedor',
 pontos:950,
-bonus:100
+pin:100
 },
 
 {
+nome:'Senior',
 pontos:2450,
-bonus:200
+pin:200
 },
 
 {
+nome:'Expert',
 pontos:7250,
-bonus:700
+pin:700
 },
 
 {
+nome:'Enterprise',
 pontos:14750,
-bonus:1300
+pin:1300
 },
 
 {
+nome:'Diamond',
 pontos:27500,
-bonus:4000
+pin:4000
 },
 
 {
+nome:'Diamond Expert',
 pontos:60000,
-bonus:12000
+pin:12000
+},
+
+{
+nome:'Diamond Global',
+pontos:122500,
+pin:24000
+},
+
+{
+nome:'Empresarial Diamond',
+pontos:247500,
+pin:50000
+},
+
+{
+nome:'Presidencial',
+pontos:3000000,
+pin:250000
 }
 
 ];
 
 let html = '';
 
-let saldoPontos = 0;
-
-let proximoMarco = 0;
-
 let camadas = [];
 
 let consumidoresAtivos = 0;
+
+let saldoPontos = 0;
+
+/* DÉBITO PARA O MÊS SEGUINTE */
+
+let debitosPendentes = 0;
 
 /* SOMENTE 6 ETAPAS */
 
@@ -1013,6 +1040,20 @@ let etapa = 1;
 etapa <= 6;
 etapa++
 ){
+
+/* APLICA DÉBITO
+DO CICLO ANTERIOR */
+
+saldoPontos -=
+debitosPendentes;
+
+if(
+saldoPontos < 0
+){
+saldoPontos = 0;
+}
+
+debitosPendentes = 0;
 
 /* DUPLICAÇÃO */
 
@@ -1030,89 +1071,68 @@ novaCamada
 consumidoresAtivos +=
 novaCamada;
 
-/* PONTOS MENSAIS */
+/* PONTOS DO MÊS */
 
 const pontosMes =
-
-consumidoresAtivos *
-(
-consumo / 300
-);
-
-/* 30D */
-
-let pontos30D =
-
-pontosMes * 2;
-
-if(
-etapa >= 2
-){
-
-const metadeMes1 =
-
-(
-camadas
-[etapa - 2]
-*
-(consumo / 300)
-) * 0.5;
-
-const mesAtual =
 
 novaCamada *
 (
 consumo / 300
-);
+)
+*
+100;
+
+/* 30D */
+
+let bonus30D = 0;
 
 if(
-mesAtual >=
-metadeMes1
-&&
-pontosMes < 27500
+etapa === 2
 ){
 
-pontos30D +=
-pontosMes;
+bonus30D =
 
-}
+camadas[0]
+*
+(
+consumo / 300
+)
+*
+100;
 
 }
 
 /* SALDO */
 
 saldoPontos +=
-pontos30D;
+pontosMes
++
+bonus30D;
 
 /* PIN */
 
 let bonusPin = 0;
 
-while(
-
-proximoMarco <
-marcos.length
-
-&&
-
-saldoPontos >=
-marcos[
-proximoMarco
-].pontos
-
+for(
+let nivel of niveis
 ){
 
-bonusPin +=
-marcos[
-proximoMarco
-].bonus;
+if(
+saldoPontos >=
+nivel.pontos
+){
 
-saldoPontos -=
-marcos[
-proximoMarco
-].pontos;
+bonusPin =
+nivel.pin;
 
-proximoMarco++;
+/* DÉBITO
+SÓ NO MÊS
+SEGUINTE */
+
+debitosPendentes =
+nivel.pontos;
+
+}
 
 }
 
@@ -1149,17 +1169,18 @@ percentuais[index];
 
 const bonusEstimado =
 
-Math.floor(
 bonusUnilevel
 +
-bonusPin
-);
+bonusPin;
 
-/* IMAGEM CRC */
+/* IMAGEM */
 
 const imagemComunidade =
 
-`img/comunidade_${etapa}.jpg`;
+`img/comunidade_${Math.min(
+etapa,
+6
+)}.jpg`;
 
 /* RENDER */
 
@@ -1176,10 +1197,9 @@ align-items:center;
 <img
 src="${imagemComunidade}"
 style="
-width:92px;
-height:72px;
-object-fit:cover;
-border-radius:18px;
+width:140px;
+height:54px;
+object-fit:contain;
 flex-shrink:0;
 "
 >
@@ -1197,14 +1217,14 @@ color:#9d9d9d;
 margin-bottom:6px;
 ">
 
-Etapa ${etapa}
+${etapa}ª etapa
 
 </div>
 
 <div style="
 font-size:18px;
 font-weight:700;
-line-height:1.35;
+line-height:1.3;
 margin-bottom:8px;
 ">
 
@@ -1226,7 +1246,10 @@ line-height:1;
 R$
 ${bonusEstimado
 .toLocaleString(
-'pt-BR'
+'pt-BR',
+{
+minimumFractionDigits:2
+}
 )}
 
 </div>
@@ -1251,7 +1274,6 @@ html;
 }
 
 simular();
-
 
 </script>
 
