@@ -1304,6 +1304,30 @@ html;
 
 simular();
 
+ ```javascript
+/* ABRIR TELA DIRETA POR URL */
+
+const params =
+new URLSearchParams(
+window.location.search
+);
+
+const tela =
+parseInt(
+params.get('tela')
+);
+
+if(
+tela &&
+tela >= 1 &&
+tela <= 4
+){
+
+go(tela);
+
+}
+
+
 </script>
 
 </body>
