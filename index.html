@@ -1306,6 +1306,10 @@ simular();
 
 /* ABRIR TELA DIRETA POR URL */
 
+window.addEventListener(
+'load',
+()=>{
+
 const params =
 new URLSearchParams(
 window.location.search
@@ -1317,15 +1321,21 @@ params.get('tela')
 );
 
 if(
-tela &&
+!isNaN(tela) &&
 tela >= 1 &&
 tela <= 4
 ){
 
+setTimeout(()=>{
+
 go(tela);
+
+},200);
 
 }
 
+});
+ 
 </script>
 
 </body>
