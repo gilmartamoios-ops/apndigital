@@ -28,9 +28,9 @@ body{ background:#050505; font-family:Arial, sans-serif; color:white; min-height
 .flipbook-box{ width:100%; height:650px; margin:0 auto; border-radius:20px; overflow:hidden; border: 1px solid rgba(255,255,255,.1); background:#0a0a0a; box-shadow: 0 10px 30px rgba(0,0,0,.5); }
 .flipbook-box iframe{ width:100%; height:100%; border:none; }
 
-/* VÍDEO DE FECHAMENTO */
-.video-box{ width:100%; max-width:720px; margin:0 auto; border-radius:20px; overflow:hidden; background:black; box-shadow: 0 10px 30px rgba(0,0,0,.5); border: 1px solid rgba(255,255,255,.1); }
-video{ width:100%; height:auto; display:block; object-fit:contain; max-height:65vh; }
+/* VÍDEO DE FECHAMENTO (MODELO DE NEGÓCIO) */
+.video-box{ width:100%; max-width:720px; aspect-ratio: 16 / 9; margin:0 auto; border-radius:20px; overflow:hidden; background:black; box-shadow: 0 10px 30px rgba(0,0,0,.5); border: 1px solid rgba(255,255,255,.1); position:relative; }
+video{ width:100%; height:100%; display:block; object-fit:contain; background:black; }
 
 /* BOTÕES DE AÇÃO */
 .btn{ border:none; outline:none; cursor:pointer; background:#00ff88; color:#07120d; font-weight:700; font-size:15px; padding:16px 32px; border-radius:999px; transition: .25s ease; box-shadow: 0 10px 25px rgba(0,255,136,.2); text-decoration:none; display:inline-block; margin:6px; }
@@ -66,14 +66,17 @@ video{ width:100%; height:auto; display:block; object-fit:contain; max-height:65
       </div>
     </div>
 
-    <!-- VÍDEO DE FINALIZAÇÃO: MODELO DE NEGÓCIO -->
+    <!-- VÍDEO DE FECHAMENTO: MODELO DE NEGÓCIO -->
     <div class="card">
-      <div class="eyebrow">Fechamento do Negócio</div>
+      <div class="eyebrow">Fechamento da Apresentação</div>
       <h2 class="title" style="font-size: clamp(20px, 3.5vw, 28px);">Modelo de Negócio</h2>
-      <p class="subtitle" style="margin-bottom:16px;">Assista ao vídeo de encerramento da apresentação.</p>
+      <p class="subtitle" style="margin-bottom:16px;">Assista ao vídeo para concluir a apresentação do plano.</p>
+      
       <div class="video-box">
-        <video controls playsinline preload="metadata">
-          <source src="/video/modelo_negocio.mp4" type="video/mp4">
+        <video controls playsinline webkit-playsinline preload="metadata">
+          <source src="https://apndigital.vercel.app/video/modelo_negocio.mp4?v=1" type="video/mp4">
+          <source src="/video/modelo_negocio.mp4?v=1" type="video/mp4">
+          Seu navegador não suporta a exibição deste vídeo.
         </video>
       </div>
     </div>
