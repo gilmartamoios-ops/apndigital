@@ -2,1351 +2,291 @@
 <html lang="pt-br">
 
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-name="viewport"
-content="width=device-width, initial-scale=1.0, viewport-fit=cover"
->
-
-<title>
-CRC | COMUNIDADE DE RELACIONAMENTO DE CONSUMO
-</title>
-
-<meta
-name="description"
-content="Construa uma comunidade de relacionamento e consumo consistente."
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>CRC | COMUNIDADE DE RELACIONAMENTO DE CONSUMO</title>
+<meta name="description" content="Construa uma comunidade de relacionamento e consumo consistente.">
 
 <style>
-
 /* RESET */
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-html,
-body{
-
-width:100%;
-height:100%;
-
-font-family:Arial,sans-serif;
-
-background:#050505;
-color:white;
-
-overflow:hidden;
-
-}
+*{ margin:0; padding:0; box-sizing:border-box; }
+html, body{ width:100%; height:100%; font-family:Arial,sans-serif; background:#050505; color:white; overflow:hidden; }
 
 /* APP */
-
-.app{
-
-position:relative;
-width:100%;
-height:100dvh;
-
-overflow:hidden;
-
-}
+.app{ position:relative; width:100%; height:100dvh; overflow:hidden; }
 
 /* SLIDES */
-
-.slide{
-
-position:absolute;
-inset:0;
-
-display:none;
-
-flex-direction:column;
-justify-content:center;
-align-items:center;
-
-padding:16px;
-
-text-align:center;
-
-background:#050505;
-
-overflow:hidden;
-
-opacity:0;
-
-transition:
-opacity .45s ease;
-
-}
-
-.slide.active{
-
-display:flex;
-opacity:1;
-
-}
-
-/* BACKGROUND */
-
-.bg{
-
-position:absolute;
-inset:0;
-
-width:100%;
-height:100%;
-
-object-fit:cover;
-object-position:center;
-
-filter:
-brightness(.45)
-contrast(1.04);
-
-transform:
-scale(1.04);
-
-}
-
-/* OVERLAY */
-
-.overlay{
-
-position:absolute;
-inset:0;
-
-background:
-linear-gradient(
-to top,
-rgba(0,0,0,.92),
-rgba(0,0,0,.35)
-);
-
-}
-
-/* CARD */
-
-.card{
-
-position:relative;
-z-index:2;
-
-width:100%;
-max-width:820px;
-
-background:
-rgba(0,0,0,.16);
-
-backdrop-filter:
-blur(16px);
-
-border:
-1px solid
-rgba(255,255,255,.08);
-
-border-radius:34px;
-
-padding:24px;
-
-box-shadow:
-0 12px 40px
-rgba(0,0,0,.28);
-
-}
-
-/* LOGO */
-
-.logo{
-
-position:absolute;
-
-bottom:20px;
-right:20px;
-
-width:44px;
-height:44px;
-
-border-radius:50%;
-
-object-fit:cover;
-
-opacity:.35;
-
-z-index:1;
-
-pointer-events:none;
-
-}
-
-/* TEXTO */
-
-.eyebrow{
-
-font-size:12px;
-
-letter-spacing:2px;
-text-transform:uppercase;
-
-color:
-rgba(255,255,255,.64);
-
-margin-bottom:18px;
-
-}
-
-.title{
-
-font-size:
-clamp(30px,5vw,52px);
-
-line-height:1.18;
-font-weight:300;
-
-margin-bottom:18px;
-
-}
-
-.subtitle{
-
-font-size:
-clamp(16px,2vw,22px);
-
-line-height:1.7;
-
-max-width:720px;
-
-color:
-rgba(255,255,255,.84);
-
-margin:auto;
-
-}
-
-/* BOTÃO */
-
-.btn{
-
-margin-top:28px;
-
-border:none;
-cursor:pointer;
-
-background:#00ff88;
-color:#07120d;
-
-padding:18px 34px;
-
-font-size:16px;
-font-weight:700;
-
-border-radius:999px;
-
-transition:.25s ease;
-
-box-shadow:
-0 12px 34px
-rgba(0,255,136,.20);
-
-}
-
-.btn:hover{
-
-transform:
-translateY(-2px);
-
-background:#00eb7c;
-
-}
-
-/* VIDEO */
-
-.video-box{
-
-width:100%;
-max-width:420px;
-
-margin:0 auto;
-
-border-radius:28px;
-
-overflow:hidden;
-
-background:black;
-
-box-shadow:
-0 10px 30px
-rgba(0,0,0,.28);
-
-}
-
-video{
-
-width:100%;
-height:auto;
-
-display:block;
-
-background:black;
-
-object-fit:contain;
-
-max-height:72vh;
-
-}
-
-/* HIDDEN */
-
-.hidden{
-display:none !important;
-}
-
-/* SIMULADOR */
-
-.sim-grid{
-
-display:grid;
-grid-template-columns:1fr 1fr;
-
-gap:14px;
-
-margin-bottom:22px;
-
-}
-
-/* LABELS */
-
-.sim-label{
-
-display:block;
-
-font-size:13px;
-color:#999;
-
-margin-bottom:10px;
-
-text-align:left;
-
-line-height:1.5;
-
-}
-
-.sim-select{
-
-width:100%;
-
-background:#080808;
-
-border:
-1px solid #222;
-
-border-radius:18px;
-
-padding:16px;
-
-color:#00ff88;
-
-font-weight:bold;
-font-size:16px;
-
-}
-
-/* RESULTADO */
-
-.resultado{
-
-margin-top:10px;
-
-max-height:36vh;
-
-overflow-y:auto;
-
-padding-right:6px;
-
-text-align:left;
-
-}
-
-.resultado::-webkit-scrollbar{
-width:6px;
-}
-
-.resultado::-webkit-scrollbar-thumb{
-
-background:#1e1e1e;
-border-radius:999px;
-
-}
-
-/* CARD RESULTADO */
-
-.etapa-card{
-
-background:
-rgba(255,255,255,.03);
-
-border:
-1px solid
-rgba(255,255,255,.06);
-
-border-radius:22px;
-
-padding:18px;
-
-margin-bottom:16px;
-
-backdrop-filter:
-blur(10px);
-
-}
-
-.etapa-topo{
-
-display:flex;
-justify-content:space-between;
-align-items:center;
-
-font-size:13px;
-color:#9d9d9d;
-
-margin-bottom:12px;
-
-}
-
-.etapa-pessoas{
-
-font-size:18px;
-font-weight:700;
-
-color:#fff;
-
-margin-bottom:8px;
-
-line-height:1.5;
-
-}
-
-.etapa-pessoas span{
-
-color:#00ff88;
-
-}
-
-.etapa-sub{
-
-font-size:13px;
-line-height:1.6;
-
-color:#8c8c8c;
-
-margin-bottom:16px;
-
-}
-
-.economia{
-
-background:
-rgba(0,255,136,.06);
-
-border:
-1px solid
-rgba(0,255,136,.12);
-
-padding:14px;
-
-border-radius:18px;
-
-margin-bottom:12px;
-
-}
-
-.economia-titulo{
-
-font-size:13px;
-color:#9d9d9d;
-
-line-height:1.5;
-
-margin-bottom:10px;
-
-}
-
-.economia-valor{
-
-font-size:26px;
-font-weight:700;
-
-color:#00ff88;
-
-}
-
-.qualificacao{
-
-font-size:13px;
-color:#8f8f8f;
-
-}
-
-/* MOBILE */
+.slide{ position:absolute; inset:0; display:none; flex-direction:column; justify-content:center; align-items:center; padding:16px; text-align:center; background:#050505; overflow:hidden; opacity:0; transition: opacity .45s ease; }
+.slide.active{ display:flex; opacity:1; }
+
+/* OVERLAY & CARDS */
+.overlay{ position:absolute; inset:0; background: linear-gradient(to top, rgba(0,0,0,.92), rgba(0,0,0,.35)); }
+.card{ position:relative; z-index:2; width:100%; max-width:820px; background: rgba(0,0,0,.16); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,.08); border-radius:34px; padding:24px; box-shadow: 0 12px 40px rgba(0,0,0,.28); }
+
+/* LOGO - Agora clicável para o segredo */
+.logo{ position:absolute; bottom:20px; right:20px; width:44px; height:44px; border-radius:50%; object-fit:cover; opacity:.35; z-index:10; cursor:pointer; user-select:none; }
+
+/* TEXTOS & BOTÕES */
+.eyebrow{ font-size:12px; letter-spacing:2px; text-transform:uppercase; color: rgba(255,255,255,.64); margin-bottom:18px; }
+.title{ font-size: clamp(30px,5vw,52px); line-height:1.18; font-weight:300; margin-bottom:18px; }
+.subtitle{ font-size: clamp(16px,2vw,22px); line-height:1.7; max-width:720px; color: rgba(255,255,255,.84); margin:auto; }
+
+.btn{ margin-top:28px; border:none; cursor:pointer; background:#00ff88; color:#07120d; padding:18px 34px; font-size:16px; font-weight:700; border-radius:999px; transition:.25s ease; box-shadow: 0 12px 34px rgba(0,255,136,.20); }
+.btn:hover{ transform: translateY(-2px); background:#00eb7c; }
+
+/* BOTÃO FLUTUANTE DO APRESENTADOR (X1) */
+.btn-host-x1 { position: fixed; top: 16px; right: 16px; z-index: 99999; background: #00ff88; color: #000; border: none; padding: 10px 18px; border-radius: 50px; font-weight: bold; font-size: 13px; cursor: pointer; box-shadow: 0 0 15px rgba(0,255,136,0.5); display: none; }
+
+/* VIDEO & SIMULADOR */
+.video-box{ width:100%; max-width:420px; margin:0 auto; border-radius:28px; overflow:hidden; background:black; box-shadow: 0 10px 30px rgba(0,0,0,.28); }
+video{ width:100%; height:auto; display:block; background:black; object-fit:contain; max-height:72vh; }
+.hidden{ display:none !important; }
+
+.sim-grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:22px; }
+.sim-label{ display:block; font-size:13px; color:#999; margin-bottom:10px; text-align:left; line-height:1.5; }
+.sim-select{ width:100%; background:#080808; border: 1px solid #222; border-radius:18px; padding:16px; color:#00ff88; font-weight:bold; font-size:16px; }
+.resultado{ margin-top:10px; max-height:36vh; overflow-y:auto; padding-right:6px; text-align:left; }
+.etapa-card{ background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06); border-radius:22px; padding:18px; margin-bottom:16px; backdrop-filter: blur(10px); }
 
 @media(max-width:768px){
-
-.slide{
-padding:10px;
+  .slide{ padding:10px; }
+  .card{ padding:20px; border-radius:28px; }
+  .logo{ bottom:10px; right:10px; width:38px; height:38px; opacity:.52; }
+  .btn{ width:88%; max-width:280px; padding:15px 26px; font-size:15px; }
+  .sim-grid{ grid-template-columns:1fr; }
 }
-
-.card{
-
-padding:20px;
-border-radius:28px;
-
-}
-
-.logo{
-
-bottom:10px;
-right:10px;
-
-width:38px;
-height:38px;
-
-opacity:.52;
-
-}
-
-.title{
-line-height:1.22;
-}
-
-.video-box{
-max-width:100%;
-}
-
-video{
-max-height:62vh;
-}
-
-.btn{
-
-width:88%;
-max-width:280px;
-
-padding:15px 26px;
-
-font-size:15px;
-
-}
-
-.sim-grid{
-
-grid-template-columns:1fr;
-
-}
-
-}
-
 </style>
-
 </head>
 
 <body>
 
 <div class="app">
 
+<!-- BOTÃO SECRETO DO GESTOR -->
+<button id="btnHostX1" class="btn-host-x1" onclick="go(5)">⚡ Ir para o X1</button>
+
 <!-- TELA 1 -->
-
-<section
-class="slide active"
-id="s1"
->
-
-<div class="overlay"></div>
-
-<div class="card">
-
-<div class="eyebrow">
-Comunidade de Relacionamento de Consumo
-</div>
-
-<h1 class="title">
-
-Talvez prosperar nunca
-tenha sido uma jornada
-individual.
-
-</h1>
-
-<p class="subtitle">
-
-Descubra como pequenas
-decisões de consumo
-podem fortalecer uma
-comunidade ao longo
-do tempo.
-
-</p>
-
-<button
-class="btn"
-onclick="go(2)"
->
-
-▶ Entrar na experiência
-
-</button>
-
-</div>
-
+<section class="slide active" id="s1">
+  <div class="overlay"></div>
+  <div class="card">
+    <div class="eyebrow">Comunidade de Relacionamento de Consumo</div>
+    <h1 class="title">Talvez prosperar nunca tenha sido uma jornada individual.</h1>
+    <p class="subtitle">Descubra como pequenas decisões de consumo podem fortalecer uma comunidade ao longo do tempo.</p>
+    <button class="btn" onclick="go(2)">▶ Entrar na experiência</button>
+  </div>
 </section>
 
 <!-- TELA 2 -->
-
-<section
-class="slide"
-id="s2"
->
-
-<div class="card">
-
-<div class="video-box">
-
-<video
-id="manifestoVideo"
-controls
-playsinline
-webkit-playsinline
-preload="metadata"
->
-
-<source
-src="video/manifesto.mp4?v=3"
-type="video/mp4"
->
-
-</video>
-
-</div>
-
-<button
-class="btn hidden"
-id="btnManifesto"
-onclick="go(3)"
->
-
-Quero entender melhor
-
-</button>
-
-</div>
-
+<section class="slide" id="s2">
+  <div class="card">
+    <div class="video-box">
+      <video id="manifestoVideo" controls playsinline webkit-playsinline preload="metadata">
+        <source src="video/manifesto.mp4?v=3" type="video/mp4">
+      </video>
+    </div>
+    <button class="btn hidden" id="btnManifesto" onclick="go(3)">Quero entender melhor</button>
+  </div>
 </section>
 
-<!-- TELA 3 — PRINCÍPIO DO MODELO (substitui o vídeo modelo_negocio.mp4) -->
-
-<section
-class="slide"
-id="s3"
->
-
-<div class="card">
-
-<div class="eyebrow">
-Princípio do Modelo
-</div>
-
-<h2 class="title" style="font-size:clamp(26px,4.4vw,42px);">
-Como o consumo em
-comunidade gera resultado
-</h2>
-
-<p class="subtitle" style="margin-bottom:20px;">
-Você ganha por consumo replicado
-em comunidade.
-Cada pessoa que consome gera
-pontuação, e a pontuação vira
-bonificação.
-</p>
-
-<div
-style="
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:10px 18px;
-margin-bottom:8px;
-font-size:13px;
-color:rgba(255,255,255,.72);
-"
->
-
-<span>● Sem meta de recrutamento</span>
-<span>● Sem pressão de vendas</span>
-<span>● Detalhes no seu encontro com o gestor</span>
-
-</div>
-
-<button
-class="btn"
-onclick="go(4)"
->
-
-Continuar para o simulador
-
-</button>
-
-</div>
-
+<!-- TELA 3 -->
+<section class="slide" id="s3">
+  <div class="card">
+    <div class="eyebrow">Princípio do Modelo</div>
+    <h2 class="title" style="font-size:clamp(26px,4.4vw,42px);">Como o consumo em comunidade gera resultado</h2>
+    <p class="subtitle" style="margin-bottom:20px;">
+      Você ganha por consumo replicado em comunidade. Cada pessoa que consome gera pontuação, e a pontuação vira bonificação.
+    </p>
+    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:10px 18px; margin-bottom:8px; font-size:13px; color:rgba(255,255,255,.72);">
+      <span>● Sem meta de recrutamento</span>
+      <span>● Sem pressão de vendas</span>
+      <span>● Detalhes no seu encontro com o gestor</span>
+    </div>
+    <button class="btn" onclick="go(4)">Continuar para o simulador</button>
+  </div>
 </section>
 
 <!-- TELA 4 -->
-
-<section
-class="slide"
-id="s4"
->
-
-<div class="card">
-
-<div class="eyebrow">
-Simulador de Construção de Comunidade
-</div>
-
-<h2 class="title">
-
-Simule o crescimento
-da sua comunidade
-
-</h2>
-
-<div
-class="sim-grid"
-id="simGrid"
->
-
-<div>
-
-<label class="sim-label">
-
-Defina o tamanho inicial
-da sua comunidade
-de consumidores
-
-</label>
-
-<select
-id="gestores"
-onchange="simular()"
-class="sim-select"
->
-
-<option value="3" selected>
-3 consumidores
-</option>
-
-<option value="4">
-4 consumidores
-</option>
-
-<option value="5">
-5 consumidores
-</option>
-
-<option value="6">
-6 consumidores
-</option>
-
-<option value="7">
-7 consumidores
-</option>
-
-<option value="8">
-8 consumidores
-</option>
-
-<option value="9">
-9 consumidores
-</option>
-
-<option value="10">
-10 consumidores
-</option>
-
-</select>
-
-</div>
-
-<div>
-
-<label class="sim-label">
-
-Escolha o consumo
-mínimo mensal
-da comunidade
-
-</label>
-
-<select
-id="consumo"
-onchange="simular()"
-class="sim-select"
->
-
-<option value="300" selected>
-R$ 300
-</option>
-
-<option value="350">
-R$ 350
-</option>
-
-<option value="400">
-R$ 400
-</option>
-
-<option value="450">
-R$ 450
-</option>
-
-<option value="500">
-R$ 500
-</option>
-
-<option value="550">
-R$ 550
-</option>
-
-<option value="600">
-R$ 600
-</option>
-
-</select>
-
-</div>
-
-</div>
-
-<div
-id="resultado"
-class="resultado"
->
-
-</div>
-
-<button
-class="btn"
-onclick="
-window.location.href=
-'quiz.html'
-"
->
-
-Descobrir meu perfil
-
-</button>
-
-</div>
-
+<section class="slide" id="s4">
+  <div class="card">
+    <div class="eyebrow">Simulador de Construção de Comunidade</div>
+    <h2 class="title">Simule o crescimento da sua comunidade</h2>
+    <div class="sim-grid" id="simGrid">
+      <div>
+        <label class="sim-label">Defina o tamanho inicial da sua comunidade de consumidores</label>
+        <select id="gestores" onchange="simular()" class="sim-select">
+          <option value="3" selected>3 consumidores</option>
+          <option value="4">4 consumidores</option>
+          <option value="5">5 consumidores</option>
+          <option value="6">6 consumidores</option>
+          <option value="7">7 consumidores</option>
+          <option value="8">8 consumidores</option>
+          <option value="9">9 consumidores</option>
+          <option value="10">10 consumidores</option>
+        </select>
+      </div>
+      <div>
+        <label class="sim-label">Escolha o consumo mínimo mensal da comunidade</label>
+        <select id="consumo" onchange="simular()" class="sim-select">
+          <option value="300" selected>R$ 300</option>
+          <option value="350">R$ 350</option>
+          <option value="400">R$ 400</option>
+          <option value="450">R$ 450</option>
+          <option value="500">R$ 500</option>
+          <option value="550">R$ 550</option>
+          <option value="600">R$ 600</option>
+        </select>
+      </div>
+    </div>
+    <div id="resultado" class="resultado"></div>
+    <button class="btn" onclick="window.location.href='quiz.html'">Descobrir meu perfil</button>
+  </div>
 </section>
 
+<!-- TELA 5 (CONTEÚDO X1 - PRIVADO) -->
+<section class="slide" id="s5">
+  <div class="card">
+    <div class="eyebrow">Apresentação Institucional</div>
+    <h1 class="title">Parte 2 — X1</h1>
+    <p class="subtitle" style="margin-bottom: 15px;">
+      Aqui será apresentada a estrutura institucional da Bonifica, linha de produtos e plano de negócio.
+    </p>
+    <p class="subtitle" style="color: #00ff88; font-weight: bold;">
+      Esta etapa acontece junto ao seu Gestor de Comunidade.
+    </p>
+    <button class="btn" style="background:#333; color:#fff;" onclick="go(4)">← Voltar ao Simulador</button>
+  </div>
+</section>
+
+<!-- LOGO COM GATILHO DE TOQUE -->
+<img src="img/logo.png" class="logo" alt="CRC" onclick="toqueSecretoLogo()">
+
+</div>
+
 <script>
-
 /* NAVEGAÇÃO */
-
 function go(n){
-
-document
-.querySelectorAll('video')
-.forEach(video=>{
-
-video.pause();
-video.currentTime = 0;
-
-});
-
-document
-.querySelectorAll('.slide')
-.forEach(slide=>{
-
-slide.classList.remove(
-'active'
-);
-
-});
-
-document
-.getElementById(
-'s'+n
-)
-.classList.add(
-'active'
-);
-
+  document.querySelectorAll('video').forEach(v => { v.pause(); v.currentTime = 0; });
+  document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
+  
+  const target = document.getElementById('s' + n);
+  if(target) target.classList.add('active');
 }
 
 /* VÍDEOS */
-
-[
-{
-video:'manifestoVideo',
-btn:'btnManifesto'
-}
-].forEach(item=>{
-
-const video =
-document.getElementById(
-item.video
-);
-
-if(video){
-
-video.addEventListener(
-'ended',
-()=>{
-
-document
-.getElementById(
-item.btn
-)
-.classList.remove(
-'hidden'
-);
-
-}
-);
-
-video.addEventListener(
-'click',
-()=>{
-
-if(video.paused){
-
-video.play().catch(()=>{});
-
-}else{
-
-video.pause();
-
-}
-
-}
-);
-
-}
-
+[{ video:'manifestoVideo', btn:'btnManifesto' }].forEach(item => {
+  const video = document.getElementById(item.video);
+  if(video){
+    video.addEventListener('ended', () => {
+      document.getElementById(item.btn).classList.remove('hidden');
+    });
+    video.addEventListener('click', () => {
+      if(video.paused) video.play().catch(()=>{});
+      else video.pause();
+    });
+  }
 });
-
 
 /* SIMULADOR CRC */
-
 function simular(){
+  const consumidoresBase = parseInt(document.getElementById('gestores').value);
+  const consumo = parseInt(document.getElementById('consumo').value);
+  const percentuais = [0.05, 0.05, 0.045, 0.04, 0.0275, 0.02, 0.005];
+  const niveis = [
+    {nome:'Empreendedor', pontos:950, pin:100}, {nome:'Senior', pontos:2450, pin:200},
+    {nome:'Expert', pontos:7250, pin:700}, {nome:'Enterprise', pontos:14750, pin:1300},
+    {nome:'Diamond', pontos:27500, pin:4000}, {nome:'Diamond Expert', pontos:60000, pin:12000},
+    {nome:'Diamond Global', pontos:122500, pin:24000}, {nome:'Empresarial Diamond', pontos:247500, pin:34000},
+    {nome:'Imperial Bonific', pontos:495000, pin:60000}, {nome:'Majestic Bonific', pontos:1475000, pin:130000},
+    {nome:'Presidencial', pontos:3000000, pin:250000}
+  ];
 
-const consumidoresBase =
-parseInt(
-document.getElementById(
-'gestores'
-).value
-);
+  let html = '', camadas = [], consumidoresAtivos = 0, saldoPontos = 0, debitoMesSeguinte = 0;
 
-const consumo =
-parseInt(
-document.getElementById(
-'consumo'
-).value
-);
+  for(let etapa = 1; etapa <= 6; etapa++){
+    saldoPontos -= debitoMesSeguinte;
+    if(saldoPontos < 0) saldoPontos = 0;
+    debitoMesSeguinte = 0;
 
-/* UNILEVEL */
+    const novaCamada = Math.pow(consumidoresBase, etapa);
+    camadas.push(novaCamada);
+    consumidoresAtivos += novaCamada;
 
-const percentuais = [
+    const pontosMes = novaCamada * (consumo / 300) * 100;
+    let bonus30D = 0;
 
-0.05,
-0.05,
-0.045,
-0.04,
-0.0275,
-0.02,
-0.005
+    if(etapa > 1){
+      const pontosMesAnterior = camadas[etapa - 2] * (consumo / 300) * 100;
+      if(pontosMes >= (pontosMesAnterior * 0.5)) bonus30D = pontosMesAnterior;
+    }
 
-];
+    saldoPontos += pontosMes + bonus30D;
+    let bonusPin = 0;
 
-/* NÍVEIS COMPLETOS */
+    for(let nivel of niveis){
+      if(saldoPontos >= nivel.pontos){
+        bonusPin = nivel.pin;
+        debitoMesSeguinte = nivel.pontos;
+      }
+    }
 
-const niveis = [
+    let bonusUnilevel = 0;
+    camadas.forEach((camada, index) => {
+      if(percentuais[index]) bonusUnilevel += (camada * consumo) * percentuais[index];
+    });
 
-{
-nome:'Empreendedor',
-pontos:950,
-pin:100
-},
+    const bonusEstimado = bonusUnilevel + bonusPin;
+    const imagemComunidade = `img/comunidade_${Math.min(etapa, 6)}.jpg`;
 
-{
-nome:'Senior',
-pontos:2450,
-pin:200
-},
-
-{
-nome:'Expert',
-pontos:7250,
-pin:700
-},
-
-{
-nome:'Enterprise',
-pontos:14750,
-pin:1300
-},
-
-{
-nome:'Diamond',
-pontos:27500,
-pin:4000
-},
-
-{
-nome:'Diamond Expert',
-pontos:60000,
-pin:12000
-},
-
-{
-nome:'Diamond Global',
-pontos:122500,
-pin:24000
-},
-
-{
-nome:'Empresarial Diamond',
-pontos:247500,
-pin:34000
-},
-
-{
-nome:'Imperial Bonific',
-pontos:495000,
-pin:60000
-},
-
-{
-nome:'Majestic Bonific',
-pontos:1475000,
-pin:130000
-},
-
-{
-nome:'Presidencial',
-pontos:3000000,
-pin:250000
+    html += `
+      <div class="etapa-card">
+        <div style="display:flex; gap:16px; align-items:center;">
+          <img src="${imagemComunidade}" style="width:130px; height:120px; object-fit:cover; display:block; border-radius:18px; flex-shrink:0;">
+          <div style="flex:1; min-width:0;">
+            <div style="font-size:14px; color:#9d9d9d; margin-bottom:6px;">${etapa}ª etapa</div>
+            <div style="font-size:18px; font-weight:700; line-height:1.3; margin-bottom:8px;">${consumidoresAtivos.toLocaleString('pt-BR')} consumidores ativos</div>
+            <div style="font-size:28px; font-weight:700; color:#00ff88; line-height:1;">R$ ${bonusEstimado.toLocaleString('pt-BR', {minimumFractionDigits:2})}</div>
+          </div>
+        </div>
+      </div>`;
+  }
+  document.getElementById('resultado').innerHTML = html;
 }
-
-];
-
-let html = '';
-
-let camadas = [];
-
-let consumidoresAtivos = 0;
-
-let saldoPontos = 0;
-
-let debitoMesSeguinte = 0;
-
-/* SOMENTE 6 ETAPAS */
-
-for(
-let etapa = 1;
-etapa <= 6;
-etapa++
-){
-
-/* APLICA DÉBITO
-DO MÊS ANTERIOR */
-
-saldoPontos -=
-debitoMesSeguinte;
-
-if(
-saldoPontos < 0
-){
-saldoPontos = 0;
-}
-
-debitoMesSeguinte = 0;
-
-/* DUPLICAÇÃO */
-
-const novaCamada =
-
-Math.pow(
-consumidoresBase,
-etapa
-);
-
-camadas.push(
-novaCamada);
-
-consumidoresAtivos +=
-novaCamada;
-
-/* PONTOS DO MÊS */
-
-const pontosMes =
-
-novaCamada
-*
-(
-consumo / 300
-)
-*
-100;
-
-/* 30D FLEXÍVEL */
-
-let bonus30D = 0;
-
-if(
-etapa > 1
-){
-
-const pontosMesAnterior =
-
-camadas[
-etapa - 2
-]
-*
-(
-consumo / 300
-)
-*
-100;
-
-const metadeMesAnterior =
-
-pontosMesAnterior
-*
-0.5;
-
-if(
-pontosMes >=
-metadeMesAnterior
-){
-
-bonus30D =
-pontosMesAnterior;
-
-}
-
-}
-
-/* SALDO */
-
-saldoPontos +=
-pontosMes
-+
-bonus30D;
-
-/* PIN
-SOMENTE DA
-QUALIFICAÇÃO
-DO MÊS */
-
-let bonusPin = 0;
-
-for(
-let nivel of niveis
-){
-
-if(
-saldoPontos >=
-nivel.pontos
-){
-
-bonusPin =
-nivel.pin;
-
-debitoMesSeguinte =
-nivel.pontos;
-
-}
-
-}
-
-/* UNILEVEL */
-
-let bonusUnilevel = 0;
-
-camadas.forEach(
-(
-camada,
-index
-)=>{
-
-if(
-percentuais[index]
-){
-
-bonusUnilevel +=
-
-(
-camada
-*
-consumo
-)
-*
-percentuais[index];
-
-}
-
-}
-);
-
-/* TOTAL */
-
-const bonusEstimado =
-
-bonusUnilevel
-+
-bonusPin;
-
-/* IMAGEM */
-
-const imagemComunidade =
-
-`img/comunidade_${Math.min(
-etapa,
-6
-)}.jpg`;
-
-/* RENDER */
-
-html += `
-
-<div class="etapa-card">
-
-<div style="
-display:flex;
-gap:16px;
-align-items:center;
-">
-
-<img
-src="${imagemComunidade}"
-style="
-width:130px;
-height:120px;
-object-fit:cover;
-display:block;
-border-radius:18px;
-flex-shrink:0;
-"
->
-
-<div
-style="
-flex:1;
-min-width:0;
-"
->
-
-<div style="
-font-size:14px;
-color:#9d9d9d;
-margin-bottom:6px;
-">
-
-${etapa}ª etapa
-
-</div>
-
-<div style="
-font-size:18px;
-font-weight:700;
-line-height:1.3;
-margin-bottom:8px;
-">
-
-${consumidoresAtivos
-.toLocaleString(
-'pt-BR'
-)}
- consumidores ativos
-
-</div>
-
-<div style="
-font-size:28px;
-font-weight:700;
-color:#00ff88;
-line-height:1;
-">
-
-R$
-${bonusEstimado
-.toLocaleString(
-'pt-BR',
-{
-minimumFractionDigits:2
-}
-)}
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-`;
-
-}
-
-document
-.getElementById(
-'resultado'
-)
-.innerHTML =
-html;
-
-}
-
 simular();
 
-/* ABRIR TELA DIRETA POR URL */
-
-window.addEventListener(
-'load',
-()=>{
-
-const params =
-new URLSearchParams(
-window.location.search
-);
-
-const tela =
-parseInt(
-params.get('tela')
-);
-
-if(
-!isNaN(tela) &&
-tela >= 1 &&
-tela <= 4
-){
-
-setTimeout(()=>{
-
-go(tela);
-
-},200);
-
+/* LÓGICA DE SEGURANÇA E DESBLOQUEIO DO X1 */
+function ativarBotaoHost(){
+  const btn = document.getElementById('btnHostX1');
+  if(btn) btn.style.display = 'block';
 }
 
+// 1. Verificação via parâmetro URL (?host=true)
+window.addEventListener('load', () => {
+  const params = new URLSearchParams(window.location.search);
+  if(params.get('host') === 'true') {
+    ativarBotaoHost();
+  }
+  
+  const tela = parseInt(params.get('tela'));
+  if(!isNaN(tela) && tela >= 1 && tela <= 5){
+    setTimeout(() => { go(tela); }, 200);
+  }
 });
- 
+
+// 2. Verificação via 3 toques na Logo (Ideal para Celular)
+let toqueCount = 0;
+let ultimoToque = 0;
+function toqueSecretoLogo(){
+  const agora = Date.now();
+  if(agora - ultimoToque < 500) toqueCount++;
+  else toqueCount = 1;
+  ultimoToque = agora;
+
+  if(toqueCount === 3){
+    ativarBotaoHost();
+    go(5); // Vai direto para o X1
+    toqueCount = 0;
+  }
+}
 </script>
 
 </body>
