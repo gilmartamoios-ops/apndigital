@@ -1,53 +1,90 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>X1 | Bonifica</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Bonifica | Apresentação Institucional & Plano X1</title>
+<meta name="description" content="Apresentação institucional, produtos e plano de negócios Bonifica.">
+
 <style>
-body{
-margin:0;
-background:#050505;
-font-family:Arial,sans-serif;
-color:white;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-text-align:center;
-padding:20px;
-}
-.box{
-max-width:700px;
-}
-h1{
-font-size:38px;
-margin-bottom:18px;
-}
-p{
-font-size:20px;
-line-height:1.6;
-color:#ccc;
+/* RESET & BASE */
+*{ margin:0; padding:0; box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{ background:#050505; font-family:Arial, sans-serif; color:white; min-height:100vh; overflow-x:hidden; }
+
+.page{ width:100%; min-height:100vh; padding:40px 16px; display:flex; flex-direction:column; align-items:center; }
+.container{ width:100%; max-width:860px; }
+
+/* ESTRUTURA DOS CARDS */
+.card{ background: rgba(255,255,255,.04); backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,.08); border-radius:28px; padding:28px; margin-bottom:24px; box-shadow: 0 12px 40px rgba(0,0,0,.35); text-align:center; position:relative; }
+
+/* TIPOGRAFIA */
+.eyebrow{ font-size:12px; letter-spacing:2.5px; text-transform:uppercase; color: #00ff88; margin-bottom:12px; font-weight:bold; }
+.title{ font-size: clamp(26px, 4.5vw, 42px); font-weight:300; line-height:1.25; margin-bottom:16px; }
+.subtitle{ font-size: clamp(15px, 2vw, 18px); line-height:1.6; color: rgba(255,255,255,.8); margin-bottom:24px; }
+
+/* VIDEO BOX */
+.video-box{ width:100%; max-width:680px; margin:0 auto 10px auto; border-radius:20px; overflow:hidden; background:black; box-shadow: 0 10px 30px rgba(0,0,0,.5); border: 1px solid rgba(255,255,255,.1); }
+video{ width:100%; height:auto; display:block; object-fit:contain; max-height:70vh; }
+
+/* BOTÕES DE NAVEGAÇÃO */
+.btn{ border:none; outline:none; cursor:pointer; background:#00ff88; color:#07120d; font-weight:700; font-size:15px; padding:16px 32px; border-radius:999px; transition: .25s ease; box-shadow: 0 10px 25px rgba(0,255,136,.2); text-decoration:none; display:inline-block; margin:8px; }
+.btn:hover{ transform: translateY(-2px); background:#00eb7c; box-shadow: 0 15px 30px rgba(0,255,136,.3); }
+.btn-secondary{ background:#222; color:#fff; box-shadow:none; border: 1px solid rgba(255,255,255,.1); }
+.btn-secondary:hover{ background:#333; }
+
+/* RESPONSIVO */
+@media(max-width:768px){
+  .page{ padding:20px 12px; }
+  .card{ padding:20px 16px; border-radius:22px; }
+  .btn{ width:100%; max-width:300px; padding:14px 20px; }
 }
 </style>
 </head>
+
 <body>
 
-<div class="box">
+<div class="page">
+  <div class="container">
 
-<h1>Parte 2 — X1</h1>
+    <!-- CABEÇALHO / INTRODUÇÃO DO X1 -->
+    <div class="card">
+      <div class="eyebrow">Apresentação Exclusiva X1</div>
+      <h1 class="title">Estrutura Institucional & Plano Bonifica</h1>
+      <p class="subtitle">Conheça os pilares da empresa, a linha de produtos e o modelo de negócio direcionado pelo seu Gestor de Comunidade.</p>
+    </div>
 
-<p>
-Aqui será apresentada a estrutura institucional da Bonifica,
-linha de produtos e plano de negócio.
-</p>
+    <!-- BLOCO 1: VÍDEO INSTITUCIONAL BONIFICA -->
+    <div class="card">
+      <div class="eyebrow">Apresentação Institucional</div>
+      <h2 class="title" style="font-size: clamp(20px, 3.5vw, 28px);">Conheça a Bonifica</h2>
+      <div class="video-box">
+        <video controls playsinline preload="metadata">
+          <source src="/video/bonifica.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
 
-<p>
-Esta etapa acontece junto ao seu Gestor de Comunidade.
-</p>
+    <!-- BLOCO 2: VÍDEO DO MODELO DE NEGÓCIO -->
+    <div class="card">
+      <div class="eyebrow">Plano de Negócio</div>
+      <h2 class="title" style="font-size: clamp(20px, 3.5vw, 28px);">Estrutura de Renda & Consumo</h2>
+      <div class="video-box">
+        <video controls playsinline preload="metadata">
+          <source src="/video/modelo_negocio.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
 
+    <!-- BOTÕES DE AÇÃO E NAVEGAÇÃO -->
+    <div class="card" style="text-align:center;">
+      <a href="/index.html" class="btn btn-secondary">← Voltar para a APN Principal</a>
+      <a href="https://wa.me/5522999231211" target="_blank" class="btn">💬 Falar no WhatsApp</a>
+    </div>
+
+  </div>
 </div>
 
-  
 </body>
 </html>
