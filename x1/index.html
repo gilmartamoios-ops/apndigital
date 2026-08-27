@@ -4,34 +4,47 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Bonifica | Apresentação X1</title>
-<meta name="description" content="Apresentação institucional e plano de negócio Bonifica.">
+<title>Bonifica | Apresentação X1 Completa</title>
+<meta name="description" content="Apresentação institucional, linha de produtos e plano de negócio Bonifica.">
 
 <style>
+/* RESET & BASE */
 *{ margin:0; padding:0; box-sizing:border-box; }
 html{ scroll-behavior:smooth; }
 body{ background:#050505; font-family:Arial, sans-serif; color:white; min-height:100vh; overflow-x:hidden; }
 
-.page{ width:100%; min-height:100vh; padding:40px 16px; display:flex; flex-direction:column; align-items:center; }
+.page{ width:100%; min-height:100vh; padding:30px 16px; display:flex; flex-direction:column; align-items:center; }
 .container{ width:100%; max-width:860px; }
 
+/* CARDS */
 .card{ background: rgba(255,255,255,.04); backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,.08); border-radius:28px; padding:28px; margin-bottom:24px; box-shadow: 0 12px 40px rgba(0,0,0,.35); text-align:center; position:relative; }
 
+/* TIPOGRAFIA */
 .eyebrow{ font-size:12px; letter-spacing:2.5px; text-transform:uppercase; color: #00ff88; margin-bottom:12px; font-weight:bold; }
-.title{ font-size: clamp(26px, 4.5vw, 42px); font-weight:300; line-height:1.25; margin-bottom:16px; }
-.subtitle{ font-size: clamp(15px, 2vw, 18px); line-height:1.6; color: rgba(255,255,255,.8); margin-bottom:24px; }
+.title{ font-size: clamp(24px, 4vw, 36px); font-weight:300; line-height:1.25; margin-bottom:16px; }
+.subtitle{ font-size: clamp(14px, 1.8vw, 17px); line-height:1.6; color: rgba(255,255,255,.8); margin-bottom:20px; }
 
-.video-box{ width:100%; max-width:680px; margin:0 auto 10px auto; border-radius:20px; overflow:hidden; background:black; box-shadow: 0 10px 30px rgba(0,0,0,.5); border: 1px solid rgba(255,255,255,.1); }
-video{ width:100%; height:auto; display:block; object-fit:contain; max-height:70vh; }
+/* VÍDEO */
+.video-box{ width:100%; max-width:680px; margin:0 auto; border-radius:20px; overflow:hidden; background:black; box-shadow: 0 10px 30px rgba(0,0,0,.5); border: 1px solid rgba(255,255,255,.1); }
+video{ width:100%; height:auto; display:block; object-fit:contain; max-height:65vh; }
 
-.btn{ border:none; outline:none; cursor:pointer; background:#00ff88; color:#07120d; font-weight:700; font-size:15px; padding:16px 32px; border-radius:999px; transition: .25s ease; box-shadow: 0 10px 25px rgba(0,255,136,.2); text-decoration:none; display:inline-block; margin:8px; }
-.btn:hover{ transform: translateY(-2px); background:#00eb7c; box-shadow: 0 15px 30px rgba(0,255,136,.3); }
+/* CARROSSEL DE SLIDES / IMAGENS */
+.carousel-box{ position:relative; width:100%; max-width:680px; margin:0 auto; border-radius:20px; overflow:hidden; border: 1px solid rgba(255,255,255,.1); background:#0a0a0a; }
+.carousel-img{ width:100%; height:auto; max-height:65vh; object-fit:contain; display:block; }
+
+.carousel-controls{ display:flex; justify-content:space-between; align-items:center; margin-top:14px; gap:10px; }
+.btn-nav{ background:rgba(255,255,255,.1); color:#fff; border:1px solid rgba(255,255,255,.2); padding:10px 18px; border-radius:50px; cursor:pointer; font-size:13px; font-weight:bold; transition:.2s; }
+.btn-nav:hover{ background:#00ff88; color:#000; border-color:#00ff88; }
+.slide-counter{ font-size:13px; color:#aaa; font-weight:bold; }
+
+/* BOTÕES DE AÇÃO */
+.btn{ border:none; outline:none; cursor:pointer; background:#00ff88; color:#07120d; font-weight:700; font-size:15px; padding:16px 32px; border-radius:999px; transition: .25s ease; box-shadow: 0 10px 25px rgba(0,255,136,.2); text-decoration:none; display:inline-block; margin:6px; }
+.btn:hover{ transform: translateY(-2px); background:#00eb7c; }
 .btn-secondary{ background:#222; color:#fff; box-shadow:none; border: 1px solid rgba(255,255,255,.1); }
-.btn-secondary:hover{ background:#333; }
 
 @media(max-width:768px){
-  .page{ padding:20px 12px; }
-  .card{ padding:20px 16px; border-radius:22px; }
+  .page{ padding:16px 10px; }
+  .card{ padding:20px 14px; border-radius:22px; }
   .btn{ width:100%; max-width:300px; padding:14px 20px; }
 }
 </style>
@@ -42,17 +55,17 @@ video{ width:100%; height:auto; display:block; object-fit:contain; max-height:70
 <div class="page">
   <div class="container">
 
-    <!-- INTRODUÇÃO -->
+    <!-- CABEÇALHO -->
     <div class="card">
       <div class="eyebrow">Apresentação Exclusiva X1</div>
-      <h1 class="title">Estrutura Institucional & Plano Bonifica</h1>
-      <p class="subtitle">Conheça a empresa, a linha de produtos e o modelo de negócio direcionado pelo seu Gestor de Comunidade.</p>
+      <h1 class="title">Estrutura Institucional, Produtos & Plano</h1>
+      <p class="subtitle">Apresentação detalhada da Bonifica para reuniões e chamadas individuais.</p>
     </div>
 
-    <!-- VÍDEO INSTITUCIONAL -->
+    <!-- 1º BLOCO: VÍDEO INSTITUCIONAL DA EMPRESA -->
     <div class="card">
-      <div class="eyebrow">Apresentação Institucional</div>
-      <h2 class="title" style="font-size: clamp(20px, 3.5vw, 28px);">Conheça a Bonifica</h2>
+      <div class="eyebrow">1. Institucional</div>
+      <h2 class="title">Conheça a Bonifica</h2>
       <div class="video-box">
         <video controls playsinline preload="metadata">
           <source src="/video/bonifica.mp4" type="video/mp4">
@@ -60,18 +73,45 @@ video{ width:100%; height:auto; display:block; object-fit:contain; max-height:70
       </div>
     </div>
 
-    <!-- VÍDEO DO MODELO DE NEGÓCIO -->
+    <!-- 2º BLOCO: PRODUTOS (LOGO A SEGUIR DO VÍDEO INSTITUCIONAL) -->
     <div class="card">
-      <div class="eyebrow">Plano de Negócio</div>
-      <h2 class="title" style="font-size: clamp(20px, 3.5vw, 28px);">Estrutura de Renda & Consumo</h2>
-      <div class="video-box">
+      <div class="eyebrow">2. Catálogo de Produtos</div>
+      <h2 class="title">Linha de Produtos Bonifica</h2>
+      <div class="carousel-box">
+        <img id="imgProdutos" src="/img/prod1.jpg" class="carousel-img" alt="Produto Bonifica">
+      </div>
+      <div class="carousel-controls">
+        <button class="btn-nav" onclick="mudarSlide('prod', -1)">◀ Anterior</button>
+        <span id="counterProd" class="slide-counter">1 de 13</span>
+        <button class="btn-nav" onclick="mudarSlide('prod', 1)">Próximo ▶</button>
+      </div>
+    </div>
+
+    <!-- 3º BLOCO: PLANO DE NEGÓCIO & BÔNUS (LOGO A SEGUIR DOS PRODUTOS) -->
+    <div class="card">
+      <div class="eyebrow">3. Plano de Negócio</div>
+      <h2 class="title">Estrutura de Renda & Consumo</h2>
+      
+      <!-- Vídeo do Modelo de Negócio -->
+      <div class="video-box" style="margin-bottom: 24px;">
         <video controls playsinline preload="metadata">
           <source src="/video/modelo_negocio.mp4" type="video/mp4">
         </video>
       </div>
+
+      <!-- Carrossel de Bônus (bonus1.jpg a bonus7.jpg) -->
+      <div class="eyebrow" style="margin-top: 20px;">Slides de Bônus & Qualificação</div>
+      <div class="carousel-box">
+        <img id="imgBonus" src="/img/bonus1.jpg" class="carousel-img" alt="Bônus Bonifica">
+      </div>
+      <div class="carousel-controls">
+        <button class="btn-nav" onclick="mudarSlide('bonus', -1)">◀ Anterior</button>
+        <span id="counterBonus" class="slide-counter">1 de 7</span>
+        <button class="btn-nav" onclick="mudarSlide('bonus', 1)">Próximo ▶</button>
+      </div>
     </div>
 
-    <!-- NAVEGAÇÃO -->
+    <!-- NAVEGAÇÃO FINAL -->
     <div class="card" style="text-align:center;">
       <a href="/index.html" class="btn btn-secondary">← Voltar para a APN Principal</a>
       <a href="https://wa.me/5522999231211" target="_blank" class="btn">💬 Falar no WhatsApp</a>
@@ -79,6 +119,32 @@ video{ width:100%; height:auto; display:block; object-fit:contain; max-height:70
 
   </div>
 </div>
+
+<script>
+/* CONTROLE DOS SLIDES DE PRODUTOS */
+let idxProd = 1;
+const totalProd = 13;
+
+/* CONTROLE DOS SLIDES DE BÔNUS */
+let idxBonus = 1;
+const totalBonus = 7;
+
+function mudarSlide(tipo, dir) {
+  if (tipo === 'prod') {
+    idxProd += dir;
+    if (idxProd < 1) idxProd = totalProd;
+    if (idxProd > totalProd) idxProd = 1;
+    document.getElementById('imgProdutos').src = `/img/prod${idxProd}.jpg`;
+    document.getElementById('counterProd').innerText = `${idxProd} de ${totalProd}`;
+  } else if (tipo === 'bonus') {
+    idxBonus += dir;
+    if (idxBonus < 1) idxBonus = totalBonus;
+    if (idxBonus > totalBonus) idxBonus = 1;
+    document.getElementById('imgBonus').src = `/img/bonus${idxBonus}.jpg`;
+    document.getElementById('counterBonus').innerText = `${idxBonus} de ${totalBonus}`;
+  }
+}
+</script>
 
 </body>
 </html>
