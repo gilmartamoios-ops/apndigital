@@ -15,7 +15,7 @@ html, body{ width:100%; height:100%; font-family:Arial,sans-serif; background:#0
 /* APP */
 .app{ position:relative; width:100%; height:100dvh; overflow:hidden; }
 
-/* SLIDES */
+/* SLIDES (Apenas 4 slides oficiais) */
 .slide{ position:absolute; inset:0; display:none; flex-direction:column; justify-content:center; align-items:center; padding:16px; text-align:center; background:#050505; overflow:hidden; opacity:0; transition: opacity .45s ease; }
 .slide.active{ display:flex; opacity:1; }
 
@@ -34,7 +34,7 @@ html, body{ width:100%; height:100%; font-family:Arial,sans-serif; background:#0
 .btn{ margin-top:28px; border:none; cursor:pointer; background:#00ff88; color:#07120d; padding:18px 34px; font-size:16px; font-weight:700; border-radius:999px; transition:.25s ease; box-shadow: 0 12px 34px rgba(0,255,136,.20); display:inline-block; }
 .btn:hover{ transform: translateY(-2px); background:#00eb7c; }
 
-/* BOTÃO FLUTUANTE DO APRESENTADOR (X1) */
+/* BOTÃO FLUTUANTE DO APRESENTADOR (Abre o X1 direto) */
 .btn-host-x1 { position: fixed; top: 16px; right: 16px; z-index: 99999; background: #00ff88; color: #000; border: none; padding: 10px 18px; border-radius: 50px; font-weight: bold; font-size: 13px; cursor: pointer; box-shadow: 0 0 15px rgba(0,255,136,0.5); display: none; }
 
 /* VIDEO & SIMULADOR */
@@ -61,8 +61,8 @@ video{ width:100%; height:auto; display:block; background:black; object-fit:cont
 
 <div class="app">
 
-<!-- BOTÃO SECRETO DO APRESENTADOR -->
-<button id="btnHostX1" class="btn-host-x1" onclick="go(5)">⚡ Ir para o X1</button>
+<!-- BOTÃO DO APRESENTADOR (Abre diretamente a pasta /x1/) -->
+<button id="btnHostX1" class="btn-host-x1" onclick="irParaX1()">⚡ Ir para o X1</button>
 
 <!-- TELA 1 -->
 <section class="slide active" id="s1">
@@ -83,7 +83,6 @@ video{ width:100%; height:auto; display:block; background:black; object-fit:cont
         <source src="video/manifesto.mp4?v=3" type="video/mp4">
       </video>
     </div>
-    <!-- Botão liberado sem travar no fim do vídeo -->
     <button class="btn" id="btnManifesto" onclick="go(3)">Quero entender melhor</button>
   </div>
 </section>
@@ -105,7 +104,7 @@ video{ width:100%; height:auto; display:block; background:black; object-fit:cont
   </div>
 </section>
 
-<!-- TELA 4 -->
+<!-- TELA 4 (SIMULADOR) -->
 <section class="slide" id="s4">
   <div class="card">
     <div class="eyebrow">Simulador de Construção de Comunidade</div>
@@ -139,28 +138,13 @@ video{ width:100%; height:auto; display:block; background:black; object-fit:cont
     </div>
     <div id="resultado" class="resultado"></div>
     
-    <!-- Botão dinâmico: Se for Host vai para o X1 (Tela 5), se for Lead vai para o Quiz -->
+    <!-- Para o Lead: vai para o Quiz | Para o Apresentador: abre direto o X1 -->
     <button class="btn" id="btnAcaoFinal" onclick="acaoFinal()">Descobrir meu perfil</button>
   </div>
 </section>
 
-<!-- TELA 5 (CONTEÚDO DO X1 - INTEGRADO) -->
-<section class="slide" id="s5">
-  <div class="card">
-    <div class="eyebrow">Apresentação Institucional — X1</div>
-    <h1 class="title">Parte 2 — X1</h1>
-    <p class="subtitle" style="margin-bottom: 15px;">
-      Aqui será apresentada a estrutura institucional da Bonifica, linha de produtos e plano de negócio.
-    </p>
-    <p class="subtitle" style="color: #00ff88; font-weight: bold; margin-bottom: 20px;">
-      Esta etapa acontece junto ao seu Gestor de Comunidade.
-    </p>
-    <button class="btn" style="background:#222; color:#fff;" onclick="go(4)">← Voltar ao Simulador</button>
-  </div>
-</section>
-
 <!-- LOGO COM GATILHO DE SEGREDO -->
-<img src="img/logo.png" class="logo" alt="CRC" onclick="toqueSecretoLogo()">
+<img src="img/logo_c3.jpg" class="logo" alt="CRC" onclick="toqueSecretoLogo()">
 
 </div>
 
@@ -174,6 +158,11 @@ function go(n){
   
   const target = document.getElementById('s' + n);
   if(target) target.classList.add('active');
+}
+
+/* REDIRECIONAR PARA O X1 */
+function irParaX1(){
+  window.location.href = '/x1/';
 }
 
 /* VÍDEO MANIFESTO */
@@ -252,10 +241,10 @@ function simular(){
 }
 simular();
 
-/* LÓGICA DE AÇÃO DO BOTÃO FINAL DO SIMULADOR */
+/* LÓGICA DE AÇÃO DO BOTÃO FINAL */
 function acaoFinal(){
   if(ehHost){
-    go(5); // Apresentador avança para o X1 na mesma página
+    irParaX1(); // Apresentador vai direto para o X1
   } else {
     window.location.href = 'quiz.html'; // Lead vai para o Quiz
   }
@@ -279,12 +268,12 @@ window.addEventListener('load', () => {
   }
   
   const tela = parseInt(params.get('tela'));
-  if(!isNaN(tela) && tela >= 1 && tela <= 5){
+  if(!isNaN(tela) && tela >= 1 && tela <= 4){
     setTimeout(() => { go(tela); }, 200);
   }
 });
 
-// 2. Verificação via 3 toques na Logo
+// 2. Verificação via 3 toques na Logo (Celular)
 let toqueCount = 0;
 let ultimoToque = 0;
 function toqueSecretoLogo(){
@@ -295,7 +284,7 @@ function toqueSecretoLogo(){
 
   if(toqueCount === 3){
     ativarModoHost();
-    go(5); // Vai direto para o X1
+    irParaX1(); // Redireciona direto para a pasta /x1/
     toqueCount = 0;
   }
 }
