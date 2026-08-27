@@ -28,6 +28,10 @@ body{ background:#050505; font-family:Arial, sans-serif; color:white; min-height
 .flipbook-box{ width:100%; height:650px; margin:0 auto; border-radius:20px; overflow:hidden; border: 1px solid rgba(255,255,255,.1); background:#0a0a0a; box-shadow: 0 10px 30px rgba(0,0,0,.5); }
 .flipbook-box iframe{ width:100%; height:100%; border:none; }
 
+/* VÍDEO DE FINALIZAÇÃO */
+.video-box{ width:100%; max-width:720px; margin:0 auto; border-radius:20px; overflow:hidden; background:black; box-shadow: 0 10px 30px rgba(0,0,0,.5); border: 1px solid rgba(255,255,255,.1); }
+video{ width:100%; height:auto; display:block; object-fit:contain; max-height:65vh; }
+
 /* BOTÕES DE AÇÃO */
 .btn{ border:none; outline:none; cursor:pointer; background:#00ff88; color:#07120d; font-weight:700; font-size:15px; padding:16px 32px; border-radius:999px; transition: .25s ease; box-shadow: 0 10px 25px rgba(0,255,136,.2); text-decoration:none; display:inline-block; margin:6px; }
 .btn:hover{ transform: translateY(-2px); background:#00eb7c; }
@@ -37,7 +41,7 @@ body{ background:#050505; font-family:Arial, sans-serif; color:white; min-height
 @media(max-width:768px){
   .page{ padding:16px 10px; }
   .card{ padding:16px 10px; border-radius:22px; }
-  .flipbook-box{ height:480px; } /* Altura ajustada para telas de celular */
+  .flipbook-box{ height:480px; } /* Altura ajustada para celular */
   .btn{ width:100%; max-width:300px; padding:14px 20px; }
 }
 </style>
@@ -62,9 +66,20 @@ body{ background:#050505; font-family:Arial, sans-serif; color:white; min-height
       </div>
     </div>
 
+    <!-- VÍDEO DE FINALIZAÇÃO -->
+    <div class="card">
+      <div class="eyebrow">Finalização da Apresentação</div>
+      <h2 class="title" style="font-size: clamp(20px, 3.5vw, 28px);">Plano de Ação & Fechamento</h2>
+      <div class="video-box">
+        <video controls playsinline preload="metadata">
+          <source src="../video/modelo_negocio.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
     <!-- NAVEGAÇÃO E CONTATO -->
     <div class="card" style="text-align:center;">
-      <a href="/index.html" class="btn btn-secondary">← Voltar para a APN Principal</a>
+      <a href="../index.html" class="btn btn-secondary">← Voltar para a APN Principal</a>
       <a href="https://wa.me/5522999231211" target="_blank" class="btn">💬 Falar no WhatsApp</a>
     </div>
 
