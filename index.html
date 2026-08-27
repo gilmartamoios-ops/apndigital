@@ -23,7 +23,7 @@ html, body{ width:100%; height:100%; font-family:Arial,sans-serif; background:#0
 .overlay{ position:absolute; inset:0; background: linear-gradient(to top, rgba(0,0,0,.92), rgba(0,0,0,.35)); }
 .card{ position:relative; z-index:2; width:100%; max-width:820px; background: rgba(0,0,0,.16); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,.08); border-radius:34px; padding:24px; box-shadow: 0 12px 40px rgba(0,0,0,.28); }
 
-/* LOGO - Agora clicável para o segredo */
+/* LOGO - Clicável no canto */
 .logo{ position:absolute; bottom:20px; right:20px; width:44px; height:44px; border-radius:50%; object-fit:cover; opacity:.35; z-index:10; cursor:pointer; user-select:none; }
 
 /* TEXTOS & BOTÕES */
@@ -31,7 +31,7 @@ html, body{ width:100%; height:100%; font-family:Arial,sans-serif; background:#0
 .title{ font-size: clamp(30px,5vw,52px); line-height:1.18; font-weight:300; margin-bottom:18px; }
 .subtitle{ font-size: clamp(16px,2vw,22px); line-height:1.7; max-width:720px; color: rgba(255,255,255,.84); margin:auto; }
 
-.btn{ margin-top:28px; border:none; cursor:pointer; background:#00ff88; color:#07120d; padding:18px 34px; font-size:16px; font-weight:700; border-radius:999px; transition:.25s ease; box-shadow: 0 12px 34px rgba(0,255,136,.20); }
+.btn{ margin-top:28px; border:none; cursor:pointer; background:#00ff88; color:#07120d; padding:18px 34px; font-size:16px; font-weight:700; border-radius:999px; transition:.25s ease; box-shadow: 0 12px 34px rgba(0,255,136,.20); display:inline-block; }
 .btn:hover{ transform: translateY(-2px); background:#00eb7c; }
 
 /* BOTÃO FLUTUANTE DO APRESENTADOR (X1) */
@@ -40,7 +40,6 @@ html, body{ width:100%; height:100%; font-family:Arial,sans-serif; background:#0
 /* VIDEO & SIMULADOR */
 .video-box{ width:100%; max-width:420px; margin:0 auto; border-radius:28px; overflow:hidden; background:black; box-shadow: 0 10px 30px rgba(0,0,0,.28); }
 video{ width:100%; height:auto; display:block; background:black; object-fit:contain; max-height:72vh; }
-.hidden{ display:none !important; }
 
 .sim-grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:22px; }
 .sim-label{ display:block; font-size:13px; color:#999; margin-bottom:10px; text-align:left; line-height:1.5; }
@@ -62,7 +61,7 @@ video{ width:100%; height:auto; display:block; background:black; object-fit:cont
 
 <div class="app">
 
-<!-- BOTÃO SECRETO DO GESTOR -->
+<!-- BOTÃO SECRETO DO APRESENTADOR -->
 <button id="btnHostX1" class="btn-host-x1" onclick="go(5)">⚡ Ir para o X1</button>
 
 <!-- TELA 1 -->
@@ -84,7 +83,8 @@ video{ width:100%; height:auto; display:block; background:black; object-fit:cont
         <source src="video/manifesto.mp4?v=3" type="video/mp4">
       </video>
     </div>
-    <button class="btn hidden" id="btnManifesto" onclick="go(3)">Quero entender melhor</button>
+    <!-- Botão liberado sem travar no fim do vídeo -->
+    <button class="btn" id="btnManifesto" onclick="go(3)">Quero entender melhor</button>
   </div>
 </section>
 
@@ -138,31 +138,35 @@ video{ width:100%; height:auto; display:block; background:black; object-fit:cont
       </div>
     </div>
     <div id="resultado" class="resultado"></div>
-    <button class="btn" onclick="window.location.href='quiz.html'">Descobrir meu perfil</button>
+    
+    <!-- Botão dinâmico: Se for Host vai para o X1 (Tela 5), se for Lead vai para o Quiz -->
+    <button class="btn" id="btnAcaoFinal" onclick="acaoFinal()">Descobrir meu perfil</button>
   </div>
 </section>
 
-<!-- TELA 5 (CONTEÚDO X1 - PRIVADO) -->
+<!-- TELA 5 (CONTEÚDO DO X1 - INTEGRADO) -->
 <section class="slide" id="s5">
   <div class="card">
-    <div class="eyebrow">Apresentação Institucional</div>
+    <div class="eyebrow">Apresentação Institucional — X1</div>
     <h1 class="title">Parte 2 — X1</h1>
     <p class="subtitle" style="margin-bottom: 15px;">
       Aqui será apresentada a estrutura institucional da Bonifica, linha de produtos e plano de negócio.
     </p>
-    <p class="subtitle" style="color: #00ff88; font-weight: bold;">
+    <p class="subtitle" style="color: #00ff88; font-weight: bold; margin-bottom: 20px;">
       Esta etapa acontece junto ao seu Gestor de Comunidade.
     </p>
-    <button class="btn" style="background:#333; color:#fff;" onclick="go(4)">← Voltar ao Simulador</button>
+    <button class="btn" style="background:#222; color:#fff;" onclick="go(4)">← Voltar ao Simulador</button>
   </div>
 </section>
 
-<!-- LOGO COM GATILHO DE TOQUE -->
+<!-- LOGO COM GATILHO DE SEGREDO -->
 <img src="img/logo.png" class="logo" alt="CRC" onclick="toqueSecretoLogo()">
 
 </div>
 
 <script>
+let ehHost = false;
+
 /* NAVEGAÇÃO */
 function go(n){
   document.querySelectorAll('video').forEach(v => { v.pause(); v.currentTime = 0; });
@@ -172,19 +176,14 @@ function go(n){
   if(target) target.classList.add('active');
 }
 
-/* VÍDEOS */
-[{ video:'manifestoVideo', btn:'btnManifesto' }].forEach(item => {
-  const video = document.getElementById(item.video);
-  if(video){
-    video.addEventListener('ended', () => {
-      document.getElementById(item.btn).classList.remove('hidden');
-    });
-    video.addEventListener('click', () => {
-      if(video.paused) video.play().catch(()=>{});
-      else video.pause();
-    });
-  }
-});
+/* VÍDEO MANIFESTO */
+const video = document.getElementById('manifestoVideo');
+if(video){
+  video.addEventListener('click', () => {
+    if(video.paused) video.play().catch(()=>{});
+    else video.pause();
+  });
+}
 
 /* SIMULADOR CRC */
 function simular(){
@@ -253,17 +252,30 @@ function simular(){
 }
 simular();
 
-/* LÓGICA DE SEGURANÇA E DESBLOQUEIO DO X1 */
-function ativarBotaoHost(){
-  const btn = document.getElementById('btnHostX1');
-  if(btn) btn.style.display = 'block';
+/* LÓGICA DE AÇÃO DO BOTÃO FINAL DO SIMULADOR */
+function acaoFinal(){
+  if(ehHost){
+    go(5); // Apresentador avança para o X1 na mesma página
+  } else {
+    window.location.href = 'quiz.html'; // Lead vai para o Quiz
+  }
+}
+
+/* LÓGICA DE ATIVAÇÃO DO MODO HOST */
+function ativarModoHost(){
+  ehHost = true;
+  const btnTop = document.getElementById('btnHostX1');
+  if(btnTop) btnTop.style.display = 'block';
+  
+  const btnFinal = document.getElementById('btnAcaoFinal');
+  if(btnFinal) btnFinal.innerText = '⚡ Avançar para o X1';
 }
 
 // 1. Verificação via parâmetro URL (?host=true)
 window.addEventListener('load', () => {
   const params = new URLSearchParams(window.location.search);
   if(params.get('host') === 'true') {
-    ativarBotaoHost();
+    ativarModoHost();
   }
   
   const tela = parseInt(params.get('tela'));
@@ -272,7 +284,7 @@ window.addEventListener('load', () => {
   }
 });
 
-// 2. Verificação via 3 toques na Logo (Ideal para Celular)
+// 2. Verificação via 3 toques na Logo
 let toqueCount = 0;
 let ultimoToque = 0;
 function toqueSecretoLogo(){
@@ -282,7 +294,7 @@ function toqueSecretoLogo(){
   ultimoToque = agora;
 
   if(toqueCount === 3){
-    ativarBotaoHost();
+    ativarModoHost();
     go(5); // Vai direto para o X1
     toqueCount = 0;
   }
