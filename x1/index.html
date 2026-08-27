@@ -28,21 +28,16 @@ body{ background:#050505; font-family:Arial, sans-serif; color:white; min-height
 .flipbook-box{ width:100%; height:650px; margin:0 auto; border-radius:20px; overflow:hidden; border: 1px solid rgba(255,255,255,.1); background:#0a0a0a; box-shadow: 0 10px 30px rgba(0,0,0,.5); }
 .flipbook-box iframe{ width:100%; height:100%; border:none; }
 
-/* VÍDEO DE FECHAMENTO */
-.video-card-inner{ width:100%; max-width:720px; margin:0 auto; border-radius:20px; overflow:hidden; background:#000; border: 1px solid rgba(255,255,255,.12); box-shadow: 0 10px 30px rgba(0,0,0,.5); position:relative; }
-video{ width:100%; height:auto; min-height:220px; display:block; object-fit:contain; background:#000; }
-
 /* BOTÕES DE AÇÃO */
 .btn{ border:none; outline:none; cursor:pointer; background:#00ff88; color:#07120d; font-weight:700; font-size:15px; padding:16px 32px; border-radius:999px; transition: .25s ease; box-shadow: 0 10px 25px rgba(0,255,136,.2); text-decoration:none; display:inline-block; margin:6px; }
 .btn:hover{ transform: translateY(-2px); background:#00eb7c; }
 .btn-secondary{ background:#222; color:#fff; box-shadow:none; border: 1px solid rgba(255,255,255,.1); }
 .btn-secondary:hover{ background:#333; }
-.btn-sm{ padding:10px 20px; font-size:13px; margin-top:12px; }
 
 @media(max-width:768px){
   .page{ padding:16px 10px; }
   .card{ padding:16px 10px; border-radius:22px; }
-  .flipbook-box{ height:480px; }
+  .flipbook-box{ height:480px; } /* Altura ajustada para telas de celular */
   .btn{ width:100%; max-width:300px; padding:14px 20px; }
 }
 </style>
@@ -60,30 +55,11 @@ video{ width:100%; height:auto; min-height:220px; display:block; object-fit:cont
       <p class="subtitle">Apresentação interativa oficial Bonifica.</p>
     </div>
 
-    <!-- FLIPBOOK HEYZINE -->
+    <!-- FLIPBOOK HEYZINE UNIFICADO -->
     <div class="card" style="padding:12px;">
       <div class="flipbook-box">
         <iframe src="https://heyzine.com/flip-book/2390040454.html" allowfullscreen="true"></iframe>
       </div>
-    </div>
-
-    <!-- VÍDEO DE FECHAMENTO: MODELO DE NEGÓCIO -->
-    <div class="card">
-      <div class="eyebrow">Fechamento da Apresentação</div>
-      <h2 class="title" style="font-size: clamp(20px, 3.5vw, 28px);">Modelo de Negócio</h2>
-      <p class="subtitle" style="margin-bottom:18px;">Assista ao vídeo para concluir a apresentação do plano.</p>
-      
-      <div class="video-card-inner">
-        <video controls playsinline webkit-playsinline preload="metadata" poster="/img/comunidade_1.jpg">
-          <source src="../video/modelo_negocio.mp4" type="video/mp4">
-          <source src="/video/modelo_negocio.mp4" type="video/mp4">
-        </video>
-      </div>
-
-      <!-- BOTÃO ALTERNATIVO CASO O NAVEGADOR BLOQUEIE O PLAYER -->
-      <a href="/video/modelo_negocio.mp4" target="_blank" class="btn btn-secondary btn-sm">
-        ▶ Assistir Vídeo em Tela Cheia
-      </a>
     </div>
 
     <!-- NAVEGAÇÃO E CONTATO -->
