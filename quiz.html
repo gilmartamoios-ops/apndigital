@@ -2,494 +2,118 @@
 <html lang="pt-br">
 
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-name="viewport"
-content="width=device-width, initial-scale=1.0, viewport-fit=cover"
->
-
-<title>
-C3 | Descobrir Meu Perfil
-</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>C3 | Descobrir Meu Perfil</title>
 
 <style>
+*{ margin:0; padding:0; box-sizing:border-box; }
+html, body{ width:100%; min-height:100%; font-family:Arial,sans-serif; background:#050505; color:white; overflow-x:hidden; }
 
-/* RESET */
+.page{ min-height:100dvh; display:flex; justify-content:center; align-items:center; padding:20px; background: linear-gradient(180deg, #050505, #0b0b0b); }
+.card{ width:100%; max-width:760px; background: rgba(255,255,255,.04); backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,.08); border-radius:34px; padding:34px 28px; box-shadow: 0 12px 40px rgba(0,0,0,.32); text-align:center; position:relative; }
+.logo{ position:absolute; bottom:14px; right:14px; width:46px; height:46px; border-radius:50%; opacity:.52; filter: brightness(1.1) drop-shadow(0 0 10px rgba(255,255,255,.10)); }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+.eyebrow{ font-size:12px; letter-spacing:2px; text-transform:uppercase; color: rgba(255,255,255,.62); margin-bottom:16px; }
+.question{ display:none; animation:fade .35s ease; }
+.question.active{ display:block; }
+.question-title{ font-size:28px; font-weight:300; margin-bottom:28px; line-height:1.35; }
 
-html,
-body{
+.option{ width:100%; border:none; cursor:pointer; background:#101010; color:white; padding:18px; font-size:16px; border-radius:18px; margin-bottom:14px; transition:.22s ease; border: 1px solid rgba(255,255,255,.08); }
+.option:hover{ background:#181818; transform: translateY(-2px); }
 
-width:100%;
-min-height:100%;
+#finalScreen{ display:none; }
 
-font-family:Arial,sans-serif;
-
-background:#050505;
-color:white;
-
-overflow-x:hidden;
-}
-
-/* PAGE */
-
-.page{
-
-min-height:100dvh;
-
-display:flex;
-justify-content:center;
-align-items:center;
-
-padding:20px;
-
-background:
-linear-gradient(
-180deg,
-#050505,
-#0b0b0b
-);
-}
-
-/* CARD */
-
-.card{
-
-width:100%;
-max-width:760px;
-
-background:
-rgba(255,255,255,.04);
-
-backdrop-filter:
-blur(18px);
-
-border:
-1px solid
-rgba(255,255,255,.08);
-
-border-radius:34px;
-
-padding:34px 28px;
-
-box-shadow:
-0 12px 40px
-rgba(0,0,0,.32);
-
-text-align:center;
-
-position:relative;
-}
-
-/* LOGO */
-
-.logo{
-
-position:absolute;
-
-bottom:14px;
-right:14px;
-
-width:46px;
-height:46px;
-
-border-radius:50%;
-
-opacity:.52;
-
-filter:
-brightness(1.1)
-drop-shadow(
-0 0 10px rgba(255,255,255,.10)
-);
-}
-
-/* TEXTO */
-
-.eyebrow{
-
-font-size:12px;
-
-letter-spacing:2px;
-text-transform:uppercase;
-
-color:
-rgba(255,255,255,.62);
-
-margin-bottom:16px;
-}
-
-.title{
-
-font-size:
-clamp(28px,5vw,48px);
-
-font-weight:300;
-
-line-height:1.2;
-
-margin-bottom:18px;
-}
-
-.subtitle{
-
-font-size:18px;
-
-line-height:1.7;
-
-color:
-rgba(255,255,255,.82);
-
-margin-bottom:34px;
-}
-
-/* QUIZ */
-
-.question{
-
-display:none;
-animation:fade .35s ease;
-}
-
-.question.active{
-display:block;
-}
-
-.question-title{
-
-font-size:28px;
-font-weight:300;
-
-margin-bottom:28px;
-
-line-height:1.35;
-}
-
-/* OPÇÕES */
-
-.option{
-
-width:100%;
-
-border:none;
-cursor:pointer;
-
-background:#101010;
-color:white;
-
-padding:18px;
-
-font-size:16px;
-
-border-radius:18px;
-
-margin-bottom:14px;
-
-transition:.22s ease;
-
-border:
-1px solid
-rgba(255,255,255,.08);
-}
-
-.option:hover{
-
-background:#181818;
-
-transform:
-translateY(-2px);
-}
-
-/* FINAL */
-
-#final{
-display:none;
-}
-
-/* ANIMAÇÃO */
-
-@keyframes fade{
-
-from{
-opacity:0;
-transform:translateY(8px);
-}
-
-to{
-opacity:1;
-transform:translateY(0);
-}
-
-}
-
-/* MOBILE */
+@keyframes fade{ from{ opacity:0; transform:translateY(8px); } to{ opacity:1; transform:translateY(0); } }
 
 @media(max-width:768px){
-
-.card{
-
-padding:28px 20px;
-border-radius:28px;
+  .card{ padding:28px 20px; border-radius:28px; }
+  .question-title{ font-size:24px; }
+  .logo{ bottom:10px; right:10px; width:38px; height:38px; }
 }
-
-.question-title{
-font-size:24px;
-}
-
-.subtitle{
-font-size:16px;
-}
-
-.logo{
-
-bottom:10px;
-right:10px;
-
-width:38px;
-height:38px;
-}
-
-}
-
 </style>
-
 </head>
 
 <body>
 
 <div class="page">
+  <div class="card">
+    <img src="img/logo_c3.jpg" class="logo" alt="Logo C3">
+    <div class="eyebrow">Descobrir meu perfil</div>
 
-<div class="card">
+    <!-- PERGUNTA 1 -->
+    <div class="question active" id="q1">
+      <h2 class="question-title">O que mais chamou sua atenção até aqui?</h2>
+      <button class="option" onclick="salvar('interesse','Construção de renda'); next(2)">Construção de renda</button>
+      <button class="option" onclick="salvar('interesse','Consumo inteligente'); next(2)">Consumo inteligente</button>
+      <button class="option" onclick="salvar('option','Empreendedorismo'); next(2)">Empreendedorismo</button>
+      <button class="option" onclick="salvar('interesse','Saúde e bem-estar'); next(2)">Saúde e bem-estar</button>
+    </div>
 
-<img
-src="img/logo_c3.jpg"
-class="logo"
-alt="Logo C3"
->
+    <!-- PERGUNTA 2 -->
+    <div class="question" id="q2">
+      <h2 class="question-title">Você já teve contato com modelos de comunidade ou rede?</h2>
+      <button class="option" onclick="salvar('experiencia','Nunca'); next(3)">Nunca</button>
+      <button class="option" onclick="salvar('experiencia','Já conheci'); next(3)">Já conheci</button>
+      <button class="option" onclick="salvar('experiencia','Já participei'); next(3)">Já participei</button>
+      <button class="option" onclick="salvar('experiencia','Já liderei equipe'); next(3)">Já liderei equipe</button>
+    </div>
 
-<div class="eyebrow">
-Descobrir meu perfil
-</div>
+    <!-- PERGUNTA 3 -->
+    <div class="question" id="q3">
+      <h2 class="question-title">Hoje, o que mais faria diferença para você?</h2>
+      <button class="option" onclick="salvar('objetivo','Aliviar pressão financeira'); finish()">Aliviar pressão financeira</button>
+      <button class="option" onclick="salvar('objetivo','Criar uma renda extra'); finish()">Criar uma renda extra</button>
+      <button class="option" onclick="salvar('objetivo','Construir algo maior'); finish()">Construir algo maior</button>
+      <button class="option" onclick="salvar('objetivo','Aprender um novo modelo'); finish()">Aprender um novo modelo</button>
+    </div>
 
-<!-- PERGUNTA 1 -->
+    <!-- TELA DE CONFIRMAÇÃO (FINAL) -->
+    <div id="finalScreen">
+      <h2 class="question-title" style="color:#00ff88;">Perfil Concluído!</h2>
+      <p style="color:#ccc; line-height:1.6; margin-bottom:20px;">
+        Suas respostas foram preparadas. Caso o WhatsApp não tenha aberto automaticamente, clique no botão abaixo para falar com seu Gestor.
+      </p>
+      <button class="option" style="background:#00ff88; color:#000; font-weight:bold;" onclick="abrirWhatsappManual()">
+        💬 Abrir WhatsApp Novamente
+      </button>
+    </div>
 
-<div
-class="question active"
-id="q1"
->
-
-<h2 class="question-title">
-
-O que mais chamou
-sua atenção até aqui?
-
-</h2>
-
-<button
-class="option"
-onclick="salvar('interesse','Construção de renda'); next(2)"
->
-Construção de renda
-</button>
-
-<button
-class="option"
-onclick="salvar('interesse','Consumo inteligente'); next(2)"
->
-Consumo inteligente
-</button>
-
-<button
-class="option"
-onclick="salvar('interesse','Empreendedorismo'); next(2)"
->
-Empreendedorismo
-</button>
-
-<button
-class="option"
-onclick="salvar('interesse','Saúde e bem-estar'); next(2)"
->
-Saúde e bem-estar
-</button>
-
-</div>
-
-<!-- PERGUNTA 2 -->
-
-<div
-class="question"
-id="q2"
->
-
-<h2 class="question-title">
-
-Você já teve contato
-com modelos de comunidade
-ou rede?
-
-</h2>
-
-<button
-class="option"
-onclick="salvar('experiencia','Nunca'); next(3)"
->
-Nunca
-</button>
-
-<button
-class="option"
-onclick="salvar('experiencia','Já conheci'); next(3)"
->
-Já conheci
-</button>
-
-<button
-class="option"
-onclick="salvar('experiencia','Já participei'); next(3)"
->
-Já participei
-</button>
-
-<button
-class="option"
-onclick="salvar('experiencia','Já liderei equipe'); next(3)"
->
-Já liderei equipe
-</button>
-
-</div>
-
-<!-- PERGUNTA 3 -->
-
-<div
-class="question"
-id="q3"
->
-
-<h2 class="question-title">
-
-Hoje, o que mais faria
-diferença para você?
-
-</h2>
-
-<button
-class="option"
-onclick="salvar('objetivo','Aliviar pressão financeira'); finish()"
->
-Aliviar pressão financeira
-</button>
-
-<button
-class="option"
-onclick="salvar('objetivo','Criar uma renda extra'); finish()"
->
-Criar uma renda extra
-</button>
-
-<button
-class="option"
-onclick="salvar('objetivo','Construir algo maior'); finish()"
->
-Construir algo maior
-</button>
-
-<button
-class="option"
-onclick="salvar('objetivo','Aprender um novo modelo'); finish()"
->
-Aprender um novo modelo
-</button>
-
-</div>
-
-</div>
-
+  </div>
 </div>
 
 <script>
-
 let respostas = {};
 
-/* SALVAR */
-
-function salvar(chave,valor){
-
-respostas[chave] =
-valor;
-
+function salvar(chave, valor){
+  respostas[chave] = valor;
 }
-
-/* PRÓXIMA */
 
 function next(n){
-
-document
-.querySelectorAll('.question')
-.forEach(q=>{
-
-q.classList.remove(
-'active'
-);
-
-});
-
-document
-.getElementById(
-'q'+n
-)
-.classList.add(
-'active'
-);
-
+  document.querySelectorAll('.question').forEach(q => q.classList.remove('active'));
+  document.getElementById('q' + n).classList.add('active');
 }
 
-/* FINALIZAR */
+function gerarMensagem(){
+  return "Olá, concluí meu perfil C3.%0A%0A" +
+    "*Meu interesse:* " + (respostas.interesse || 'Não informado') + "%0A" +
+    "*Minha experiência:* " + (respostas.experiencia || 'Não informada') + "%0A" +
+    "*Meu objetivo:* " + (respostas.objetivo || 'Não informado') + "%0A%0A" +
+    "Quero entender melhor como isso pode funcionar para mim.";
+}
 
 function finish(){
+  document.querySelectorAll('.question').forEach(q => q.classList.remove('active'));
+  document.getElementById('finalScreen').style.display = 'block';
 
-let mensagem =
-
-"Olá, concluí meu perfil C3.%0A%0A" +
-
-"*Meu interesse:* " +
-respostas.interesse +
-"%0A" +
-
-"*Minha experiência:* " +
-respostas.experiencia +
-"%0A" +
-
-"*Meu objetivo:* " +
-respostas.objetivo +
-"%0A%0A" +
-
-"Quero entender melhor como isso pode funcionar para mim.";
-
-window.location.href =
-
-"https://wa.me/5522999231211?text="
-
-+ mensagem;
-
-  setTimeout(()=>{
-
-window.location.href =
-'/x1/';
-
-},1500);
+  abrirWhatsappManual();
 }
 
+function abrirWhatsappManual(){
+  const url = "https://wa.me/5522999231211?text=" + gerarMensagem();
+  window.open(url, '_blank');
+}
 </script>
 
 </body>
-
 </html>
