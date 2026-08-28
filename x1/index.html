@@ -5,7 +5,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Bonifica | Apresentação X1 Completa</title>
-<meta name="description" content="Apresentação institucional, catálogo de produtos e plano de negócio Bonifica.">
 
 <style>
 /* RESET & BASE */
@@ -17,27 +16,30 @@ body{ background:#050505; font-family:Arial, sans-serif; color:white; min-height
 .container{ width:100%; max-width:920px; }
 
 /* CARDS */
-.card{ background: rgba(255,255,255,.04); backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,.08); border-radius:28px; padding:28px; margin-bottom:24px; box-shadow: 0 12px 40px rgba(0,0,0,.35); text-align:center; position:relative; }
+.card{ background: rgba(255,255,255,.04); backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,.08); border-radius:28px; padding:28px; margin-bottom:24px; box-shadow: 0 12px 40px rgba(0,0,0,.35); text-align:center; }
 
 /* TIPOGRAFIA */
 .eyebrow{ font-size:12px; letter-spacing:2.5px; text-transform:uppercase; color: #00ff88; margin-bottom:12px; font-weight:bold; }
 .title{ font-size: clamp(24px, 4vw, 36px); font-weight:300; line-height:1.25; margin-bottom:16px; }
 .subtitle{ font-size: clamp(14px, 1.8vw, 17px); line-height:1.6; color: rgba(255,255,255,.8); margin-bottom:20px; }
 
-/* CONTAINER DO FLIPBOOK HEYZINE */
-.flipbook-box{ width:100%; height:650px; margin:0 auto; border-radius:20px; overflow:hidden; border: 1px solid rgba(255,255,255,.1); background:#0a0a0a; box-shadow: 0 10px 30px rgba(0,0,0,.5); }
+/* HEYZINE FLIPBOOK */
+.flipbook-box{ width:100%; height:650px; margin:0 auto; border-radius:20px; overflow:hidden; border: 1px solid rgba(255,255,255,.1); background:#0a0a0a; }
 .flipbook-box iframe{ width:100%; height:100%; border:none; }
 
-/* BOTÕES DE AÇÃO */
-.btn{ border:none; outline:none; cursor:pointer; background:#00ff88; color:#07120d; font-weight:700; font-size:15px; padding:16px 32px; border-radius:999px; transition: .25s ease; box-shadow: 0 10px 25px rgba(0,255,136,.2); text-decoration:none; display:inline-block; margin:6px; }
+/* VÍDEO MODELO DE NEGÓCIO */
+.video-wrapper{ width:100%; max-width:720px; aspect-ratio:16/9; margin:0 auto; border-radius:20px; overflow:hidden; background:#000; border:1px solid rgba(255,255,255,.12); }
+.video-wrapper video{ width:100%; height:100%; display:block; object-fit:contain; }
+
+/* BOTÕES */
+.btn{ border:none; outline:none; cursor:pointer; background:#00ff88; color:#07120d; font-weight:700; font-size:15px; padding:16px 32px; border-radius:999px; text-decoration:none; display:inline-block; margin:6px; transition:.25s ease; }
 .btn:hover{ transform: translateY(-2px); background:#00eb7c; }
-.btn-secondary{ background:#222; color:#fff; box-shadow:none; border: 1px solid rgba(255,255,255,.1); }
-.btn-secondary:hover{ background:#333; }
+.btn-secondary{ background:#222; color:#fff; border: 1px solid rgba(255,255,255,.1); }
 
 @media(max-width:768px){
   .page{ padding:16px 10px; }
   .card{ padding:16px 10px; border-radius:22px; }
-  .flipbook-box{ height:480px; } /* Altura ajustada para telas de celular */
+  .flipbook-box{ height:480px; }
   .btn{ width:100%; max-width:300px; padding:14px 20px; }
 }
 </style>
@@ -55,15 +57,30 @@ body{ background:#050505; font-family:Arial, sans-serif; color:white; min-height
       <p class="subtitle">Apresentação interativa oficial Bonifica.</p>
     </div>
 
-    <!-- FLIPBOOK HEYZINE UNIFICADO -->
+    <!-- FLIPBOOK HEYZINE -->
     <div class="card" style="padding:12px;">
       <div class="flipbook-box">
         <iframe src="https://heyzine.com/flip-book/2390040454.html" allowfullscreen="true"></iframe>
       </div>
     </div>
 
-    <!-- NAVEGAÇÃO E CONTATO -->
-    <div class="card" style="text-align:center;">
+    <!-- VÍDEO FINAL: MODELO DE NEGÓCIO -->
+    <div class="card">
+      <div class="eyebrow">Fechamento da Apresentação</div>
+      <h2 class="title" style="font-size: clamp(20px, 3.5vw, 28px);">Modelo de Negócio</h2>
+      <p class="subtitle" style="margin-bottom:18px;">Assista ao vídeo para concluir a apresentação do plano.</p>
+      
+      <div class="video-wrapper">
+        <video controls playsinline preload="metadata">
+          <source src="https://apndigital.vercel.app/video/modelo_negocio.mp4" type="video/mp4">
+          <source src="/video/modelo_negocio.mp4" type="video/mp4">
+          Seu navegador não suporta a exibição deste vídeo.
+        </video>
+      </div>
+    </div>
+
+    <!-- BOTÕES DE SAÍDA -->
+    <div class="card">
       <a href="/index.html" class="btn btn-secondary">← Voltar para a APN Principal</a>
       <a href="https://wa.me/5522999231211" target="_blank" class="btn">💬 Falar no WhatsApp</a>
     </div>
